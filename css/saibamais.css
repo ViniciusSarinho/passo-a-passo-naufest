@@ -163,3 +163,5 @@ a.ref:hover { text-decoration: underline; }
   .capitulo { padding-top: 90px; padding-bottom: 10px; }
   .painel { max-height: calc(100vh - 100px); max-height: calc(100svh - 100px); padding-top: 12px; padding-bottom: 10px; }
 }
+body.em-abas::before { opacity: 0; transition: opacity .2s; }
+body::before { transition: opacity .2s; }

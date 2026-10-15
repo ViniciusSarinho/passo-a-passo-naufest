@@ -60,3 +60,6 @@ function ajustarRolagemDosPaineis() {
 addEventListener('resize', ajustarRolagemDosPaineis);
 addEventListener('load', ajustarRolagemDosPaineis);
 setTimeout(ajustarRolagemDosPaineis, 600);
+
+// Na área das abas a faixa de degradê do topo sai (as abas fixas já têm o próprio fundo)
+new IntersectionObserver(([e]) => document.body.classList.toggle('em-abas', e.isIntersecting && e.boundingClientRect.top < 120), { threshold: [0, 0.02, 0.1] }).observe(document.getElementById('aprofunde'));
