@@ -68,7 +68,7 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 
 **Design calmo e gamificado:** baseado nos estudos do TCC ([`docs/FONTES.md`](docs/FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
 
-**Voz humana:** o app toca falas gravadas e usa a voz sintética só onde falta. Na voz sintética, prefere vozes neurais (Microsoft Edge: Francisca, Thalita) e **não usa as vozes do Google**, que soam robóticas. O **estúdio** grava, importa e exporta as 218 falas ([`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md)).
+**Voz do Lumi:** as 218 falas fixas já vêm em áudio com uma **voz neural feminina** (Thalita, gerada por [`ferramentas/gerar_voz_lumi.py`](ferramentas/gerar_voz_lumi.py)); gravações humanas feitas no estúdio têm prioridade. Só frases montadas na hora (como a conversa com a IA) usam a voz do navegador, preferindo vozes neurais e **sem usar as vozes do Google**, que soam robóticas. O **estúdio** grava, importa e exporta as 218 falas ([`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md)).
 
 ## Real × simulado
 
@@ -111,7 +111,8 @@ firebase.json                publicação no Firebase Hosting
 css/                         inicio.css, site.css, app.css
 js/                          lumi, dados, nucleo, paciente, responsavel, conhecimento,
                              caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d (página inicial)
-audio/lumi/                  falas gravadas publicadas (falas.json)
+audio/lumi/                  as 218 falas em voz neural (mp3) + falas.json
+ferramentas/                 gerador da voz neural (edge-tts)
 exemplos/                    laudo FICTÍCIO em PDF
 tests/                       teste de fumaça
 docs/                        proposta, arquitetura, processo, fontes, ética, roadmap, guias

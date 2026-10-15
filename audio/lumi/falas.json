@@ -1,4 +1,1314 @@
 {
-  "voz": "Lumi",
-  "falas": []
+  "voz": "Lumi · pt-BR-ThalitaMultilingualNeural (voz neural, edge-tts)",
+  "gerado": "2026-10-15T18:15:33+00:00",
+  "falas": [
+    {
+      "id": "guia-m1-normal",
+      "arquivo": "guia-m1-normal.mp3",
+      "texto": "Pegue a sua mochila e mostre para a câmera.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m1-pergunta",
+      "arquivo": "guia-m1-pergunta.mp3",
+      "texto": "Para arrumar as coisas da escola, o que você precisa pegar primeiro?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m1-curta",
+      "arquivo": "guia-m1-curta.mp3",
+      "texto": "Pegue a mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m1-explica",
+      "arquivo": "guia-m1-explica.mp3",
+      "texto": "Primeiro, vamos pegar a mochila. É nela que ficam as coisas da escola. Pegue e mostre para a câmera.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "posicao-backpack-a-sua-esquerda",
+      "arquivo": "posicao-backpack-a-sua-esquerda.mp3",
+      "texto": "A mochila está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-backpack-a-sua-direita",
+      "arquivo": "posicao-backpack-a-sua-direita.mp3",
+      "texto": "A mochila está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-backpack-bem-na-sua-frente",
+      "arquivo": "posicao-backpack-bem-na-sua-frente.mp3",
+      "texto": "A mochila está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-m2-normal",
+      "arquivo": "guia-m2-normal.mp3",
+      "texto": "Pegue o livro da aula de hoje e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m2-pergunta",
+      "arquivo": "guia-m2-pergunta.mp3",
+      "texto": "Qual material de leitura vai para a escola hoje?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m2-curta",
+      "arquivo": "guia-m2-curta.mp3",
+      "texto": "Coloque o livro.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m2-explica",
+      "arquivo": "guia-m2-explica.mp3",
+      "texto": "Agora o livro. Hoje tem aula e você vai precisar dele. Mostre o livro para a câmera e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "posicao-book-a-sua-esquerda",
+      "arquivo": "posicao-book-a-sua-esquerda.mp3",
+      "texto": "O livro está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-book-a-sua-direita",
+      "arquivo": "posicao-book-a-sua-direita.mp3",
+      "texto": "O livro está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-book-bem-na-sua-frente",
+      "arquivo": "posicao-book-bem-na-sua-frente.mp3",
+      "texto": "O livro está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-m3-normal",
+      "arquivo": "guia-m3-normal.mp3",
+      "texto": "Pegue a sua garrafa de água e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m3-pergunta",
+      "arquivo": "guia-m3-pergunta.mp3",
+      "texto": "E se der sede na escola, o que você leva?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m3-curta",
+      "arquivo": "guia-m3-curta.mp3",
+      "texto": "Pegue a garrafa.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m3-explica",
+      "arquivo": "guia-m3-explica.mp3",
+      "texto": "Na escola dá sede. Pegue a garrafa de água, mostre para a câmera e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "posicao-bottle-a-sua-esquerda",
+      "arquivo": "posicao-bottle-a-sua-esquerda.mp3",
+      "texto": "A garrafa está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-bottle-a-sua-direita",
+      "arquivo": "posicao-bottle-a-sua-direita.mp3",
+      "texto": "A garrafa está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-bottle-bem-na-sua-frente",
+      "arquivo": "posicao-bottle-bem-na-sua-frente.mp3",
+      "texto": "A garrafa está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-m4-normal",
+      "arquivo": "guia-m4-normal.mp3",
+      "texto": "Hora de escolher o lanche. Banana ou maçã?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m4-pergunta",
+      "arquivo": "guia-m4-pergunta.mp3",
+      "texto": "Qual lanche você quer levar hoje?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m4-curta",
+      "arquivo": "guia-m4-curta.mp3",
+      "texto": "Escolha o lanche.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m4-explica",
+      "arquivo": "guia-m4-explica.mp3",
+      "texto": "Você pode escolher o lanche de hoje. São só duas opções: banana ou maçã. Qualquer uma está certa.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-normal-banana",
+      "arquivo": "guia-m5-normal-banana.mp3",
+      "texto": "Mostre a banana para a câmera e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-pergunta-banana",
+      "arquivo": "guia-m5-pergunta-banana.mp3",
+      "texto": "Você escolheu o lanche. Onde ele vai agora?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-curta-banana",
+      "arquivo": "guia-m5-curta-banana.mp3",
+      "texto": "Guarde a banana.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-explica-banana",
+      "arquivo": "guia-m5-explica-banana.mp3",
+      "texto": "Você escolheu banana. Agora mostre para a câmera e guarde na mochila, junto com o resto.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-normal-maca",
+      "arquivo": "guia-m5-normal-maca.mp3",
+      "texto": "Mostre a maçã para a câmera e coloque na mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-curta-maca",
+      "arquivo": "guia-m5-curta-maca.mp3",
+      "texto": "Guarde a maçã.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m5-explica-maca",
+      "arquivo": "guia-m5-explica-maca.mp3",
+      "texto": "Você escolheu maçã. Agora mostre para a câmera e guarde na mochila, junto com o resto.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m6-normal",
+      "arquivo": "guia-m6-normal.mp3",
+      "texto": "Feche o zíper da mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m6-pergunta",
+      "arquivo": "guia-m6-pergunta.mp3",
+      "texto": "Tudo está dentro. O que falta fazer com a mochila?",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m6-curta",
+      "arquivo": "guia-m6-curta.mp3",
+      "texto": "Feche a mochila.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "guia-m6-explica",
+      "arquivo": "guia-m6-explica.mp3",
+      "texto": "Tudo está dentro. Agora feche o zíper para nada cair. Quando terminar, aperte \"Fiz\".",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "escolha-banana",
+      "arquivo": "escolha-banana.mp3",
+      "texto": "Banana.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "posicao-banana-a-sua-esquerda",
+      "arquivo": "posicao-banana-a-sua-esquerda.mp3",
+      "texto": "A banana está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-banana-a-sua-direita",
+      "arquivo": "posicao-banana-a-sua-direita.mp3",
+      "texto": "A banana está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-banana-bem-na-sua-frente",
+      "arquivo": "posicao-banana-bem-na-sua-frente.mp3",
+      "texto": "A banana está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "escolha-maca",
+      "arquivo": "escolha-maca.mp3",
+      "texto": "Maçã.",
+      "grupo": "Guia · Arrumar a mochila"
+    },
+    {
+      "id": "posicao-apple-a-sua-esquerda",
+      "arquivo": "posicao-apple-a-sua-esquerda.mp3",
+      "texto": "A maçã está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-apple-a-sua-direita",
+      "arquivo": "posicao-apple-a-sua-direita.mp3",
+      "texto": "A maçã está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-apple-bem-na-sua-frente",
+      "arquivo": "posicao-apple-bem-na-sua-frente.mp3",
+      "texto": "A maçã está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-p1-normal",
+      "arquivo": "guia-p1-normal.mp3",
+      "texto": "Procure a fila do balcão de pão.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p1-pergunta",
+      "arquivo": "guia-p1-pergunta.mp3",
+      "texto": "Onde as pessoas esperam para pedir o pão?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p1-curta",
+      "arquivo": "guia-p1-curta.mp3",
+      "texto": "Procure a fila.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p1-explica",
+      "arquivo": "guia-p1-explica.mp3",
+      "texto": "Na padaria, as pessoas esperam numa fila perto do balcão. Procure onde as pessoas estão em fila.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "posicao-person-a-sua-esquerda",
+      "arquivo": "posicao-person-a-sua-esquerda.mp3",
+      "texto": "A pessoa está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-person-a-sua-direita",
+      "arquivo": "posicao-person-a-sua-direita.mp3",
+      "texto": "A pessoa está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-person-bem-na-sua-frente",
+      "arquivo": "posicao-person-bem-na-sua-frente.mp3",
+      "texto": "A pessoa está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-p2-normal",
+      "arquivo": "guia-p2-normal.mp3",
+      "texto": "Fique no fim da fila e espere a sua vez.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p2-pergunta",
+      "arquivo": "guia-p2-pergunta.mp3",
+      "texto": "Tem gente na sua frente. O que a gente faz agora?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p2-curta",
+      "arquivo": "guia-p2-curta.mp3",
+      "texto": "Espere sua vez.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p2-explica",
+      "arquivo": "guia-p2-explica.mp3",
+      "texto": "Cada pessoa é atendida de uma vez. Fique atrás da última pessoa e espere. Está tudo bem demorar.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p3-normal",
+      "arquivo": "guia-p3-normal.mp3",
+      "texto": "Qual pão você quer hoje: francês ou de queijo?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p3-pergunta",
+      "arquivo": "guia-p3-pergunta.mp3",
+      "texto": "Qual pão você vai pedir?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p3-curta",
+      "arquivo": "guia-p3-curta.mp3",
+      "texto": "Escolha o pão.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p3-explica",
+      "arquivo": "guia-p3-explica.mp3",
+      "texto": "Antes de chegar sua vez, vamos decidir. São duas opções: pão francês ou pão de queijo.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-normal-pao-frances",
+      "arquivo": "guia-p4-normal-pao-frances.mp3",
+      "texto": "Olhe para o atendente e diga: \"Quero cinco pães franceses, por favor.\"",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-pergunta-pao-frances",
+      "arquivo": "guia-p4-pergunta-pao-frances.mp3",
+      "texto": "Chegou a sua vez. O que você vai dizer ao atendente?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-curta-pao-frances",
+      "arquivo": "guia-p4-curta-pao-frances.mp3",
+      "texto": "Peça os pães.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-explica-pao-frances",
+      "arquivo": "guia-p4-explica-pao-frances.mp3",
+      "texto": "Chegou a sua vez. O atendente precisa saber o que você quer. Diga: \"Quero cinco pães franceses, por favor.\" Se preferir, aperte o botão e eu falo por você.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-normal-pao-de-queijo",
+      "arquivo": "guia-p4-normal-pao-de-queijo.mp3",
+      "texto": "Olhe para o atendente e diga: \"Quero cinco pães de queijo, por favor.\"",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p4-explica-pao-de-queijo",
+      "arquivo": "guia-p4-explica-pao-de-queijo.mp3",
+      "texto": "Chegou a sua vez. O atendente precisa saber o que você quer. Diga: \"Quero cinco pães de queijo, por favor.\" Se preferir, aperte o botão e eu falo por você.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p5-normal",
+      "arquivo": "guia-p5-normal.mp3",
+      "texto": "Pegue o saco de pão que o atendente entregar.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p5-pergunta",
+      "arquivo": "guia-p5-pergunta.mp3",
+      "texto": "O atendente está te entregando algo. O que você faz?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p5-curta",
+      "arquivo": "guia-p5-curta.mp3",
+      "texto": "Pegue o saco.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p5-explica",
+      "arquivo": "guia-p5-explica.mp3",
+      "texto": "O atendente vai colocar os pães num saco e entregar para você. Segure com cuidado.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p6-normal",
+      "arquivo": "guia-p6-normal.mp3",
+      "texto": "Vá ao caixa e mostre o celular para pagar.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p6-pergunta",
+      "arquivo": "guia-p6-pergunta.mp3",
+      "texto": "Você já tem o pão. Onde a gente vai agora, e como paga?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p6-curta",
+      "arquivo": "guia-p6-curta.mp3",
+      "texto": "Pague no celular.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p6-explica",
+      "arquivo": "guia-p6-explica.mp3",
+      "texto": "Para levar o pão, a gente paga no caixa. Vá até o caixa e mostre o celular para pagar.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "posicao-cell-phone-a-sua-esquerda",
+      "arquivo": "posicao-cell-phone-a-sua-esquerda.mp3",
+      "texto": "O celular está à sua esquerda.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-cell-phone-a-sua-direita",
+      "arquivo": "posicao-cell-phone-a-sua-direita.mp3",
+      "texto": "O celular está à sua direita.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "posicao-cell-phone-bem-na-sua-frente",
+      "arquivo": "posicao-cell-phone-bem-na-sua-frente.mp3",
+      "texto": "O celular está bem na sua frente.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "guia-p7-normal",
+      "arquivo": "guia-p7-normal.mp3",
+      "texto": "Diga \"obrigado\" e saia pela porta.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p7-pergunta",
+      "arquivo": "guia-p7-pergunta.mp3",
+      "texto": "A compra terminou. O que a gente diz para quem atendeu?",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p7-curta",
+      "arquivo": "guia-p7-curta.mp3",
+      "texto": "Diga obrigado.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "guia-p7-explica",
+      "arquivo": "guia-p7-explica.mp3",
+      "texto": "A compra terminou. Para ser gentil, diga \"obrigado\" para quem te atendeu e saia pela porta.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "escolha-pao-frances",
+      "arquivo": "escolha-pao-frances.mp3",
+      "texto": "Pão francês.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "escolha-pao-de-queijo",
+      "arquivo": "escolha-pao-de-queijo.mp3",
+      "texto": "Pão de queijo.",
+      "grupo": "Guia · Comprar pão na padaria"
+    },
+    {
+      "id": "escolha-boa",
+      "arquivo": "escolha-boa.mp3",
+      "texto": "Boa escolha!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "calma-lembrete",
+      "arquivo": "calma-lembrete.mp3",
+      "texto": "Se ficar difícil, aperte calma.",
+      "grupo": "Guia · direções"
+    },
+    {
+      "id": "elogio-1",
+      "arquivo": "elogio-1.mp3",
+      "texto": "Muito bem, Lucas! Você fez sozinho. Coisa de especialista em dinossauros!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "elogio-2",
+      "arquivo": "elogio-2.mp3",
+      "texto": "Isso, Lucas! Sem ajuda. Até quem ama dinossauros ficaria impressionado.",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "elogio-3",
+      "arquivo": "elogio-3.mp3",
+      "texto": "Perfeito! Você lembrou sozinho. Ganhou uma estrela!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "elogio-proximo",
+      "arquivo": "elogio-proximo.mp3",
+      "texto": "Isso! Próximo passo.",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "elogio-curto",
+      "arquivo": "elogio-curto.mp3",
+      "texto": "Isso.",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-concluida",
+      "arquivo": "fim-concluida.mp3",
+      "texto": "Muito bem, Lucas! Tarefa concluída.",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-tentou",
+      "arquivo": "fim-tentou.mp3",
+      "texto": "Você tentou, e isso conta. Amanhã a gente tenta de novo.",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-evoluiu-2",
+      "arquivo": "fim-evoluiu-2.mp3",
+      "texto": "Uau! O Lumi evoluiu e ganhou um cachecol!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-evoluiu-3",
+      "arquivo": "fim-evoluiu-3.mp3",
+      "texto": "Uau! O Lumi evoluiu e ganhou fones de ouvido!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-evoluiu-4",
+      "arquivo": "fim-evoluiu-4.mp3",
+      "texto": "Uau! O Lumi evoluiu e ganhou um capacete de explorador!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-evoluiu-5",
+      "arquivo": "fim-evoluiu-5.mp3",
+      "texto": "Uau! O Lumi evoluiu e ganhou o visual do seu tema favorito!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "fim-evoluiu-6",
+      "arquivo": "fim-evoluiu-6.mp3",
+      "texto": "Uau! O Lumi evoluiu e ganhou uma capa de herói!",
+      "grupo": "Elogios e incentivo"
+    },
+    {
+      "id": "calma-respirar",
+      "arquivo": "calma-respirar.mp3",
+      "texto": "Tudo bem. Vamos respirar juntos. Puxa o ar devagar... e solta.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "calma-respirar-2",
+      "arquivo": "calma-respirar-2.mp3",
+      "texto": "Vamos respirar juntos. Puxa o ar devagar... e solta.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "calma-hiperfoco",
+      "arquivo": "calma-hiperfoco.mp3",
+      "texto": "Tudo bem. Sabia que alguns dinossauros eram calmos e lentos? Vamos respirar devagar, como eles.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "sos-pedi",
+      "arquivo": "sos-pedi.mp3",
+      "texto": "Pedi ajuda. Avisei Ana e Carlos. Fique onde está. Você está seguro comigo.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "sos-caminho-ana",
+      "arquivo": "sos-caminho-ana.mp3",
+      "texto": "Ana está a caminho. Fique onde está. Você está seguro.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "banner-caminho-ana",
+      "arquivo": "banner-caminho-ana.mp3",
+      "texto": "Ana está a caminho.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "sos-caminho-carlos",
+      "arquivo": "sos-caminho-carlos.mp3",
+      "texto": "Carlos está a caminho. Fique onde está. Você está seguro.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "banner-caminho-carlos",
+      "arquivo": "banner-caminho-carlos.mp3",
+      "texto": "Carlos está a caminho.",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "barulho",
+      "arquivo": "barulho.mp3",
+      "texto": "Está barulhento aqui. Quer colocar o abafador ou respirar comigo um pouco?",
+      "grupo": "Calma e segurança"
+    },
+    {
+      "id": "remedio-med1",
+      "arquivo": "remedio-med1.mp3",
+      "texto": "Lucas, hora do remédio. Escove os dentes. Pegue um copo de água. Tome 1 comprimido. Hora de deitar.",
+      "grupo": "Remédios"
+    },
+    {
+      "id": "remedio-med2",
+      "arquivo": "remedio-med2.mp3",
+      "texto": "Lucas, hora do remédio. Tome o café da manhã. Pegue um copo de água. Tome 1 comprimido.",
+      "grupo": "Remédios"
+    },
+    {
+      "id": "remedio-lembra",
+      "arquivo": "remedio-lembra.mp3",
+      "texto": "Lembra do remédio? Estou aqui com você.",
+      "grupo": "Remédios"
+    },
+    {
+      "id": "remedio-tomou",
+      "arquivo": "remedio-tomou.mp3",
+      "texto": "Muito bem! Você cuidou de você.",
+      "grupo": "Remédios"
+    },
+    {
+      "id": "remedio-ajuda",
+      "arquivo": "remedio-ajuda.mp3",
+      "texto": "Avisei a mamãe que você precisa de ajuda com o remédio.",
+      "grupo": "Remédios"
+    },
+    {
+      "id": "hist-mochila-0",
+      "arquivo": "hist-mochila-0.mp3",
+      "texto": "Hoje eu vou arrumar a mochila para a escola.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-0c",
+      "arquivo": "hist-mochila-0c.mp3",
+      "texto": "Hoje: arrumar a mochila.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-1",
+      "arquivo": "hist-mochila-1.mp3",
+      "texto": "Primeiro, eu pego a minha mochila.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-2",
+      "arquivo": "hist-mochila-2.mp3",
+      "texto": "Depois, eu coloco o livro da aula.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-3",
+      "arquivo": "hist-mochila-3.mp3",
+      "texto": "Então, eu coloco a garrafa de água.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-4",
+      "arquivo": "hist-mochila-4.mp3",
+      "texto": "Em seguida, eu escolho o meu lanche.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-5",
+      "arquivo": "hist-mochila-5.mp3",
+      "texto": "Agora, eu guardo o lanche.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-mochila-6",
+      "arquivo": "hist-mochila-6.mp3",
+      "texto": "Por fim, eu fecho o zíper e pronto.",
+      "grupo": "História · Arrumar a mochila"
+    },
+    {
+      "id": "hist-padaria-0",
+      "arquivo": "hist-padaria-0.mp3",
+      "texto": "Hoje eu vou comprar pão na padaria.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-0c",
+      "arquivo": "hist-padaria-0c.mp3",
+      "texto": "Hoje: comprar pão na padaria.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-1",
+      "arquivo": "hist-padaria-1.mp3",
+      "texto": "Primeiro, eu entro e procuro a fila do balcão.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-2",
+      "arquivo": "hist-padaria-2.mp3",
+      "texto": "Depois, eu espero a minha vez com calma.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-3",
+      "arquivo": "hist-padaria-3.mp3",
+      "texto": "Então, eu escolho o pão.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-4",
+      "arquivo": "hist-padaria-4.mp3",
+      "texto": "Em seguida, eu peço os pães ao atendente.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-5",
+      "arquivo": "hist-padaria-5.mp3",
+      "texto": "Agora, eu pego o saco de pão.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-6",
+      "arquivo": "hist-padaria-6.mp3",
+      "texto": "Depois, eu vou ao caixa e pago com o celular.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-padaria-7",
+      "arquivo": "hist-padaria-7.mp3",
+      "texto": "Por fim, eu digo \"obrigado\" e volto para casa.",
+      "grupo": "História · Comprar pão na padaria"
+    },
+    {
+      "id": "hist-calma",
+      "arquivo": "hist-calma.mp3",
+      "texto": "Se ficar difícil, tudo bem. Posso apertar \"calma\" e respirar com o Lumi.",
+      "grupo": "História social"
+    },
+    {
+      "id": "hist-estrelas",
+      "arquivo": "hist-estrelas.mp3",
+      "texto": "Quando terminar, eu e o Lumi ganhamos estrelas!",
+      "grupo": "História social"
+    },
+    {
+      "id": "hist-calma-c",
+      "arquivo": "hist-calma-c.mp3",
+      "texto": "Difícil? Botão de calma.",
+      "grupo": "História social"
+    },
+    {
+      "id": "hist-fim-c",
+      "arquivo": "hist-fim-c.mp3",
+      "texto": "Pronto. Muito bem!",
+      "grupo": "História social"
+    },
+    {
+      "id": "aviso-1",
+      "arquivo": "aviso-1.mp3",
+      "texto": "Ana mandou um aviso: Hoje a aula começa mais tarde, às 8h.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "aviso-2",
+      "arquivo": "aviso-2.mp3",
+      "texto": "Ana mandou um aviso: Vou buscar você 10 minutos depois do normal.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "aviso-3",
+      "arquivo": "aviso-3.mp3",
+      "texto": "Ana mandou um aviso: Hoje quem vai te buscar é o papai.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "aviso-4",
+      "arquivo": "aviso-4.mp3",
+      "texto": "Ana mandou um aviso: A padaria está fechada hoje. Vamos amanhã.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "humor-1",
+      "arquivo": "humor-1.mp3",
+      "texto": "Que bom! Vamos ter um ótimo dia.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "humor-2",
+      "arquivo": "humor-2.mp3",
+      "texto": "Tudo bem. Estou aqui com você.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "humor-3",
+      "arquivo": "humor-3.mp3",
+      "texto": "Obrigado por me contar. Quer respirar comigo?",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "humor-4",
+      "arquivo": "humor-4.mp3",
+      "texto": "Entendi. Vamos com calma hoje.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "fase-mochila-2",
+      "arquivo": "fase-mochila-2.mp3",
+      "texto": "Ana aprovou: em \"Arrumar a mochila\" agora você está na fase 2. Vou ajudar um pouco menos, porque você está aprendendo!",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "fase-mochila-3",
+      "arquivo": "fase-mochila-3.mp3",
+      "texto": "Ana aprovou: em \"Arrumar a mochila\" agora você está na fase 3. Vou ajudar um pouco menos, porque você está aprendendo!",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "fase-padaria-2",
+      "arquivo": "fase-padaria-2.mp3",
+      "texto": "Ana aprovou: em \"Comprar pão na padaria\" agora você está na fase 2. Vou ajudar um pouco menos, porque você está aprendendo!",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "fase-padaria-3",
+      "arquivo": "fase-padaria-3.mp3",
+      "texto": "Ana aprovou: em \"Comprar pão na padaria\" agora você está na fase 3. Vou ajudar um pouco menos, porque você está aprendendo!",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "pedido-confirmado",
+      "arquivo": "pedido-confirmado.mp3",
+      "texto": "A mamãe confirmou o seu pedido! Já está na sua agenda.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "combinado",
+      "arquivo": "combinado.mp3",
+      "texto": "Combinado!",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "voz-teste",
+      "arquivo": "voz-teste.mp3",
+      "texto": "Oi, Lucas! Eu sou o Lumi. Vamos juntos, um passo de cada vez.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "voz-nova",
+      "arquivo": "voz-nova.mp3",
+      "texto": "Oi, Lucas! Esta é a minha nova voz.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "voz-ok",
+      "arquivo": "voz-ok.mp3",
+      "texto": "Assim está bom?",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "voz-familia",
+      "arquivo": "voz-familia.mp3",
+      "texto": "Oi! Esta é a voz do Lumi.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "caa-frase-1",
+      "arquivo": "caa-frase-1.mp3",
+      "texto": "Pode me ajudar, por favor?",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-2",
+      "arquivo": "caa-frase-2.mp3",
+      "texto": "Pode repetir mais devagar?",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-3",
+      "arquivo": "caa-frase-3.mp3",
+      "texto": "Preciso de um tempo.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-4",
+      "arquivo": "caa-frase-4.mp3",
+      "texto": "Está muito barulhento para mim.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-5",
+      "arquivo": "caa-frase-5.mp3",
+      "texto": "Onde fica o banheiro?",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-6",
+      "arquivo": "caa-frase-6.mp3",
+      "texto": "Estou com sede.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-7",
+      "arquivo": "caa-frase-7.mp3",
+      "texto": "Obrigado!",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-frase-8",
+      "arquivo": "caa-frase-8.mp3",
+      "texto": "Oi, tudo bem?",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-p4-pao-frances",
+      "arquivo": "caa-p4-pao-frances.mp3",
+      "texto": "Quero cinco pães franceses, por favor.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-p4-pao-de-queijo",
+      "arquivo": "caa-p4-pao-de-queijo.mp3",
+      "texto": "Quero cinco pães de queijo, por favor.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "caa-pedir-paes",
+      "arquivo": "caa-pedir-paes.mp3",
+      "texto": "Quero cinco pães, por favor.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "cartao-ajuda",
+      "arquivo": "cartao-ajuda.mp3",
+      "texto": "Meu nome é Lucas. Sou autista. Por favor, fale devagar e com calma.",
+      "grupo": "Comunicação (CAA)"
+    },
+    {
+      "id": "combinado-c1",
+      "arquivo": "combinado-c1.mp3",
+      "texto": "Muito bem! Agora é hora de: 20 minutos de tablet.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "combinado-c2",
+      "arquivo": "combinado-c2.mp3",
+      "texto": "Muito bem! Agora é hora de: Ver o documentário de dinossauros.",
+      "grupo": "Avisos e conversas"
+    },
+    {
+      "id": "figura-eu",
+      "arquivo": "figura-eu.mp3",
+      "texto": "eu",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-mamae",
+      "arquivo": "figura-mamae.mp3",
+      "texto": "mamãe",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-papai",
+      "arquivo": "figura-papai.mp3",
+      "texto": "papai",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-voce",
+      "arquivo": "figura-voce.mp3",
+      "texto": "você",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-julia",
+      "arquivo": "figura-julia.mp3",
+      "texto": "Dra. Júlia",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-amigo",
+      "arquivo": "figura-amigo.mp3",
+      "texto": "amigo",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-vovo",
+      "arquivo": "figura-vovo.mp3",
+      "texto": "vovó",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-quero",
+      "arquivo": "figura-quero.mp3",
+      "texto": "quero",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-naoquero",
+      "arquivo": "figura-naoquero.mp3",
+      "texto": "não quero",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-preciso",
+      "arquivo": "figura-preciso.mp3",
+      "texto": "preciso",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-estou",
+      "arquivo": "figura-estou.mp3",
+      "texto": "estou",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-gosto",
+      "arquivo": "figura-gosto.mp3",
+      "texto": "gosto de",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-vamos",
+      "arquivo": "figura-vamos.mp3",
+      "texto": "vamos",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-brincar",
+      "arquivo": "figura-brincar.mp3",
+      "texto": "brincar",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-comer",
+      "arquivo": "figura-comer.mp3",
+      "texto": "comer",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-dormir",
+      "arquivo": "figura-dormir.mp3",
+      "texto": "dormir",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-ir",
+      "arquivo": "figura-ir.mp3",
+      "texto": "ir",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-agua",
+      "arquivo": "figura-agua.mp3",
+      "texto": "água",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-lanche",
+      "arquivo": "figura-lanche.mp3",
+      "texto": "lanche",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-banheiro",
+      "arquivo": "figura-banheiro.mp3",
+      "texto": "banheiro",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-parque",
+      "arquivo": "figura-parque.mp3",
+      "texto": "parque",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-tablet",
+      "arquivo": "figura-tablet.mp3",
+      "texto": "tablet",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-dino",
+      "arquivo": "figura-dino.mp3",
+      "texto": "dinossauro",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-livro",
+      "arquivo": "figura-livro.mp3",
+      "texto": "livro",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-musica",
+      "arquivo": "figura-musica.mp3",
+      "texto": "música",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-casa",
+      "arquivo": "figura-casa.mp3",
+      "texto": "casa",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-escola",
+      "arquivo": "figura-escola.mp3",
+      "texto": "escola",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-sorvete",
+      "arquivo": "figura-sorvete.mp3",
+      "texto": "sorvete",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-piscina",
+      "arquivo": "figura-piscina.mp3",
+      "texto": "piscina",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-licao",
+      "arquivo": "figura-licao.mp3",
+      "texto": "lição",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-banho",
+      "arquivo": "figura-banho.mp3",
+      "texto": "banho",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-cinema",
+      "arquivo": "figura-cinema.mp3",
+      "texto": "cinema",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-jogo",
+      "arquivo": "figura-jogo.mp3",
+      "texto": "videogame",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-feliz",
+      "arquivo": "figura-feliz.mp3",
+      "texto": "feliz",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-triste",
+      "arquivo": "figura-triste.mp3",
+      "texto": "triste",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-cansado",
+      "arquivo": "figura-cansado.mp3",
+      "texto": "cansado",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-nervoso",
+      "arquivo": "figura-nervoso.mp3",
+      "texto": "nervoso",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-medo",
+      "arquivo": "figura-medo.mp3",
+      "texto": "com medo",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-bravo",
+      "arquivo": "figura-bravo.mp3",
+      "texto": "bravo",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-dor",
+      "arquivo": "figura-dor.mp3",
+      "texto": "com dor",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-barulho",
+      "arquivo": "figura-barulho.mp3",
+      "texto": "muito barulho",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-agora",
+      "arquivo": "figura-agora.mp3",
+      "texto": "agora",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-depois",
+      "arquivo": "figura-depois.mp3",
+      "texto": "depois",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-hoje",
+      "arquivo": "figura-hoje.mp3",
+      "texto": "hoje",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-amanha",
+      "arquivo": "figura-amanha.mp3",
+      "texto": "amanhã",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-sabado",
+      "arquivo": "figura-sabado.mp3",
+      "texto": "sábado",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-domingo",
+      "arquivo": "figura-domingo.mp3",
+      "texto": "domingo",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-chuva",
+      "arquivo": "figura-chuva.mp3",
+      "texto": "chuva",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-sim",
+      "arquivo": "figura-sim.mp3",
+      "texto": "sim",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-nao",
+      "arquivo": "figura-nao.mp3",
+      "texto": "não",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-naosei",
+      "arquivo": "figura-naosei.mp3",
+      "texto": "não sei",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-ajuda",
+      "arquivo": "figura-ajuda.mp3",
+      "texto": "ajuda",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-tchau",
+      "arquivo": "figura-tchau.mp3",
+      "texto": "tchau",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-amor",
+      "arquivo": "figura-amor.mp3",
+      "texto": "te amo",
+      "grupo": "Figuras da CAA"
+    },
+    {
+      "id": "figura-legal",
+      "arquivo": "figura-legal.mp3",
+      "texto": "legal",
+      "grupo": "Figuras da CAA"
+    }
+  ]
 }

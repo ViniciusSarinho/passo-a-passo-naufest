@@ -2,6 +2,12 @@
 
 O app toca as falas gravadas no lugar da voz sintética. A troca é por fala: o que ainda não foi gravado continua com a voz do aparelho. Não é preciso gravar tudo de uma vez.
 
+## Voz neural já publicada
+
+As 218 falas já estão em `audio/lumi/` com uma **voz neural feminina** (Microsoft *Thalita*, gerada com `edge-tts`, um pouco mais devagar que o normal). Por isso o app não usa mais a voz robótica do navegador nessas falas. É uma voz **sintética**, não humana: se uma pessoa gravar as falas (abaixo), as gravações a substituem.
+
+Para gerar de novo (depois de mudar textos do app), veja as instruções no topo de [`ferramentas/gerar_voz_lumi.py`](../ferramentas/gerar_voz_lumi.py). Para usar a Francisca: `--voz pt-BR-FranciscaNeural`. O texto de cada fala é enviado ao serviço de voz da Microsoft; as falas são fixas e fictícias. Num produto, o certo é usar uma conta própria do Azure Speech (com contrato) ou a voz gravada por uma pessoa.
+
 São **218 falas**. As **62 marcadas com ⭐ são essenciais**: começando por elas, a demonstração com os jurados já fica quase toda com voz humana.
 
 ## Como gravar (dois jeitos)

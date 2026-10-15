@@ -46,7 +46,8 @@ js/                   ordem de carregamento (app.html)
   roteiro.js          demonstração guiada de ~3 minutos
   sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
   iniciar.js          moldura (três contas, comparar contas, reiniciar) e partida
-audio/lumi/           falas gravadas publicadas (falas.json + arquivos de áudio)
+audio/lumi/           falas publicadas: 218 mp3 em voz neural + falas.json
+ferramentas/          gerar_voz_lumi.py (edge-tts) e a lista de falas usada
 exemplos/             laudo de exemplo FICTÍCIO em PDF
 tests/                teste de fumaça (fumaca.html)
 docs/                 documentação
