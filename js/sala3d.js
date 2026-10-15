@@ -227,13 +227,13 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     g.fillStyle = '#4a6cf0'; arred(g, 12, 18, l - 24, 34, 12); g.fill();
     g.fillStyle = '#fff'; g.font = 'bold 15px sans-serif'; g.fillText('Lucas · ao vivo', 22, 41);
     g.fillStyle = '#e9f7f1'; arred(g, 12, 64, l - 24, 92, 14); g.fill();
-    g.fillStyle = '#2e2a47'; g.font = 'bold 14px sans-serif'; g.fillText('Mochila', 24, 88);
-    g.fillStyle = '#625d7d'; g.font = '13px sans-serif'; g.fillText(`Passo ${passo} de 6`, 24, 108);
+    g.fillStyle = '#1d4f52'; g.font = 'bold 14px sans-serif'; g.fillText('Mochila', 24, 88);
+    g.fillStyle = '#5b6b64'; g.font = '13px sans-serif'; g.fillText(`Passo ${passo} de 6`, 24, 108);
     g.fillStyle = '#d8d0e8'; arred(g, 24, 124, l - 48, 10, 5); g.fill();
     g.fillStyle = '#5fc3a3'; arred(g, 24, 124, (l - 48) * passo / 6, 10, 5); g.fill();
     for (let i = 0; i < 6; i++) { g.fillStyle = i < passo ? '#ffd166' : '#ece6f5'; g.beginPath(); g.arc(28 + i * 21, 186, 8, 0, 7); g.fill(); }
     g.fillStyle = '#fff4d6'; arred(g, 12, 214, l - 24, 66, 14); g.fill();
-    g.fillStyle = '#2e2a47'; g.font = 'bold 13px sans-serif'; g.fillText('💬 "Já vou!"', 24, 252);
+    g.fillStyle = '#1d4f52'; g.font = 'bold 13px sans-serif'; g.fillText('💬 "Já vou!"', 24, 252);
   });
   const telaAna = new THREE.Mesh(new THREE.PlaneGeometry(0.14, 0.27), new THREE.MeshBasicMaterial({ map: telaCel.tex }));
   telaAna.position.z = 0.014; celular.add(telaAna);

@@ -99,14 +99,14 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
       g.fillStyle = '#5eead4'; arred(g, 120, 126, 14, 24, 7); g.fill(); arred(g, 166, 126, 14, 24, 7); g.fill();
       g.strokeStyle = '#5eead4'; g.lineWidth = 6; g.lineCap = 'round'; g.beginPath(); g.arc(150, 152, 14, 0.2, Math.PI - 0.2); g.stroke();
       g.fillStyle = '#fff4d6'; arred(g, 18, 212, l - 36, 92, 20); g.fill();
-      g.fillStyle = '#2e2a47'; g.font = 'bold 19px sans-serif'; g.fillText('Pegue o livro e coloque', 34, 250); g.fillText('na mochila.', 34, 276);
+      g.fillStyle = '#1d4f52'; g.font = 'bold 19px sans-serif'; g.fillText('Pegue o livro e coloque', 34, 250); g.fillText('na mochila.', 34, 276);
       for (let i = 0; i < 6; i++) { g.fillStyle = i < 3 ? '#ffd166' : '#ece6f5'; g.beginPath(); g.arc(42 + i * 43, 340, 15, 0, 7); g.fill(); }
       g.fillStyle = '#9edfc8'; arred(g, 18, 388, l - 36, 70, 22); g.fill();
       g.fillStyle = '#16403a'; g.font = 'bold 26px sans-serif'; g.textAlign = 'center'; g.fillText('✓ Fiz', l / 2, 433);
       g.fillStyle = '#e5484d'; arred(g, 18, 478, 110, 54, 18); g.fill();
       g.fillStyle = '#fff'; g.font = 'bold 22px sans-serif'; g.fillText('SOS', 73, 514);
       g.fillStyle = '#ece6f5'; arred(g, 142, 478, 140, 54, 18); g.fill();
-      g.fillStyle = '#625d7d'; g.font = 'bold 20px sans-serif'; g.fillText('Calma', 212, 514);
+      g.fillStyle = '#5b6b64'; g.font = 'bold 20px sans-serif'; g.fillText('Calma', 212, 514);
     });
     planoTela(t.tex, 0.95, 1.96, [0, 0, 0.07], m);
     bloco(0.3, 0.05, 0.02, 0x15131f, 0.02, [0, 0.93, 0.07], m);
@@ -132,15 +132,15 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
 
   // Colar / pingente com câmera pequena e LED
   {
-    const m = novoItem('colar', 2.3);
-    const cordao = toro(0.95, 0.03, 0xc9b8ff, [0, 0.15, 0], m); cordao.scale.y = 1.25;
-    bola(0.07, 0xb9a6ff, [0, 1.35, 0], m);
-    const p = new THREE.Group(); p.position.set(0, -1.1, 0); m.add(p);
-    const corpo = bola(0.4, 0xeef3ff, [0, 0, 0], p); corpo.scale.set(1, 1, 0.68);
-    cil(0.14, 0.14, 0.1, 0x1b1830, [0, 0, 0.27], p).rotation.x = Math.PI / 2;
-    bola(0.06, 0x5b6cf0, [0, 0, 0.33], p).scale.z = 0.5;
-    toro(0.2, 0.022, 0x5eead4, [0, 0, 0.27], p, Math.PI * 2, { emissive: 0x5eead4, emissiveIntensity: 1.1 });
-    bola(0.05, 0xc9b8ff, [0, 0.42, 0], p);
+    const m = novoItem('colar', 2.75);
+    const cordao = toro(0.8, 0.028, 0xc9b8ff, [0, 0.2, 0], m); cordao.scale.y = 1.2;
+    bola(0.06, 0xb9a6ff, [0, 1.16, 0], m);
+    const p = new THREE.Group(); p.position.set(0, -1.08, 0); m.add(p);
+    const corpo = bola(0.34, 0xeef3ff, [0, 0, 0], p); corpo.scale.set(1, 1, 0.68);
+    cil(0.12, 0.12, 0.1, 0x1b1830, [0, 0, 0.23], p).rotation.x = Math.PI / 2;
+    bola(0.05, 0x5b6cf0, [0, 0, 0.29], p).scale.z = 0.5;
+    toro(0.17, 0.02, 0x5eead4, [0, 0, 0.23], p, Math.PI * 2, { emissive: 0x5eead4, emissiveIntensity: 1.1 });
+    bola(0.045, 0xc9b8ff, [0, 0.36, 0], p);
   }
 
   // Fone de condução óssea
@@ -162,7 +162,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     bloco(2.3, 1.55, 0.1, 0x2e2a47, 0.14, [0, 0, 0], q);
     const t = telaCanvas(460, 310, (g, l, a) => {
       g.fillStyle = '#fffdf8'; g.fillRect(0, 0, l, a);
-      g.fillStyle = '#2e2a47'; g.font = 'bold 22px sans-serif'; g.fillText('Evolução · 14 meses', 22, 40);
+      g.fillStyle = '#1d4f52'; g.font = 'bold 22px sans-serif'; g.fillText('Evolução · 14 meses', 22, 40);
       g.fillStyle = '#9edfc8'; arred(g, l - 130, 18, 108, 30, 14); g.fill();
       g.fillStyle = '#16403a'; g.font = 'bold 15px sans-serif'; g.fillText('+ fase 2', l - 112, 39);
       g.strokeStyle = '#ece6f5'; g.lineWidth = 2;
@@ -172,7 +172,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
       pts.forEach((v, i) => { const x = 28 + i * ((l - 56) / 13), y = 210 - v * 1.5; i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
       [['Passos sozinhos', '84%', '#2a9d7c'], ['Pausas de calma', '3/sem', '#c27c0e'], ['Remédio', '96%', '#4a6cf0']].forEach(([t1, v, c], i) => {
         const x = 22 + i * 142; g.fillStyle = '#f7f1e8'; arred(g, x, 226, 130, 66, 14); g.fill();
-        g.fillStyle = c; g.font = 'bold 24px sans-serif'; g.fillText(v, x + 12, 258); g.fillStyle = '#625d7d'; g.font = '14px sans-serif'; g.fillText(t1, x + 12, 280);
+        g.fillStyle = c; g.font = 'bold 24px sans-serif'; g.fillText(v, x + 12, 258); g.fillStyle = '#5b6b64'; g.font = '14px sans-serif'; g.fillText(t1, x + 12, 280);
       });
     });
     planoTela(t.tex, 2.14, 1.44, [0, 0, 0.055], q);
@@ -196,32 +196,38 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     robo.cara = cara;
     add(new THREE.Mesh(new THREE.PlaneGeometry(0.48, 0.34), new THREE.MeshBasicMaterial({ map: cara.tex, transparent: true })), [0, 0.72, 0.245], lumiCorpo);
     [-0.34, 0.34].forEach((x) => bloco(0.08, 0.2, 0.16, 0x7dd3fc, 0.04, [x, 0.72, 0], lumiCorpo));
-    cil(0.015, 0.015, 0.16, 0x9db4dd, [0, 1.04, 0], lumiCorpo, 10);
+    robo.haste = cil(0.015, 0.015, 0.16, 0x9db4dd, [0, 1.04, 0], lumiCorpo, 10);
     const antena = add(new THREE.Mesh(new THREE.SphereGeometry(0.045, 16, 12), brilha(0x22d3ee)), [0, 1.13, 0], lumiCorpo); robo.antena = antena;
     add(new THREE.Mesh(new THREE.SphereGeometry(0.04, 16, 12), brilha(0x22d3ee, 1)), [0, 0.29, 0.165], lumiCorpo).scale.z = 0.4;
     robo.bracos = [-0.27, 0.27].map((x) => bloco(0.08, 0.2, 0.1, 0xc3d5f5, 0.04, [x, 0.27, 0], lumiCorpo));
-    // Acessórios (a mesma ordem de LUMI_NIVEIS)
+    // Acessórios. Corpo: cachecol (a partir do nível 1) e capa (nível 5). Cabeça: um item por vez
+    // (fones no nível 2, capacete no 3, crista de dinossauro nos níveis 4 e 5), para não ficar amontoado.
     const grupo = (nome) => { const g = new THREE.Group(); g.visible = false; lumiCorpo.add(g); acessorios[nome] = g; return g; };
     let g = grupo('cachecol');
     bloco(0.5, 0.09, 0.4, 0xf87171, 0.045, [0, 0.46, 0], g); bloco(0.09, 0.22, 0.04, 0xef4444, 0.03, [0.13, 0.36, 0.2], g);
     g = grupo('fone');
-    toro(0.36, 0.035, 0x334155, [0, 0.72, 0], g, Math.PI).rotation.z = 0;
+    toro(0.36, 0.035, 0x334155, [0, 0.72, 0], g, Math.PI).scale.y = 0.7;
     [-0.37, 0.37].forEach((x) => bloco(0.09, 0.22, 0.2, 0x22d3ee, 0.04, [x, 0.72, 0], g));
     g = grupo('capacete');
-    const meia = add(sombra(new THREE.Mesh(new THREE.SphereGeometry(0.36, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), mat(0xd6a35c))), [0, 0.92, 0], g);
-    meia.scale.set(1, 0.95, 0.86);
-    bloco(0.76, 0.05, 0.56, 0xb98a47, 0.025, [0, 0.93, 0], g);
-    bola(0.05, 0xfde68a, [0, 0.99, 0.28], g).material = brilha(0xfde68a, 0.9);
+    const meia = add(sombra(new THREE.Mesh(new THREE.SphereGeometry(0.34, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), mat(0xd6a35c))), [0, 0.93, 0], g);
+    meia.scale.set(1, 0.85, 0.82);
+    bloco(0.72, 0.05, 0.54, 0xb98a47, 0.025, [0, 0.935, 0], g);
+    add(new THREE.Mesh(new THREE.SphereGeometry(0.045, 16, 12), brilha(0xfde68a, 0.9)), [0, 1.05, 0.25], g);
     g = grupo('hiperfoco');
-    [[-0.17, 1.3, 0.12], [0, 1.37, 0.16], [0.17, 1.3, 0.12]].forEach(([x, y, h]) => { const c = add(sombra(new THREE.Mesh(new THREE.ConeGeometry(0.08, h * 2.2, 4), mat(0x4ade80))), [x, y - 0.12, 0], g); });
+    [[-0.16, 0.2], [-0.05, 0.3], [0.06, 0.27], [0.17, 0.18]].forEach(([z, h]) => add(sombra(new THREE.Mesh(new THREE.ConeGeometry(0.075, h, 4), mat(0x4ade80))), [0, 0.95 + h / 2, z], g));
     g = grupo('capa');
-    bloco(0.62, 0.62, 0.05, 0x6366f1, 0.05, [0, 0.36, -0.2], g).rotation.x = 0.1;
+    const forma = new THREE.Shape();
+    forma.moveTo(-0.24, 0.5); forma.lineTo(0.24, 0.5); forma.lineTo(0.34, -0.02); forma.lineTo(-0.34, -0.02); forma.closePath();
+    const capaMesh = add(sombra(new THREE.Mesh(new THREE.ExtrudeGeometry(forma, { depth: 0.03, bevelEnabled: false }), mat(0x6366f1))), [0, 0.02, -0.2], g);
+    capaMesh.rotation.x = 0.1;
   }
   robo.nivel = 1;
   const ORDEM_ACC = ['cachecol', 'fone', 'capacete', 'hiperfoco', 'capa'];
   function nivelRobo(n) {
     robo.nivel = n;
-    ORDEM_ACC.forEach((a, i) => { acessorios[a].visible = i < n; });
+    const ver = { cachecol: n >= 1, fone: n === 2, capacete: n === 3, hiperfoco: n >= 4, capa: n >= 5 };
+    ORDEM_ACC.forEach((a) => { acessorios[a].visible = ver[a]; });
+    robo.haste.visible = robo.antena.visible = n < 3; // a antena não atravessa o capacete nem a crista
     document.querySelectorAll('#niveis li').forEach((li, i) => li.classList.toggle('on', i === n));
     const nome = document.getElementById('nivelNome');
     if (nome && window.LUMI_NIVEIS) nome.textContent = LUMI_NIVEIS[n].nome;
@@ -249,36 +255,65 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   const POSES = {
     abertura: { pos: [0.4, 3.6, 21], alvo: [0.4, 1.8, 0] },
     ajuda: { pos: [-3, 6.5, 17], alvo: [0, 1.4, 0] },
-    celular: alvoItem('celular'), relogio: alvoItem('relogio'), colar: alvoItem('colar', 6.4, 2.1), fone: alvoItem('fone'),
+    celular: alvoItem('celular'), relogio: alvoItem('relogio'), colar: alvoItem('colar', 6.4, 2.75), fone: alvoItem('fone'),
     tablet: alvoItem('tablet', 6), robo: alvoItem('robo', 6.6, 1.9), lumi: alvoItem('robo', 4.4, 1.9),
     fecho: { pos: [2, 3.6, 21], alvo: [0.4, 1.8, 0] },
   };
   const camPos = new THREE.Vector3(...POSES.abertura.pos), camAlvo = new THREE.Vector3(...POSES.abertura.alvo);
   const destPos = camPos.clone(), destAlvo = camAlvo.clone();
   let atual = window.capituloAtual || 'abertura';
+  // O painel de texto cobre uma parte da tela (à esquerda no computador, embaixo no celular). A vitrine é enquadrada
+  // só na parte livre: mede-se o painel do capítulo ativo e a câmera desloca e afasta o quadro para os modelos
+  // nunca ficarem por baixo dele.
+  let reservaX = 0, reservaY = 0, alvoX = 0, alvoY = 0;
+  const tg = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  function medirPainel() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const painel = document.querySelector('.capitulo.ativo .painel');
+    if (!painel) { alvoX = 0; alvoY = 0; return; }
+    const r = painel.getBoundingClientRect();
+    if (l > 860) { alvoX = Math.max(0, Math.min(r.right + 28, l * 0.62)); alvoY = 0; }
+    else { alvoX = 0; alvoY = Math.max(0, Math.min(a * 0.6, a - r.top + 8)); }
+  }
+  function enquadrar() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    camera.aspect = (l + reservaX) / a;
+    if (reservaX > 0.5) camera.setViewOffset(l + reservaX, a, 0, 0, l, a);
+    else if (reservaY > 0.5) camera.setViewOffset(l, a, 0, reservaY / 2, l, a);
+    else camera.clearViewOffset();
+    camera.updateProjectionMatrix();
+  }
   function irPara(nome) {
     atual = nome;
+    medirPainel();
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const livreL = Math.max(240, l - alvoX), livreA = Math.max(240, a - alvoY);
     const p = POSES[nome] || POSES.abertura;
     destAlvo.set(...p.alvo);
-    const recuo = camera.aspect < 1 ? 1.5 : camera.aspect < 1.4 ? 1.15 : 1;
-    destPos.set(...p.pos).sub(destAlvo).multiplyScalar(recuo).add(destAlvo);
-    if (fixo) { camPos.copy(destPos); camAlvo.copy(destAlvo); }
+    const dir = new THREE.Vector3(...p.pos).sub(destAlvo);
+    const d0 = dir.length();
     const todos = ['abertura', 'ajuda', 'fecho'].includes(nome);
+    // Distância para caber na parte livre: toda a vitrine (24 unidades) ou um equipamento (3,6 × 4,4)
+    const porLargura = (todos ? 24 : 3.6) * a / (2 * tg * livreL);
+    const porAltura = (todos ? 9 : 4.4) * a / (2 * tg * livreA);
+    const d = todos ? Math.min(44, Math.max(14, porLargura, porAltura)) : Math.min(30, Math.max(d0, porLargura, porAltura));
+    destPos.copy(dir.normalize().multiplyScalar(d)).add(destAlvo);
+    cena.fog.near = d + 6; cena.fog.far = d + 30; // a névoa não apaga a vitrine quando a câmera está longe
+    if (fixo) { camPos.copy(destPos); camAlvo.copy(destAlvo); reservaX = alvoX; reservaY = alvoY; enquadrar(); }
     caixa.classList.toggle('geral', todos); // na visão geral, os rótulos ficam só com o nome
-    Object.entries(rot).forEach(([k, d]) => d.classList.toggle('apagado', !(todos || k === nome || (nome === 'lumi' && k === 'robo'))));
+    Object.entries(rot).forEach(([k, dv]) => dv.classList.toggle('apagado', !(todos || k === nome || (nome === 'lumi' && k === 'robo'))));
     estrelas.forEach((e) => { e.visible = nome === 'lumi'; });
     if (nome === 'lumi') { nivelRobo(0); proximoNivel = 0; } else if (nome === 'robo') nivelRobo(1);
+    // O painel termina de subir (animação de entrada) um instante depois: mede de novo
+    clearTimeout(irPara.t); irPara.t = setTimeout(() => { const x = alvoX, y = alvoY; medirPainel(); if (Math.abs(x - alvoX) + Math.abs(y - alvoY) > 6) irPara(atual); }, 750);
   }
   document.addEventListener('capitulo', (e) => irPara(e.detail));
 
   function ajustar() {
     const l = caixa.clientWidth, a = caixa.clientHeight;
     renderer.setSize(l, a, false); rotulos.setSize(l, a);
-    const desloc = l > 860 ? 0.36 : 0;
-    camera.aspect = l * (1 + desloc) / a;
-    if (desloc) camera.setViewOffset(l * (1 + desloc), a, 0, 0, l, a); else camera.clearViewOffset();
-    camera.updateProjectionMatrix();
     irPara(atual);
+    reservaX = alvoX; reservaY = alvoY; enquadrar();
   }
   addEventListener('resize', ajustar);
   ajustar();
@@ -296,6 +331,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const t = relogio.getElapsedTime();
     const k = fixo ? 1 : 0.05;
     camPos.lerp(destPos, k); camAlvo.lerp(destAlvo, k);
+    if (Math.abs(reservaX - alvoX) + Math.abs(reservaY - alvoY) > 0.5) { reservaX += (alvoX - reservaX) * k; reservaY += (alvoY - reservaY) * k; enquadrar(); }
     camera.position.copy(camPos); camera.lookAt(camAlvo);
     Object.entries(itens).forEach(([nome, it], i) => {
       const foco = nome === emFoco();
@@ -322,6 +358,9 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   document.addEventListener('visibilitychange', rodar);
   // A seção "Aprofunde" cobre a vitrine: pausa o desenho para poupar bateria
   new IntersectionObserver(([e]) => { visivel = !(e.isIntersecting && e.intersectionRatio > 0.6); rodar(); }, { threshold: [0, 0.6, 1] }).observe(document.getElementById('aprofunde'));
+  if (fixo) window.vitrineDiag = () => { camera.updateMatrixWorld(); const painel = document.querySelector('.capitulo.ativo .painel')?.getBoundingClientRect();
+    return { painelDireita: painel ? Math.round(painel.right) : 0, painelTopo: painel ? Math.round(painel.top) : 0, tela: [caixa.clientWidth, caixa.clientHeight],
+      itens: Object.entries(itens).map(([k, it]) => { const v = it.g.position.clone().project(camera); return `${k}:${Math.round((v.x * 0.5 + 0.5) * caixa.clientWidth)},${Math.round((-v.y * 0.5 + 0.5) * caixa.clientHeight)}`; }) }; };
   if (fixo) window.vitrineIr = (n) => { document.dispatchEvent(new CustomEvent('capitulo', { detail: n })); quadro(); };
   document.getElementById('carregando')?.remove();
 }

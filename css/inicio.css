@@ -4,17 +4,20 @@
   color-scheme: light;
   --creme: #fff8ee;
   --creme-2: #fdf0de;
-  --tinta: #2e2a47;
-  --suave: #625d7d;
+  --tinta: #1d4f52;
+  --suave: #5b6b64;
   --azul: #4a6cf0;
   --azul-escuro: #3653d1;
+  --teal: #0e8587;
+  --teal-escuro: #0b6466;
+  --ocre: #946400;
   --menta: #9edfc8;
   --pessego: #ffb59a;
   --limao: #ffe38a;
   --lilas: #c9b8ff;
   --ceu: #a9d2ff;
-  --linha: rgba(46, 42, 71, .12);
-  --sombra: 0 18px 50px -24px rgba(46, 42, 71, .35);
+  --linha: rgba(29, 79, 82, .12);
+  --sombra: 0 18px 50px -24px rgba(29, 79, 82, .35);
   --raio: 28px;
 }
 * { box-sizing: border-box; }
@@ -27,7 +30,7 @@ body {
 h1, h2 { font-family: 'Nunito', system-ui, sans-serif; font-weight: 900; letter-spacing: -.02em; line-height: 1.05; margin: 0 0 14px; }
 h1 { font-size: clamp(40px, 6.4vw, 78px); }
 h2 { font-size: clamp(30px, 4.2vw, 50px); }
-h1 em, h2 em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 600; color: var(--azul); letter-spacing: -.01em; }
+h1 em, h2 em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 600; color: var(--teal); letter-spacing: -.01em; }
 a { color: inherit; }
 p { margin: 0 0 12px; }
 .grande { font-size: clamp(18px, 1.6vw, 22px); }
@@ -87,7 +90,7 @@ main { position: relative; z-index: 2; }
 .capitulo.ativo .painel { opacity: 1; transform: none; }
 .abertura .painel { width: min(640px, 100%); background: rgba(255, 252, 246, .78); }
 .selo { display: inline-block; font-size: 13px; font-weight: 700; color: var(--suave); background: #fff; border: 1px solid var(--linha); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px; }
-.numero { display: inline-block; font: 800 13px 'Nunito', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+.numero { display: inline-block; font: 800 13px 'Nunito', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--ocre); margin-bottom: 12px; }
 .rolar { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); margin: 0; font: 800 12px 'Nunito', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--suave); }
 .rolar::after { content: ""; display: block; width: 2px; height: 26px; margin: 8px auto 0; background: var(--suave); border-radius: 2px; animation: descer 2.4s ease-in-out infinite; }
 @keyframes descer { 50% { transform: translateY(8px); opacity: .4; } }
@@ -116,11 +119,11 @@ main { position: relative; z-index: 2; }
 .principios li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px dashed var(--linha); font-size: 16.5px; }
 .principios li::before { content: "✓"; position: absolute; left: 4px; top: 8px; color: #2a9d7c; font-weight: 900; }
 .pe { font-size: 14px; color: var(--suave); margin: 14px 0 0; }
-.pe a, .numeros a { color: var(--azul-escuro); font-weight: 700; }
+.pe a, .numeros a { color: var(--teal-escuro); font-weight: 700; }
 
 .numeros { display: grid; gap: 8px; margin: 0 0 20px; }
 .numeros li { display: grid; grid-template-columns: 104px 1fr; gap: 12px; align-items: center; background: #fff; border: 1px solid var(--linha); border-radius: 18px; padding: 10px 14px; }
-.numeros b { font: 900 26px 'Nunito', sans-serif; color: var(--azul); }
+.numeros b { font: 900 26px 'Nunito', sans-serif; color: var(--teal); }
 .numeros span { font-size: 15px; color: var(--suave); line-height: 1.35; }
 .numeros a { font-size: 12.5px; }
 

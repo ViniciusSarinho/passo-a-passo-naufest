@@ -62,7 +62,7 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 - Dra. Júlia (terapeuta): plano terapêutico e metas medidas pelos dados. Dr. Rafael (neuropsicólogo): laudos. Dra. Helena (médica): **a única** que altera dose e horário. Botão **"Comparar contas"** mostra o que cada conta vê e faz.
 
 **Relógio (Carlos, pai)**
-- Só o essencial no pulso: **SOS** com botão "Estou indo", rotina **ao vivo** em anel de progresso, remédio, conquistas e mensagens do Lucas.
+- O essencial primeiro (**SOS** com "Estou indo", rotina **ao vivo**, avisos de conquista, remédio e mensagem) e, passando as telas (pontinhos, ‹ ›, arrastar ou a coroa): **Hoje**, **Remédios** (com botão "Dei"), **Conversa** (respostas rápidas), **Avisos** para o Lucas, **Resumo** do dia e **Ajustes** (vibração, "só SOS").
 
 **Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
 
@@ -99,7 +99,7 @@ python -m http.server 8765
 # abra http://localhost:8765/tests/fumaca.html
 ```
 
-O **teste de fumaça** abre o app num iframe e executa 54 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
+O **teste de fumaça** abre o app num iframe e executa 55 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
 
 ## Estrutura
 

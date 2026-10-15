@@ -109,15 +109,15 @@ function graficoLongo(rid) {
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Autonomia mês a mês">
     <defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a9d8f" stop-opacity=".35"/><stop offset="1" stop-color="#2a9d8f" stop-opacity="0"/></linearGradient></defs>
     ${meses.map((m, i) => m.fase ? `<rect x="${X(i) - passo / 2}" y="${y0}" width="${passo}" height="${y1 - y0}" fill="${corFase[m.fase]}"/>` : '').join('')}
-    ${[0, 50, 80, 100].map((v) => `<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(255,255,255,${v === 80 ? '.25' : '.08'})" ${v === 80 ? 'stroke-dasharray="4 4"' : ''}/><text x="${x0 - 5}" y="${Y(v) + 4}" fill="#625d7d" font-size="9" text-anchor="end">${v}%</text>`).join('')}
-    <text x="${x0 + 4}" y="${Y(80) - 4}" fill="#625d7d" font-size="8.5">meta para mudar de fase</text>
+    ${[0, 50, 80, 100].map((v) => `<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(255,255,255,${v === 80 ? '.25' : '.08'})" ${v === 80 ? 'stroke-dasharray="4 4"' : ''}/><text x="${x0 - 5}" y="${Y(v) + 4}" fill="#5b6b64" font-size="9" text-anchor="end">${v}%</text>`).join('')}
+    <text x="${x0 + 4}" y="${Y(80) - 4}" fill="#5b6b64" font-size="8.5">meta para mudar de fase</text>
     ${marcos.map((mc, i) => `<line x1="${mc.x}" x2="${mc.x}" y1="${y0 - 6}" y2="${y1}" stroke="#c27c0e" stroke-dasharray="3 3" opacity=".8"/><text x="${mc.x > W - 90 ? mc.x - 3 : mc.x + 3}" y="${i % 2 ? y0 + 6 : y0 - 6}" fill="#c27c0e" font-size="8.5" ${mc.x > W - 90 ? 'text-anchor="end"' : ''}>${esc(mc.texto)}</text>`).join('')}
     <path d="${area}" fill="url(#gArea)"/>
     <path d="${linha}" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
-    ${pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#2e2a47"/>`).join('')}
+    ${pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#1d4f52"/>`).join('')}
     ${(() => { let anoAnt = null; return meses.map((m, i) => { if (i % 2 && i !== meses.length - 1) return '';
       const ano = Math.floor(m.k / 12), rot = nomeMes(m.k).split('/')[0] + (ano !== anoAnt ? '/' + String(ano).slice(2) : ''); anoAnt = ano;
-      return `<text x="${X(i)}" y="${H - 18}" fill="#625d7d" font-size="9" text-anchor="middle">${rot}</text>`; }).join(''); })()}
+      return `<text x="${X(i)}" y="${H - 18}" fill="#5b6b64" font-size="9" text-anchor="middle">${rot}</text>`; }).join(''); })()}
   </svg>`;
 }
 

@@ -59,7 +59,7 @@ iframe.addEventListener('load', async () => {
     const tela = () => doc.querySelector('#telaRelogio').innerText;
     await ev('P.sos()'); await esperar(200);
     verdade(tela().includes('pediu ajuda'), 'SOS no relógio');
-    doc.querySelector('#rlIndo').click(); await esperar(150);
+    doc.querySelector('[data-rl-indo]').click(); await esperar(150);
     igual(ev('S.alerta.aCaminho'), 'Carlos', 'Carlos respondeu pelo relógio');
     verdade(tela().includes('Carlos está indo'), 'relógio confirma');
     ev("emitir('sos_resolvido', { quem: 'Carlos' }, 'carlos')"); await esperar(100);
@@ -67,6 +67,19 @@ iframe.addEventListener('load', async () => {
     verdade(/1\/6/.test(tela()), 'passo ao vivo no relógio');
     verdade(doc.querySelectorAll('#gTrilha span').length === 7, 'trilha de estrelas no guia');
     ev("P.ir('inicio')"); await esperar(100);
+  });
+  await teste('Relógio: telas, remédio, resposta e avisos', async () => {
+    const tela = () => doc.querySelector('#telaRelogio').innerText;
+    const pagina = async (i) => { doc.querySelectorAll('[data-rl-ir]')[i].click(); await esperar(80); };
+    await pagina(1); verdade(tela().includes('Arrumar a mochila'), 'tela Hoje');
+    await pagina(2); verdade(tela().includes('Dei'), 'tela Remédios com botão Dei');
+    const antes = ev('S.saude.registros.length'); doc.querySelector('[data-rl-dei]').click(); await esperar(150);
+    verdade(ev('S.saude.registros.length') > antes, 'Dei registra o remédio');
+    await pagina(3); const msgs = ev('S.caa.mensagens.length'); doc.querySelector('[data-rl-resp="0"]').click(); await esperar(150);
+    igual(ev('S.caa.mensagens.length'), msgs + 1, 'resposta rápida vira mensagem');
+    await pagina(4); const ev0 = ev('S.eventos.length'); doc.querySelector('[data-rl-aviso="0"]').click(); await esperar(150);
+    verdade(ev('S.eventos.length') > ev0, 'aviso rápido enviado');
+    await pagina(0);
   });
   await teste('Voz: vozes do Google ficam de fora quando há outra', () => {
     const r = ev(`(() => { const v = [{ name: 'Google português do Brasil', lang: 'pt-BR' }, { name: 'Microsoft Francisca Online (Natural) - Portuguese (Brazil)', lang: 'pt-BR' }, { name: 'Microsoft Maria', lang: 'pt-BR' }];

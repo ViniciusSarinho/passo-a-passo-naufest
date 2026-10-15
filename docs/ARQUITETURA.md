@@ -42,7 +42,7 @@ js/                   ordem de carregamento (app.html)
   saude.js            remédios, diário de sono e crises, conversa com a IA sobre o tratamento
   profissional.js     conta do profissional (3 perfis com permissões diferentes)
   voz.js              falas gravadas, inventário de falas e estúdio de voz
-  relogio.js          relógio do Carlos: SOS com "estou indo", rotina ao vivo, remédio, conquistas
+  relogio.js          relógio do Carlos: sete telas (agora, hoje, remédios, conversa, avisos, resumo, ajustes) e alertas de SOS, remédio e conquista
   roteiro.js          demonstração guiada de ~3 minutos
   sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
   vitrine3d.js        (só no saiba-mais.html) vitrine com os equipamentos em 3D; arraste para girar; ouve o evento "capitulo"

@@ -35,8 +35,8 @@ function encaixarAparelhos() {
   const lateral = document.body.classList.contains('rt-lateral');
   const topo = document.querySelector('.barra-topo').offsetHeight;
   const embaixo = ROTEIRO.ativo && !lateral ? document.getElementById('roteiro').offsetHeight + 16 : 0;
-  const porAltura = (window.innerHeight - topo - 104 - embaixo) / 784;
-  const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / 994;
+  const porAltura = (window.innerHeight - topo - 150 - embaixo) / 784;
+  const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / 1120;
   const k = Math.max(0.45, Math.min(1, porAltura, porLargura));
   raiz.style.setProperty('--escala', k.toFixed(3));
 }
