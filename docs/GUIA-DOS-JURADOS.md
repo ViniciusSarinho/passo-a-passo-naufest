@@ -1,0 +1,60 @@
+# Guia dos jurados
+
+Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **o que abrir**, **o que olhar** e **o que é real ou simulado**.
+
+## Em 3 minutos
+
+1. Abra o site e clique em **🧭 Roteiro guiado de 3 minutos**, ou abra `app.html?roteiro=1`.
+2. No painel inferior, toque em **▶▶ Automático** para ver tudo sozinho (cerca de 3 minutos), ou use **Mostrar** e **Próximo** passo a passo.
+3. Observe, nos dois celulares lado a lado (no celular, alterne por **Lucas / Ana / Pro**):
+
+| Passo | O que acontece | O que olhar |
+|---|---|---|
+| 2 e 3 | O Lumi **pergunta** em vez de mandar; se o Lucas trava, **a ajuda sobe**; ao concluir, ele ganha estrela | O desvanecimento de dicas, a ideia central |
+| 4 | Decisão com **duas opções** (banana ou maçã) | Treino de decisão sem sobrecarga |
+| 5 | **Câmera** (opcional): mostre uma mochila, livro, garrafa, banana, maçã ou celular | A caixa verde e a direção ("à sua esquerda") |
+| 6 | **SOS**: o Lumi acalma; a Ana recebe alerta com mapa e responde "estou a caminho" | Comunicação entre as contas e segurança |
+| 7 e 8 | **Comunicação por figuras**, combinados e pedido para marcar | Figuras → frase falada; agenda |
+| 9 | **Remédio** com lembrete em figuras | Adesão e estoque na conta da Ana |
+| 10 | A IA **lê o laudo** (PDF ou TXT) e sugere ajustes que só entram com aprovação | IA com humano no controle |
+| 11 | **Três profissionais**, três permissões; tabela "Comparar contas" | Cada um só vê e faz o que deve |
+| 12 | **14 meses de evolução**, com recuos | Autonomia leva meses, não semanas |
+
+## Para explorar sozinho
+
+- **Laudo em PDF:** na conta da Ana, aba **IA**, baixe o [laudo fictício de exemplo](../exemplos/exemplo-laudo-ficticio.pdf) e envie. Funciona com qualquer PDF com texto ou TXT.
+- **Conversa com a IA:** na conta da Ana, aba **Saúde**, role até "Converse com a IA" e pergunte "Devo aumentar a dose?" (ela recusa) ou "Como foi a semana?".
+- **Ver como profissional:** no computador, alterne "Ver como: Profissional"; no celular, toque em **Pro**. Troque entre Dra. Júlia, Dr. Rafael e Dra. Helena.
+- **Meu jeito:** no celular do Lucas, atalho **Meu jeito** (volume, velocidade, voz, tela calma, letra maior).
+- **Voz humana:** botão **🎙️ Voz do Lumi** abre o estúdio de gravação.
+- **Reiniciar:** o botão **↺** volta tudo ao início.
+
+## O que é real e o que é simulado
+
+| Real | Simulado |
+|---|---|
+| Visão computacional no aparelho, voz, comandos de voz, medidor de ruído | Pessoas, remédios, histórico de 14 meses e laudo de exemplo (**fictícios**) |
+| Desvanecimento de dicas, sugestão de fase com aprovação humana | Conversa entre **aparelhos diferentes** (aqui, as contas se falam no mesmo navegador) |
+| Leitura de laudos em PDF/TXT, perguntas da IA, ajustes aprovados | Linguagem e respostas da IA por **regras** (no produto, um modelo de linguagem) |
+| CAA, combinados, agenda, SOS, lembrete de remédio | Respostas da terapeuta e do neuropsicólogo nas demonstrações |
+| Contas com permissões diferentes, estúdio de voz | PDF escaneado (sem OCR); relógio, colar e robô físico (conceito) |
+
+## Perguntas frequentes
+
+**É IA de verdade?** Sim, em três pontos: reconhecimento de objetos por visão computacional (TensorFlow.js, rodando no navegador), adaptação da linguagem ao nível e ao hiperfoco, e leitura de laudos para ajustar a experiência. A "decisão" de quanto ajudar é um algoritmo de desvanecimento de dicas. Falta um modelo de linguagem: veja a tabela acima e `ARQUITETURA.md`.
+
+**Por que não usar um modelo de linguagem já no MVP?** Para ser determinístico, gratuito e abrir em qualquer lugar sem chave de API. Ele entra no piloto, com dados mínimos e revisão profissional.
+
+**Funciona sem internet?** O app em si não precisa de servidor, mas baixa as bibliotecas (TensorFlow.js e pdf.js) na primeira vez. Offline completo é requisito do app móvel.
+
+**Quais dados saem do aparelho?** Nenhum dado do paciente. Imagem e áudio são analisados no aparelho; o estado fica no `localStorage`; só as bibliotecas e os modelos são baixados da internet.
+
+**A câmera não abre.** Use `https` (GitHub Pages) ou `localhost`, permita a câmera, ou toque em **Fiz**. O roteiro automático pula esse passo.
+
+**Onde está o código?** Neste repositório. Comece por `docs/ARQUITETURA.md`.
+
+**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html`.
+
+## Honestidade
+
+O protótipo **não é um produto clínico** e não foi testado com pessoas autistas. A validação com famílias e profissionais é o primeiro passo do roadmap. Veja `ETICA-E-PRIVACIDADE.md`.
