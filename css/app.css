@@ -190,7 +190,7 @@ h1, h2, h3 { font-family: 'Nunito', system-ui, sans-serif; letter-spacing: -.01e
 .lumi .cabeca { fill: #e6efff; stroke: #9db4dd; stroke-width: 2; }
 .lumi .rosto { fill: #0b1830; }
 .lumi .olhos path, .lumi .boca path { fill: none; stroke: #5eead4; stroke-width: 5; stroke-linecap: round; }
-.lumi .olho-cheio, .lumi .boca-cheia { fill: #5eead4; stroke: none !important; }
+.lumi .olho-cheio, .lumi .boca-cheia, .lumi .olhos path.olho-cheio, .lumi .boca path.boca-cheia { fill: #5eead4; stroke: none !important; }
 .lumi .bochecha { fill: #fb7185; opacity: .35; }
 .lumi .orelha { fill: #7dd3fc; }
 .lumi .antena { stroke: #9db4dd; stroke-width: 4; }
@@ -549,3 +549,8 @@ body.escuro .tela .campo-in, body.escuro .tela input[type="text"], body.escuro .
 body.escuro .tela .mapa { background-color: #1d2c31; }
 .tema-botao[aria-pressed="true"] { background: #22333a; color: #e7efe9; border-color: #22333a; }
 body.escuro .tela .btn-sos, body.escuro .tela .badge, body.escuro .tela .btn.perigo, body.escuro .tela .nav-inferior .badge { background: #d24349; color: #fff; }
+
+/* Telas escuras: as camadas que cobrem a tela (SOS, remédio, respirar) também precisam ser escuras */
+body.escuro .tela .sobreposicao { background: rgba(23, 34, 38, .94); }
+body.escuro .tela .sobreposicao.sos { background: radial-gradient(circle at 50% 30%, rgba(210, 67, 73, .42), rgba(23, 34, 38, .97) 70%); }
+body.escuro .tela .aviso-lumi { background: var(--cartao-2); }

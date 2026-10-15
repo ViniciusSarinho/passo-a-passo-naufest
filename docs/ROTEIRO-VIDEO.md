@@ -1,5 +1,7 @@
 # Roteiro do vídeo (3 minutos)
 
+> **O vídeo já está produzido** (2:54, voz da Lumi, música suave, legendas), com o HyperFrames, na pasta [`video/`](../video/README.md). Este documento é o roteiro-guia original, útil se quiser gravar outra versão com a sua voz e cenas reais da sua observação do problema.
+
 Formato do NAUFest: vídeo de até 3 minutos, com áudio, horizontal 16:9 (mínimo 1280×720; recomendado 1920×1080), MP4 de até 500 MB. A estrutura segue o que o desafio pede: **o problema** e **a solução com IA**.
 
 > Dica de produção: grave a tela do app com o **roteiro guiado em modo automático** (`app.html?roteiro=1` → ▶▶ Automático) em tela cheia, no computador. As cenas abaixo seguem a ordem dele. Narre por cima ou use a voz do Lumi gravada no estúdio.

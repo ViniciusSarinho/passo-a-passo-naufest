@@ -1,0 +1,5 @@
+node_modules/
+saida/
+*.tmp
+.hyperframes/
+assets/musica.wav

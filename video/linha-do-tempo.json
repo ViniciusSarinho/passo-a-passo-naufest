@@ -1,0 +1,270 @@
+{
+  "voz": "pt-BR-ThalitaMultilingualNeural",
+  "cenas": [
+    {
+      "id": "abertura",
+      "inicio": 0.6,
+      "duracao": 9.19,
+      "frases": [
+        {
+          "texto": "Oi! Eu sou a Lumi.",
+          "arquivo": "abertura-1.mp3",
+          "inicio": 0.6,
+          "duracao": 1.97
+        },
+        {
+          "texto": "Vou mostrar como a inteligência artificial pode ajudar pessoas autistas a ganharem autonomia, um passo de cada vez.",
+          "arquivo": "abertura-2.mp3",
+          "inicio": 2.77,
+          "duracao": 6.62
+        }
+      ]
+    },
+    {
+      "id": "problema",
+      "inicio": 9.79,
+      "duracao": 20.33,
+      "frases": [
+        {
+          "texto": "No Brasil, 2,4 milhões de pessoas têm diagnóstico de autismo.",
+          "arquivo": "problema-1.mp3",
+          "inicio": 9.79,
+          "duracao": 4.8
+        },
+        {
+          "texto": "Mas mais da metade recebe, no máximo, duas horas de terapia por semana.",
+          "arquivo": "problema-2.mp3",
+          "inicio": 14.79,
+          "duracao": 4.58
+        },
+        {
+          "texto": "A semana tem 168 horas. A dificuldade, o risco e a sobrecarga acontecem nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.",
+          "arquivo": "problema-3.mp3",
+          "inicio": 19.57,
+          "duracao": 10.15
+        }
+      ]
+    },
+    {
+      "id": "solucao",
+      "inicio": 30.12,
+      "duracao": 13.56,
+      "frases": [
+        {
+          "texto": "O Passo a Passo leva a ajuda para onde ela falta: a sala de casa, a padaria, a escola.",
+          "arquivo": "solucao-1.mp3",
+          "inicio": 30.12,
+          "duracao": 5.9
+        },
+        {
+          "texto": "O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio.",
+          "arquivo": "solucao-2.mp3",
+          "inicio": 36.22,
+          "duracao": 7.06
+        }
+      ]
+    },
+    {
+      "id": "ciclo",
+      "inicio": 43.68,
+      "duracao": 10.93,
+      "frases": [
+        {
+          "texto": "Antes da tarefa, eu conto uma história social, com figuras e voz.",
+          "arquivo": "ciclo-1.mp3",
+          "inicio": 43.68,
+          "duracao": 4.32
+        },
+        {
+          "texto": "Durante, eu guio cada passo.",
+          "arquivo": "ciclo-2.mp3",
+          "inicio": 48.2,
+          "duracao": 2.23
+        },
+        {
+          "texto": "Depois, mostro tudo para a família e para a terapia.",
+          "arquivo": "ciclo-3.mp3",
+          "inicio": 50.63,
+          "duracao": 3.58
+        }
+      ]
+    },
+    {
+      "id": "ia-ve",
+      "inicio": 54.61,
+      "duracao": 15.49,
+      "frases": [
+        {
+          "texto": "E aqui está o coração do projeto: a inteligência artificial.",
+          "arquivo": "ia-ve-1.mp3",
+          "inicio": 54.61,
+          "duracao": 3.84
+        },
+        {
+          "texto": "Ela enxerga. A câmera do celular reconhece os objetos e diz onde eles estão: \"a mochila está à sua esquerda\".",
+          "arquivo": "ia-ve-2.mp3",
+          "inicio": 58.65,
+          "duracao": 6.67
+        },
+        {
+          "texto": "Tudo no próprio aparelho: nenhuma imagem é gravada ou enviada.",
+          "arquivo": "ia-ve-3.mp3",
+          "inicio": 65.52,
+          "duracao": 4.18
+        }
+      ]
+    },
+    {
+      "id": "ia-decide",
+      "inicio": 70.1,
+      "duracao": 21.9,
+      "frases": [
+        {
+          "texto": "Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio.",
+          "arquivo": "ia-decide-1.mp3",
+          "inicio": 70.1,
+          "duracao": 8.62
+        },
+        {
+          "texto": "Se o Lucas trava, a ajuda volta. Se acerta várias vezes, a ajuda diminui.",
+          "arquivo": "ia-decide-2.mp3",
+          "inicio": 78.92,
+          "duracao": 6.24
+        },
+        {
+          "texto": "É o desvanecimento de dicas, uma técnica de terapia, aplicada todos os dias, no mundo real.",
+          "arquivo": "ia-decide-3.mp3",
+          "inicio": 85.36,
+          "duracao": 6.24
+        }
+      ]
+    },
+    {
+      "id": "ia-adapta",
+      "inicio": 92.0,
+      "duracao": 20.25,
+      "frases": [
+        {
+          "texto": "Ela adapta a linguagem ao nível e ao interesse de cada pessoa.",
+          "arquivo": "ia-adapta-1.mp3",
+          "inicio": 92.0,
+          "duracao": 3.74
+        },
+        {
+          "texto": "Pergunta à família e aos profissionais. E lê o laudo do neuropsicólogo, em PDF ou texto, para ajustar o app.",
+          "arquivo": "ia-adapta-2.mp3",
+          "inicio": 95.94,
+          "duracao": 7.61
+        },
+        {
+          "texto": "A inteligência artificial sugere. Um humano sempre aprova.",
+          "arquivo": "ia-adapta-3.mp3",
+          "inicio": 103.75,
+          "duracao": 4.85
+        },
+        {
+          "texto": "Sem ela, seria só um app de lembretes.",
+          "arquivo": "ia-adapta-4.mp3",
+          "inicio": 108.8,
+          "duracao": 3.05
+        }
+      ]
+    },
+    {
+      "id": "cotidiano",
+      "inicio": 112.25,
+      "duracao": 15.85,
+      "frases": [
+        {
+          "texto": "A comunicação por figuras vira frase falada, e a família conversa de volta.",
+          "arquivo": "cotidiano-1.mp3",
+          "inicio": 112.25,
+          "duracao": 4.85
+        },
+        {
+          "texto": "O remédio chega com lembrete em figuras, e só a médica altera doses.",
+          "arquivo": "cotidiano-2.mp3",
+          "inicio": 117.3,
+          "duracao": 4.49
+        },
+        {
+          "texto": "E se algo dá errado, o SOS avisa todos, no celular e no relógio, com a localização.",
+          "arquivo": "cotidiano-3.mp3",
+          "inicio": 121.99,
+          "duracao": 5.71
+        }
+      ]
+    },
+    {
+      "id": "evolucao",
+      "inicio": 128.1,
+      "duracao": 8.78,
+      "frases": [
+        {
+          "texto": "A autonomia leva meses. O gráfico mostra 14 meses, com avanços e recuos, para a família e a terapia decidirem juntas.",
+          "arquivo": "evolucao-1.mp3",
+          "inicio": 128.1,
+          "duracao": 8.38
+        }
+      ]
+    },
+    {
+      "id": "cuidados",
+      "inicio": 136.88,
+      "duracao": 13.76,
+      "frases": [
+        {
+          "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem placar e sem punição.",
+          "arquivo": "cuidados-1.mp3",
+          "inicio": 136.88,
+          "duracao": 9.46
+        },
+        {
+          "texto": "Com base nos estudos do TCC que originou o projeto.",
+          "arquivo": "cuidados-2.mp3",
+          "inicio": 146.54,
+          "duracao": 3.7
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "inicio": 150.64,
+      "duracao": 12.55,
+      "frases": [
+        {
+          "texto": "O plano vai do celular ao relógio, ao colar com câmera, ao fone de condução óssea e, por fim, a mim: um robô de mesa macio e silencioso.",
+          "arquivo": "roadmap-1.mp3",
+          "inicio": 150.64,
+          "duracao": 8.69
+        },
+        {
+          "texto": "Antes, piloto com famílias e estudo clínico.",
+          "arquivo": "roadmap-2.mp3",
+          "inicio": 159.53,
+          "duracao": 3.26
+        }
+      ]
+    },
+    {
+      "id": "fecho",
+      "inicio": 163.19,
+      "duracao": 11.19,
+      "frases": [
+        {
+          "texto": "O protótipo já funciona no navegador, com dados fictícios e código aberto.",
+          "arquivo": "fecho-1.mp3",
+          "inicio": 163.19,
+          "duracao": 4.85
+        },
+        {
+          "texto": "Passo a Passo: a inteligência artificial que ensina a não precisar dela.",
+          "arquivo": "fecho-2.mp3",
+          "inicio": 168.24,
+          "duracao": 4.34
+        }
+      ]
+    }
+  ],
+  "duracao_total": 174.38
+}

@@ -11,6 +11,7 @@
 | 📝 **Proposta (etapas do NAUFest)** | [`docs/PROPOSTA.md`](docs/PROPOSTA.md) |
 | 🏗️ **Arquitetura** | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
 | 🛠️ **Como foi construído** | [`docs/PROCESSO.md`](docs/PROCESSO.md) |
+| 🎬 **Vídeo do pitch (2:54)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
 
 ## O problema
 
@@ -115,6 +116,7 @@ js/                          lumi, dados, nucleo, paciente, responsavel, conheci
                              caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d, vitrine3d, saibamais (site)
 audio/lumi/                  as 218 falas em voz neural (mp3) + falas.json
 ferramentas/                 gerador da voz neural (edge-tts)
+video/                       vídeo do pitch feito com HyperFrames (roteiro, cenas, locução, música)
 exemplos/                    laudo FICTÍCIO em PDF
 tests/                       teste de fumaça
 docs/                        proposta, arquitetura, processo, fontes, ética, roadmap, guias

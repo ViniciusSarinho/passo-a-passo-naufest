@@ -1,0 +1,189 @@
+{
+  "voz": "pt-BR-ThalitaMultilingualNeural",
+  "ritmo": "+5%",
+  "pausa_entre_frases": 0.2,
+  "pausa_entre_cenas": 0.4,
+  "cauda_final": 1.8,
+  "cenas": [
+    {
+      "id": "abertura",
+      "frases": [
+        {
+          "texto": "Oi! Eu sou a Lumi.",
+          "fala": "Oi! Eu sou a Lumi."
+        },
+        {
+          "texto": "Vou mostrar como a inteligência artificial pode ajudar pessoas autistas a ganharem autonomia, um passo de cada vez.",
+          "fala": "Vou mostrar como a inteligência artificial pode ajudar pessoas autistas a ganharem autonomia, um passo de cada vez."
+        }
+      ]
+    },
+    {
+      "id": "problema",
+      "frases": [
+        {
+          "texto": "No Brasil, 2,4 milhões de pessoas têm diagnóstico de autismo.",
+          "fala": "No Brasil, dois vírgula quatro milhões de pessoas têm diagnóstico de autismo."
+        },
+        {
+          "texto": "Mas mais da metade recebe, no máximo, duas horas de terapia por semana.",
+          "fala": "Mas mais da metade recebe, no máximo, duas horas de terapia por semana."
+        },
+        {
+          "texto": "A semana tem 168 horas. A dificuldade, o risco e a sobrecarga acontecem nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.",
+          "fala": "A semana tem cento e sessenta e oito horas. A dificuldade, o risco e a sobrecarga acontecem nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio."
+        }
+      ]
+    },
+    {
+      "id": "solucao",
+      "frases": [
+        {
+          "texto": "O Passo a Passo leva a ajuda para onde ela falta: a sala de casa, a padaria, a escola.",
+          "fala": "O Passo a Passo leva a ajuda para onde ela falta: a sala de casa, a padaria, a escola."
+        },
+        {
+          "texto": "O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio.",
+          "fala": "O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio."
+        }
+      ]
+    },
+    {
+      "id": "ciclo",
+      "frases": [
+        {
+          "texto": "Antes da tarefa, eu conto uma história social, com figuras e voz.",
+          "fala": "Antes da tarefa, eu conto uma história social, com figuras e voz."
+        },
+        {
+          "texto": "Durante, eu guio cada passo.",
+          "fala": "Durante, eu guio cada passo."
+        },
+        {
+          "texto": "Depois, mostro tudo para a família e para a terapia.",
+          "fala": "Depois, mostro tudo para a família e para a terapia."
+        }
+      ]
+    },
+    {
+      "id": "ia-ve",
+      "frases": [
+        {
+          "texto": "E aqui está o coração do projeto: a inteligência artificial.",
+          "fala": "E aqui está o coração do projeto: a inteligência artificial."
+        },
+        {
+          "texto": "Ela enxerga. A câmera do celular reconhece os objetos e diz onde eles estão: \"a mochila está à sua esquerda\".",
+          "fala": "Ela enxerga. A câmera do celular reconhece os objetos e diz onde eles estão: a mochila está à sua esquerda."
+        },
+        {
+          "texto": "Tudo no próprio aparelho: nenhuma imagem é gravada ou enviada.",
+          "fala": "Tudo no próprio aparelho: nenhuma imagem é gravada ou enviada."
+        }
+      ]
+    },
+    {
+      "id": "ia-decide",
+      "frases": [
+        {
+          "texto": "Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio.",
+          "fala": "Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio."
+        },
+        {
+          "texto": "Se o Lucas trava, a ajuda volta. Se acerta várias vezes, a ajuda diminui.",
+          "fala": "Se o Lucas trava, a ajuda volta. Se acerta várias vezes, a ajuda diminui."
+        },
+        {
+          "texto": "É o desvanecimento de dicas, uma técnica de terapia, aplicada todos os dias, no mundo real.",
+          "fala": "É o desvanecimento de dicas, uma técnica de terapia, aplicada todos os dias, no mundo real."
+        }
+      ]
+    },
+    {
+      "id": "ia-adapta",
+      "frases": [
+        {
+          "texto": "Ela adapta a linguagem ao nível e ao interesse de cada pessoa.",
+          "fala": "Ela adapta a linguagem ao nível e ao interesse de cada pessoa."
+        },
+        {
+          "texto": "Pergunta à família e aos profissionais. E lê o laudo do neuropsicólogo, em PDF ou texto, para ajustar o app.",
+          "fala": "Pergunta à família e aos profissionais. E lê o laudo do neuropsicólogo, em P D F ou texto, para ajustar o app."
+        },
+        {
+          "texto": "A inteligência artificial sugere. Um humano sempre aprova.",
+          "fala": "A inteligência artificial sugere. Um humano sempre aprova."
+        },
+        {
+          "texto": "Sem ela, seria só um app de lembretes.",
+          "fala": "Sem ela, seria só um app de lembretes."
+        }
+      ]
+    },
+    {
+      "id": "cotidiano",
+      "frases": [
+        {
+          "texto": "A comunicação por figuras vira frase falada, e a família conversa de volta.",
+          "fala": "A comunicação por figuras vira frase falada, e a família conversa de volta."
+        },
+        {
+          "texto": "O remédio chega com lembrete em figuras, e só a médica altera doses.",
+          "fala": "O remédio chega com lembrete em figuras, e só a médica altera doses."
+        },
+        {
+          "texto": "E se algo dá errado, o SOS avisa todos, no celular e no relógio, com a localização.",
+          "fala": "E se algo dá errado, o S O S avisa todos, no celular e no relógio, com a localização."
+        }
+      ]
+    },
+    {
+      "id": "evolucao",
+      "frases": [
+        {
+          "texto": "A autonomia leva meses. O gráfico mostra 14 meses, com avanços e recuos, para a família e a terapia decidirem juntas.",
+          "fala": "A autonomia leva meses. O gráfico mostra quatorze meses, com avanços e recuos, para a família e a terapia decidirem juntas."
+        }
+      ]
+    },
+    {
+      "id": "cuidados",
+      "frases": [
+        {
+          "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem placar e sem punição.",
+          "fala": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem placar e sem punição."
+        },
+        {
+          "texto": "Com base nos estudos do TCC que originou o projeto.",
+          "fala": "Com base nos estudos do T C C que originou o projeto."
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "frases": [
+        {
+          "texto": "O plano vai do celular ao relógio, ao colar com câmera, ao fone de condução óssea e, por fim, a mim: um robô de mesa macio e silencioso.",
+          "fala": "O plano vai do celular ao relógio, ao colar com câmera, ao fone de condução óssea e, por fim, a mim: um robô de mesa macio e silencioso."
+        },
+        {
+          "texto": "Antes, piloto com famílias e estudo clínico.",
+          "fala": "Antes, piloto com famílias e estudo clínico."
+        }
+      ]
+    },
+    {
+      "id": "fecho",
+      "frases": [
+        {
+          "texto": "O protótipo já funciona no navegador, com dados fictícios e código aberto.",
+          "fala": "O protótipo já funciona no navegador, com dados fictícios e código aberto."
+        },
+        {
+          "texto": "Passo a Passo: a inteligência artificial que ensina a não precisar dela.",
+          "fala": "Passo a Passo: a inteligência artificial que ensina a não precisar dela."
+        }
+      ]
+    }
+  ]
+}
