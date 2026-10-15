@@ -64,7 +64,7 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 **Relógio (Carlos, pai)**
 - Só o essencial no pulso: **SOS** com botão "Estou indo", rotina **ao vivo** em anel de progresso, remédio, conquistas e mensagens do Lucas.
 
-**Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. Os detalhes (dados, critérios, cuidados, ética, roadmap, estudos do TCC e fontes) estão em `saiba-mais.html`.
+**Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
 
 **Design calmo e gamificado:** baseado nos estudos do TCC ([`docs/FONTES.md`](docs/FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
 
@@ -105,12 +105,12 @@ O **teste de fumaça** abre o app num iframe e executa 54 verificações: telas 
 
 ```
 index.html                   página inicial com a sala 3D
-saiba-mais.html              detalhes, estudos do TCC e fontes
+saiba-mais.html              vitrine 3D dos equipamentos + abas (dados, ética, roadmap, fontes)
 app.html                     o app (celular, relógio, celular/tablet)
 firebase.json                publicação no Firebase Hosting
-css/                         inicio.css, site.css, app.css
+css/                         inicio.css, saibamais.css, app.css
 js/                          lumi, dados, nucleo, paciente, responsavel, conhecimento,
-                             caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d (página inicial)
+                             caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d, vitrine3d, saibamais (site)
 audio/lumi/                  as 218 falas em voz neural (mp3) + falas.json
 ferramentas/                 gerador da voz neural (edge-tts)
 exemplos/                    laudo FICTÍCIO em PDF

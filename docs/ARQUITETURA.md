@@ -24,12 +24,12 @@ Nada sai do aparelho. As "contas" conversam por **eventos** dentro da página e 
 
 ```
 index.html            página inicial curta, com a sala 3D (capítulos que movem a câmera)
-saiba-mais.html       todos os detalhes: dados, critérios, cuidados, ética, roadmap, estudos do TCC e fontes
+saiba-mais.html       vitrine 3D dos equipamentos (capítulos) + abas: critérios, dados, IA, como funciona, cuidados, ética, roadmap, TCC e fontes
 app.html              o app: celular do Lucas, relógio do Carlos e celular da Ana (ou tablet do profissional)
 firebase.json         configuração do Firebase Hosting (veja docs/FIREBASE.md)
 css/
   inicio.css          página inicial (tema infantil e calmo)
-  site.css            página "Saiba mais" (mesma paleta)
+  saibamais.css       página "Saiba mais": vitrine 3D e abas
   app.css             telas do app, aparelhos em tamanho real, relógio, roteiro guiado, estúdio de voz
 js/                   ordem de carregamento (app.html)
   lumi.js             robô Lumi em SVG (humores, acessórios, níveis)
@@ -45,6 +45,8 @@ js/                   ordem de carregamento (app.html)
   relogio.js          relógio do Carlos: SOS com "estou indo", rotina ao vivo, remédio, conquistas
   roteiro.js          demonstração guiada de ~3 minutos
   sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
+  vitrine3d.js        (só no saiba-mais.html) vitrine com os equipamentos em 3D; arraste para girar; ouve o evento "capitulo"
+  saibamais.js        capítulos (avisam a câmera 3D), índice dos equipamentos e abas (links #f5, #tcc, #roadmap abrem a aba certa)
   iniciar.js          moldura (três contas, comparar contas, reiniciar) e partida
 audio/lumi/           falas publicadas: 218 mp3 em voz neural + falas.json
 ferramentas/          gerar_voz_lumi.py (edge-tts) e a lista de falas usada
