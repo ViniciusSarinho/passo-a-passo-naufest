@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passo a Passo</title>
+  <meta name="description" content="IA assistiva que ajuda pessoas autistas nas tarefas do dia a dia e vai se retirando conforme a autonomia cresce.">
+  <meta name="theme-color" content="#060b18">
+  <meta property="og:title" content="Passo a Passo · IA que ensina a não precisar dela">
+  <meta property="og:description" content="Apoio à autonomia para pessoas autistas: história social, guia por voz com desvanecimento de dicas e relatório para a família e o terapeuta.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👣</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/site.css?v=17">
+</head>
+<body>
+  <div class="fundo" aria-hidden="true"><div class="feixe"></div></div>
+
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="logo" href="#topo"><span class="marca">👣</span> Passo a Passo</a>
+      <div class="links">
+        <a href="#criterios">Critérios</a>
+        <a href="#desafios">Dados</a>
+        <a href="#solucao">Solução</a>
+        <a href="#lumi">Lumi</a>
+        <a href="#indispensavel">Por que IA</a>
+        <a href="#cuidados">Cuidados</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#fontes">Fontes</a>
+      </div>
+      <a class="btn primario peq" href="app.html?roteiro=1">Experimentar</a>
+    </div>
+  </nav>
+
+  <main id="conteudo">
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <div class="wrap">
+      <div>
+        <span class="sobre">✦ IA assistiva para pessoas autistas</span>
+        <h1>Uma IA que ensina a <em>não precisar dela.</em></h1>
+        <p class="lead">O Passo a Passo enxerga a situação pela câmera do celular, fala no fone o próximo passo no jeito que cada pessoa entende e, a cada conquista, ajuda um pouco menos. A família e o terapeuta acompanham tudo.</p>
+        <div class="acoes">
+          <a class="btn primario" href="app.html?roteiro=1">🧭 Roteiro guiado de 3 minutos</a>
+          <a class="btn" href="app.html">Explorar o app sozinho</a>
+          <a class="btn" href="#criterios">Critérios do NAUFest</a>
+        </div>
+        <div class="fases-demo" role="group" aria-label="Ver as fases da ajuda">
+          <button data-fase="1" aria-pressed="true">Fase 1 · Instrução</button>
+          <button data-fase="2" aria-pressed="false">Fase 2 · Pergunta</button>
+          <button data-fase="3" aria-pressed="false">Fase 3 · Silêncio</button>
+        </div>
+        <p class="fases-legenda" id="legendaFase"></p>
+      </div>
+
+      <div class="cena" aria-hidden="true">
+        <svg class="rede" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+          <g stroke="currentColor" stroke-width="1" fill="none" opacity=".5">
+            <path d="M40 120 L160 80 L300 40 L440 90 L560 60"/><path d="M60 300 L150 250 L300 300 L450 240 L570 310"/>
+            <path d="M30 500 L170 540 L300 470 L430 530 L580 480"/><path d="M160 80 L150 250 L170 540"/><path d="M440 90 L450 240 L430 530"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="160" cy="80" r="3"/><circle cx="300" cy="40" r="3"/><circle cx="440" cy="90" r="3"/><circle cx="150" cy="250" r="3"/>
+            <circle cx="450" cy="240" r="3"/><circle cx="170" cy="540" r="3"/><circle cx="300" cy="470" r="3"/><circle cx="430" cy="530" r="3"/>
+          </g>
+        </svg>
+        <div class="anel"></div><div class="anel dois"></div>
+
+        <div class="lado esq">
+          <div class="flutua f-voz"><div class="ic"><div class="ondas"><i></i><i></i><i></i><i></i></div></div><div><b>Voz no fone</b><span id="vozTxt">instrução clara</span></div></div>
+          <div class="flutua"><span class="ic">📈</span><div><b>Relatório</b><span>o que já faz sozinho</span></div></div>
+        </div>
+
+        <div class="celular">
+          <div class="tela">
+            <div class="notch"></div>
+            <div class="visor">
+              <div class="chao"></div>
+              <div class="alvo" style="left:12px;top:72px;width:72px;height:76px"><span class="obj">🎒</span><span class="tag">mochila 94%</span></div>
+              <div class="alvo" style="left:92px;top:98px;width:58px;height:58px;animation-delay:-1s"><span class="obj" style="font-size:38px">📘</span><span class="tag">livro 88%</span></div>
+              <div class="alvo dir" style="left:160px;top:70px;width:62px;height:76px;animation-delay:-2s"><span class="obj" style="font-size:42px">🧴</span><span class="tag">garrafa 81%</span></div>
+              <div class="varredura"></div>
+              <div class="canto c1"></div><div class="canto c2"></div><div class="canto c3"></div><div class="canto c4"></div>
+              <div class="local">🔒 analisado no aparelho</div>
+            </div>
+            <div class="app-ui">
+              <span class="chip" id="chipFase">Fase 1 · Instrução total</span>
+              <div class="barra"><div></div></div>
+              <div class="balao" id="balao"><span class="pic" id="heroLumi"></span><span id="balaoTxt"></span></div>
+              <div class="botoes"><div class="fiz">✓ Fiz</div><div class="aj">✋ Ajuda</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lado dir">
+          <div class="flutua"><span class="ic">👁️</span><div><b>Visão da IA</b><span>3 objetos na cena</span></div></div>
+          <div class="flutua"><span class="ic">🔒</span><div><b>Nada é gravado</b><span>fica no celular</span></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NÚMEROS -->
+  <section style="padding-top:20px">
+    <div class="wrap numeros revela">
+      <div class="numero"><div class="n">2,4 mi</div><p>pessoas com diagnóstico de autismo no Brasil.</p><small>IBGE, Censo 2022 <a class="ref" href="#f1">[1]</a></small></div>
+      <div class="numero"><div class="n">7 dias</div><p>por semana a vida real acontece fora do consultório, onde o apoio terapêutico não chega.</p></div>
+      <div class="numero"><div class="n">0</div><p>imagens gravadas ou enviadas. A visão da IA roda dentro do celular.</p></div>
+    </div>
+  </section>
+
+  <!-- CRITÉRIOS -->
+  <section id="criterios">
+    <div class="wrap">
+      <span class="rotulo">Para quem avalia</span>
+      <h2>Como o Passo a Passo responde aos seis critérios do NAUFest.</h2>
+      <p class="intro">Cada critério aponta para algo que já existe no protótipo, e que você pode abrir agora, sem instalar nada.</p>
+      <div class="criterios revela">
+        <a class="criterio" href="#desafios"><span class="peso">20%</span><h3>Definição do problema</h3>
+          <p>O treino acontece em poucas horas por semana; a dificuldade, o risco e a sobrecarga estão nas outras. 56,5% têm até 2 h de terapia por semana, e 92,4% de quem cuida são mulheres. <span class="ref">[5]</span></p><span class="ver">Ver os dados →</span></a>
+        <a class="criterio" href="#solucao"><span class="peso">20%</span><h3>Pertinência da solução</h3>
+          <p>Apoio antes, durante e depois da tarefa, com ajuda que diminui e um humano que aprova. Sem situações de risco no MVP (não guia travessia de rua), SOS e privacidade por padrão.</p><span class="ver">Ver a solução →</span></a>
+        <a class="criterio" href="#indispensavel"><span class="peso">20%</span><h3>Pertinência e aplicação da IA</h3>
+          <p>Visão computacional, linguagem adaptada, dosagem da ajuda, perguntas à família e leitura de laudos. Sem IA, vira um app de lembretes.</p><span class="ver">Ver o papel da IA →</span></a>
+        <a class="criterio" href="#roadmap"><span class="peso">15%</span><h3>Viabilidade e impacto potencial</h3>
+          <p>Roda no navegador, em celular comum, sem hardware. Roadmap com piloto, métricas de impacto e estudo clínico antes de qualquer promessa terapêutica.</p><span class="ver">Ver o roadmap →</span></a>
+        <a class="criterio" href="#lumi"><span class="peso">15%</span><h3>Originalidade e criatividade</h3>
+          <p>Um robô companheiro que evolui com a autonomia da pessoa, uma IA que se retira aos poucos, três tipos de conta conectadas e voz humana gravável.</p><span class="ver">Conhecer o Lumi →</span></a>
+        <a class="criterio" href="app.html?roteiro=1"><span class="peso">10%</span><h3>Clareza e força da proposta</h3>
+          <p>Site, roteiro guiado de 3 minutos dentro do app, documentação completa e código aberto, com o que é real e o que é simulado dito com todas as letras.</p><span class="ver">Abrir o roteiro guiado →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section id="problema">
+    <div class="wrap">
+      <span class="rotulo">O problema</span>
+      <h2>O que se aprende no consultório não chega à padaria.</h2>
+      <p class="intro">Tarefas simples, como comprar pão, arrumar a mochila ou esperar na fila, são cheias de regras implícitas, barulho e imprevistos. Para muitas pessoas autistas, isso vira travamento, crise ou dependência de um adulto.</p>
+      <div class="problema revela">
+        <div class="relato">
+          <blockquote>Lucas sabe o que quer comprar. Mas quando chega a vez dele no balcão, as palavras somem. A mãe pede por ele, de novo.</blockquote>
+          <div class="quem">Persona ilustrativa · 11 anos, suporte nível 2</div>
+        </div>
+        <div class="causas">
+          <div class="causa"><span class="ic">🌪️</span><div><b>Imprevisibilidade e excesso de estímulos</b><span>Barulho, filas, mudanças de última hora.</span></div></div>
+          <div class="causa"><span class="ic">🧩</span><div><b>Instruções sociais implícitas</b><span>"Espera sua vez", "agradece": ninguém explica, todos esperam.</span></div></div>
+          <div class="causa"><span class="ic">🏥</span><div><b>O apoio terapêutico fica na clínica</b><span>O terapeuta não está presente no momento real da dificuldade.</span></div></div>
+          <div class="causa"><span class="ic">👩‍👦</span><div><b>Consequência hoje</b><span>Dependência, crises em público e famílias sobrecarregadas, muitas vezes com mães que deixam de trabalhar.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESAFIOS EM NÚMEROS -->
+  <section id="desafios">
+    <div class="wrap">
+      <span class="rotulo">Os desafios, com dados</span>
+      <h2>O cuidado precisa ser contínuo, e hoje ele chega aos pedaços.</h2>
+      <p class="intro">O autismo pede apoio em casa, na escola, na rua e na terapia, por anos. Os números mostram uma demanda enorme, um sistema que não dá conta e famílias que carregam o resto sozinhas. Cada número tem a fonte ao lado, e a lista completa está no fim da página.</p>
+
+      <h3 class="sub-h" style="margin-top:0">1 · É muita gente, e cada vez mais diagnóstico</h3>
+      <div class="dados revela">
+        <div class="dado"><b>2,4 mi</b><p>pessoas com diagnóstico de autismo no Brasil, 1,2% da população. Entre crianças de 5 a 9 anos, são 2,6%. <a class="ref" href="#f1">[1]</a></p></div>
+        <div class="dado"><b>1 em 31</b><p>crianças de 8 anos nos EUA tem diagnóstico de autismo (dados de 2022). Em 2020, era 1 em 36. <a class="ref" href="#f3">[3]</a></p></div>
+        <div class="dado"><b>~1 em 100</b><p>crianças no mundo é autista, segundo a OMS. Em muitos países de renda baixa e média, o número real é desconhecido. <a class="ref" href="#f4">[4]</a></p></div>
+      </div>
+
+      <h3 class="sub-h">2 · O apoio profissional não chega a todos</h3>
+      <div class="dados revela">
+        <div class="dado"><b>56,5%</b><p>recebem <b>até 2 horas de terapia por semana</b>. A semana tem 168 horas. <a class="ref" href="#f5">[5]</a></p></div>
+        <div class="dado"><b>~3 anos</b><p>é o tempo médio estimado de espera por terapia em Campo Grande (MS), com quase 2 mil pacientes na fila, segundo o Ministério Público. <a class="ref" href="#f6">[6]</a></p></div>
+        <div class="dado"><b>46 cidades</b><p>dependem de uma única unidade na região de Presidente Prudente (SP). A Justiça mandou o Estado zerar a fila, que se arrasta desde 2022. <a class="ref" href="#f7">[7]</a></p></div>
+        <div class="dado"><b>78,4%</b><p>precisaram da rede particular ou de plano de saúde para conseguir o laudo. O SUS confirmou só 20,4% dos diagnósticos. <a class="ref" href="#f5">[5]</a></p></div>
+        <div class="dado"><b>~40%</b><p>dos estudantes autistas não recebem apoio especializado na escola, como mediador ou adaptação pedagógica. <a class="ref" href="#f5">[5]</a></p></div>
+      </div>
+
+      <h3 class="sub-h">3 · Quem cuida está sobrecarregado</h3>
+      <div class="dados revela">
+        <div class="dado"><b>92,4%</b><p>das pessoas que cuidam de autistas são mulheres. <a class="ref" href="#f5">[5]</a></p></div>
+        <div class="dado"><b>30,5%</b><p>dos cuidadores estão desempregados ou sem renda própria. <a class="ref" href="#f5">[5]</a></p></div>
+        <div class="dado"><b>34,3%</b><p>não têm nenhum apoio de outras pessoas no cuidado. <a class="ref" href="#f5">[5]</a></p></div>
+      </div>
+
+      <h3 class="sub-h">4 · O dia a dia tem riscos e sobrecargas reais</h3>
+      <div class="dados revela">
+        <div class="dado alerta"><b>49%</b><p>das crianças autistas tentaram fugir ou se afastar pelo menos uma vez depois dos 4 anos. Entre as que sumiram, 65% passaram perto de um acidente de trânsito. <a class="ref" href="#f8">[8]</a></p></div>
+        <div class="dado alerta"><b>36 anos</b><p>foi a idade média de morte de pessoas autistas em registros dos EUA (1999–2014), contra 72 na população geral. Lesões, como afogamento, pesaram muito. <a class="ref" href="#f9">[9]</a></p></div>
+        <div class="dado"><b>~40%</b><p>das crianças e adolescentes autistas têm pelo menos um transtorno de ansiedade. <a class="ref" href="#f10">[10]</a> No Brasil, 41,1% relatam ansiedade. <a class="ref" href="#f5">[5]</a></p></div>
+        <div class="dado"><b>95%</b><p>das crianças autistas avaliadas mostraram alguma diferença no processamento sensorial, como sons, toque e filtragem auditiva. <a class="ref" href="#f11">[11]</a></p></div>
+      </div>
+
+      <div class="conclusao revela">
+        <div><b>O que esses números dizem juntos:</b> o treino acontece em poucas horas por semana; a dificuldade, o risco e a sobrecarga sensorial acontecem nas outras 166. E quem cobre essa lacuna, quase sempre, é uma mãe sem apoio. O Passo a Passo foi pensado para estar justamente nessas horas.</div>
+      </div>
+      <p class="nota-fontes">Cuidado com a leitura: o dado do IBGE é declarado pelo morador; o Mapa Autismo Brasil é uma pesquisa online e voluntária, não uma amostra representativa; a idade média de morte nos registros dos EUA não é expectativa de vida; os estudos têm limitações descritas pelos próprios autores. Detalhes em <a href="#fontes">Fontes</a>.</p>
+    </div>
+  </section>
+
+  <!-- SOLUÇÃO -->
+  <section id="solucao">
+    <div class="wrap">
+      <span class="rotulo">A solução</span>
+      <h2>Antes, durante e depois de cada tarefa.</h2>
+      <p class="intro">Só um celular comum e um fone, nada de aparelhos caros. A IA acompanha a rotina inteira e se adapta a cada pessoa.</p>
+      <div class="momentos revela">
+        <article class="momento">
+          <div class="topo"><span class="tag">1 · Antes</span><h3>História social</h3>
+            <p>A IA monta e narra a sequência da tarefa com pictogramas, na linguagem da pessoa. Menos surpresa, menos ansiedade.</p></div>
+          <div class="mini"><div class="quadrinhos"><div data-n="1">🎒</div><div data-n="2">📘</div><div data-n="3">💧</div><div data-n="4">⭐</div></div></div>
+        </article>
+        <article class="momento">
+          <div class="topo"><span class="tag">2 · Durante</span><h3>Guia por voz</h3>
+            <p>A câmera reconhece cada passo. A voz no fone instrui, pergunta ou só observa, conforme a fase.</p></div>
+          <div class="mini"><div class="mini-guia">
+            <div class="det">câmera viu: livro</div>
+            <div class="linha-fala">🔊 Qual livro vai para a escola hoje?</div>
+            <div class="linha-fala" style="background:var(--ok-soft)">🌟 Você fez sozinho!</div>
+          </div></div>
+        </article>
+        <article class="momento">
+          <div class="topo"><span class="tag">3 · Depois</span><h3>Relatório</h3>
+            <p>A IA mostra o que já foi feito sozinho e sugere a próxima fase. Quem decide é a família ou o terapeuta.</p></div>
+          <div class="mini"><div class="mini-rel">
+            <div style="height:35%"><span>35%</span></div><div style="height:55%"><span>55%</span></div><div style="height:75%"><span>75%</span></div><div style="height:100%"><span>100%</span></div>
+          </div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESMAME -->
+  <section>
+    <div class="wrap desmame">
+      <div class="revela">
+        <span class="rotulo">O diferencial</span>
+        <h2>A ajuda diminui. A autonomia cresce, em meses e anos.</h2>
+        <p class="intro" style="margin-bottom:24px">Baseado no <b>desvanecimento de dicas</b> (<i>prompt fading</i>), técnica usada em terapias comportamentais. A IA aplica a técnica todos os dias, no mundo real. Não é rápido: cada pessoa tem o seu ritmo, e recuos depois de férias ou mudanças são esperados. O app acompanha a jornada inteira e ajusta a ajuda sem cobrança.</p>
+        <div class="grafico">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Gráfico ilustrativo de dois anos: a autonomia sobe com idas e vindas e a ajuda da IA diminui">
+            <rect x="40" y="30" width="153.3" height="190" fill="rgba(96,165,250,.10)"/>
+            <rect x="193.3" y="30" width="172.5" height="190" fill="rgba(34,211,238,.10)"/>
+            <rect x="289.2" y="30" width="19.1" height="190" fill="rgba(96,165,250,.18)"/>
+            <rect x="365.8" y="30" width="134.2" height="190" fill="rgba(52,211,153,.12)"/>
+            <text x="116" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#93c5fd">FASE 1</text>
+            <text x="250" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#22d3ee">FASE 2</text>
+            <text x="433" y="48" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">FASE 3</text>
+            <line x1="40" y1="220" x2="500" y2="220" stroke="rgba(130,170,255,.32)" stroke-width="1.5"/>
+            <line x1="135.8" y1="22" x2="135.8" y2="220" stroke="#fbbf24" stroke-dasharray="4 4" opacity=".7"/>
+            <text x="139" y="20" font-size="11" fill="#fbbf24">férias</text>
+            <line x1="289.2" y1="22" x2="289.2" y2="220" stroke="#fbbf24" stroke-dasharray="4 4" opacity=".7"/>
+            <text x="292" y="20" font-size="11" fill="#fbbf24">mudança de escola</text>
+            <path d="M40 49 L116.7 68 L193.3 94.6 L212.5 102.2 L289.2 90.8 L346.7 134.5 L365.8 144 L442.5 166.8 L500 182" fill="none" stroke="#f5a524" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>
+            <path d="M40 191.5 L78.3 178.2 L116.7 157.3 L135.8 166.8 L155 151.6 L193.3 128.8 L212.5 144 L250.8 121.2 L289.2 142.1 L308.3 132.6 L346.7 102.2 L365.8 109.8 L404.2 94.6 L442.5 79.4 L500 64.2" fill="none" stroke="#22d3ee" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="500" cy="64.2" r="6" fill="#22d3ee"/><circle cx="500" cy="182" r="6" fill="#f5a524"/>
+            <g font-size="12" fill="#93a4c3"><text x="40" y="240">início</text><text x="155" y="240" text-anchor="middle">6 meses</text>
+              <text x="270" y="240" text-anchor="middle">1 ano</text><text x="385" y="240" text-anchor="middle">18 meses</text><text x="500" y="240" text-anchor="end">2 anos</text></g>
+          </svg>
+          <div class="leg"><span><i style="background:var(--primary-2)"></i>Autonomia da pessoa</span><span><i style="background:var(--accent)"></i>Ajuda da IA</span><span>Ilustração do conceito, não é dado medido</span></div>
+        </div>
+      </div>
+      <div class="fases revela">
+        <div class="fase"><div class="num">1</div><div><b>Instrução total</b><p>A IA guia cada passo com uma frase clara.</p><span class="ex">"Pegue o livro e coloque na mochila."</span></div></div>
+        <div class="fase"><div class="num">2</div><div><b>Pergunta que faz pensar</b><p>A IA só pergunta, e a resposta vem da pessoa.</p><span class="ex">"Qual livro vai para a escola hoje?"</span></div></div>
+        <div class="fase"><div class="num">3</div><div><b>Rede de segurança silenciosa</b><p>A IA fica em silêncio, observando, e só ajuda se a pessoa travar.</p><span class="ex">🤫 … 🌟 "Você fez sozinho!"</span></div></div>
+        <div class="escada"><b>Se travar, a ajuda sobe um degrau:</b> silêncio → pergunta → instrução. <b>Se acertar várias vezes,</b> a IA sugere a próxima fase, e uma pessoa aprova.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUMI -->
+  <section id="lumi">
+    <div class="wrap">
+      <span class="rotulo">Conheça o Lumi</span>
+      <h2>Um robô companheiro que cresce junto com a pessoa.</h2>
+      <p class="intro">O Lumi é a cara da IA no celular. Ele fala com calma, comemora cada conquista e ganha acessórios conforme a pessoa fica mais independente. Quanto menos ajuda a pessoa precisa, mais o Lumi evolui: a recompensa é a própria autonomia.</p>
+      <div class="lumis revela" id="lumis"></div>
+      <div class="humores-lumi revela">
+        <div><div data-lumi-humor="falando"></div><b>Instrui</b><span>fase 1</span></div>
+        <div><div data-lumi-humor="atento"></div><b>Pergunta</b><span>fase 2</span></div>
+        <div><div data-lumi-humor="observando"></div><b>Observa em silêncio</b><span>fase 3</span></div>
+        <div><div data-lumi-humor="calmo"></div><b>Acalma</b><span>pausa e SOS</span></div>
+        <div><div data-lumi-humor="comemorando"></div><b>Comemora</b><span>com o hiperfoco</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÁQUINA NO MOMENTO -->
+  <section id="momento">
+    <div class="wrap">
+      <span class="rotulo">Por que uma máquina ao lado</span>
+      <h2>No momento exato da dificuldade, quase nunca há um terapeuta por perto.</h2>
+      <p class="intro">É na fila, no caixa ou na hora de sair de casa que a pessoa trava. O celular está sempre ali e, com permissão, enxerga, escuta e responde em segundos. Ele apoia habilidades que o consultório treina, mas não consegue acompanhar.</p>
+      <div class="maquina revela">
+        <div class="mq"><span class="ic">🧭</span><h3>Tomada de decisão</h3><p>Na hora certa, reduz as escolhas a duas opções visuais, como "banana ou maçã?". Assim a pessoa treina decidir sem sobrecarga.</p></div>
+        <div class="mq"><span class="ic">🗓️</span><h3>Planejamento</h3><p>Agenda visual do dia, história social antes da tarefa e avisos de mudança enviados pela família com antecedência.</p></div>
+        <div class="mq destaque"><span class="ic">📍</span><h3>Noção espacial</h3><p>Com a câmera liberada no app, a IA diz onde está o objeto: "a mochila está à sua esquerda, pertinho".</p></div>
+        <div class="mq"><span class="ic">🔊</span><h3>Regulação sensorial</h3><p>O microfone mede o ruído do ambiente. Se ficar alto demais, o Lumi oferece abafador ou pausa antes de a crise começar.</p></div>
+        <div class="mq"><span class="ic">💬</span><h3>Comunicação (CAA)</h3><p>Prancha de figuras que vira frase falada. Com ela, a pessoa conversa com a família, faz combinados ("primeiro a lição, depois o tablet") e pede para marcar passeios. A IA sugere a próxima figura e traduz as mensagens da família em figuras. Pais e terapeuta acompanham a comunicação crescer.</p></div>
+        <div class="mq"><span class="ic">⏱️</span><h3>Ajuda na medida</h3><p>Esperar, perguntar ou instruir, segundo a segundo. Nenhuma pessoa consegue fazer isso todo dia, em todo lugar.</p></div>
+        <div class="mq destaque-sos"><span class="ic">🆘</span><h3>Segurança</h3><p>Um botão SOS avisa todos os responsáveis ao mesmo tempo, com localização, e o Lumi acalma a pessoa até a ajuda chegar.</p></div>
+        <div class="mq"><span class="ic">📊</span><h3>Dados para a terapia</h3><p>A terapeuta vê o que acontece fora do consultório, passo a passo, e ajusta o plano com base no dia a dia.</p></div>
+      </div>
+      <div class="humano revela"><span class="ic">🤝</span><p><b>A máquina não substitui pessoas.</b> Ela está presente nos momentos em que nenhuma pessoa consegue estar e devolve as decisões importantes para a família e a terapia.</p></div>
+    </div>
+  </section>
+
+  <!-- IA INDISPENSÁVEL -->
+  <section id="indispensavel">
+    <div class="wrap">
+      <span class="rotulo">Por que a IA é indispensável</span>
+      <h2>Sem IA, o projeto vira um app de lembretes. Com IA, vira um apoio que aprende.</h2>
+      <p class="intro">Um app comum repete a mesma mensagem para todo mundo. O Passo a Passo precisa enxergar a cena, entender o momento, decidir quanto ajudar e aprender com cada pessoa. Tudo isso só é possível com inteligência artificial.</p>
+
+      <div class="ciclo revela">
+        <div class="etapa-c"><span>👁️</span><b>Observa</b><p>Câmera e microfone (com permissão) leem a cena e o ambiente em tempo real.</p></div>
+        <div class="etapa-c"><span>🎚️</span><b>Decide</b><p>Escolhe entre silêncio, pergunta ou instrução, no tempo certo para aquela pessoa.</p></div>
+        <div class="etapa-c"><span>📝</span><b>Registra</b><p>Cada passo vira um dado: quanto tempo levou, quanta ajuda precisou.</p></div>
+        <div class="etapa-c"><span>❓</span><b>Pergunta</b><p>Quando os dados não explicam o motivo, a IA pergunta à família e aos profissionais.</p></div>
+        <div class="etapa-c"><span>📄</span><b>Lê o laudo</b><p>Pede e interpreta o relatório do neuropsicólogo: atenção, linguagem, sensorialidade, funções executivas.</p></div>
+        <div class="etapa-c"><span>🛠️</span><b>Ajusta</b><p>Sugere mudanças, e um humano aprova. O ciclo recomeça mais preciso.</p></div>
+      </div>
+
+      <div class="tabela revela" style="margin-top:26px">
+        <table>
+          <tr><th></th><th>App sem IA</th><th>Passo a Passo com IA</th></tr>
+          <tr><td><b>Saber se o passo foi feito</b></td><td>A pessoa precisa marcar</td><td class="esc">A câmera reconhece o objeto e confirma</td></tr>
+          <tr><td><b>Quando ajudar</b></td><td>Lembrete em horário fixo</td><td class="esc">Espera, pergunta ou instrui, conforme a pessoa</td></tr>
+          <tr><td><b>Como falar</b></td><td>A mesma frase para todos</td><td class="esc">Linguagem no nível de cada um, com o hiperfoco</td></tr>
+          <tr><td><b>Onde está o objeto</b></td><td>Não sabe</td><td class="esc">"Está à sua esquerda, pertinho"</td></tr>
+          <tr><td><b>Ambiente barulhento</b></td><td>Não percebe</td><td class="esc">Mede o ruído e oferece pausa antes da crise</td></tr>
+          <tr><td><b>Laudo e anamnese</b></td><td>Ficam numa gaveta</td><td class="esc">Viram ajustes concretos nas rotinas</td></tr>
+          <tr><td><b>Evolução</b></td><td>Lista de tarefas feitas</td><td class="esc">Autonomia por passo, por meses, com sugestão de fase</td></tr>
+        </table>
+      </div>
+
+      <h3 class="sub-h">A ciência já aponta esse caminho</h3>
+      <div class="evidencias revela">
+        <div class="ev"><b>Óculos com IA que reconhecem emoções</b><p>Num ensaio clínico com 71 crianças de 6 a 12 anos, um app com visão computacional em óculos inteligentes, usado em casa, melhorou a socialização em relação ao grupo que fez só a terapia comportamental. O estudo é pequeno e tem limitações. <a class="ref" href="#f12">[12]</a></p></div>
+        <div class="ev"><b>Robô social que se adapta à criança</b><p>Em 30 dias de uso em casa, um robô que ajustava a dificuldade ao desempenho de cada criança melhorou a atenção compartilhada de 12 crianças autistas, e os ganhos apareceram também sem o robô. É um estudo piloto. <a class="ref" href="#f13">[13]</a></p></div>
+      </div>
+      <p class="nota-fontes">Os estudos são promissores, mas pequenos. Por isso o roadmap do Passo a Passo inclui piloto e estudo clínico antes de qualquer promessa terapêutica.</p>
+    </div>
+  </section>
+
+  <!-- PAPEL DA IA -->
+  <section id="ia">
+    <div class="wrap">
+      <span class="rotulo">O papel da IA</span>
+      <h2>Quatro tarefas concretas. Nenhuma decorativa.</h2>
+      <p class="intro">Sem IA, alguém precisaria estar ao lado o tempo todo para perceber a hora certa de ajudar ou de ficar quieto. Com IA, o método terapêutico vai junto para a rua.</p>
+      <div class="ia-grade revela">
+        <div class="ia-card"><div class="ic">👁️</div><h3>Enxergar</h3><p>A visão computacional reconhece objetos e pessoas na cena e confirma que o passo aconteceu.</p></div>
+        <div class="ia-card"><div class="ic">💬</div><h3>Traduzir</h3><p>Reescreve cada instrução no nível de literalidade da pessoa, de 3 palavras a uma explicação, usando o hiperfoco dela.</p></div>
+        <div class="ia-card"><div class="ic">🎚️</div><h3>Dosar</h3><p>Decide quando falar, perguntar ou silenciar, de acordo com o tempo e o desempenho da pessoa.</p></div>
+        <div class="ia-card"><div class="ic">📊</div><h3>Medir</h3><p>Resume cada sessão, aponta os passos difíceis e sugere avançar ou voltar de fase.</p></div>
+      </div>
+      <div class="humano revela"><span class="ic">🧑‍⚕️</span><p><b>Quem revisa: uma pessoa.</b> A família ou o terapeuta configuram o perfil, editam as rotinas e aprovam cada mudança de fase. A IA sugere, o humano decide.</p></div>
+    </div>
+  </section>
+
+  <!-- CONTAS CONECTADAS -->
+  <section id="contas">
+    <div class="wrap">
+      <span class="rotulo">Contas conectadas</span>
+      <h2>Paciente, família e profissionais ligados, cada um com a sua tela.</h2>
+      <p class="intro">A pessoa autista usa a própria conta, com o Lumi. A família e os profissionais se conectam por um código de vínculo e veem só o que precisam, em telas diferentes. A pessoa sempre sabe quem a acompanha.</p>
+      <div class="rede-contas revela">
+        <div class="no centro"><span class="av">🧒</span><b>Lucas · paciente</b><small>Vê o Lumi, as figuras e as tarefas dele. Pede SOS e conta como está se sentindo. Não vê laudo, doses nem o diário de crises.</small></div>
+        <div class="no"><span class="av">👩</span><b>Ana · mãe</b><small>Emergências, rotina ao vivo, saúde, conversa, evolução e aprovação das fases. Gerencia as permissões.</small></div>
+        <div class="no"><span class="av">👨</span><b>Carlos · pai</b><small>Emergências, rotina ao vivo e localização durante o SOS.</small></div>
+        <div class="no"><span class="av">🧑‍⚕️</span><b>Dra. Júlia · terapeuta</b><small>Plano terapêutico, metas e notas de sessão. Edita as rotinas.</small></div>
+        <div class="no"><span class="av">🧠</span><b>Dr. Rafael · neuropsicólogo</b><small>Envia laudos e acompanha a evolução. Não edita plano nem remédios.</small></div>
+        <div class="no"><span class="av">👩‍⚕️</span><b>Dra. Helena · médica</b><small>Única que prescreve e ajusta dose e horário. A família e o Lumi são avisados.</small></div>
+      </div>
+      <p class="nota-fontes">No app, o botão <b>"Comparar contas"</b> abre a tabela completa do que cada conta vê e faz. Quando o paciente é adulto, ele mesmo decide quem acompanha e o que cada pessoa vê.</p>
+      <h3 class="sub-h">Como funciona a emergência</h3>
+      <div class="sos-fluxo revela">
+        <div><span>1</span><b>Segura o SOS</b><p>É preciso segurar por 1,5 s, para não disparar sem querer.</p></div>
+        <div><span>2</span><b>O Lumi acalma</b><p>Respiração guiada e um cartão "Sou autista, preciso de ajuda" para mostrar a alguém.</p></div>
+        <div><span>3</span><b>Todos são avisados</b><p>Alerta sonoro para os responsáveis, com localização e o que ele estava fazendo.</p></div>
+        <div><span>4</span><b>"Estou a caminho"</b><p>A resposta volta para o celular dele, e o Lumi avisa quem está vindo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLUXO -->
+  <section id="fluxo">
+    <div class="wrap">
+      <span class="rotulo">Como funciona</span>
+      <h2>Do ajuste ao relatório, em cinco passos.</h2>
+      <p class="intro">Cada etapa tem um responsável definido.</p>
+      <div class="fluxo revela">
+        <div class="passo-f"><div class="bola">⚙️</div><div><h3>Configurar</h3><p>Perfil, nível de suporte, hiperfoco e passos da rotina.</p><span class="quem">Família / terapeuta</span></div></div>
+        <div class="passo-f ia"><div class="bola">📖</div><div><h3>Preparar</h3><p>A IA gera e narra a história social da tarefa.</p><span class="quem">IA + pessoa</span></div></div>
+        <div class="passo-f ia"><div class="bola">🎧</div><div><h3>Guiar</h3><p>Câmera e voz no fone, com o nível certo de ajuda e um botão de calma.</p><span class="quem">IA + pessoa</span></div></div>
+        <div class="passo-f ia"><div class="bola">📈</div><div><h3>Relatar</h3><p>A IA registra os passos e sugere a próxima fase.</p><span class="quem">IA</span></div></div>
+        <div class="passo-f"><div class="bola">✅</div><div><h3>Aprovar</h3><p>A família ou o terapeuta revisam e decidem o próximo passo.</p><span class="quem">Família / terapeuta</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARAÇÃO -->
+  <section>
+    <div class="wrap">
+      <span class="rotulo">Por que este caminho</span>
+      <h2>Comparamos três alternativas.</h2>
+      <div class="tabela revela">
+        <table>
+          <tr><th></th><th>Robô ou colete com câmera</th><th>Cartões visuais impressos</th><th>Passo a Passo (app com IA)</th></tr>
+          <tr><td><b>Impacto</b></td><td>Alto, mas cria dependência</td><td>Médio: ajuda só antes</td><td class="esc">Alto, e vai retirando a ajuda</td></tr>
+          <tr><td><b>Viabilidade</b></td><td><span class="nota-nao">Baixa</span>: hardware, motores, bateria</td><td><span class="nota-sim">Alta</span></td><td class="esc"><span class="nota-sim">Alta</span>: roda no navegador</td></tr>
+          <tr><td><b>Acessibilidade</b></td><td><span class="nota-nao">Baixa</span>: custo e ruído sensorial</td><td><span class="nota-sim">Alta</span></td><td class="esc"><span class="nota-sim">Alta</span>: celular que a família já tem</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUIDADOS -->
+  <section id="cuidados">
+    <div class="wrap">
+      <span class="rotulo">Cuidados essenciais</span>
+      <h2>Autismo não tem uma idade nem um jeito só. O app precisa se adaptar a cada pessoa.</h2>
+      <p class="intro">As necessidades de apoio variam muito entre pessoas autistas e podem mudar ao longo da vida <a class="ref" href="#f4">[4]</a>. Estes são os cuidados que guiam cada decisão do Passo a Passo.</p>
+
+      <h3 class="sub-h" style="margin-top:0">Para todas as idades</h3>
+      <div class="cuidados revela">
+        <div class="cd"><span class="ic">🧒</span><h3>Crianças</h3><p>Rotinas visuais e o Lumi lúdico. A família configura e aprova, sempre explicando para a criança o que muda.</p></div>
+        <div class="cd"><span class="ic">🧑</span><h3>Adolescentes</h3><p>Mais privacidade a cada ano, participação nas decisões e visual que ele escolhe, sem parecer infantil diante dos colegas.</p></div>
+        <div class="cd"><span class="ic">🧑‍💼</span><h3>Adultos</h3><p>A própria pessoa é dona da conta e decide quem acompanha. Rotinas de trabalho, transporte, dinheiro e saúde. No Mapa Autismo Brasil, 30% dos adultos estão desempregados <a class="ref" href="#f5">[5]</a>.</p></div>
+        <div class="cd"><span class="ic">🧓</span><h3>Pessoas mais velhas</h3><p>Muitas recebem o diagnóstico tarde. Letra maior, voz mais lenta e lembretes de saúde, sem tratar ninguém como criança.</p></div>
+      </div>
+
+      <h3 class="sub-h">Sensibilidades</h3>
+      <div class="cuidados revela">
+        <div class="cd"><span class="ic">🔊</span><h3>Som</h3><p><b>Volume ajustável de 0 a 100%</b>, velocidade da fala e escolha de voz. Nada de alarmes bruscos; fone de condução óssea; sensor de ruído com limite aprendido. Diferenças sensoriais aparecem em até 95% das crianças avaliadas <a class="ref" href="#f11">[11]</a>.</p></div>
+        <div class="cd"><span class="ic">💡</span><h3>Luz e tela</h3><p>"Tela calma" sem animações e com cores suaves, letra maior, nada piscando. A própria pessoa liga e desliga em "Meu jeito".</p></div>
+        <div class="cd"><span class="ic">✋</span><h3>Toque e vibração</h3><p>Vibração opcional e com intensidade ajustável no relógio. Para algumas pessoas, vibrar acalma; para outras, incomoda.</p></div>
+        <div class="cd"><span class="ic">🔁</span><h3>Previsibilidade</h3><p>A tela não muda de repente: atualizações são avisadas antes, e a voz e o jeito do Lumi continuam os mesmos.</p></div>
+      </div>
+
+      <h3 class="sub-h">Comunicação, saúde e crises</h3>
+      <div class="cuidados revela">
+        <div class="cd"><span class="ic">💬</span><h3>Todo jeito de se comunicar vale</h3><p>Falante, pouco verbal ou não verbal: a CAA está sempre disponível, e o app nunca exige fala. Linguagem literal, sem ironia, com tempo de resposta ajustável.</p></div>
+        <div class="cd"><span class="ic">🩺</span><h3>Condições associadas</h3><p>Ansiedade aparece em cerca de 40% das crianças e adolescentes autistas <a class="ref" href="#f10">[10]</a>, e TDAH em 51,5% no Mapa Autismo Brasil <a class="ref" href="#f5">[5]</a>. Epilepsia também é comum <a class="ref" href="#f4">[4]</a>. O app registra e organiza, mas não diagnostica.</p></div>
+        <div class="cd"><span class="ic">💊</span><h3>Remédios com segurança</h3><p>Lembrete com figuras para a pessoa, confirmação para a família, controle de estoque e efeitos observados. Dose e horário só são alterados pela médica.</p></div>
+        <div class="cd"><span class="ic">🌩️</span><h3>Durante uma crise</h3><p>Menos estímulo, não mais: o Lumi fala menos ou silencia, conforme o que a família ensinou. Nunca culpa, nunca pressiona. O SOS avisa quem pode ajudar.</p></div>
+      </div>
+
+      <h3 class="sub-h">IA, dados e respeito</h3>
+      <div class="cuidados revela">
+        <div class="cd destaque"><span class="ic">🧠</span><h3>Conversa direta com a IA</h3><p>Família e profissionais perguntam à IA "como foi a semana?", "ele está tomando o remédio?", "o que tem causado as crises?". Ela responde com os dados do paciente e não dá diagnóstico nem muda remédios.</p></div>
+        <div class="cd"><span class="ic">🔒</span><h3>Dados de saúde são sensíveis</h3><p>Pela LGPD, dados de saúde exigem cuidado especial e consentimento <a class="ref" href="#f14">[14]</a>. O processamento é feito no aparelho sempre que possível, e cada conta vê só o necessário. Dá para exportar e apagar tudo.</p></div>
+        <div class="cd"><span class="ic">🌎</span><h3>Acesso para todos</h3><p>Funciona em celular simples e sem internet, com sotaques regionais e Libras no roadmap. 35,5% das famílias do Mapa Autismo Brasil são de baixa renda <a class="ref" href="#f5">[5]</a>.</p></div>
+        <div class="cd"><span class="ic">🤝</span><h3>Feito com quem vive o autismo</h3><p>Pessoas autistas, famílias e profissionais participam de cada fase. O objetivo é autonomia e bem-estar, não "normalizar" ninguém.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉTICA -->
+  <section id="etica">
+    <div class="wrap">
+      <span class="rotulo">Ética e segurança</span>
+      <h2>Feito para proteger quem usa.</h2>
+      <div class="etica revela">
+        <div class="item"><span class="ic">🔒</span><div><h3>Privacidade por padrão</h3><p>A câmera só liga durante a rotina. A imagem é analisada no aparelho e não é gravada nem enviada (LGPD e ECA).</p></div></div>
+        <div class="item"><span class="ic">🚦</span><div><h3>Sem situações de risco</h3><p>O app não guia a travessia de rua. Começamos por tarefas em que um erro da IA custa um troco, não uma vida.</p></div></div>
+        <div class="item"><span class="ic">🧑‍⚕️</span><div><h3>Humano no controle</h3><p>A IA nunca muda de fase sozinha. O botão "Preciso de ajuda" pausa tudo e avisa o responsável.</p></div></div>
+        <div class="item"><span class="ic">🌈</span><div><h3>Respeito à neurodiversidade</h3><p>A meta não é "corrigir" ninguém, é dar previsibilidade e autonomia. Visual calmo, sem sons bruscos, no ritmo da pessoa.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <!-- TRANSPARÊNCIA -->
+  <section id="transparencia">
+    <div class="wrap">
+      <span class="rotulo">Honestidade técnica</span>
+      <h2>O que funciona hoje, o que é simulado e como vamos medir o impacto.</h2>
+      <p class="intro">Um protótipo convincente não deve parecer mais pronto do que é. Esta é a lista, sem enfeite.</p>
+      <div class="real-simulado revela">
+        <div class="rs real"><h3>✅ Funciona de verdade</h3>
+          <ul>
+            <li>Reconhecimento de objetos e direção (esquerda/direita) pela câmera, no próprio aparelho (TensorFlow.js)</li>
+            <li>Voz em português, comandos de voz, medidor de ruído e lembrete de remédio no horário</li>
+            <li>Desvanecimento de dicas, estrelas, evolução do Lumi e sugestão de fase com aprovação humana</li>
+            <li>Leitura de laudos em <b>PDF e TXT</b> no navegador, com sugestões de ajuste</li>
+            <li>CAA: figuras → frase falada, mensagens, combinados e pedidos para marcar</li>
+            <li>Troca de eventos entre as contas (paciente, família, profissionais) e permissões diferentes</li>
+            <li>Estúdio para gravar e publicar a voz humana do Lumi</li>
+          </ul></div>
+        <div class="rs simulado"><h3>🧪 Simulado no MVP</h3>
+          <ul>
+            <li>Paciente, família, profissionais, remédios, doses e laudo de exemplo são <b>fictícios</b></li>
+            <li>Histórico de 14 meses gerado por regras (o gráfico não é dado medido)</li>
+            <li>Conversa entre <b>aparelhos diferentes</b>: aqui as contas se falam dentro do mesmo navegador; no produto, seria um servidor seguro</li>
+            <li>Linguagem adaptada e respostas da IA: regras sobre os dados; no produto, um modelo de linguagem com os mesmos limites</li>
+            <li>Resposta da terapeuta e do neuropsicólogo nas demonstrações</li>
+            <li>PDF escaneado (foto): ainda sem leitura de imagem (OCR)</li>
+            <li>Relógio, colar e Lumi físico: ainda são conceito</li>
+          </ul></div>
+      </div>
+      <h3 class="sub-h">Como vamos medir o impacto no piloto</h3>
+      <div class="metricas-impacto revela">
+        <div><b>Autonomia por passo</b><p>% de passos feitos sem ajuda extra, ao longo de meses.</p></div>
+        <div><b>Comunicação</b><p>Figuras por frase, vocabulário e conversas iniciadas pela pessoa.</p></div>
+        <div><b>Regulação</b><p>Crises e pedidos de pausa por semana, e gatilhos mais frequentes.</p></div>
+        <div><b>Saúde</b><p>Adesão aos remédios, sono e efeitos relatados.</p></div>
+        <div><b>Segurança</b><p>Tempo até a resposta ao SOS e falsos alarmes.</p></div>
+        <div><b>Quem cuida</b><p>Carga do cuidador (escala validada) e horas de apoio presencial necessárias.</p></div>
+        <div><b>Experiência</b><p>Satisfação da pessoa autista, da família e dos profissionais.</p></div>
+        <div><b>Ética</b><p>Eventos adversos, consentimento e pedidos de apagar dados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="wrap">
+      <span class="rotulo">Roadmap</span>
+      <h2>Do MVP ao ecossistema: os próximos passos.</h2>
+      <p class="intro">Cada fase só avança com validação de famílias, de pessoas autistas e de profissionais. A tecnologia vai para onde a pessoa está: celular, relógio, colar, fone e um robô em casa.</p>
+
+      <div class="linha-tempo revela">
+        <div class="marco feito"><span class="quando">Hoje · out/2026</span><h3>MVP no navegador</h3>
+          <ul><li>Lumi com desvanecimento de dicas e voz humana gravável</li><li>Visão computacional e noção espacial</li><li>CAA, remédios, SOS e três tipos de conta</li><li>IA que pergunta e lê laudos (PDF e TXT)</li><li>Evolução de longo prazo</li></ul></div>
+        <div class="marco"><span class="quando">0 a 6 meses</span><h3>Piloto com famílias</h3>
+          <ul><li>10 a 20 famílias e 2 clínicas parceiras</li><li>Co-criação com pessoas autistas e terapeutas</li><li>Servidor seguro, adequado à LGPD, com consentimento</li><li>Modelo de linguagem para adaptar frases e ler laudos, com revisão profissional</li></ul></div>
+        <div class="marco"><span class="quando">6 a 12 meses</span><h3>App Android e iOS</h3>
+          <ul><li>Funciona sem internet: IA no aparelho</li><li>Biblioteca de rotinas criadas por terapeutas</li><li>CAA completa e agenda integrada à escola</li><li>Painel para terapeutas e neuropsicólogos</li></ul></div>
+        <div class="marco"><span class="quando">12 a 24 meses</span><h3>Vestíveis</h3>
+          <ul><li>Relógio: dica por vibração, SOS físico e batimentos</li><li>Colar com câmera grande-angular</li><li>Fone de condução óssea</li><li>Detecção de sinais de desregulação, validada clinicamente</li></ul></div>
+        <div class="marco"><span class="quando">24 a 36 meses</span><h3>Lumi físico</h3>
+          <ul><li>Robô de mesa para as rotinas de casa: higiene, sono e lição</li><li>Conversa com o app e com o relógio</li><li>Produção com custo acessível</li></ul></div>
+        <div class="marco"><span class="quando">3 anos ou mais</span><h3>Escala e evidência</h3>
+          <ul><li>Estudo clínico randomizado</li><li>Parcerias com SUS, CERs, escolas e planos de saúde</li><li>Versão para adultos: trabalho, transporte, dinheiro</li><li>Libras, espanhol e inglês</li></ul></div>
+      </div>
+
+      <h3 class="sub-h">Outros jeitos de levar o apoio junto</h3>
+      <div class="formatos revela">
+        <div class="formato"><span class="ic">⌚</span><b>Relógio</b><p>Dicas por vibração, sem som e sem chamar atenção. Botão SOS físico, GPS e leitura de batimentos para perceber sinais de estresse (com validação clínica).</p></div>
+        <div class="formato"><span class="ic">📿</span><b>Colar ou pingente</b><p>Câmera pequena na altura do peito, com LED suave que mostra quando está ligada. Libera as mãos e o celular fica no bolso.</p></div>
+        <div class="formato"><span class="ic">🎧</span><b>Fone de condução óssea</b><p>A voz do Lumi chega sem tapar os ouvidos, então a pessoa continua ouvindo o trânsito e o ambiente.</p></div>
+        <div class="formato"><span class="ic">🕶️</span><b>Óculos (pesquisa)</b><p>Pictogramas e setas no campo de visão para orientação espacial. Fase exploratória, por conforto e custo.</p></div>
+        <div class="formato"><span class="ic">🏫</span><b>Tablet da escola</b><p>Rotinas da sala de aula, mediação e CAA compartilhadas com professores, com permissão da família.</p></div>
+        <div class="formato"><span class="ic">🏠</span><b>Assistente da casa</b><p>Rotinas de manhã e de dormir pela caixa de som, com a mesma voz e o mesmo jeito do Lumi.</p></div>
+      </div>
+
+      <h3 class="sub-h">Como seria o Lumi físico ideal</h3>
+      <div class="robo-ideal revela">
+        <div class="robo-figura" id="roboFigura"></div>
+        <div class="mecanismos">
+          <div class="mec"><b>🔇 Silencioso</b><p>Sem rodas nem motores barulhentos. Movimentos lentos e mínimos; a expressão vem dos olhos em tela e da luz.</p></div>
+          <div class="mec"><b>💡 Luz e tela suaves</b><p>Brilho baixo e ajustável, cores calmas, nada piscando rápido. Modo noturno para a rotina de sono.</p></div>
+          <div class="mec"><b>🧸 Toque agradável</b><p>Corpo macio e morno, que pode ser segurado como objeto de conforto. Sem pontas nem peças pequenas.</p></div>
+          <div class="mec"><b>🗣️ Voz previsível</b><p>Volume que se ajusta ao ambiente, frases curtas e sempre a mesma voz, para não surpreender.</p></div>
+          <div class="mec"><b>🔒 Privacidade física</b><p>Tampa na câmera e chave no microfone, com luz indicando quando estão ligados. Processamento no próprio robô.</p></div>
+          <div class="mec"><b>✋ Botão grande de pausa</b><p>Um toque silencia tudo. A pessoa sempre tem controle sobre o robô.</p></div>
+          <div class="mec"><b>🔋 Seguro e durável</b><p>Bateria protegida, base de carga, material resistente a quedas e fácil de limpar.</p></div>
+          <div class="mec"><b>🔗 Parte do ecossistema</b><p>O mesmo Lumi do celular e do relógio: as estrelas e o progresso seguem a pessoa.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta revela">
+        <div>
+          <h2>Experimente agora, no seu celular.</h2>
+          <p>O MVP funciona no navegador, sem instalar nada. A câmera reconhece objetos de verdade, a voz guia em português e as duas contas conversam entre si.</p>
+          <a class="btn" href="app.html?roteiro=1">🧭 Abrir o roteiro guiado</a>
+        </div>
+        <ol>
+          <li>Abra o <b>roteiro guiado</b>. No computador, o celular do <b>Lucas</b> e o da <b>Ana</b> aparecem lado a lado.</li>
+          <li>Toque em <b>"Mostrar"</b> em cada passo, ou em <b>"Automático"</b> para ver tudo em cerca de 3 minutos.</li>
+          <li>Veja o <b>SOS</b> chegar à Ana, a <b>conversa por figuras</b>, o <b>remédio</b> e a <b>leitura do laudo</b>.</li>
+          <li>Depois explore à vontade: troque para <b>"Profissional"</b>, abra <b>"Comparar contas"</b> e converse com a <b>IA</b> na aba Saúde.</li>
+          <li>Quer ligar a câmera? Tem um passo opcional no roteiro (pede permissão).</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FONTES -->
+  <section id="fontes" aria-labelledby="titulo-fontes">
+    <div class="wrap">
+      <span class="rotulo">Fontes</span>
+      <h2 id="titulo-fontes">De onde vêm os dados</h2>
+      <p class="intro">Todas as informações desta página, com link para a fonte original. Consultadas em outubro de 2026. Os links abrem em uma nova aba.</p>
+      <ol class="lista-fontes">
+        <li id="f1"><b>IBGE · Agência de Notícias.</b> Censo 2022: pessoas com diagnóstico de autismo no Brasil (2,4 milhões; 1,2% da população; 2,6% entre 5 e 9 anos). 23 mai. 2025. Dado declarado pelo morador, resultado preliminar da amostra.
+          <a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/43464" target="_blank" rel="noopener">agenciadenoticias.ibge.gov.br</a></li>
+        <li id="f2"><b>Diário de Pernambuco.</b> Brasil calcula pela primeira vez o número de pessoas diagnosticadas com autismo. Mai. 2025.
+          <a href="https://www.diariodepernambuco.com.br/vida-urbana/2025/05/3894174-brasil-calcula-pela-primeira-vez-o-numero-de-pessoas-diagnosticadas-com-autismo.html" target="_blank" rel="noopener">diariodepernambuco.com.br</a></li>
+        <li id="f3"><b>CDC (EUA).</b> Data and Statistics on Autism Spectrum Disorder. Estimativa de 1 em 31 crianças de 8 anos (vigilância de 2022, relatório MMWR de 17 abr. 2025).
+          <a href="https://www.cdc.gov/autism/data-research/index.html" target="_blank" rel="noopener">cdc.gov</a></li>
+        <li id="f4"><b>Organização Mundial da Saúde.</b> Autism (fact sheet). Cerca de 1 em cada 100 crianças no mundo, média que varia entre estudos.
+          <a href="https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders" target="_blank" rel="noopener">who.int</a></li>
+        <li id="f5"><b>Brasil de Fato.</b> Mapa Autismo Brasil expõe dependência da rede privada e sobrecarga de mães cuidadoras. 14 abr. 2026. Pesquisa do Instituto Autismos, com 23.632 respostas válidas, online e voluntária (não representativa), aprovada pelo comitê de ética da UnB.
+          <a href="https://www.brasildefato.com.br/2026/04/14/mapa-autismo-brasil-expoe-dependencia-da-rede-privada-e-sobrecarga-de-maes-cuidadoras/" target="_blank" rel="noopener">brasildefato.com.br</a></li>
+        <li id="f6"><b>A Crítica (MS).</b> Fila de terapia para autistas em Campo Grande motiva dois inquéritos do MPMS. Inquéritos de 5 jun. 2025 e 9 abr. 2026; tempo médio estimado de espera de três anos.
+          <a href="https://acritica.net/saude/fila-terapia-autismo-campo-grande-dois-inqueritos-mpms/" target="_blank" rel="noopener">acritica.net</a></li>
+        <li id="f7"><b>Correio da Manhã.</b> Justiça manda Estado zerar fila do TEA em Prudente. Ago. 2026.
+          <a href="https://www.correiodamanha.com.br/nacional/sao-paulo/campinas/interior-de-sao-paulo/2026/08/amp/309488-justica-manda-estado-zerar-fila-do-tea-em-prudente.html" target="_blank" rel="noopener">correiodamanha.com.br</a></li>
+        <li id="f8"><b>Anderson, C. et al.</b> Occurrence and family impact of elopement in children with autism spectrum disorders. <i>Pediatrics</i>, 2012. Pesquisa com famílias de 1.218 crianças autistas (relato dos pais). Resumo em ScienceDaily.
+          <a href="https://sciencedaily.com/releases/2012/10/121008082650.htm" target="_blank" rel="noopener">sciencedaily.com</a></li>
+        <li id="f9"><b>Guan, J.; Li, G.</b> Injury Mortality in Individuals With Autism. <i>American Journal of Public Health</i>, 107(5), 2017. Registros de óbito dos EUA, 1999–2014. Divulgação da Columbia University.
+          <a href="https://www.publichealth.columbia.edu/news/individuals-autism-substantially-heightened-risk-injury-death" target="_blank" rel="noopener">publichealth.columbia.edu</a></li>
+        <li id="f10"><b>van Steensel, F.; Bögels, S.; Perrin, S.</b> Anxiety disorders in children and adolescents with autistic spectrum disorders: a meta-analysis. <i>Clinical Child and Family Psychology Review</i>, 2011. 31 estudos, 2.121 participantes; 39,6% com ao menos um transtorno de ansiedade.
+          <a href="https://dare.uva.nl/id/45aab79e-607a-4c67-a1c1-a2c165f245f1" target="_blank" rel="noopener">dare.uva.nl</a></li>
+        <li id="f11"><b>Tomchek, S.; Dunn, W.</b> Sensory processing in children with and without autism: a comparative study using the Short Sensory Profile. <i>American Journal of Occupational Therapy</i>, 2007. 281 crianças de 3 a 6 anos (relato dos cuidadores).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/17436841/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+        <li id="f12"><b>Voss, C. et al.</b> Effect of Wearable Digital Intervention for Improving Socialization in Children With Autism Spectrum Disorder: A Randomized Clinical Trial. <i>JAMA Pediatrics</i>, 173(5), 2019. Cobertura da HealthExec. Há conflito de interesse declarado e amostra pequena.
+          <a href="https://healthexec.com/topics/precision-medicine/ai-driven-wearable-acts-social-guide-autism" target="_blank" rel="noopener">healthexec.com</a></li>
+        <li id="f13"><b>Scassellati, B. et al.</b> Improving social skills in children with ASD using a long-term, in-home social robot. <i>Science Robotics</i>, 2018. Estudo piloto com 12 crianças. Divulgação da Yale University.
+          <a href="https://news.yale.edu/2018/08/22/robots-help-children-autism-improve-social-skills" target="_blank" rel="noopener">news.yale.edu</a></li>
+        <li id="f14"><b>Brasil.</b> Lei nº 13.709/2018, Lei Geral de Proteção de Dados Pessoais (LGPD). Dados de saúde são dados pessoais sensíveis (art. 5º, II) e têm regras próprias de tratamento (art. 11).
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener">planalto.gov.br</a></li>
+      </ol>
+      <p class="nota-fontes">Os personagens Lucas e Ana, o histórico de 14 meses do MVP e o laudo de exemplo são fictícios, criados para demonstração.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>👣 Passo a Passo · NAUFest #AIforImpact2026</span>
+      <span>Feito com TensorFlow.js · visão computacional no próprio aparelho · <a href="#fontes">Fontes</a></span>
+    </div>
+  </footer>
+
+  <script src="js/lumi.js?v=17"></script>
+  <script>
+    // Lumi: níveis de evolução e humores
+    document.getElementById('lumis').innerHTML = LUMI_NIVEIS.map((n, i) => `<div class="lumi-nivel">
+      ${lumiSVG({ humor: i === LUMI_NIVEIS.length - 1 ? 'comemorando' : 'feliz', acessorios: LUMI_NIVEIS.slice(1, i + 1).map((l) => l.acessorio), tamanho: 120, hiperfoco: 'dinossauros' })}
+      <b>${n.nome}</b><small>${i === 0 ? 'início da jornada' : n.texto.replace('Ganhou', 'ganha')}</small></div>`).join('');
+    document.querySelectorAll('[data-lumi-humor]').forEach((el) => el.innerHTML = lumiSVG({ humor: el.dataset.lumiHumor, acessorios: ['cachecol'], tamanho: 96 }));
+    document.getElementById('roboFigura').innerHTML = lumiSVG({ humor: 'calmo', acessorios: ['cachecol'], tamanho: 220 }) + '<span>Conceito do Lumi físico: robô de mesa, silencioso e macio</span>';
+    const heroLumi = (h) => document.getElementById('heroLumi').innerHTML = lumiSVG({ humor: h, acessorios: ['cachecol', 'fone'], tamanho: 46 });
+
+    // Demonstração das fases no celular do topo
+    const FASES = {
+      1: { chip: 'Fase 1 · Instrução total', fala: 'Pegue o livro e coloque na mochila.', sub: 'A IA está falando no fone.', voz: 'instrução clara', leg: 'A IA dá a instrução completa de cada passo, em frase curta e literal.' },
+      2: { chip: 'Fase 2 · Pergunta', fala: 'Qual livro vai para a escola hoje?', sub: 'A resposta vem de você.', voz: 'pergunta que faz pensar', leg: 'Depois de alguns acertos, a IA só pergunta, e quem raciocina é a pessoa.' },
+      3: { chip: 'Fase 3 · Silêncio', fala: 'Você sabe o que fazer. 👀', sub: 'A IA está observando em silêncio.', voz: 'em silêncio…', leg: 'A IA observa em silêncio e só volta a falar se a pessoa travar ou pedir ajuda.' },
+    };
+    const botoes = document.querySelectorAll('.fases-demo button');
+    let atual = 1, auto = true;
+    function mostrar(f) {
+      atual = f;
+      const d = FASES[f];
+      botoes.forEach((b) => b.setAttribute('aria-pressed', String(+b.dataset.fase === f)));
+      document.getElementById('chipFase').textContent = d.chip;
+      document.getElementById('balaoTxt').innerHTML = d.fala + '<small>' + d.sub + '</small>';
+      document.getElementById('vozTxt').textContent = d.voz;
+      document.getElementById('legendaFase').textContent = d.leg;
+      document.querySelector('.f-voz .ondas').style.opacity = f === 3 ? .25 : 1;
+      heroLumi(f === 1 ? 'falando' : f === 2 ? 'atento' : 'observando');
+    }
+    botoes.forEach((b) => b.addEventListener('click', () => { auto = false; mostrar(+b.dataset.fase); }));
+    mostrar(1);
+    const calmo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!calmo) setInterval(() => { if (auto) mostrar(atual % 3 + 1); }, 4500);
+
+    // Revela as seções ao rolar
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('visivel'); io.unobserve(e.target); }
+    }), { threshold: .12 }) : null;
+    document.querySelectorAll('.revela').forEach((el) => io ? io.observe(el) : el.classList.add('visivel'));
+  </script>
+</body>
+</html>
