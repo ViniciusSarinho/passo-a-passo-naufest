@@ -180,3 +180,46 @@ html { scroll-snap-type: y proximity; }
 .rotulo3d.visivel { opacity: 1; }
 .rotulo3d.esq { margin-left: -58px; }
 .rotulo3d.dir { margin-left: 58px; }
+
+/* ---------- Faixa do topo: o conteúdo que rola por baixo some antes de chegar na barra ---------- */
+body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 104px; z-index: 15; pointer-events: none;
+  background: linear-gradient(180deg, var(--creme) 0%, var(--creme) 62%, rgba(255, 248, 238, 0) 100%); }
+.topo { background: rgba(255, 252, 246, .96); }
+.sem-3d body::before, .sem-3d::before { display: none; }
+
+/* ---------- Telas muito baixas (janela de navegador pequena): ainda mais compacto ---------- */
+@media (max-height: 700px) and (min-width: 861px) {
+  .capitulo { padding-top: 96px; padding-bottom: 14px; }
+  .painel { max-height: calc(100vh - 112px); max-height: calc(100svh - 112px); padding: 16px 22px 14px; }
+  h1 { font-size: clamp(30px, min(4.6vw, 6.6vh), 52px); margin-bottom: 8px; }
+  h2 { font-size: clamp(24px, min(3.2vw, 5vh), 36px); margin-bottom: 8px; }
+  .numero { margin-bottom: 6px; }
+  .grande, .painel p { font-size: 15.5px; margin-bottom: 6px; }
+  .selo { display: none; }
+  .acoes { margin-top: 10px; gap: 8px; }
+  .botao { padding: 10px 16px; font-size: 15px; }
+  .trio, .fases, .principios { margin-top: 8px; }
+  .trio li, .fases li { padding: 6px 8px; }
+  .trio i, .fases i { font-size: 22px; }
+  .cartoes { margin-top: 8px; gap: 8px; }
+  .cartoes div { padding: 9px 10px; }
+  .cartoes p { font-size: 13px; }
+  .principios li { padding: 5px 0 5px 26px; font-size: 14.5px; }
+  .trilha span { width: 40px; height: 40px; font-size: 19px; }
+  .numeros { gap: 4px; margin-bottom: 8px; }
+  .numeros li { padding: 4px 10px; }
+  .numeros b { font-size: 21px; }
+  .numeros span { font-size: 13px; line-height: 1.25; }
+  .pontos li { font-size: 14.5px; padding-top: 4px; padding-bottom: 4px; }
+  .opc { display: none; }
+  .tags { margin-bottom: 4px; }
+  .indice { margin-top: 10px; gap: 6px; }
+  .indice button { padding: 5px 11px; font-size: 14px; }
+  .grade-ajuda { margin: 6px 0; gap: 5px; }
+  .grade-ajuda .item { padding: 5px 9px; }
+  .grade-ajuda span { display: none; }
+  .niveis li { padding: 3px 10px; }
+  .niveis li span { display: none; }
+  .niveis li.on span { display: block; }
+}
+.painel > :last-child { margin-bottom: 0; }

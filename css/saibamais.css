@@ -150,3 +150,16 @@ a.ref:hover { text-decoration: underline; }
   .painel.largo { padding-top: 18px; padding-bottom: 14px; }
   .grade-ajuda span { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 }
+
+@media (max-height: 700px) and (min-width: 861px) {
+  .niveis { grid-template-columns: 1fr 1fr; }
+  .niveis li { grid-template-columns: 1fr; }
+  .painel .nota { display: none; }
+  .painel.largo h2 { font-size: clamp(22px, 2.4vw, 32px); }
+  .pontos li { padding-top: 3px; padding-bottom: 3px; font-size: 14px; }
+  .painel .acoes .botao.pequeno { padding: 7px 12px; font-size: 14px; }
+}
+@media (max-height: 700px) and (min-width: 861px) {
+  .capitulo { padding-top: 90px; padding-bottom: 10px; }
+  .painel { max-height: calc(100vh - 100px); max-height: calc(100svh - 100px); padding-top: 12px; padding-bottom: 10px; }
+}

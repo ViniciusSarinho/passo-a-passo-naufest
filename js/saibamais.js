@@ -52,3 +52,11 @@ document.addEventListener('click', (e) => {
 });
 abrirAba('avalia');
 irParaHash();
+
+// Painéis: só rolam por dentro quando o conteúdo realmente não cabe (sem barra de rolagem à toa por poucos pixels)
+function ajustarRolagemDosPaineis() {
+  document.querySelectorAll('.painel').forEach((p) => { p.style.overflowY = 'hidden'; p.style.overflowY = p.scrollHeight - p.clientHeight > 14 ? 'auto' : 'hidden'; });
+}
+addEventListener('resize', ajustarRolagemDosPaineis);
+addEventListener('load', ajustarRolagemDosPaineis);
+setTimeout(ajustarRolagemDosPaineis, 600);

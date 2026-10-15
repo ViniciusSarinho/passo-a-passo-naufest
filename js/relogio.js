@@ -52,7 +52,7 @@ const TELAS_RELOGIO = {
       const r = registroHoje(m.id), agora = hora();
       const estado = r ? (r.status === 'perdido' ? '✗ perdido' : '✓ ' + (r.hora || 'tomado')) : (m.horario < agora ? '⏰ atrasado' : m.horario);
       return `<li class="${r && r.status !== 'perdido' ? 'feito' : ''}"><i>${m.emoji}</i><span><b>${esc(nomeCurto(m))}</b><small>${esc(m.dose)} · ${estado}</small></span>${r ? '' : `<button class="rl-mini" data-rl-dei="${m.id}">Dei</button>`}</li>`;
-    }).join('')}</ul><span class="rl-texto">${S.saude.meds.some((m) => m.estoque <= 7) ? '⚠️ Estoque baixo: hora de repor' : 'Estoque ok'}</span>`;
+    }).join('')}</ul><span class="rl-texto">${S.saude.meds.some((m) => m.estoque <= 7) ? '⚠️ Estoque baixo' : 'Estoque ok'}</span>`;
   },
   conversa() {
     const msgs = (S.caa?.mensagens || []).slice(-2);

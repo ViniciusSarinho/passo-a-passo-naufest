@@ -17,6 +17,14 @@ const io = new IntersectionObserver((es) => es.forEach((e) => {
   aoMudarCapitulo.forEach((f) => f(capituloAtivo));
 }), { rootMargin: '-45% 0px -45% 0px' });
 capitulos.forEach((c) => io.observe(c));
+// Painéis: só rolam por dentro quando o conteúdo realmente não cabe (sem barra de rolagem à toa por poucos pixels)
+function ajustarRolagemDosPaineis() {
+  document.querySelectorAll('.painel').forEach((p) => { p.style.overflowY = 'hidden'; p.style.overflowY = p.scrollHeight - p.clientHeight > 14 ? 'auto' : 'hidden'; });
+}
+addEventListener('resize', ajustarRolagemDosPaineis);
+addEventListener('load', ajustarRolagemDosPaineis);
+setTimeout(ajustarRolagemDosPaineis, 600);
+
 capitulos[0].classList.add('ativo');
 
 try {
