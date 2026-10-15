@@ -319,12 +319,12 @@ function grafSerie(valores, rotulos, { cor = '#2a9d8f', sufixo = '', max } = {})
   const X = (i) => x0 + i * (x1 - x0) / Math.max(1, valores.length - 1), Y = (v) => y1 - (v / mx) * (y1 - y0);
   const d = valores.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
   return `<svg viewBox="0 0 ${W} ${H}" role="img">
-    ${[0, .5, 1].map((f) => `<line x1="${x0}" x2="${x1}" y1="${Y(mx * f)}" y2="${Y(mx * f)}" stroke="rgba(29,79,82,.063)"/><text x="${x0 - 4}" y="${Y(mx * f) + 3}" fill="#5b6b64" font-size="8.5" text-anchor="end">${(mx * f).toFixed(mx < 10 ? 1 : 0)}</text>`).join('')}
+    ${[0, .5, 1].map((f) => `<line x1="${x0}" x2="${x1}" y1="${Y(mx * f)}" y2="${Y(mx * f)}" stroke="currentColor" stroke-opacity=".12"/><text x="${x0 - 4}" y="${Y(mx * f) + 3}" fill="currentColor" fill-opacity=".7" font-size="8.5" text-anchor="end">${(mx * f).toFixed(mx < 10 ? 1 : 0)}</text>`).join('')}
     <path d="${d} L${X(valores.length - 1)} ${y1} L${X(0)} ${y1} Z" fill="${cor}" opacity=".12"/>
     <path d="${d}" fill="none" stroke="${cor}" stroke-width="2.2" stroke-linejoin="round"/>
     <circle cx="${X(valores.length - 1)}" cy="${Y(valores[valores.length - 1])}" r="3.5" fill="${cor}"/>
-    <text x="${X(valores.length - 1) - 4}" y="${Y(valores[valores.length - 1]) - 7}" fill="#1d4f52" font-size="10" text-anchor="end" font-weight="700">${valores[valores.length - 1]}${sufixo}</text>
-    ${rotulos.map((r, i) => i % 3 === 0 || i === rotulos.length - 1 ? `<text x="${X(i)}" y="${H - 6}" fill="#5b6b64" font-size="8.5" text-anchor="middle">${r}</text>` : '').join('')}
+    <text x="${X(valores.length - 1) - 4}" y="${Y(valores[valores.length - 1]) - 7}" fill="currentColor" font-size="10" text-anchor="end" font-weight="700">${valores[valores.length - 1]}${sufixo}</text>
+    ${rotulos.map((r, i) => i % 3 === 0 || i === rotulos.length - 1 ? `<text x="${X(i)}" y="${H - 6}" fill="currentColor" fill-opacity=".7" font-size="8.5" text-anchor="middle">${r}</text>` : '').join('')}
   </svg>`;
 }
 const nomeMesCurto = (k) => { const [a, m] = k.split('-'); return ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'][+m - 1] + (m === '01' || k === S.caa.historico[0].mes ? '/' + a.slice(2) : ''); };

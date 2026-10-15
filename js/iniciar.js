@@ -87,11 +87,22 @@ document.getElementById('reiniciar').onclick = () => {
   toast('Demonstração reiniciada.');
 };
 function reiniciarDemonstracao() {
-  P.pararGuia(); S = dadosDemonstracao(); salvar(); P.ir('inicio'); R.aba = 'inicio'; R.render(); Q.render(); W.aviso = null; desenharRelogio();
+  P.pararGuia(); S = dadosDemonstracao(); salvar(); aplicarTema(); P.ir('inicio'); R.aba = 'inicio'; R.render(); Q.render(); W.aviso = null; desenharRelogio();
 }
 
 // ---------- Partida ----------
+// Tema das telas dos aparelhos: escuro por padrão (mais calmo à vista); "Meu jeito" e o botão do topo voltam ao claro
+function aplicarTema() {
+  const escuro = S.perfil.telaEscura !== false;
+  document.body.classList.toggle('escuro', escuro);
+  const b = document.getElementById('tema');
+  b.setAttribute('aria-pressed', String(escuro));
+  b.textContent = escuro ? '🌙 Tela escura' : '☀️ Tela clara';
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content', escuro ? '#fff8ee' : '#fff8ee');
+}
+document.getElementById('tema').onclick = () => { S.perfil.telaEscura = S.perfil.telaEscura === false; salvar(); aplicarTema(); const m = document.getElementById('mjEscura'); if (m) m.checked = S.perfil.telaEscura !== false; };
 garantirModulos();
+aplicarTema();
 const params = new URLSearchParams(location.search);
 const contaInicial = params.get('conta');
 mostrarConta(['responsavel', 'profissional'].includes(contaInicial) ? contaInicial : 'paciente');

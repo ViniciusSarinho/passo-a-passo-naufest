@@ -62,9 +62,11 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 - Dra. Júlia (terapeuta): plano terapêutico e metas medidas pelos dados. Dr. Rafael (neuropsicólogo): laudos. Dra. Helena (médica): **a única** que altera dose e horário. Botão **"Comparar contas"** mostra o que cada conta vê e faz.
 
 **Relógio (Carlos, pai)**
-- O essencial primeiro (**SOS** com "Estou indo", rotina **ao vivo**, avisos de conquista, remédio e mensagem) e, passando as telas (pontinhos, ‹ ›, arrastar ou a coroa): **Hoje**, **Remédios** (com botão "Dei"), **Conversa** (respostas rápidas), **Avisos** para o Lucas, **Resumo** do dia e **Ajustes** (vibração, "só SOS").
+- O essencial primeiro (**SOS** com "Estou indo", rotina **ao vivo**, avisos de conquista, remédio e mensagem) e, passando as telas (pontinhos, os dois botões laterais ‹ › do relógio, os botões abaixo ou arrastando): **Hoje**, **Remédios** (com botão "Dei"), **Conversa** (respostas rápidas), **Avisos** para o Lucas, **Resumo** do dia e **Ajustes** (vibração, "só SOS").
 
 **Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
+
+**Tela escura (padrão) nos aparelhos:** as telas dos celulares e do tablet usam um tema escuro calmo (cinza-esverdeado, sem preto nem branco puros), com botão no topo e opção em "Meu jeito" para voltar ao fundo claro, pois sensibilidade à luz varia de pessoa para pessoa.
 
 **Design calmo e gamificado:** baseado nos estudos do TCC ([`docs/FONTES.md`](docs/FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
 

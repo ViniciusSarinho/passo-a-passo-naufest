@@ -46,7 +46,6 @@ p { margin: 0 0 12px; }
 .rotulo3d { font: 800 13px 'Nunito', sans-serif; color: var(--tinta); background: rgba(255, 255, 255, .92);
   border: 1px solid var(--linha); padding: 5px 11px; border-radius: 999px; white-space: nowrap; box-shadow: var(--sombra);
   transition: opacity .5s, transform .5s; pointer-events: none; }
-.rotulo3d.apagado { opacity: 0; transform: translateY(6px); }
 .carregando { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 10px; align-items: center;
   font: 800 15px 'Nunito', sans-serif; color: var(--suave); }
 .carregando span { width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--lilas); border-top-color: var(--azul); animation: girar 1s linear infinite; }
@@ -153,3 +152,31 @@ main { position: relative; z-index: 2; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .painel { opacity: 1; transform: none; }
 }
+
+/* ---------- Rolagem e painéis: nada passa por baixo da barra do topo ---------- */
+html { scroll-snap-type: y proximity; }
+.capitulo { scroll-snap-align: start; min-height: 100vh; min-height: 100svh; padding: 104px max(24px, 5vw) 28px; }
+.painel { max-height: calc(100vh - 132px); max-height: calc(100svh - 132px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--lilas) transparent; opacity: 0; }
+.capitulo.ativo .painel { opacity: 1; }
+@media (max-height: 880px) and (min-width: 861px) {
+  h1 { font-size: clamp(34px, min(5.2vw, 7.4vh), 66px); }
+  h2 { font-size: clamp(28px, min(3.8vw, 5.6vh), 46px); margin-bottom: 10px; }
+  .painel { padding: 22px 26px 18px; }
+  .grande { font-size: 17.5px; }
+  .selo { margin-bottom: 12px; }
+  .acoes { margin-top: 14px; }
+  .trio, .fases, .principios { margin-top: 12px; }
+  .numeros { margin-bottom: 12px; gap: 6px; }
+  .numeros li { padding: 6px 12px; }
+  .cartoes { margin-top: 12px; }
+}
+@media (max-width: 860px) {
+  .capitulo { padding: 84px 16px 16px; }
+  .painel { max-height: calc(100svh - 104px); }
+}
+
+/* ---------- Nomes sobre os modelos 3D: só aparecem quando a câmera parou e cabem na parte livre ---------- */
+.rotulo3d { opacity: 0; transition: opacity .35s; }
+.rotulo3d.visivel { opacity: 1; }
+.rotulo3d.esq { margin-left: -58px; }
+.rotulo3d.dir { margin-left: 58px; }

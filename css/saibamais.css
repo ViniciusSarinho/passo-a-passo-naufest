@@ -130,3 +130,23 @@ a.ref:hover { text-decoration: underline; }
 @media (max-width: 560px) {
   .niveis li:not(.on) { display: none; } /* no celular, só o nível atual: o painel não cobre o Lumi */
 }
+
+/* Telas baixas (notebooks): compacta os painéis mais cheios para caberem sem rolar dentro do painel */
+@media (max-height: 880px) and (min-width: 861px) {
+  .grade-ajuda { gap: 6px; margin: 8px 0 8px; }
+  .grade-ajuda .item { padding: 6px 10px; }
+  .grade-ajuda i { font-size: 20px; }
+  .grade-ajuda b { font-size: 14.5px; }
+  .grade-ajuda span { font-size: 12.5px; line-height: 1.25; }
+  .niveis { gap: 4px; margin-top: 8px; }
+  .niveis li { padding: 4px 12px; }
+  .painel .nota { font-size: 13px; margin: 8px 0 0; }
+  .painel p { margin-bottom: 8px; }
+  .tags { margin-bottom: 6px; }
+  .pontos li { padding-top: 5px; padding-bottom: 5px; font-size: 15.5px; }
+}
+@media (max-height: 880px) and (min-width: 861px) {
+  .painel.largo h2 { font-size: clamp(26px, 2.8vw, 38px); }
+  .painel.largo { padding-top: 18px; padding-bottom: 14px; }
+  .grade-ajuda span { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+}

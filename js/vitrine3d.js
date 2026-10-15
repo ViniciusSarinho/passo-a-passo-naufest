@@ -62,7 +62,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   function rotulo(nome, fase, classe, onde, pai) {
     const d = document.createElement('div');
     d.className = 'rotulo3d'; d.innerHTML = `${nome} <span class="fase ${classe}">${fase}</span>`;
-    add(new CSS2DObject(d), onde, pai); return d;
+    const o = new CSS2DObject(d); add(o, onde, pai); d._obj = o; return d;
   }
 
   // ---------- Palco ----------
@@ -92,21 +92,21 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const m = novoItem('celular', 2.1);
     bloco(1.05, 2.1, 0.13, 0x2e2a47, 0.18, [0, 0, 0], m);
     const t = telaCanvas(300, 620, (g, l, a) => {
-      g.fillStyle = '#fffdf8'; g.fillRect(0, 0, l, a);
-      g.fillStyle = '#4a6cf0'; arred(g, 14, 22, l - 28, 52, 16); g.fill();
+      g.fillStyle = '#172226'; g.fillRect(0, 0, l, a);
+      g.fillStyle = '#2a8f9d'; arred(g, 14, 22, l - 28, 52, 16); g.fill();
       g.fillStyle = '#fff'; g.font = 'bold 22px sans-serif'; g.fillText('Oi, Lucas! 👋', 30, 56);
       g.fillStyle = '#16233f'; arred(g, 90, 96, 120, 96, 30); g.fill();
       g.fillStyle = '#5eead4'; arred(g, 120, 126, 14, 24, 7); g.fill(); arred(g, 166, 126, 14, 24, 7); g.fill();
       g.strokeStyle = '#5eead4'; g.lineWidth = 6; g.lineCap = 'round'; g.beginPath(); g.arc(150, 152, 14, 0.2, Math.PI - 0.2); g.stroke();
-      g.fillStyle = '#fff4d6'; arred(g, 18, 212, l - 36, 92, 20); g.fill();
-      g.fillStyle = '#1d4f52'; g.font = 'bold 19px sans-serif'; g.fillText('Pegue o livro e coloque', 34, 250); g.fillText('na mochila.', 34, 276);
-      for (let i = 0; i < 6; i++) { g.fillStyle = i < 3 ? '#ffd166' : '#ece6f5'; g.beginPath(); g.arc(42 + i * 43, 340, 15, 0, 7); g.fill(); }
+      g.fillStyle = '#2a3d45'; arred(g, 18, 212, l - 36, 92, 20); g.fill();
+      g.fillStyle = '#e7efe9'; g.font = 'bold 19px sans-serif'; g.fillText('Pegue o livro e coloque', 34, 250); g.fillText('na mochila.', 34, 276);
+      for (let i = 0; i < 6; i++) { g.fillStyle = i < 3 ? '#f0c25a' : '#34464d'; g.beginPath(); g.arc(42 + i * 43, 340, 15, 0, 7); g.fill(); }
       g.fillStyle = '#9edfc8'; arred(g, 18, 388, l - 36, 70, 22); g.fill();
       g.fillStyle = '#16403a'; g.font = 'bold 26px sans-serif'; g.textAlign = 'center'; g.fillText('✓ Fiz', l / 2, 433);
       g.fillStyle = '#e5484d'; arred(g, 18, 478, 110, 54, 18); g.fill();
       g.fillStyle = '#fff'; g.font = 'bold 22px sans-serif'; g.fillText('SOS', 73, 514);
-      g.fillStyle = '#ece6f5'; arred(g, 142, 478, 140, 54, 18); g.fill();
-      g.fillStyle = '#5b6b64'; g.font = 'bold 20px sans-serif'; g.fillText('Calma', 212, 514);
+      g.fillStyle = '#34464d'; arred(g, 142, 478, 140, 54, 18); g.fill();
+      g.fillStyle = '#a9bdb6'; g.font = 'bold 20px sans-serif'; g.fillText('Calma', 212, 514);
     });
     planoTela(t.tex, 0.95, 1.96, [0, 0, 0.07], m);
     bloco(0.3, 0.05, 0.02, 0x15131f, 0.02, [0, 0.93, 0.07], m);
@@ -161,18 +161,18 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const q = new THREE.Group(); q.rotation.x = -0.12; m.add(q);
     bloco(2.3, 1.55, 0.1, 0x2e2a47, 0.14, [0, 0, 0], q);
     const t = telaCanvas(460, 310, (g, l, a) => {
-      g.fillStyle = '#fffdf8'; g.fillRect(0, 0, l, a);
-      g.fillStyle = '#1d4f52'; g.font = 'bold 22px sans-serif'; g.fillText('Evolução · 14 meses', 22, 40);
+      g.fillStyle = '#172226'; g.fillRect(0, 0, l, a);
+      g.fillStyle = '#e7efe9'; g.font = 'bold 22px sans-serif'; g.fillText('Evolução · 14 meses', 22, 40);
       g.fillStyle = '#9edfc8'; arred(g, l - 130, 18, 108, 30, 14); g.fill();
       g.fillStyle = '#16403a'; g.font = 'bold 15px sans-serif'; g.fillText('+ fase 2', l - 112, 39);
-      g.strokeStyle = '#ece6f5'; g.lineWidth = 2;
+      g.strokeStyle = '#2f4047'; g.lineWidth = 2;
       [90, 140, 190].forEach((y) => { g.beginPath(); g.moveTo(22, y); g.lineTo(l - 22, y); g.stroke(); });
       const pts = [20, 26, 34, 41, 38, 46, 55, 60, 52, 58, 68, 74, 80, 84];
-      g.strokeStyle = '#4a6cf0'; g.lineWidth = 5; g.lineJoin = 'round'; g.beginPath();
+      g.strokeStyle = '#6fd3d0'; g.lineWidth = 5; g.lineJoin = 'round'; g.beginPath();
       pts.forEach((v, i) => { const x = 28 + i * ((l - 56) / 13), y = 210 - v * 1.5; i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
-      [['Passos sozinhos', '84%', '#2a9d7c'], ['Pausas de calma', '3/sem', '#c27c0e'], ['Remédio', '96%', '#4a6cf0']].forEach(([t1, v, c], i) => {
-        const x = 22 + i * 142; g.fillStyle = '#f7f1e8'; arred(g, x, 226, 130, 66, 14); g.fill();
-        g.fillStyle = c; g.font = 'bold 24px sans-serif'; g.fillText(v, x + 12, 258); g.fillStyle = '#5b6b64'; g.font = '14px sans-serif'; g.fillText(t1, x + 12, 280);
+      [['Passos sozinhos', '84%', '#5fd0a3'], ['Pausas de calma', '3/sem', '#f0c25a'], ['Remédio', '96%', '#6fd3d0']].forEach(([t1, v, c], i) => {
+        const x = 22 + i * 142; g.fillStyle = '#22333a'; arred(g, x, 226, 130, 66, 14); g.fill();
+        g.fillStyle = c; g.font = 'bold 24px sans-serif'; g.fillText(v, x + 12, 258); g.fillStyle = '#a9bdb6'; g.font = '14px sans-serif'; g.fillText(t1, x + 12, 280);
       });
     });
     planoTela(t.tex, 2.14, 1.44, [0, 0, 0.055], q);
@@ -246,7 +246,8 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   // Rótulos
   const FASES = { celular: ['Celular', 'Hoje', 'hoje'], relogio: ['Relógio', 'Hoje no app · 12–24 m', 'breve'], colar: ['Colar', '12–24 meses', 'breve'], fone: ['Fone', '12–24 meses', 'breve'], tablet: ['Painel', 'Hoje no app · 6–12 m', 'hoje'], robo: ['Lumi físico', '24–36 meses', 'futuro'] };
   const rot = {};
-  Object.entries(FASES).forEach(([k, [n, f, c]]) => { rot[k] = rotulo(n, f, c, [0, k === 'robo' ? 1.9 : 1.7, 0], itens[k].g); });
+  const ALTURA_NOME = { celular: 1.55, relogio: 1.95, colar: 1.6, fone: 1.2, tablet: 1.4, robo: 1.95 };
+  Object.entries(FASES).forEach(([k, [n, f, c]]) => { rot[k] = rotulo(n, f, c, [0, ALTURA_NOME[k], 0], itens[k].g); });
 
   let piscar = 2, tNivel = 0, proximoNivel = 0, visivel = true;
 
@@ -265,12 +266,13 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   // O painel de texto cobre uma parte da tela (à esquerda no computador, embaixo no celular). A vitrine é enquadrada
   // só na parte livre: mede-se o painel do capítulo ativo e a câmera desloca e afasta o quadro para os modelos
   // nunca ficarem por baixo dele.
-  let reservaX = 0, reservaY = 0, alvoX = 0, alvoY = 0;
+  const TOPO = 84; // altura da barra de navegação
+  let reservaX = 0, reservaY = 0, alvoX = 0, alvoY = 0, permitidos = [];
   const tg = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
   function medirPainel() {
     const l = caixa.clientWidth, a = caixa.clientHeight;
     const painel = document.querySelector('.capitulo.ativo .painel');
-    if (!painel) { alvoX = 0; alvoY = 0; return; }
+    if (!painel || new URLSearchParams(location.search).has('sempainel')) { alvoX = 0; alvoY = 0; return; }
     const r = painel.getBoundingClientRect();
     if (l > 860) { alvoX = Math.max(0, Math.min(r.right + 28, l * 0.62)); alvoY = 0; }
     else { alvoX = 0; alvoY = Math.max(0, Math.min(a * 0.6, a - r.top + 8)); }
@@ -278,16 +280,14 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   function enquadrar() {
     const l = caixa.clientWidth, a = caixa.clientHeight;
     camera.aspect = (l + reservaX) / a;
-    if (reservaX > 0.5) camera.setViewOffset(l + reservaX, a, 0, 0, l, a);
-    else if (reservaY > 0.5) camera.setViewOffset(l, a, 0, reservaY / 2, l, a);
-    else camera.clearViewOffset();
+    camera.setViewOffset(l + reservaX, a, 0, (reservaY - TOPO) / 2, l, a); // desloca para a parte livre (fora do painel e da barra)
     camera.updateProjectionMatrix();
   }
   function irPara(nome) {
     atual = nome;
     medirPainel();
     const l = caixa.clientWidth, a = caixa.clientHeight;
-    const livreL = Math.max(240, l - alvoX), livreA = Math.max(240, a - alvoY);
+    const livreL = Math.max(240, l - alvoX), livreA = Math.max(240, a - alvoY - TOPO);
     const p = POSES[nome] || POSES.abertura;
     destAlvo.set(...p.alvo);
     const dir = new THREE.Vector3(...p.pos).sub(destAlvo);
@@ -301,7 +301,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     cena.fog.near = d + 6; cena.fog.far = d + 30; // a névoa não apaga a vitrine quando a câmera está longe
     if (fixo) { camPos.copy(destPos); camAlvo.copy(destAlvo); reservaX = alvoX; reservaY = alvoY; enquadrar(); }
     caixa.classList.toggle('geral', todos); // na visão geral, os rótulos ficam só com o nome
-    Object.entries(rot).forEach(([k, dv]) => dv.classList.toggle('apagado', !(todos || k === nome || (nome === 'lumi' && k === 'robo'))));
+    permitidos = todos ? Object.keys(rot) : [nome === 'lumi' ? 'robo' : nome];
     estrelas.forEach((e) => { e.visible = nome === 'lumi'; });
     if (nome === 'lumi') { nivelRobo(0); proximoNivel = 0; } else if (nome === 'robo') nivelRobo(1);
     // O painel termina de subir (animação de entrada) um instante depois: mede de novo
@@ -352,6 +352,20 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
       e.position.set(X.robo + Math.cos(a) * 1.6, 2.5 + Math.sin(t * 1.4 + i) * 0.1, Math.sin(a) * 1.6); e.rotation.y = t * 1.5 + i;
     });
     renderer.render(cena, camera); rotulos.render(cena, camera);
+    atualizarRotulos();
+  }
+  // Os nomes só aparecem com a câmera parada e dentro da parte livre da tela (fora do painel, da barra e das bordas)
+  const vtmp = new THREE.Vector3();
+  function atualizarRotulos() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const movendo = camPos.distanceTo(destPos) + camAlvo.distanceTo(destAlvo) > 0.4;
+    camera.updateMatrixWorld();
+    Object.entries(rot).forEach(([k, d]) => {
+      d._obj.getWorldPosition(vtmp).project(camera);
+      const x = (vtmp.x * 0.5 + 0.5) * l, y = (-vtmp.y * 0.5 + 0.5) * a;
+      const dentro = vtmp.z < 1 && x > alvoX + 60 && x < l - 60 && y > TOPO + 24 && y < a - alvoY - 8;
+      d.classList.toggle('visivel', !movendo && dentro && permitidos.includes(k));
+    });
   }
   const rodar = () => renderer.setAnimationLoop(visivel && !document.hidden ? quadro : null);
   rodar();

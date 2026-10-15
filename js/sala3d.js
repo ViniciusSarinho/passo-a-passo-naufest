@@ -75,6 +75,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const m = sombra(new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, a, seg), mat(cor)));
     m.position.set(...onde); pai.add(m); return m;
   }
+  function toro(r, tubo, cor, onde, pai) { const m = sombra(new THREE.Mesh(new THREE.TorusGeometry(r, tubo, 12, 32), mat(cor))); m.position.set(...onde); pai.add(m); return m; }
   function capsula(r, comp, cor, pai) {
     const m = sombra(new THREE.Mesh(new THREE.CapsuleGeometry(r, comp, 6, 14), mat(cor)));
     m.position.y = -(comp / 2 + r * 0.6); pai.add(m); return m;
@@ -82,7 +83,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   function rotulo(texto, onde, pai) {
     const d = document.createElement('div');
     d.className = 'rotulo3d'; d.textContent = texto;
-    const o = new CSS2DObject(d); o.position.set(...onde); pai.add(o); return d;
+    const o = new CSS2DObject(d); o.position.set(...onde); pai.add(o); d._obj = o; return d;
   }
   // Tela que brilha (celular, relógio, rosto do Lumi), desenhada num canvas
   function telaCanvas(l, a, desenhar) {
@@ -216,46 +217,50 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   const ana = pessoa({ pele: 0xe0a77f, roupa: 0xff9f80, calca: 0x5a6fb8, cabelo: 0x4a2f25, cabeloLongo: true });
   ana.g.position.set(-1.75, 0, -2.38); ana.g.rotation.y = 0.35; cena.add(ana.g);
   sentar(ana, 0.62);
-  ana.tronco.rotation.x = -0.12; ana.pescoco.rotation.x = 0.42;
-  [ana.bE, ana.bD].forEach((b, i) => { b.a.rotation.x = -0.25; b.a.rotation.z = i ? 0.12 : -0.12; b.b.rotation.x = -1.15; b.b.rotation.z = i ? -0.55 : 0.55; });
-  // O celular fica na frente do peito, com a tela virada para o rosto (e um pouco para quem olha a cena)
+  ana.tronco.rotation.x = 0.1; ana.pescoco.rotation.x = 0.42;
+  // Poses calculadas por cinemática: as duas mãos chegam às bordas do celular, na frente do peito
+  ana.bD.a.rotation.set(-0.6, 0, 0); ana.bD.b.rotation.set(-1.58, 0, -0.66);
+  ana.bE.a.rotation.set(-0.6, 0, 0); ana.bE.b.rotation.set(-1.58, 0, 0.66);
   const celular = new THREE.Group(); ana.g.add(celular);
-  celular.position.set(0, 0.98, 0.36); celular.rotation.set(-1.2, 0, 0);
-  bloco(0.16, 0.3, 0.025, 0x2e2a47, 0.03, [0, 0, 0], celular);
+  celular.position.set(0, 1.05, 0.37); celular.rotation.set(-1.9, 0, 0);
+  bloco(0.17, 0.31, 0.025, 0x1d2a2e, 0.03, [0, 0, 0], celular);
   const telaCel = telaCanvas(160, 300, (g, l, a, passo = 3) => {
-    g.fillStyle = '#fffaf2'; g.fillRect(0, 0, l, a);
-    g.fillStyle = '#4a6cf0'; arred(g, 12, 18, l - 24, 34, 12); g.fill();
+    g.fillStyle = '#172226'; g.fillRect(0, 0, l, a);
+    g.fillStyle = '#2a8f9d'; arred(g, 12, 18, l - 24, 34, 12); g.fill();
     g.fillStyle = '#fff'; g.font = 'bold 15px sans-serif'; g.fillText('Lucas · ao vivo', 22, 41);
-    g.fillStyle = '#e9f7f1'; arred(g, 12, 64, l - 24, 92, 14); g.fill();
-    g.fillStyle = '#1d4f52'; g.font = 'bold 14px sans-serif'; g.fillText('Mochila', 24, 88);
-    g.fillStyle = '#5b6b64'; g.font = '13px sans-serif'; g.fillText(`Passo ${passo} de 6`, 24, 108);
-    g.fillStyle = '#d8d0e8'; arred(g, 24, 124, l - 48, 10, 5); g.fill();
-    g.fillStyle = '#5fc3a3'; arred(g, 24, 124, (l - 48) * passo / 6, 10, 5); g.fill();
-    for (let i = 0; i < 6; i++) { g.fillStyle = i < passo ? '#ffd166' : '#ece6f5'; g.beginPath(); g.arc(28 + i * 21, 186, 8, 0, 7); g.fill(); }
-    g.fillStyle = '#fff4d6'; arred(g, 12, 214, l - 24, 66, 14); g.fill();
-    g.fillStyle = '#1d4f52'; g.font = 'bold 13px sans-serif'; g.fillText('💬 "Já vou!"', 24, 252);
+    g.fillStyle = '#22333a'; arred(g, 12, 64, l - 24, 92, 14); g.fill();
+    g.fillStyle = '#e7efe9'; g.font = 'bold 14px sans-serif'; g.fillText('Mochila', 24, 88);
+    g.fillStyle = '#a9bdb6'; g.font = '13px sans-serif'; g.fillText(`Passo ${passo} de 6`, 24, 108);
+    g.fillStyle = '#34464d'; arred(g, 24, 124, l - 48, 10, 5); g.fill();
+    g.fillStyle = '#6fd3d0'; arred(g, 24, 124, (l - 48) * passo / 6, 10, 5); g.fill();
+    for (let i = 0; i < 6; i++) { g.fillStyle = i < passo ? '#f0c25a' : '#34464d'; g.beginPath(); g.arc(28 + i * 21, 186, 8, 0, 7); g.fill(); }
+    g.fillStyle = '#2a3d45'; arred(g, 12, 214, l - 24, 66, 14); g.fill();
+    g.fillStyle = '#e7efe9'; g.font = 'bold 13px sans-serif'; g.fillText('💬 "Já vou!"', 24, 252);
   });
-  const telaAna = new THREE.Mesh(new THREE.PlaneGeometry(0.14, 0.27), new THREE.MeshBasicMaterial({ map: telaCel.tex }));
+  const telaAna = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 0.285), new THREE.MeshBasicMaterial({ map: telaCel.tex }));
   telaAna.position.z = 0.014; celular.add(telaAna);
 
   // Carlos, em pé perto da janela, olhando o relógio no pulso
   const carlos = pessoa({ pele: 0xc98c66, roupa: 0x7fc8a9, calca: 0x3f4a6b, cabelo: 0x2e2a47 });
   carlos.g.position.set(2.75, 0, -1.6); carlos.g.rotation.y = 0.15; cena.add(carlos.g);
   carlos.pescoco.rotation.x = 0.35; carlos.pescoco.rotation.y = 0.35;
-  carlos.bE.a.rotation.set(-0.9, 0, -0.35); carlos.bE.b.rotation.set(-1.5, 0, 0.9);
+  // Antebraço esquerdo erguido (pose calculada) para mostrar o relógio ao visitante
+  carlos.bE.a.rotation.set(-0.2, 0, -0.9); carlos.bE.b.rotation.set(-2.64, 0, -0.78);
   carlos.bD.a.rotation.z = 0.08;
   const relogio = new THREE.Group(); carlos.bE.b.add(relogio);
-  relogio.position.set(0, -0.16, 0.07); relogio.rotation.set(-Math.PI / 2, 0, 0);
-  bloco(0.09, 0.1, 0.03, 0x2e2a47, 0.025, [0, 0, 0], relogio);
-  const telaRel = telaCanvas(120, 130, (g, l, a, modo = 'passo') => {
+  relogio.position.set(0, -0.2, 0); relogio.rotation.set(0, 2.78, 0);
+  toro(0.075, 0.03, 0x9edfc8, [0, 0, 0], relogio).rotation.x = Math.PI / 2;                 // pulseira em volta do punho
+  bloco(0.2, 0.24, 0.07, 0x1d1a2e, 0.05, [0, 0, 0.095], relogio);                          // caixa
+  bloco(0.025, 0.06, 0.035, 0x4b4566, 0.012, [0.115, 0.03, 0.095], relogio);                    // coroa
+  const telaRel = telaCanvas(120, 140, (g, l, a, modo = 'passo') => {
     g.fillStyle = '#1f1b33'; g.fillRect(0, 0, l, a);
-    if (modo === 'sos') { g.fillStyle = '#ff6b6b'; g.beginPath(); g.arc(l / 2, a / 2, 46, 0, 7); g.fill(); g.fillStyle = '#fff'; g.font = 'bold 28px sans-serif'; g.textAlign = 'center'; g.fillText('SOS', l / 2, a / 2 + 10); return; }
+    if (modo === 'sos') { g.fillStyle = '#ff6b6b'; g.beginPath(); g.arc(l / 2, a / 2, 48, 0, 7); g.fill(); g.fillStyle = '#fff'; g.font = 'bold 30px sans-serif'; g.textAlign = 'center'; g.fillText('SOS', l / 2, a / 2 + 11); return; }
     g.strokeStyle = '#3a3555'; g.lineWidth = 10; g.beginPath(); g.arc(l / 2, a / 2, 44, 0, 7); g.stroke();
-    g.strokeStyle = '#9edfc8'; g.beginPath(); g.arc(l / 2, a / 2, 44, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * 0.66); g.stroke();
-    g.fillStyle = '#fff'; g.font = 'bold 26px sans-serif'; g.textAlign = 'center'; g.fillText('4/6', l / 2, a / 2 + 9);
+    g.strokeStyle = '#9edfc8'; g.lineCap = 'round'; g.beginPath(); g.arc(l / 2, a / 2, 44, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * 0.66); g.stroke();
+    g.fillStyle = '#fff'; g.font = 'bold 28px sans-serif'; g.textAlign = 'center'; g.fillText('4/6', l / 2, a / 2 + 10);
   });
-  const telaRelogio = new THREE.Mesh(new THREE.PlaneGeometry(0.075, 0.082), new THREE.MeshBasicMaterial({ map: telaRel.tex }));
-  telaRelogio.position.z = 0.017; relogio.add(telaRelogio);
+  const telaRelogio = new THREE.Mesh(new THREE.PlaneGeometry(0.17, 0.2), new THREE.MeshBasicMaterial({ map: telaRel.tex }));
+  telaRelogio.position.z = 0.132; relogio.add(telaRelogio);
 
   // Lucas, sentado no tapete, de frente para o Lumi
   const lucas = pessoa({ pele: 0xe8b48d, roupa: 0xffd166, calca: 0x8ab4ff, cabelo: 0x6b4a2f, escala: 0.62 });
@@ -303,11 +308,12 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
 
   // Rótulos que aparecem por capítulo
   const rotulosPor = {
-    ana: rotulo('📱 Ana · celular', [0, 1.6, 0], ana.g),
-    carlos: rotulo('⌚ Carlos · relógio', [0, 1.95, 0], carlos.g),
-    lucas: rotulo('🧒 Lucas', [0, 1.35, 0], lucas.g),
-    lumi: rotulo('🤖 Lumi', [0, 1.35, 0], lumi),
+    ana: rotulo('📱 Ana · celular', [0, 1.85, 0], ana.g),
+    carlos: rotulo('⌚ Carlos · relógio', [0, 2.15, 0], carlos.g),
+    lucas: rotulo('🧒 Lucas', [0, 1.5, 0], lucas.g),
+    lumi: rotulo('🤖 Lumi', [0, 1.55, 0], lumi),
   };
+  rotulosPor.lucas.classList.add('esq'); rotulosPor.lumi.classList.add('dir');
   const mostrarRotulos = { abertura: ['ana', 'carlos', 'lucas', 'lumi'], sala: ['ana', 'carlos', 'lucas', 'lumi'], lumi: ['lumi', 'lucas'], ana: ['ana'], carlos: ['carlos'], ia: ['lumi'], calmo: ['lumi', 'lucas'], fecho: [] };
 
   // ---------- Câmera por capítulo ----------
@@ -323,29 +329,49 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
   };
   const camPos = new THREE.Vector3(...POSES.abertura.pos), camAlvo = new THREE.Vector3(...POSES.abertura.alvo);
   const destinoPos = camPos.clone(), destinoAlvo = camAlvo.clone();
-  let deslocamento = 0; // fração da largura para empurrar a cena para a direita (o texto fica à esquerda)
+  // O painel de texto cobre uma parte da tela (à esquerda no computador, embaixo no celular). A cena é enquadrada só
+  // na parte livre: mede-se o painel do capítulo ativo e a câmera desloca e afasta o quadro.
+  const TOPO = 84; // altura da barra de navegação
+  let reservaX = 0, reservaY = 0, alvoX = 0, alvoY = 0, permitidos = [];
+  const tg = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+  function medirPainel() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const painel = document.querySelector('.capitulo.ativo .painel');
+    if (!painel || new URLSearchParams(location.search).has('sempainel')) { alvoX = 0; alvoY = 0; return; }
+    const r = painel.getBoundingClientRect();
+    if (l > 860) { alvoX = Math.max(0, Math.min(r.right + 28, l * 0.62)); alvoY = 0; }
+    else { alvoX = 0; alvoY = Math.max(0, Math.min(a * 0.6, a - r.top + 8)); }
+  }
+  function enquadrar() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    camera.aspect = (l + reservaX) / a;
+    camera.setViewOffset(l + reservaX, a, 0, (reservaY - TOPO) / 2, l, a);
+    camera.updateProjectionMatrix();
+  }
   function irPara(nome) {
+    medirPainel();
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const livreL = Math.max(240, l - alvoX), livreA = Math.max(240, a - alvoY - TOPO);
     const p = POSES[nome] || POSES.abertura;
     destinoAlvo.set(...p.alvo);
-    // Em telas estreitas, recua a câmera para caber a cena
-    const recuo = camera.aspect < 1 ? 1.45 : camera.aspect < 1.4 ? 1.15 : 1;
-    destinoPos.set(...p.pos).sub(destinoAlvo).multiplyScalar(recuo).add(destinoAlvo);
-    if (fixo) { camPos.copy(destinoPos); camAlvo.copy(destinoAlvo); }
-    const ver = mostrarRotulos[nome] || [];
-    Object.entries(rotulosPor).forEach(([k, d]) => d.classList.toggle('apagado', !ver.includes(k)));
+    const dir = new THREE.Vector3(...p.pos).sub(destinoAlvo);
+    const d0 = dir.length();
+    const geral = ['abertura', 'sala', 'ia', 'fecho'].includes(nome);
+    const porLargura = (geral ? 11 : 3.6) * a / (2 * tg * livreL), porAltura = (geral ? 7.5 : 3.6) * a / (2 * tg * livreA);
+    const d = Math.min(36, Math.max(d0, porLargura, porAltura));
+    destinoPos.copy(dir.normalize().multiplyScalar(d)).add(destinoAlvo);
+    if (fixo) { camPos.copy(destinoPos); camAlvo.copy(destinoAlvo); reservaX = alvoX; reservaY = alvoY; enquadrar(); }
+    permitidos = mostrarRotulos[nome] || [];
     telaRel.redesenhar(nome === 'carlos' ? 'sos' : 'passo');
+    clearTimeout(irPara.t); irPara.t = setTimeout(() => { const x = alvoX, y = alvoY; medirPainel(); if (Math.abs(x - alvoX) + Math.abs(y - alvoY) > 6) irPara(capituloAtivo); }, 750);
   }
   aoMudarCapitulo.push(irPara);
 
   function ajustar() {
     const l = caixa.clientWidth, a = caixa.clientHeight;
     renderer.setSize(l, a, false); rotulos.setSize(l, a);
-    deslocamento = l > 860 ? 0.36 : 0;
-    camera.aspect = l * (1 + deslocamento) / a; // com o quadro deslocado, a proporção é a do quadro inteiro
-    // Quadro mais largo, mostrando só a parte esquerda: o centro da cena vai para a direita do texto
-    if (deslocamento) camera.setViewOffset(l * (1 + deslocamento), a, 0, 0, l, a); else camera.clearViewOffset();
-    camera.updateProjectionMatrix();
     irPara(capituloAtivo);
+    reservaX = alvoX; reservaY = alvoY; enquadrar();
   }
   addEventListener('resize', ajustar);
   ajustar();
@@ -361,6 +387,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const t = relogioAnim.getElapsedTime();
     const k = fixo ? 1 : 0.045;
     camPos.lerp(destinoPos, k); camAlvo.lerp(destinoAlvo, k);
+    if (Math.abs(reservaX - alvoX) + Math.abs(reservaY - alvoY) > 0.5) { reservaX += (alvoX - reservaX) * k; reservaY += (alvoY - reservaY) * k; enquadrar(); }
     camera.position.copy(camPos);
     if (!calmo) camera.position.add(new THREE.Vector3(mouse.x * 0.35, -mouse.y * 0.2, 0));
     camera.lookAt(camAlvo);
@@ -385,8 +412,23 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     } else estrelas.forEach((e, i) => { e.position.set(Math.cos(i * 1.25) * 0.55, 1.15, Math.sin(i * 1.25) * 0.55); });
     renderer.render(cena, camera);
     rotulos.render(cena, camera);
+    atualizarRotulos();
+  }
+  // Os nomes só aparecem com a câmera parada e dentro da parte livre da tela
+  const vtmp = new THREE.Vector3();
+  function atualizarRotulos() {
+    const l = caixa.clientWidth, a = caixa.clientHeight;
+    const movendo = camPos.distanceTo(destinoPos) + camAlvo.distanceTo(destinoAlvo) > 0.4;
+    camera.updateMatrixWorld();
+    Object.entries(rotulosPor).forEach(([k, d]) => {
+      d._obj.getWorldPosition(vtmp).project(camera);
+      const x = (vtmp.x * 0.5 + 0.5) * l, y = (-vtmp.y * 0.5 + 0.5) * a;
+      const dentro = vtmp.z < 1 && x > alvoX + 70 && x < l - 70 && y > TOPO + 24 && y < a - alvoY - 8;
+      d.classList.toggle('visivel', !movendo && dentro && permitidos.includes(k));
+    });
   }
   renderer.setAnimationLoop(quadro);
+  if (fixo) window.salaObj = { carlos, ana, relogio, THREE };
   if (fixo) window.salaIr = (nome) => { capituloAtivo = nome; irPara(nome); quadro(); };
   document.addEventListener('visibilitychange', () => renderer.setAnimationLoop(document.hidden ? null : quadro));
   document.getElementById('carregando').remove();

@@ -50,7 +50,7 @@ const TELAS_RELOGIO = {
   remedios() {
     return `<ul class="rl-lista">${[...S.saude.meds].sort((a, b) => a.horario.localeCompare(b.horario)).map((m) => {
       const r = registroHoje(m.id), agora = hora();
-      const estado = r ? (r.status === 'perdido' ? '✗ perdido' : '✓ ' + (r.hora || 'tomado')) : (m.horario < agora ? '⏰ atrasado' : '· ' + m.horario);
+      const estado = r ? (r.status === 'perdido' ? '✗ perdido' : '✓ ' + (r.hora || 'tomado')) : (m.horario < agora ? '⏰ atrasado' : m.horario);
       return `<li class="${r && r.status !== 'perdido' ? 'feito' : ''}"><i>${m.emoji}</i><span><b>${esc(nomeCurto(m))}</b><small>${esc(m.dose)} · ${estado}</small></span>${r ? '' : `<button class="rl-mini" data-rl-dei="${m.id}">Dei</button>`}</li>`;
     }).join('')}</ul><span class="rl-texto">${S.saude.meds.some((m) => m.estoque <= 7) ? '⚠️ Estoque baixo: hora de repor' : 'Estoque ok'}</span>`;
   },
@@ -75,7 +75,7 @@ const TELAS_RELOGIO = {
   ajustes() {
     return `<button class="rl-chave" data-rl-vibra aria-pressed="${W.vibracao}"><span>📳 Vibração</span><em>${W.vibracao ? 'ligada' : 'desligada'}</em></button>
       <button class="rl-chave" data-rl-silencio aria-pressed="${W.silencio}"><span>🔕 Só SOS</span><em>${W.silencio ? 'ligado' : 'desligado'}</em></button>
-      <span class="rl-texto">Com "Só SOS", apenas emergências tocam o pulso. Batimentos e sono: só com validação clínica (futuro).</span>`;
+      <span class="rl-texto">Com "Só SOS", só emergências tocam o pulso.</span>`;
   },
 };
 
@@ -130,6 +130,7 @@ W.raiz?.addEventListener('pointerup', (e) => {
 });
 document.getElementById('rlAnt')?.addEventListener('click', () => irPaginaRelogio(W.pagina - 1));
 document.getElementById('rlProx')?.addEventListener('click', () => irPaginaRelogio(W.pagina + 1));
+document.getElementById('rlVoltar')?.addEventListener('click', () => irPaginaRelogio(W.pagina - 1));
 document.getElementById('rlCoroa')?.addEventListener('click', () => irPaginaRelogio(W.pagina + 1));
 
 // Vibração visual do relógio quando chega algo novo (e, se o aparelho deixar, vibra de verdade)

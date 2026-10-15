@@ -189,6 +189,7 @@ P.telas.meujeito = () => {
       <label class="campo">🗣️ Voz do Lumi</label>
       <select class="campo-in" id="mjVoz">${opcoesVoz()}</select>${dicaVoz()}
       <button class="btn bloco" id="mjTestar" style="margin-top:8px">▶ Ouvir a voz</button>
+      <label class="check"><input type="checkbox" id="mjEscura" ${p.telaEscura !== false ? 'checked' : ''}> Tela escura (menos brilho; desligue se preferir fundo claro)</label>
       <label class="check"><input type="checkbox" id="mjCalma" ${p.telaCalma ? 'checked' : ''}> Tela calma (sem animações, cores mais suaves)</label>
       <label class="check"><input type="checkbox" id="mjLetra" ${p.letraGrande ? 'checked' : ''}> Letra maior</label>
       <label class="check"><input type="checkbox" id="mjFala" ${p.voz ? 'checked' : ''}> O Lumi fala em voz alta</label>
@@ -200,6 +201,7 @@ P.telas.meujeito = () => {
   q('#mjVel').oninput = (e) => { S.perfil.velocidade = +e.target.value; q('#mjVelV').textContent = e.target.value; salvar(); };
   q('#mjVoz').onchange = (e) => { S.perfil.vozNome = e.target.value; escolherVoz(); salvar(); falar(`Oi, ${S.perfil.nome}! Esta é a minha nova voz.`, true); };
   q('#mjTestar').onclick = () => falar(`Oi, ${S.perfil.nome}! Eu sou o Lumi. Vamos juntos, um passo de cada vez.`, true);
+  q('#mjEscura').onchange = (e) => { S.perfil.telaEscura = e.target.checked; salvar(); if (typeof aplicarTema === 'function') aplicarTema(); };
   q('#mjCalma').onchange = (e) => { S.perfil.telaCalma = e.target.checked; salvar(); aplicarAparencia(); };
   q('#mjLetra').onchange = (e) => { S.perfil.letraGrande = e.target.checked; salvar(); aplicarAparencia(); };
   q('#mjFala').onchange = (e) => { S.perfil.voz = e.target.checked; salvar(); };

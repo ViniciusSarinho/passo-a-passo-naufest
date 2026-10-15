@@ -61,6 +61,14 @@ As variáveis do app (`S`, `P`, `R`, `Q`…) são `const`/`let` globais de scrip
 
 Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; relógio com tela 186 × 226) e é escalado **inteiro** pela variável CSS `--escala` (`zoom`), calculada em `encaixarAparelhos()` (`iniciar.js`) a partir do espaço livre. Assim a tela nunca fica achatada. A partir de 1200 px de largura o roteiro guiado vira uma coluna à direita; abaixo disso fica embaixo e a escala desconta a altura dele. Em telas de até 960 px o app mostra uma conta por vez, em tela cheia (o botão ⌚ mostra o relógio).
 
+## Tema escuro dos aparelhos
+
+`body.escuro .tela` redefine as variáveis de cor das telas (`--tela`, `--cartao`, `--texto`…) e `--veu` (fundo translúcido dos botões e selos). É o padrão; `S.perfil.telaEscura === false` volta ao claro (botão no topo de `app.html` ou "Meu jeito"). Os gráficos em SVG usam `currentColor` para acompanhar o tema. Cuidado de acessibilidade: cinza-esverdeado e bege em vez de preto e branco puros, para reduzir ofuscamento.
+
+## Vitrine e sala 3D: enquadramento e nomes
+
+`sala3d.js` e `vitrine3d.js` medem o painel de texto do capítulo ativo e enquadram a cena só na parte livre da tela (à direita no computador, acima do painel no celular, abaixo da barra do topo). Os nomes sobre os modelos (`.rotulo3d`) só ficam visíveis com a câmera parada e dentro dessa parte livre. Parâmetros de depuração: `?fixo` (câmera sem transição, expõe `salaIr`/`vitrineIr`/`vitrineDiag`) e `?sempainel` (enquadra sem reservar o painel).
+
 ## Design calmo e gamificado
 
 Regras tiradas dos estudos do TCC (lista em [`FONTES.md`](FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, figura + texto curto + voz, cores pastel sem nada piscando, navegação sempre no mesmo lugar e progresso por **trilha de estrelas** (`P.trilha` em `paciente.js`): cada passo feito vira ⭐, o atual mostra a figura, o fim é 🏁. Não há placar, tempo-limite nem perda de estrelas.
