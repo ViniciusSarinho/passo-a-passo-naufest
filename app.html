@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Passo a Passo · App</title>
+  <meta name="description" content="MVP do Passo a Passo: o Lumi guia a pessoa autista nas rotinas, e a conta dos responsáveis acompanha ao vivo, recebe emergências e vê a evolução de longo prazo.">
+  <meta name="theme-color" content="#050a16">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/app.css?v=17">
+</head>
+<body>
+  <div class="fundo" aria-hidden="true"></div>
+
+  <header class="barra-topo">
+    <a class="logo" href="index.html" title="Voltar ao site"><i>👣</i><span>Passo a Passo</span></a>
+    <span class="info">Contas conectadas: o que acontece em uma aparece nas outras.</span>
+    <span class="espaco"></span>
+    <div class="alternar" role="group" aria-label="Escolher conta">
+      <button data-conta="paciente" aria-pressed="true">🧒 Lucas</button>
+      <button data-conta="responsavel" aria-pressed="false">👩 Ana<i class="ponto" id="pontoAlerta" hidden></i></button>
+      <button data-conta="profissional" aria-pressed="false">🧑‍⚕️ Pro</button>
+    </div>
+    <button class="btn primario" id="abrirRoteiro" title="Demonstração guiada de 3 minutos" style="min-height:38px;padding:7px 12px;font-size:13px">🧭 Roteiro guiado</button>
+    <button class="btn" id="abrirEstudio" title="Gravar a voz humana do Lumi" style="min-height:38px;padding:7px 12px;font-size:13px">🎙️ Voz do Lumi</button>
+    <button class="btn" id="comparar" title="Ver o que cada conta pode ver e fazer" style="min-height:38px;padding:7px 12px;font-size:13px">👁️ Comparar contas</button>
+    <button class="btn" id="reiniciar" title="Recomeçar a demonstração do zero" style="min-height:38px;padding:7px 12px;font-size:13px">↺ Reiniciar</button>
+  </header>
+
+  <main class="palco">
+    <section class="dispositivo" id="dispPaciente" aria-label="Celular do paciente">
+      <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b><br>conta do paciente</div><span class="selo ia">Lumi ativo</span></div>
+      <div class="moldura"><div class="tela" id="telaPaciente"></div></div>
+    </section>
+
+    <div class="conexao" aria-hidden="true">
+      <div class="icone">🔗</div>
+      <div class="fio" id="fio"></div>
+      <div>contas<br>conectadas</div>
+    </div>
+
+    <div class="lado-direito">
+      <div class="ver-como" role="group" aria-label="Ver o segundo celular como">
+        <span>Ver como:</span>
+        <button data-direita="responsavel" aria-pressed="true">👩 Família</button>
+        <button data-direita="profissional" aria-pressed="false">🧑‍⚕️ Profissional</button>
+      </div>
+      <section class="dispositivo" id="dispResp" aria-label="Celular da responsável">
+        <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b><br>conta da família</div><span class="selo ok"><i class="vivo"></i>online</span></div>
+        <div class="moldura"><div class="tela" id="telaResp"></div></div>
+      </section>
+      <section class="dispositivo escondido" id="dispPro" aria-label="Computador ou tablet do profissional">
+        <div class="legenda"><span class="avatar peq" id="proAvatar">🧑‍⚕️</span><div><b id="proNome">Dra. Júlia</b><br><span id="proPapel">conta profissional</span></div><span class="selo ia"><i class="vivo"></i>consultório</span></div>
+        <div class="moldura pro"><div class="tela" id="telaPro"></div></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/lumi.js?v=17"></script>
+  <script src="js/dados.js?v=17"></script>
+  <script src="js/nucleo.js?v=17"></script>
+  <script src="js/paciente.js?v=17"></script>
+  <script src="js/responsavel.js?v=17"></script>
+  <script src="js/conhecimento.js?v=17"></script>
+  <script src="js/caa.js?v=17"></script>
+  <script src="js/saude.js?v=17"></script>
+  <script src="js/profissional.js?v=17"></script>
+  <script src="js/voz.js?v=17"></script>
+  <script src="js/roteiro.js?v=17"></script>
+  <script src="js/iniciar.js?v=17"></script>
+</body>
+</html>
