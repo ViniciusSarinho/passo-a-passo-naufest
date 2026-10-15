@@ -40,7 +40,7 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 |---|---|---|---|---|
 | <img src="docs/img/familia-sos.jpg" width="150"> | <img src="docs/img/familia-evolucao.jpg" width="150"> | <img src="docs/img/familia-laudo.jpg" width="150"> | <img src="docs/img/profissional-plano.jpg" width="150"> | <img src="docs/img/profissional-saude.jpg" width="150"> |
 
-No computador, o app mostra **dois celulares lado a lado** (o do paciente e o da família, ou o do profissional), com o **roteiro guiado** embaixo:
+No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas, o **relógio do Carlos** (pai) e o celular da Ana (ou o tablet do profissional). Em telas largas o **roteiro guiado** fica numa coluna à direita. (Captura abaixo da versão anterior, com o tema escuro.)
 
 <img src="docs/img/app-roteiro-sos.jpg" width="640">
 
@@ -61,7 +61,14 @@ No computador, o app mostra **dois celulares lado a lado** (o do paciente e o da
 **Profissionais**
 - Dra. Júlia (terapeuta): plano terapêutico e metas medidas pelos dados. Dr. Rafael (neuropsicólogo): laudos. Dra. Helena (médica): **a única** que altera dose e horário. Botão **"Comparar contas"** mostra o que cada conta vê e faz.
 
-**Voz humana:** o app toca falas gravadas e usa a voz sintética só onde falta. O **estúdio** grava, importa e exporta as 218 falas ([`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md)).
+**Relógio (Carlos, pai)**
+- Só o essencial no pulso: **SOS** com botão "Estou indo", rotina **ao vivo** em anel de progresso, remédio, conquistas e mensagens do Lucas.
+
+**Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. Os detalhes (dados, critérios, cuidados, ética, roadmap, estudos do TCC e fontes) estão em `saiba-mais.html`.
+
+**Design calmo e gamificado:** baseado nos estudos do TCC ([`docs/FONTES.md`](docs/FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
+
+**Voz humana:** o app toca falas gravadas e usa a voz sintética só onde falta. Na voz sintética, prefere vozes neurais (Microsoft Edge: Francisca, Thalita) e **não usa as vozes do Google**, que soam robóticas. O **estúdio** grava, importa e exporta as 218 falas ([`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md)).
 
 ## Real × simulado
 
@@ -81,6 +88,8 @@ python -m http.server 8765
 # abra http://localhost:8765  (site)  ou  http://localhost:8765/app.html?roteiro=1  (app com roteiro)
 ```
 
+**Publicar no Firebase Hosting:** o `firebase.json` já está pronto; veja [`docs/FIREBASE.md`](docs/FIREBASE.md) (`firebase deploy --only hosting`).
+
 **Publicar no GitHub Pages:** *Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)` → Save*. A demo fica em `https://<usuário>.github.io/<repositório>/`. O arquivo `.nojekyll` já está na raiz.
 
 ## Testes
@@ -90,15 +99,18 @@ python -m http.server 8765
 # abra http://localhost:8765/tests/fumaca.html
 ```
 
-O **teste de fumaça** abre o app num iframe e executa 51 verificações: telas das três contas, SOS, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
+O **teste de fumaça** abre o app num iframe e executa 54 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
 
 ## Estrutura
 
 ```
-index.html · app.html        site e app
-css/                         site.css, app.css
+index.html                   página inicial com a sala 3D
+saiba-mais.html              detalhes, estudos do TCC e fontes
+app.html                     o app (celular, relógio, celular/tablet)
+firebase.json                publicação no Firebase Hosting
+css/                         inicio.css, site.css, app.css
 js/                          lumi, dados, nucleo, paciente, responsavel, conhecimento,
-                             caa, saude, profissional, voz, roteiro, iniciar
+                             caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d (página inicial)
 audio/lumi/                  falas gravadas publicadas (falas.json)
 exemplos/                    laudo FICTÍCIO em PDF
 tests/                       teste de fumaça
@@ -118,6 +130,7 @@ docs/                        proposta, arquitetura, processo, fontes, ética, ro
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | Próximas fases, métricas de impacto e vestíveis |
 | [`docs/ROTEIRO-VIDEO.md`](docs/ROTEIRO-VIDEO.md) | Roteiro do vídeo de 3 minutos |
 | [`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md) | As 218 falas para gravar com voz humana |
+| [`docs/FIREBASE.md`](docs/FIREBASE.md) | Publicar no Firebase Hosting e o caminho para contas em aparelhos diferentes |
 
 ## Como foi feito
 

@@ -170,7 +170,12 @@ function aplicarAparencia() {
 }
 function opcoesVoz() {
   if (!vozesPt.length) return '<option value="">Voz padrão do aparelho</option>';
-  return vozesPt.map((v, i) => `<option value="${esc(v.name)}" ${vozPt && v.name === vozPt.name ? 'selected' : ''}>${esc(v.name.replace(/Microsoft |Google /, ''))}${i === 0 ? ' · recomendada' : ''}</option>`).join('');
+  return vozesPt.map((v, i) => `<option value="${esc(v.name)}" ${vozPt && v.name === vozPt.name ? 'selected' : ''}>${VOZ_NATURAL.test(v.name) ? '✨ ' : ''}${esc(v.name.replace(/Microsoft |Google |Online |\(Natural\)/g, '').replace(/\s+-.*$/, ''))}${i === 0 ? ' · recomendada' : ''}</option>`).join('');
+}
+// Sem voz neural no aparelho, explica como ter uma voz mais humana
+function dicaVoz() {
+  return temVozNatural() ? '<p class="peq suave" style="margin:4px 0 0">✨ = voz neural, mais natural.</p>'
+    : '<p class="peq suave" style="margin:4px 0 0">Para uma voz mais humana, abra no <b>Microsoft Edge</b> (vozes Francisca e Thalita) ou use as <b>falas gravadas</b> no Estúdio de voz.</p>';
 }
 P.telas.meujeito = () => {
   const p = S.perfil;
@@ -182,7 +187,7 @@ P.telas.meujeito = () => {
       <label class="campo">🐢 Velocidade: <span id="mjVelV">${p.velocidade}</span></label>
       <input type="range" id="mjVel" min="0.6" max="1.2" step="0.05" value="${p.velocidade}">
       <label class="campo">🗣️ Voz do Lumi</label>
-      <select class="campo-in" id="mjVoz">${opcoesVoz()}</select>
+      <select class="campo-in" id="mjVoz">${opcoesVoz()}</select>${dicaVoz()}
       <button class="btn bloco" id="mjTestar" style="margin-top:8px">▶ Ouvir a voz</button>
       <label class="check"><input type="checkbox" id="mjCalma" ${p.telaCalma ? 'checked' : ''}> Tela calma (sem animações, cores mais suaves)</label>
       <label class="check"><input type="checkbox" id="mjLetra" ${p.letraGrande ? 'checked' : ''}> Letra maior</label>
@@ -331,7 +336,7 @@ R.abas.saude = () => `
 
 // Aba "Mais": seção de voz e volume do Lumi (a família ajusta; o Lucas também, em "Meu jeito")
 R.secoesMais.unshift(() => `<div class="cartao"><b>🗣️ Voz e volume do Lumi</b>
-    <label class="campo">Voz</label><select class="campo-in" id="rVoz">${opcoesVoz()}</select>
+    <label class="campo">Voz</label><select class="campo-in" id="rVoz">${opcoesVoz()}</select>${dicaVoz()}
     <label class="campo">Volume: <span id="rVolV">${Math.round((S.perfil.volume ?? .8) * 100)}%</span></label><input type="range" id="rVol" min="0" max="100" value="${Math.round((S.perfil.volume ?? .8) * 100)}">
     <button class="btn bloco" id="rTestarVoz" style="margin-top:6px">▶ Ouvir</button>
     <p class="peq suave" style="margin:6px 0 0">O Lucas também ajusta volume, voz e tela calma em "Meu jeito".</p></div>`);

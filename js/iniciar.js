@@ -6,14 +6,15 @@
 // ---------- Moldura: três contas ----------
 let contaDireita = 'responsavel';
 function telaMovel() {
-  return ['dispPaciente', 'dispResp', 'dispPro'].find((id) => !document.getElementById(id).classList.contains('oculto')) === 'dispPaciente' ? 'paciente' : 'outra';
+  return ['dispPaciente', 'dispResp', 'dispPro', 'dispRelogio'].find((id) => !document.getElementById(id).classList.contains('oculto')) === 'dispPaciente' ? 'paciente' : 'outra';
 }
 function mostrarConta(qual) {
   document.querySelectorAll('[data-conta]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.conta === qual)));
   document.getElementById('dispPaciente').classList.toggle('oculto', qual !== 'paciente');
   document.getElementById('dispResp').classList.toggle('oculto', qual !== 'responsavel');
   document.getElementById('dispPro').classList.toggle('oculto', qual !== 'profissional');
-  if (qual !== 'paciente') ladoDireito(qual);
+  document.getElementById('dispRelogio').classList.toggle('oculto', qual !== 'relogio');
+  if (qual === 'responsavel' || qual === 'profissional') ladoDireito(qual);
   if (qual === 'responsavel') document.getElementById('pontoAlerta').hidden = true;
 }
 function ladoDireito(qual) {
@@ -24,6 +25,22 @@ function ladoDireito(qual) {
 }
 document.querySelectorAll('[data-direita]').forEach((b) => b.onclick = () => ladoDireito(b.dataset.direita));
 document.querySelectorAll('[data-conta]').forEach((b) => b.onclick = () => mostrarConta(b.dataset.conta));
+
+// ---------- Encaixe: os aparelhos têm tamanho real e são escalados por inteiro ----------
+// Celular: 390 × 784. Relógio: 214 × 430 (com a pulseira). A escala é a maior que cabe na janela,
+// descontando o topo, as legendas e o painel do roteiro (embaixo ou na coluna da direita).
+function encaixarAparelhos() {
+  const raiz = document.documentElement;
+  if (window.innerWidth <= 960) { raiz.style.setProperty('--escala', 1); return; }
+  const lateral = document.body.classList.contains('rt-lateral');
+  const topo = document.querySelector('.barra-topo').offsetHeight;
+  const embaixo = ROTEIRO.ativo && !lateral ? document.getElementById('roteiro').offsetHeight + 16 : 0;
+  const porAltura = (window.innerHeight - topo - 104 - embaixo) / 784;
+  const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / 994;
+  const k = Math.max(0.45, Math.min(1, porAltura, porLargura));
+  raiz.style.setProperty('--escala', k.toFixed(3));
+}
+window.addEventListener('resize', encaixarAparelhos);
 
 // Comparação: o que cada conta vê e faz
 const COMPARA = [
@@ -70,7 +87,7 @@ document.getElementById('reiniciar').onclick = () => {
   toast('Demonstração reiniciada.');
 };
 function reiniciarDemonstracao() {
-  P.pararGuia(); S = dadosDemonstracao(); salvar(); P.ir('inicio'); R.aba = 'inicio'; R.render(); Q.render();
+  P.pararGuia(); S = dadosDemonstracao(); salvar(); P.ir('inicio'); R.aba = 'inicio'; R.render(); Q.render(); W.aviso = null; desenharRelogio();
 }
 
 // ---------- Partida ----------
@@ -82,6 +99,8 @@ if (contaInicial === 'profissional') ladoDireito('profissional');
 P.ir('inicio');
 R.render();
 Q.render();
+desenharRelogio();
+encaixarAparelhos();
 if (location.protocol === 'file:') toast('Para usar câmera, microfone e voz gravada, abra pelo link https do site ou por localhost.');
 setTimeout(() => S.perfil.camera && carregarModelo().catch(() => {}), 2500);
 setInterval(() => { document.querySelectorAll('.status span:first-child').forEach((s) => s.textContent = hora()); }, 30000);

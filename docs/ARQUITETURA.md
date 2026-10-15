@@ -1,19 +1,19 @@
 # Arquitetura
 
-O Passo a Passo é um site estático: **HTML + CSS + JavaScript puro, sem build, sem servidor e sem dependência instalada**. Abra `index.html` por um servidor estático (ou GitHub Pages) e tudo funciona. Esta página explica como o código está organizado e por quê.
+O Passo a Passo é um site estático: **HTML + CSS + JavaScript puro, sem build, sem servidor e sem dependência instalada** (bibliotecas como three.js, TensorFlow.js e pdf.js vêm de CDN quando a página precisa delas). Abra `index.html` por um servidor estático (ou GitHub Pages) e tudo funciona. Esta página explica como o código está organizado e por quê.
 
 ## Visão geral
 
 ```
 ┌────────────────────────────── navegador ──────────────────────────────┐
-│  Conta do paciente (P)      Conta da família (R)     Conta profissional (Q)
-│  celular do Lucas           celular da Ana           tablet / computador
+│  Conta do paciente (P)   Relógio do pai (W)   Conta da família (R)   Conta profissional (Q)
+│  celular do Lucas        relógio do Carlos    celular da Ana         tablet / computador
 │        │                          │                          │
 │        └────────── eventos (emitir → aplicar → salvar → aoEvento) ──────┘
 │                         │
 │            estado S em localStorage  +  BroadcastChannel (entre abas)
 │
-│  Módulos que se registram em MODULOS:  conhecimento · caa · saude · profissional
+│  Módulos que se registram em MODULOS:  conhecimento · caa · saude · profissional · relogio
 │  Serviços no aparelho:  câmera + TensorFlow.js · microfone · voz · IndexedDB · pdf.js
 └─────────────────────────────────────────────────────────────────────────┘
 ```
@@ -23,11 +23,14 @@ Nada sai do aparelho. As "contas" conversam por **eventos** dentro da página e 
 ## Estrutura de pastas
 
 ```
-index.html            site de apresentação
-app.html              o app (duas contas lado a lado + conta profissional)
+index.html            página inicial curta, com a sala 3D (capítulos que movem a câmera)
+saiba-mais.html       todos os detalhes: dados, critérios, cuidados, ética, roadmap, estudos do TCC e fontes
+app.html              o app: celular do Lucas, relógio do Carlos e celular da Ana (ou tablet do profissional)
+firebase.json         configuração do Firebase Hosting (veja docs/FIREBASE.md)
 css/
-  site.css            tema escuro do site
-  app.css             telas do app, roteiro guiado, estúdio de voz
+  inicio.css          página inicial (tema infantil e calmo)
+  site.css            página "Saiba mais" (mesma paleta)
+  app.css             telas do app, aparelhos em tamanho real, relógio, roteiro guiado, estúdio de voz
 js/                   ordem de carregamento (app.html)
   lumi.js             robô Lumi em SVG (humores, acessórios, níveis)
   dados.js            dados fixos e fictícios: rotinas, contas, perguntas da IA, regras do laudo, histórico
@@ -39,7 +42,9 @@ js/                   ordem de carregamento (app.html)
   saude.js            remédios, diário de sono e crises, conversa com a IA sobre o tratamento
   profissional.js     conta do profissional (3 perfis com permissões diferentes)
   voz.js              falas gravadas, inventário de falas e estúdio de voz
+  relogio.js          relógio do Carlos: SOS com "estou indo", rotina ao vivo, remédio, conquistas
   roteiro.js          demonstração guiada de ~3 minutos
+  sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
   iniciar.js          moldura (três contas, comparar contas, reiniciar) e partida
 audio/lumi/           falas gravadas publicadas (falas.json + arquivos de áudio)
 exemplos/             laudo de exemplo FICTÍCIO em PDF
@@ -48,6 +53,14 @@ docs/                 documentação
 ```
 
 As variáveis do app (`S`, `P`, `R`, `Q`…) são `const`/`let` globais de scripts clássicos. Por isso os testes as acessam com `window.eval`.
+
+## Aparelhos em tamanho real
+
+Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; relógio com tela 186 × 226) e é escalado **inteiro** pela variável CSS `--escala` (`zoom`), calculada em `encaixarAparelhos()` (`iniciar.js`) a partir do espaço livre. Assim a tela nunca fica achatada. A partir de 1200 px de largura o roteiro guiado vira uma coluna à direita; abaixo disso fica embaixo e a escala desconta a altura dele. Em telas de até 960 px o app mostra uma conta por vez, em tela cheia (o botão ⌚ mostra o relógio).
+
+## Design calmo e gamificado
+
+Regras tiradas dos estudos do TCC (lista em [`FONTES.md`](FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, figura + texto curto + voz, cores pastel sem nada piscando, navegação sempre no mesmo lugar e progresso por **trilha de estrelas** (`P.trilha` em `paciente.js`): cada passo feito vira ⭐, o atual mostra a figura, o fim é 🏁. Não há placar, tempo-limite nem perda de estrelas.
 
 ## Estado e eventos
 
@@ -128,6 +141,8 @@ Lembrete de remédio com figuras (agendador confere o relógio a cada 20 s), ade
 
 ## Voz (`voz.js`)
 `falar(texto)` chama `VOZ.motor`. O motor de `voz.js` procura a gravação da fala inteira (ou, se a fala tem várias frases, o maior trecho gravado de cada vez). Se **todas** as partes existirem, toca os áudios; senão, usa a voz sintética (`falarSintetico`), para não misturar vozes na mesma frase. As chaves são o texto normalizado (`chaveFala`). Gravações ficam em **IndexedDB** (`pap-voz`); as publicadas ficam em `audio/lumi/falas.json`. `todasAsFalas()` gera o inventário a partir do conteúdo do próprio app, então o roteiro de gravação nunca fica desatualizado.
+
+A voz sintética é escolhida por `notaVoz()` (`nucleo.js`): vozes neurais (Microsoft *Online (Natural)* no Edge, Apple *Premium/Aprimorada*) e femininas vêm primeiro; **as vozes do Google ficam de fora** por soarem robóticas e só entram se o aparelho não tiver nenhuma outra em português. Sem voz neural, a tela de voz sugere o Edge ou as falas gravadas.
 
 ## Roteiro guiado (`roteiro.js`)
 Lista `PASSOS_ROTEIRO`; cada passo tem `acao()` que executa ações **reais** (as mesmas dos botões) e mostra o efeito na outra conta. O modo automático percorre os passos com pausas de leitura (`ROTEIRO.ritmo` acelera nos testes). Enquanto o roteiro está ativo, o SOS não pede localização (usa o endereço fictício) e o passo da câmera é opcional.

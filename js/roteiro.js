@@ -160,7 +160,9 @@ painel.id = 'roteiro'; painel.className = 'roteiro'; painel.hidden = true; paine
 document.body.appendChild(painel);
 
 // Em telas baixas (notebooks), a dica "o que olhar" fica recolhida para o painel não cobrir os celulares
-const telaBaixa = () => window.innerHeight < 800 && !celular();
+// Em telas largas o painel fica numa coluna à direita (não cobre nada e mostra tudo)
+const roteiroLateral = () => window.innerWidth >= 1200;
+const telaBaixa = () => window.innerHeight < 800 && !celular() && !roteiroLateral();
 
 function desenharRoteiro() {
   const p = PASSOS_ROTEIRO[ROTEIRO.i], ultimo = ROTEIRO.i === PASSOS_ROTEIRO.length - 1;
@@ -195,7 +197,10 @@ function desenharRoteiro() {
 }
 // Reserva espaço para o painel, para ele não cobrir os celulares
 function ajustarAltura() {
-  document.documentElement.style.setProperty('--rt-h', ROTEIRO.ativo ? painel.offsetHeight + 'px' : '0px');
+  const lateral = ROTEIRO.ativo && roteiroLateral();
+  document.body.classList.toggle('rt-lateral', lateral);
+  document.documentElement.style.setProperty('--rt-h', ROTEIRO.ativo && !lateral ? painel.offsetHeight + 'px' : '0px');
+  window.encaixarAparelhos?.();
 }
 window.addEventListener('resize', () => { if (ROTEIRO.ativo) ajustarAltura(); });
 
@@ -234,7 +239,7 @@ function fecharRoteiro() {
   pararAutomatico();
   if (ROTEIRO.salvo) { Object.assign(S.perfil, ROTEIRO.salvo); salvar(); ROTEIRO.salvo = null; }
   ROTEIRO.ativo = false; painel.hidden = true; document.body.classList.remove('com-roteiro');
-  document.documentElement.style.setProperty('--rt-h', '0px');
+  ajustarAltura();
 }
 
 document.getElementById('abrirRoteiro').onclick = () => (ROTEIRO.ativo ? fecharRoteiro() : abrirRoteiro());

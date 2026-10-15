@@ -100,24 +100,24 @@ function graficoLongo(rid) {
   const W = 360, H = 206, x0 = 30, x1 = W - 8, y0 = 26, y1 = H - 34;
   const passo = (x1 - x0) / Math.max(1, meses.length - 1);
   const X = (i) => x0 + i * passo, Y = (v) => y1 - (v / 100) * (y1 - y0);
-  const corFase = { 1: 'rgba(96,165,250,.13)', 2: 'rgba(34,211,238,.16)', 3: 'rgba(52,211,153,.18)' };
+  const corFase = { 1: 'rgba(74,108,240,.104)', 2: 'rgba(42,157,143,.16)', 3: 'rgba(42,157,124,.18)' };
   const pts = meses.map((m, i) => m.media === null ? null : [X(i), Y(m.media)]).filter(Boolean);
   const linha = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
   const area = `${linha} L${pts[pts.length - 1][0]} ${y1} L${pts[0][0]} ${y1} Z`;
   const nomeMes = (k) => { const m = k % 12, a = Math.floor(k / 12); return ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'][m] + (m === 0 || k === k0 ? '/' + String(a).slice(2) : ''); };
   const marcos = marcosDaHistoria().map((mc) => { const d = new Date(mc.data + 'T12:00:00'); const k = d.getFullYear() * 12 + d.getMonth(); const i = k - k0 + (d.getDate() - 1) / 30; return i >= 0 && i <= meses.length - 1 ? { x: X(i), texto: mc.texto } : null; }).filter(Boolean);
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Autonomia mês a mês">
-    <defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".35"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></linearGradient></defs>
+    <defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a9d8f" stop-opacity=".35"/><stop offset="1" stop-color="#2a9d8f" stop-opacity="0"/></linearGradient></defs>
     ${meses.map((m, i) => m.fase ? `<rect x="${X(i) - passo / 2}" y="${y0}" width="${passo}" height="${y1 - y0}" fill="${corFase[m.fase]}"/>` : '').join('')}
-    ${[0, 50, 80, 100].map((v) => `<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(255,255,255,${v === 80 ? '.25' : '.08'})" ${v === 80 ? 'stroke-dasharray="4 4"' : ''}/><text x="${x0 - 5}" y="${Y(v) + 4}" fill="#9fb0cc" font-size="9" text-anchor="end">${v}%</text>`).join('')}
-    <text x="${x0 + 4}" y="${Y(80) - 4}" fill="#9fb0cc" font-size="8.5">meta para mudar de fase</text>
-    ${marcos.map((mc, i) => `<line x1="${mc.x}" x2="${mc.x}" y1="${y0 - 6}" y2="${y1}" stroke="#fbbf24" stroke-dasharray="3 3" opacity=".8"/><text x="${mc.x > W - 90 ? mc.x - 3 : mc.x + 3}" y="${i % 2 ? y0 + 6 : y0 - 6}" fill="#fbbf24" font-size="8.5" ${mc.x > W - 90 ? 'text-anchor="end"' : ''}>${esc(mc.texto)}</text>`).join('')}
+    ${[0, 50, 80, 100].map((v) => `<line x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(255,255,255,${v === 80 ? '.25' : '.08'})" ${v === 80 ? 'stroke-dasharray="4 4"' : ''}/><text x="${x0 - 5}" y="${Y(v) + 4}" fill="#625d7d" font-size="9" text-anchor="end">${v}%</text>`).join('')}
+    <text x="${x0 + 4}" y="${Y(80) - 4}" fill="#625d7d" font-size="8.5">meta para mudar de fase</text>
+    ${marcos.map((mc, i) => `<line x1="${mc.x}" x2="${mc.x}" y1="${y0 - 6}" y2="${y1}" stroke="#c27c0e" stroke-dasharray="3 3" opacity=".8"/><text x="${mc.x > W - 90 ? mc.x - 3 : mc.x + 3}" y="${i % 2 ? y0 + 6 : y0 - 6}" fill="#c27c0e" font-size="8.5" ${mc.x > W - 90 ? 'text-anchor="end"' : ''}>${esc(mc.texto)}</text>`).join('')}
     <path d="${area}" fill="url(#gArea)"/>
-    <path d="${linha}" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linejoin="round"/>
-    ${pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#e7eefb"/>`).join('')}
+    <path d="${linha}" fill="none" stroke="#2a9d8f" stroke-width="2.5" stroke-linejoin="round"/>
+    ${pts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#2e2a47"/>`).join('')}
     ${(() => { let anoAnt = null; return meses.map((m, i) => { if (i % 2 && i !== meses.length - 1) return '';
       const ano = Math.floor(m.k / 12), rot = nomeMes(m.k).split('/')[0] + (ano !== anoAnt ? '/' + String(ano).slice(2) : ''); anoAnt = ano;
-      return `<text x="${X(i)}" y="${H - 18}" fill="#9fb0cc" font-size="9" text-anchor="middle">${rot}</text>`; }).join(''); })()}
+      return `<text x="${X(i)}" y="${H - 18}" fill="#625d7d" font-size="9" text-anchor="middle">${rot}</text>`; }).join(''); })()}
   </svg>`;
 }
 
@@ -140,7 +140,7 @@ R.abas.relatorio = () => {
     <div class="cartao grafico">
       <div class="linha" style="margin-bottom:6px"><b>${meses} meses de acompanhamento</b><span class="espaco"></span><span class="selo">${lista.length} sessões</span></div>
       ${graficoLongo(r.id)}
-      <div class="legenda-graf"><span><i style="background:rgba(96,165,250,.4)"></i>Fase 1</span><span><i style="background:rgba(34,211,238,.45)"></i>Fase 2</span><span><i style="background:rgba(52,211,153,.5)"></i>Fase 3</span><span><i style="background:#fbbf24;height:2px"></i>Marcos da vida real</span></div>
+      <div class="legenda-graf"><span><i style="background:rgba(74,108,240,.32)"></i>Fase 1</span><span><i style="background:rgba(42,157,143,.45)"></i>Fase 2</span><span><i style="background:rgba(42,157,124,.5)"></i>Fase 3</span><span><i style="background:#c27c0e;height:2px"></i>Marcos da vida real</span></div>
     </div>
     <div class="metricas" style="margin-bottom:12px">
       <div class="metrica"><b>${media(primeiros)}%</b><span>primeiras sessões</span></div>

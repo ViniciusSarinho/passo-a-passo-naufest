@@ -25,7 +25,7 @@ iframe.addEventListener('load', async () => {
   // Estado de demonstração limpo, sem voz, câmera nem microfone
   ev(`S = dadosDemonstracao(); garantirModulos(); S.perfil.voz = false; S.perfil.camera = false; S.perfil.ruido = false; S.perfil.ouvir = false; salvar(); P.ir('inicio'); R.render(); Q.render();`);
 
-  await teste('Módulos registrados no núcleo', () => igual(ev('MODULOS.map((m) => m.nome).join()'), 'conhecimento,caa,saude,profissional'));
+  await teste('Módulos registrados no núcleo', () => igual(ev('MODULOS.map((m) => m.nome).join()'), 'conhecimento,caa,saude,profissional,relogio'));
   await teste('Estado tem os dados de todos os módulos', () => verdade(['caa', 'saude', 'conhecimento'].every((k) => ev(`!!S.${k}`))));
   await teste('Seis contas conectadas, com um paciente', () => { igual(ev('S.contas.length'), 6); igual(ev("S.contas.filter((c) => c.papel === 'paciente').length"), 1); });
   await teste('Histórico de demonstração termina hoje', () => verdade(ev('Math.max(...S.sessoes.map((s) => s.data))') > Date.now() - 3 * 864e5));
@@ -54,6 +54,28 @@ iframe.addEventListener('load', async () => {
     doc.querySelector('#rCaminho').click(); await esperar(200);
     verdade(doc.querySelector('#pSos h2').innerText.includes('a caminho'), 'paciente vê "a caminho"');
     doc.querySelector('#sBem').click(); await esperar(100); verdade(ev('!S.alerta'), 'alerta resolvido');
+  });
+  await teste('Relógio do Carlos: SOS, "estou indo" e rotina ao vivo', async () => {
+    const tela = () => doc.querySelector('#telaRelogio').innerText;
+    await ev('P.sos()'); await esperar(200);
+    verdade(tela().includes('pediu ajuda'), 'SOS no relógio');
+    doc.querySelector('#rlIndo').click(); await esperar(150);
+    igual(ev('S.alerta.aCaminho'), 'Carlos', 'Carlos respondeu pelo relógio');
+    verdade(tela().includes('Carlos está indo'), 'relógio confirma');
+    ev("emitir('sos_resolvido', { quem: 'Carlos' }, 'carlos')"); await esperar(100);
+    ev("P.ir('guia', 'mochila')"); await esperar(200);
+    verdade(/1\/6/.test(tela()), 'passo ao vivo no relógio');
+    verdade(doc.querySelectorAll('#gTrilha span').length === 7, 'trilha de estrelas no guia');
+    ev("P.ir('inicio')"); await esperar(100);
+  });
+  await teste('Voz: vozes do Google ficam de fora quando há outra', () => {
+    const r = ev(`(() => { const v = [{ name: 'Google português do Brasil', lang: 'pt-BR' }, { name: 'Microsoft Francisca Online (Natural) - Portuguese (Brazil)', lang: 'pt-BR' }, { name: 'Microsoft Maria', lang: 'pt-BR' }];
+      return v.sort((a, b) => notaVoz(b) - notaVoz(a)).map((x) => x.name.split(' ')[1]).join(); })()`);
+    igual(r, 'Francisca,Maria,português', 'ordem das vozes');
+  });
+  await teste('Aparelhos em tamanho real (escala inteira, sem achatar)', () => {
+    const t = doc.querySelector('#telaPaciente');
+    igual(t.offsetWidth + 'x' + t.offsetHeight, ev('window.innerWidth') <= 960 ? t.offsetWidth + 'x' + t.offsetHeight : '366x760', 'tela do celular');
   });
   await teste('Encerrar o guia por outro caminho avisa a família', async () => {
     ev("P.ir('guia', 'padaria')"); await esperar(200); verdade(ev('!!S.aoVivo'), 'ao vivo ativo');

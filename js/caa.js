@@ -313,18 +313,18 @@ function receberCAA(ev) {
 }
 
 // ---------- Responsável: aba "Conversa" ----------
-function grafSerie(valores, rotulos, { cor = '#22d3ee', sufixo = '', max } = {}) {
+function grafSerie(valores, rotulos, { cor = '#2a9d8f', sufixo = '', max } = {}) {
   const W = 340, H = 120, x0 = 26, x1 = W - 6, y0 = 12, y1 = H - 22;
   const mx = max || Math.max(...valores) * 1.15;
   const X = (i) => x0 + i * (x1 - x0) / Math.max(1, valores.length - 1), Y = (v) => y1 - (v / mx) * (y1 - y0);
   const d = valores.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
   return `<svg viewBox="0 0 ${W} ${H}" role="img">
-    ${[0, .5, 1].map((f) => `<line x1="${x0}" x2="${x1}" y1="${Y(mx * f)}" y2="${Y(mx * f)}" stroke="rgba(255,255,255,.07)"/><text x="${x0 - 4}" y="${Y(mx * f) + 3}" fill="#9fb0cc" font-size="8.5" text-anchor="end">${(mx * f).toFixed(mx < 10 ? 1 : 0)}</text>`).join('')}
+    ${[0, .5, 1].map((f) => `<line x1="${x0}" x2="${x1}" y1="${Y(mx * f)}" y2="${Y(mx * f)}" stroke="rgba(46,42,71,.063)"/><text x="${x0 - 4}" y="${Y(mx * f) + 3}" fill="#625d7d" font-size="8.5" text-anchor="end">${(mx * f).toFixed(mx < 10 ? 1 : 0)}</text>`).join('')}
     <path d="${d} L${X(valores.length - 1)} ${y1} L${X(0)} ${y1} Z" fill="${cor}" opacity=".12"/>
     <path d="${d}" fill="none" stroke="${cor}" stroke-width="2.2" stroke-linejoin="round"/>
     <circle cx="${X(valores.length - 1)}" cy="${Y(valores[valores.length - 1])}" r="3.5" fill="${cor}"/>
-    <text x="${X(valores.length - 1) - 4}" y="${Y(valores[valores.length - 1]) - 7}" fill="#e7eefb" font-size="10" text-anchor="end" font-weight="700">${valores[valores.length - 1]}${sufixo}</text>
-    ${rotulos.map((r, i) => i % 3 === 0 || i === rotulos.length - 1 ? `<text x="${X(i)}" y="${H - 6}" fill="#9fb0cc" font-size="8.5" text-anchor="middle">${r}</text>` : '').join('')}
+    <text x="${X(valores.length - 1) - 4}" y="${Y(valores[valores.length - 1]) - 7}" fill="#2e2a47" font-size="10" text-anchor="end" font-weight="700">${valores[valores.length - 1]}${sufixo}</text>
+    ${rotulos.map((r, i) => i % 3 === 0 || i === rotulos.length - 1 ? `<text x="${X(i)}" y="${H - 6}" fill="#625d7d" font-size="8.5" text-anchor="middle">${r}</text>` : '').join('')}
   </svg>`;
 }
 const nomeMesCurto = (k) => { const [a, m] = k.split('-'); return ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'][+m - 1] + (m === '01' || k === S.caa.historico[0].mes ? '/' + a.slice(2) : ''); };
@@ -371,8 +371,8 @@ R.abas.conversa = () => {
     <div class="metrica"><b>${ult.vocab}</b><span>palavras usadas (era ${pri.vocab})</span></div>
     <div class="metrica"><b>${ult.iniciadas}%</b><span>conversas que ele começa (era ${pri.iniciadas}%)</span></div>
   </div>
-  <div class="cartao grafico" style="margin-top:10px"><b class="peq">Tamanho médio da frase · ${hist.length} meses</b>${grafSerie(hist.map((h) => h.tamanho), rot, { cor: '#22d3ee', max: 4 })}
-    <b class="peq">Vocabulário usado</b>${grafSerie(hist.map((h) => h.vocab), rot, { cor: '#34d399', max: 90 })}
+  <div class="cartao grafico" style="margin-top:10px"><b class="peq">Tamanho médio da frase · ${hist.length} meses</b>${grafSerie(hist.map((h) => h.tamanho), rot, { cor: '#2a9d8f', max: 4 })}
+    <b class="peq">Vocabulário usado</b>${grafSerie(hist.map((h) => h.vocab), rot, { cor: '#2a9d7c', max: 90 })}
     <p class="peq suave" style="margin:4px 0 0">A queda no 6º mês coincide com a mudança de escola. Histórico anterior a hoje é fictício; as frases montadas agora entram na conta.</p></div>
   <div class="cartao"><b class="peq">Figuras que ele mais usa</b><div style="margin-top:6px">${pictoHTML(top.map(([id]) => id), 'p')}</div>
     <b class="peq" style="display:block;margin-top:10px">Novas este mês</b><div style="margin-top:6px">${pictoHTML(C.novos.slice(-6), 'p')}</div></div>

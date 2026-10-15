@@ -113,20 +113,28 @@ function animarPacote(ev) {
 // ---------- Voz ----------
 // A voz do Lumi: prefere vozes neurais femininas em português (soam humanas), e a escolha fica salva no perfil.
 let vozPt = null, vozesPt = [];
-const VOZES_FEMININAS = /francisca|thalita|leila|let[ií]cia|manuela|yara|elza|giovanna|brenda|luciana|vit[óo]ria|fernanda|maria|helo[ií]sa|joana|camila|google portugu[eê]s/i;
+const VOZES_FEMININAS = /francisca|thalita|leila|let[ií]cia|manuela|yara|elza|giovanna|brenda|luciana|vit[óo]ria|fernanda|maria|helo[ií]sa|joana|camila/i;
 const VOZES_MASCULINAS = /antonio|ant[ôo]nio|daniel|fabio|f[áa]bio|humberto|julio|j[úu]lio|nicolau|valerio|donato|felipe|ricardo|duarte/i;
+// Vozes neurais (Microsoft "Online (Natural)" no Edge, Apple "Premium/Aprimorada") soam humanas.
+// As do Google soam robóticas: ficam de fora, e só entram se o aparelho não tiver nenhuma outra em português.
+const VOZ_NATURAL = /natural|neural|online|enhanced|premium|aprimorad/i;
+const VOZ_ROBOTICA = /google/i;
 function notaVoz(v) {
   let n = 0;
   if (v.lang === 'pt-BR') n += 30; else if (v.lang.startsWith('pt')) n += 10;
-  if (/natural|neural|online|enhanced|premium|aprimorad/i.test(v.name)) n += 40;
+  if (VOZ_NATURAL.test(v.name)) n += 50;
   if (VOZES_FEMININAS.test(v.name)) n += 25;
   if (VOZES_MASCULINAS.test(v.name)) n -= 30;
+  if (VOZ_ROBOTICA.test(v.name)) n -= 100;
   return n;
 }
 function escolherVoz() {
-  vozesPt = speechSynthesis.getVoices().filter((x) => x.lang.toLowerCase().startsWith('pt')).sort((a, b) => notaVoz(b) - notaVoz(a));
+  const todas = speechSynthesis.getVoices().filter((x) => x.lang.toLowerCase().startsWith('pt')).sort((a, b) => notaVoz(b) - notaVoz(a));
+  const humanas = todas.filter((x) => !VOZ_ROBOTICA.test(x.name));
+  vozesPt = humanas.length ? humanas : todas;
   vozPt = vozesPt.find((x) => x.name === S.perfil.vozNome) || vozesPt[0] || null;
 }
+const temVozNatural = () => vozesPt.some((v) => VOZ_NATURAL.test(v.name));
 if ('speechSynthesis' in window) { escolherVoz(); speechSynthesis.onvoiceschanged = escolherVoz; }
 // Motor de voz atual. voz.js troca VOZ.motor por um que toca as falas gravadas e, quando não há
 // gravação, volta para falarSintetico. VOZ.aoParar guarda funções que interrompem áudios em andamento.
@@ -140,7 +148,7 @@ function falarSintetico(texto, forcar) {
   u.lang = 'pt-BR'; u.rate = S.perfil.velocidade;
   u.volume = S.perfil.volume ?? 0.8;
   // Vozes neurais já soam naturais; nas outras, um tom um pouco mais agudo e suave aproxima de uma voz feminina calma
-  u.pitch = vozPt && /natural|neural|online/i.test(vozPt.name) ? 1 : 1.12;
+  u.pitch = vozPt && VOZ_NATURAL.test(vozPt.name) ? 1 : 1.08;
   if (vozPt) u.voice = vozPt;
   speechSynthesis.speak(u);
 }

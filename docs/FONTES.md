@@ -19,6 +19,23 @@ Todos os números do site e da proposta vêm das fontes abaixo, na numeração [
 | 13 | **Scassellati et al.** In-home social robot for children with ASD. *Science Robotics*, 2018. [divulgação](https://news.yale.edu/2018/08/22/robots-help-children-autism-improve-social-skills) | 12 crianças, 30 dias; atenção compartilhada melhorou, inclusive sem o robô | **Piloto sem grupo de comparação.** Resultado preliminar. |
 | 14 | **Lei nº 13.709/2018 (LGPD).** [link](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm) | Dados de saúde são dados pessoais sensíveis (art. 5º, II) com regras próprias (art. 11) | — |
 
+## Estudos do TCC (base do design)
+
+Referências do TCC que deu origem ao projeto, usadas para as regras de interface (uma coisa por tela, previsibilidade, cores suaves, ajuste sensorial e jogo sem punição). Aparecem em `saiba-mais.html#tcc`.
+
+| Referência | O que tiramos dela | Conferência (out. 2026) |
+|---|---|---|
+| AMERICAN PSYCHIATRIC ASSOCIATION. *DSM-5*. 5. ed. Porto Alegre: Artmed, 2014. | Critérios do TEA, incluindo diferenças sensoriais | Obra de referência conhecida. |
+| DATTOLO, A.; LUCCIO, F. L. Accessible and adaptive user interfaces for people with autism spectrum disorder. UAHCI, Springer, 2017. | Interface adaptável, guias de acessibilidade para TEA | **Conferir título e evento.** No TCC o sobrenome aparece como "FLAMINIA, L. A.", mas a autora é Flaminia L. **Luccio**. A busca achou, das mesmas autoras em 2017, *Accessible and usable websites and mobile applications for people with autism spectrum disorders: a comparative study* (EAI Endorsed Transactions on Ambient Systems, DOI 10.4108/eai.17-5-2017.152549). |
+| FERREIRA, G. L. et al. O uso de tecnologias digitais no desenvolvimento de crianças com TEA. *RBIE*, v. 26, n. 1, 2018. | Tecnologia digital no desenvolvimento infantil | **Conferir.** Um artigo da RBIE de 2019 cita "Ferreira et al. 2018", mas não encontramos o título exato. |
+| LAMBERTY, J. V. T. *Jogos digitais e consciência fonológica no TEA*. Dissertação, Feevale, 2022. | Estrutura de jogo para aprendizagem | **Conferir** no repositório da Feevale; a busca rápida não encontrou. |
+| LUCIAN, B. O.; STUMPF, A. Análise de aplicativos destinados ao aprendizado de crianças com TEA. *Design & Tecnologia*, v. 9, n. 19, p. 43–65, 2019. | Critérios de apps para crianças com TEA | **Confirmado** (volume, número e páginas batem). |
+| RAYMAKER, D. M. et al. Designing accessible technology for autistic people. *ACM TACCESS*, v. 12, n. 2, 2019. | Tecnologia acessível feita com pessoas autistas | **Conferir** na ACM Digital Library; a busca rápida não encontrou esse título. |
+| SILVA, A. et al. Tecnologias digitais da informação e comunicação e autismo. *Revista Educação Especial*, v. 33, 2020. | Personalização e mediação | **Conferir** o título completo. |
+| YANEVA, V. et al. Web accessibility for autism: current status and future trends. W4A 2018. | Acessibilidade web para autismo | **Conferir.** No W4A 2018 a busca achou outro artigo da mesma autora: *Detecting Autism Based on Eye-Tracking Data from Web Searching Tasks*. |
+
+> As referências marcadas com "conferir" podem estar corretas e só não terem aparecido numa busca rápida. Antes de enviar, confira cada uma no Google Acadêmico ou na base do periódico e corrija título, autores e evento se for o caso.
+
 ## O que NÃO usamos, e por quê
 
 - **"Crianças autistas têm 160 vezes mais risco de afogamento."** Aparece em declaração à imprensa dos autores de [9], mas não conseguimos confirmar como o número é derivado no artigo (o resultado publicado é uma razão de mortalidade proporcional, que não é taxa de risco). Preferimos não citar.

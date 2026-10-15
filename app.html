@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Passo a Passo · App</title>
   <meta name="description" content="MVP do Passo a Passo: o Lumi guia a pessoa autista nas rotinas, e a conta dos responsáveis acompanha ao vivo, recebe emergências e vê a evolução de longo prazo.">
-  <meta name="theme-color" content="#050a16">
+  <meta name="theme-color" content="#fff8ee">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=17">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@700;800;900&display=swap">
+  <link rel="stylesheet" href="css/app.css?v=19">
 </head>
 <body>
   <div class="fundo" aria-hidden="true"></div>
 
   <header class="barra-topo">
     <a class="logo" href="index.html" title="Voltar ao site"><i>👣</i><span>Passo a Passo</span></a>
-    <span class="info">Contas conectadas: o que acontece em uma aparece nas outras.</span>
+    <span class="info">O que acontece em um aparelho aparece nos outros.</span>
     <span class="espaco"></span>
     <div class="alternar" role="group" aria-label="Escolher conta">
       <button data-conta="paciente" aria-pressed="true">🧒 Lucas</button>
       <button data-conta="responsavel" aria-pressed="false">👩 Ana<i class="ponto" id="pontoAlerta" hidden></i></button>
       <button data-conta="profissional" aria-pressed="false">🧑‍⚕️ Pro</button>
+      <button data-conta="relogio" aria-pressed="false" aria-label="Relógio do Carlos">⌚</button>
     </div>
     <button class="btn primario" id="abrirRoteiro" title="Demonstração guiada de 3 minutos" style="min-height:38px;padding:7px 12px;font-size:13px">🧭 Roteiro guiado</button>
     <button class="btn" id="abrirEstudio" title="Gravar a voz humana do Lumi" style="min-height:38px;padding:7px 12px;font-size:13px">🎙️ Voz do Lumi</button>
@@ -32,13 +33,19 @@
   <main class="palco">
     <section class="dispositivo" id="dispPaciente" aria-label="Celular do paciente">
       <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b><br>conta do paciente</div><span class="selo ia">Lumi ativo</span></div>
-      <div class="moldura"><div class="tela" id="telaPaciente"></div></div>
+      <div class="aparelho"><div class="moldura"><div class="tela" id="telaPaciente"></div></div></div>
     </section>
 
-    <div class="conexao" aria-hidden="true">
-      <div class="icone">🔗</div>
-      <div class="fio" id="fio"></div>
-      <div>contas<br>conectadas</div>
+    <div class="meio">
+      <div class="conexao" aria-hidden="true">
+        <div class="icone">🔗</div>
+        <div class="fio" id="fio"></div>
+        <div>contas conectadas</div>
+      </div>
+      <section class="dispositivo relogio" id="dispRelogio" aria-label="Relógio do pai">
+        <div class="legenda"><span class="avatar peq">👨</span><div><b>Relógio do Carlos</b><br>pai · só o essencial</div></div>
+        <div class="aparelho"><div class="relogio-moldura"><i class="pulseira cima"></i><div class="caixa-relogio"><div id="telaRelogio"></div></div><i class="pulseira baixo"></i><i class="coroa"></i></div></div>
+      </section>
     </div>
 
     <div class="lado-direito">
@@ -49,26 +56,27 @@
       </div>
       <section class="dispositivo" id="dispResp" aria-label="Celular da responsável">
         <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b><br>conta da família</div><span class="selo ok"><i class="vivo"></i>online</span></div>
-        <div class="moldura"><div class="tela" id="telaResp"></div></div>
+        <div class="aparelho"><div class="moldura"><div class="tela" id="telaResp"></div></div></div>
       </section>
-      <section class="dispositivo escondido" id="dispPro" aria-label="Computador ou tablet do profissional">
+      <section class="dispositivo escondido" id="dispPro" aria-label="Tablet do profissional">
         <div class="legenda"><span class="avatar peq" id="proAvatar">🧑‍⚕️</span><div><b id="proNome">Dra. Júlia</b><br><span id="proPapel">conta profissional</span></div><span class="selo ia"><i class="vivo"></i>consultório</span></div>
-        <div class="moldura pro"><div class="tela" id="telaPro"></div></div>
+        <div class="aparelho"><div class="moldura pro"><div class="tela" id="telaPro"></div></div></div>
       </section>
     </div>
   </main>
 
-  <script src="js/lumi.js?v=17"></script>
-  <script src="js/dados.js?v=17"></script>
-  <script src="js/nucleo.js?v=17"></script>
-  <script src="js/paciente.js?v=17"></script>
-  <script src="js/responsavel.js?v=17"></script>
-  <script src="js/conhecimento.js?v=17"></script>
-  <script src="js/caa.js?v=17"></script>
-  <script src="js/saude.js?v=17"></script>
-  <script src="js/profissional.js?v=17"></script>
-  <script src="js/voz.js?v=17"></script>
-  <script src="js/roteiro.js?v=17"></script>
-  <script src="js/iniciar.js?v=17"></script>
+  <script src="js/lumi.js?v=19"></script>
+  <script src="js/dados.js?v=19"></script>
+  <script src="js/nucleo.js?v=19"></script>
+  <script src="js/paciente.js?v=19"></script>
+  <script src="js/responsavel.js?v=19"></script>
+  <script src="js/conhecimento.js?v=19"></script>
+  <script src="js/caa.js?v=19"></script>
+  <script src="js/saude.js?v=19"></script>
+  <script src="js/profissional.js?v=19"></script>
+  <script src="js/voz.js?v=19"></script>
+  <script src="js/relogio.js?v=19"></script>
+  <script src="js/roteiro.js?v=19"></script>
+  <script src="js/iniciar.js?v=19"></script>
 </body>
 </html>

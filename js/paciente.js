@@ -79,12 +79,17 @@ P.telas.inicio = () => {
   P.ganchosInicio.forEach((f) => f());
 };
 
+// Trilha gamificada: passos feitos viram estrela, o atual mostra a figura, o fim é a bandeira.
+// Só se ganha: não há tempo-limite, placar nem perda de estrelas.
+P.trilha = (r, atual) => r.passos.map((p, i) => `<span class="${i < atual ? 'feito' : i === atual ? 'agora' : ''}" title="${esc(p.curta)}">${i < atual ? '⭐' : p.emoji}</span>`).join('') + '<span class="fim">🏁</span>';
+
 P.telas.rotina = (rid) => {
   const r = rotinaPorId(rid);
   P.moldura(`
     ${P.cabecalho(r.nome)}
     ${P.lumi('atento', `Vamos ${r.objetivo}? São ${r.passos.length} passos.`, `Hoje estamos na fase ${faseDe(r.id)}: ${NOME_FASE[faseDe(r.id)].toLowerCase()}.`)}
-    <div class="cartao"><div class="linha" style="gap:6px">${r.passos.map((p, i) => `<span class="selo" title="${esc(p.curta)}">${i + 1}. ${p.emoji}</span>`).join('')}</div></div>
+    <div class="cartao"><b class="peq">Sua trilha de hoje</b><div class="trilha-passos" aria-label="${r.passos.map((p, i) => `${i + 1}. ${p.curta}`).join('; ')}">${P.trilha(r, -1)}</div>
+      <p class="peq suave" style="margin:4px 0 0">Cada passo vale uma ⭐. Sem pressa: dá para pausar quando quiser.</p></div>
     ${S.perfil.historiaAntes ? '' : `<button class="btn bloco" data-historia="${r.id}" style="margin-bottom:8px">📖 Ver como vai ser (história)</button>`}
     ${S.perfil.historiaAntes ? `<button class="btn primario bloco grande" data-historia="${r.id}">▶ Começar (história primeiro)</button>
       <p class="peq suave" style="text-align:center;margin:6px 0 0"><span class="selo ia">IA</span> Aprendi que ver a história antes ajuda você.</p>` : `<button class="btn primario bloco grande" data-guia="${r.id}">▶ Começar com o Lumi</button>`}
@@ -168,6 +173,7 @@ P.telas.guia = (rid) => {
       <button class="btn-sos" data-sos><span class="carga"></span><span style="position:relative">🆘</span></button>
     </div>
     <div class="progresso"><div id="gBarra" style="width:0%"></div></div>
+    <div class="trilha-passos" id="gTrilha" aria-hidden="true"></div>
     <div id="gLumi"></div>
     <div class="passo-card" id="gPasso"></div>
     <div id="gAcoes"></div>
@@ -194,6 +200,7 @@ P.iniciarPasso = () => {
   g.inicio = Date.now(); g.concluindo = false; g.vistos = 0; g.ultimaPos = null; g.ajudaNoPasso = false;
   g.nivel = nivelInicial(g.fase);
   $(P.raiz, '#gBarra').style.width = (g.idx / g.rotina.passos.length) * 100 + '%';
+  $(P.raiz, '#gTrilha').innerHTML = P.trilha(g.rotina, g.idx);
   emitir('progresso', { rotina: g.rotina.nome, rotinaId: g.rotina.id, passo: g.idx + 1, total: g.rotina.passos.length,
     titulo: preencher(P.passo().curta, g.escolha?.frase), fase: g.fase, nivel: g.nivel });
   P.mostrarDica(true);
@@ -374,12 +381,12 @@ P.detectar = async () => {
     preds.forEach((d) => {
       const [x, y, w, h] = d.bbox, eAlvo = p.objeto && d.class === p.objeto;
       if (eAlvo && (!alvo || d.score > alvo.score)) alvo = d;
-      ctx.strokeStyle = eAlvo ? '#34d399' : '#22d3ee'; ctx.lineWidth = eAlvo ? 5 : 2; ctx.strokeRect(x, y, w, h);
+      ctx.strokeStyle = eAlvo ? '#2a9d7c' : '#2a9d8f'; ctx.lineWidth = eAlvo ? 5 : 2; ctx.strokeRect(x, y, w, h);
       const n = OBJETOS[d.class] || d.class;
       nomes.push(`${n} ${Math.round(d.score * 100)}%`);
       ctx.font = 'bold 18px sans-serif';
-      ctx.fillStyle = eAlvo ? '#34d399' : '#22d3ee'; ctx.fillRect(x, y - 24, ctx.measureText(n).width + 14, 24);
-      ctx.fillStyle = '#032027'; ctx.fillText(n, x + 7, y - 6);
+      ctx.fillStyle = eAlvo ? '#2a9d7c' : '#2a9d8f'; ctx.fillRect(x, y - 24, ctx.measureText(n).width + 14, 24);
+      ctx.fillStyle = '#ffffff'; ctx.fillText(n, x + 7, y - 6);
     });
     $(P.raiz, '#gRotulo').textContent = nomes.length ? 'A IA vê: ' + nomes.join(', ') : 'A IA está observando…';
     // Noção espacial: lado e distância do objeto em relação à pessoa

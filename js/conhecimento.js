@@ -83,7 +83,7 @@ R.abas.ia = () => {
     const e = K.encaminhadas[id];
     if (!e) return `<button class="btn" data-enc="${id}" style="font-size:13px;min-height:38px">❓ Perguntar à Dra. Júlia</button>`;
     if (e.status === 'aguardando') return '<span class="selo aviso">⏳ Aguardando a Dra. Júlia…</span>';
-    return `<div class="peq" style="margin-top:6px;padding:8px 10px;border-radius:10px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25)">🧑‍⚕️ <b>Dra. Júlia:</b> ${esc(e.texto)}</div>`;
+    return `<div class="peq" style="margin-top:6px;padding:8px 10px;border-radius:10px;background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.25)">🧑‍⚕️ <b>Dra. Júlia:</b> ${esc(e.texto)}</div>`;
   };
   return `
   <div class="linha" style="margin-bottom:6px">${lumiSVG({ humor: 'atento', acessorios: lumiNivel(S.pet.estrelas).acessorios, tamanho: 60 })}
