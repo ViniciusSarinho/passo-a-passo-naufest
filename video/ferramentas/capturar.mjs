@@ -156,6 +156,13 @@ const navegador = await puppeteer.launch({
   await espera(1200);
   await p.screenshot({ path: `${saida}/app-visao-geral.png` });
   console.log('ok app-visao-geral');
+  // Modo foco com o roteiro guiado: um aparelho por vez, painel curto
+  await p.setViewport({ width: 1600, height: 900, deviceScaleFactor: 1 });
+  await p.evaluate(() => { ROTEIRO.ritmo = 0.25; abrirRoteiro(); ROTEIRO.i = 1; desenharRoteiro(); });
+  await espera(500);
+  await p.click('#rtMostrar'); await espera(2800);
+  await p.screenshot({ path: `${saida}/app-modo-foco.png` });
+  console.log('ok app-modo-foco');
   await p.close();
 }
 

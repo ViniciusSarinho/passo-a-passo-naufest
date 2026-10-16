@@ -35,7 +35,13 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 
 <img src="docs/img/app-visao-geral.jpg" alt="O app: celular do Lucas, relógio do Carlos e celular da Ana, lado a lado" width="900">
 
-No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas (paciente), o **relógio do Carlos** (pai) e o celular da Ana (família) ou o tablet do profissional, com o **roteiro guiado** numa coluna à direita. O que acontece em um aparelho aparece nos outros.
+*Modo foco, com o roteiro guiado: um aparelho por vez, com o texto do passo ao lado.*
+
+<img src="docs/img/app-modo-foco.jpg" alt="Modo foco: só o celular do Lucas na tela, com o painel do roteiro guiado" width="900">
+
+No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas (paciente), o **relógio do Carlos** (pai) e o celular da Ana (família) ou o tablet do profissional. O que acontece em um aparelho aparece nos outros.
+
+**Modo foco (menos informação na tela):** o seletor **Mostrar** no topo escolhe o que ver: *Todos*, só o *Lucas*, só o *Relógio*, só a *Família* (ou o profissional) ou *Lucas + família*. O **roteiro guiado** troca o foco sozinho a cada passo, mostrando um aparelho por vez, maior, e fica numa coluna à direita com texto curto (o botão 👀 abre "o que olhar"). Os botões menos usados (voz, comparar contas, reiniciar) ficam no menu **⋯**.
 
 | Paciente: início | Modo guia (fase 2) | Conversa por figuras (CAA) | Lembrete de remédio |
 |---|---|---|---|
@@ -114,7 +120,7 @@ python -m http.server 8765
 # abra http://localhost:8765/tests/fumaca.html
 ```
 
-O **teste de fumaça** abre o app num iframe e executa 55 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
+O **teste de fumaça** abre o app num iframe e executa 56 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
 
 ## Estrutura
 

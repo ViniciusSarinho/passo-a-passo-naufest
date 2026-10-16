@@ -10,6 +10,8 @@
 const celular = () => window.matchMedia('(max-width: 960px)').matches;
 // Mostra a conta certa. No computador as duas contas já aparecem lado a lado; no celular, troca a tela.
 function ver(qual) {
+  // No computador, o roteiro mostra um aparelho de cada vez (modo foco)
+  if (ROTEIRO.ativo && !celular() && typeof focarAparelho === 'function') focarAparelho(qual === 'paciente' ? 'paciente' : qual === 'relogio' ? 'relogio' : 'direita');
   if (qual === 'paciente') { if (celular()) mostrarConta('paciente'); return; }
   mostrarConta(qual);
 }
@@ -22,18 +24,18 @@ const aoVivoNaTela = () => { if (celular()) { ver('responsavel'); R.aba = 'inici
 const PASSOS_ROTEIRO = [
   {
     titulo: 'Comece por aqui',
-    texto: 'Este protótipo tem duas contas conectadas: o celular do Lucas (paciente) e o da Ana (mãe). O que acontece em um aparece no outro. O roteiro faz as ações por você.',
+    texto: 'Os aparelhos do Lucas, da Ana e do Carlos estão conectados. O roteiro mostra um de cada vez.',
     olhe: 'Os dados são fictícios. O roteiro reinicia a demonstração e deixa câmera e microfone desligados, para não pedir permissões.',
     botao: '▶ Começar', leitura: 5000,
     async acao() {
       reiniciarDemonstracao();
       Object.assign(S.perfil, { camera: false, ruido: false, ouvir: false }); salvar();
-      ver('paciente');
+      ver('paciente'); focarAparelho('todos');
     },
   },
   {
     titulo: 'O Lumi guia, sem mandar',
-    texto: 'O Lucas abre "Arrumar a mochila". Na fase 2, o Lumi não dá ordens: ele pergunta, e a resposta vem da pessoa.',
+    texto: 'Na fase 2, o Lumi só pergunta. A resposta vem do Lucas.',
     olhe: 'No celular do Lucas, o Lumi faz uma pergunta. No da Ana, a aba "Ao vivo" já mostra o passo atual em tempo real.',
     async acao() {
       ver('paciente'); P.ir('guia', 'mochila'); await esperar(900);
@@ -41,8 +43,8 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: 'Se travar, a ajuda sobe um degrau',
-    texto: 'O Lucas demora. O Lumi passa de pergunta para instrução completa. Quando ele conclui, o Lumi comemora e ele ganha uma estrela.',
+    titulo: 'Se travar, a ajuda sobe',
+    texto: 'O Lucas demora e o Lumi explica melhor. Ao concluir, ele ganha uma estrela.',
     olhe: 'A fala muda de pergunta para instrução; depois aparece "+1 ⭐". A Ana vê o nível de ajuda do Lumi em tempo real.',
     async acao() {
       ver('paciente');
@@ -53,8 +55,8 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: 'Tomada de decisão com duas opções',
-    texto: 'No passo do lanche, o Lumi reduz a escolha a duas figuras: banana ou maçã. É treino de decisão sem sobrecarga.',
+    titulo: 'Duas opções, sem sobrecarga',
+    texto: 'Banana ou maçã? Treino de decisão com poucas escolhas.',
     olhe: 'As duas opções grandes na tela do Lucas. A escolha vira o texto dos passos seguintes ("Guarde a banana").',
     async acao() {
       ver('paciente');
@@ -65,27 +67,38 @@ const PASSOS_ROTEIRO = [
   },
   {
     titulo: 'Câmera: o Lumi enxerga (opcional)',
-    texto: 'A visão computacional roda no próprio aparelho: nada é gravado nem enviado. O navegador vai pedir permissão da câmera. O modo automático pula este passo.',
+    texto: 'A visão roda no aparelho e nada é gravado. O navegador pede permissão da câmera; o modo automático pula este passo.',
     olhe: 'Mostre uma mochila, livro, garrafa, banana, maçã ou celular. A caixa verde aparece, o passo conclui sozinho e a etiqueta diz se o objeto está à esquerda ou à direita. Sem objeto, toque em "Fiz".',
     botao: '📷 Ligar a câmera', opcional: true,
     async acao() { Object.assign(S.perfil, { camera: true }); salvar(); ver('paciente'); P.ir('guia', 'mochila'); },
   },
   {
-    titulo: 'Emergência: SOS com localização',
-    texto: 'O Lucas segura o botão SOS. O Lumi o acalma, e todos os responsáveis são avisados na hora. A Ana responde "Estou a caminho".',
+    titulo: 'SOS com localização',
+    texto: 'O Lucas pede ajuda. A Ana e o Carlos são avisados, e a resposta volta para ele.',
     olhe: 'Na tela da Ana: alerta com mapa, contexto ("passo 4 da rotina") e quem foi avisado. Depois, a resposta volta para o Lucas.',
     async acao() {
       S.perfil.camera = false; ver('paciente');
       if (P.tela !== 'guia') { P.ir('guia', 'mochila'); await esperar(700); }
       await P.sos(); await pausa(2400);
-      ver('responsavel'); R.aba = 'inicio'; R.render(); await pausa(2800);
-      emitir('a_caminho', { quem: 'Ana' }, 'ana'); await pausa(3000);
+      ver('responsavel'); R.aba = 'inicio'; R.render(); await pausa(2600);
+      ver('relogio'); await pausa(2200);
+      emitir('a_caminho', { quem: 'Ana' }, 'ana'); await pausa(2600);
       ver('paciente'); clicar('#sBem'); await esperar(400);
     },
   },
   {
-    titulo: 'Comunicação por figuras (CAA)',
-    texto: 'O Lucas monta uma frase tocando figuras. A IA a transforma em linguagem natural, e a Ana recebe as figuras e o texto.',
+    titulo: 'Relógio do Carlos',
+    texto: 'O essencial no pulso: hoje, remédios, conversa, avisos, resumo e ajustes.',
+    olhe: 'Use os botões ‹ › ao lado do relógio para passar as telas. Quando há um SOS, ele toma a tela e o Carlos responde "Estou indo" ali mesmo.',
+    async acao() {
+      ver('relogio'); W.aviso = null; desenharRelogio();
+      for (const i of [0, 1, 2, 3, 4, 5, 6]) { irPaginaRelogio(i); await pausa(1400); }
+      irPaginaRelogio(0);
+    },
+  },
+  {
+    titulo: 'Comunicação por figuras',
+    texto: 'O Lucas monta a frase com figuras, e a Ana recebe figuras e texto.',
     olhe: 'Frase montada: "Eu quero ir ao parque no sábado." O Lumi sugere a próxima figura com base no que ele mais usa.',
     async acao() {
       S.perfil.camera = false; ver('paciente');
@@ -96,8 +109,8 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: 'Combinar, marcar e aceitar',
-    texto: 'O Lucas pede para marcar um sorvete hoje. A Ana confirma, e o compromisso entra na agenda dele. Depois ele aceita um combinado "primeiro → depois".',
+    titulo: 'Combinar e marcar',
+    texto: 'Ele pede um sorvete hoje; a Ana confirma e entra na agenda. Depois ele aceita um combinado.',
     olhe: 'O pedido chega à Ana com figuras; a confirmação volta ao Lucas. No combinado, ele toca "Combinado!".',
     async acao() {
       ver('paciente'); P.ir('conversar', 'marcar');
@@ -111,7 +124,7 @@ const PASSOS_ROTEIRO = [
   },
   {
     titulo: 'Remédio com lembrete em figuras',
-    texto: 'Na hora do remédio, o Lumi mostra os passos com figuras. Quando o Lucas toca "Tomei", a Ana vê a confirmação, a adesão e o estoque.',
+    texto: 'Ao tocar "Tomei", a Ana vê a confirmação, a adesão e o estoque.',
     olhe: 'Lembrete com 4 passos. Na aba Saúde da Ana: dose de hoje confirmada, adesão de 30 dias e aviso de reposição.',
     async acao() {
       ver('paciente'); P.ir('inicio'); emitir('med_lembrete', { med: 'med1' }, 'lumi');
@@ -120,8 +133,8 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: 'A IA pergunta e lê o laudo',
-    texto: 'A Ana pede o relatório ao neuropsicólogo. Quando ele chega (PDF ou TXT), a IA lê, separa pontos fortes e dificuldades e sugere ajustes. Só entram com aprovação humana.',
+    titulo: 'A IA lê o laudo',
+    texto: 'Em PDF ou TXT: a IA separa pontos fortes e dificuldades e sugere ajustes. Só valem com aprovação humana.',
     olhe: 'Cada área do laudo vira uma sugestão com o trecho original. Ao aprovar, o Lumi muda: história antes das tarefas, mais tempo de espera, pictogramas maiores.',
     async acao() {
       ver('responsavel'); R.aba = 'ia'; R.render(); await pausa(1500);
@@ -132,8 +145,8 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: 'Cada profissional, o seu papel',
-    texto: 'A terapeuta monta o plano e as metas; o neuropsicólogo envia laudos; só a médica ajusta remédios. A tabela mostra o que cada conta vê e faz.',
+    titulo: 'Cada profissional, um papel',
+    texto: 'Plano, laudos e remédios, cada um com a sua permissão.',
     olhe: 'Plano com metas medidas pelos dados do dia a dia, e a tela de saúde da médica, com campos de dose e horário que só ela tem.',
     async acao() {
       ver('profissional'); Q.prof = 'julia'; Q.aba = 'resumo'; Q.render(); await pausa(2400);
@@ -143,12 +156,13 @@ const PASSOS_ROTEIRO = [
     },
   },
   {
-    titulo: '14 meses de evolução, com recuos',
-    texto: 'Autonomia leva meses e anos, com idas e vindas. O gráfico mostra fases, férias e a mudança de escola, e a IA sugere mudar de fase, mas só um humano aprova.',
+    titulo: '14 meses de evolução',
+    texto: 'Autonomia leva meses, com idas e vindas. A IA sugere a fase; a família aprova.',
     olhe: 'A curva sobe de ~50% para mais de 80%, com queda na mudança de escola. No fim do roteiro, câmera e microfone voltam ao que estavam.',
     botao: '📈 Ver evolução', leitura: 6000,
     async acao() {
       clicar('#fecharComp'); ver('responsavel'); R.aba = 'relatorio'; R.rotinaRel = 'mochila'; R.render();
+      const rolagem = $(R.raiz, '#rConteudo'); if (rolagem) rolagem.scrollTop = 0;
       if (ROTEIRO.salvo) { Object.assign(S.perfil, ROTEIRO.salvo); salvar(); }
     },
   },
@@ -166,14 +180,14 @@ const telaBaixa = () => window.innerHeight < 800 && !celular() && !roteiroLatera
 
 function desenharRoteiro() {
   const p = PASSOS_ROTEIRO[ROTEIRO.i], ultimo = ROTEIRO.i === PASSOS_ROTEIRO.length - 1;
-  const mostrarOlhe = !telaBaixa() || ROTEIRO.olhe;
+  const mostrarOlhe = !!ROTEIRO.olhe; // recolhido por padrão: menos texto na tela
   painel.classList.toggle('minimizado', ROTEIRO.minimizado);
   painel.innerHTML = ROTEIRO.minimizado
     ? `<button class="rt-pilula" id="rtAbrir">🧭 Roteiro · passo ${ROTEIRO.i + 1}/${PASSOS_ROTEIRO.length}</button>`
     : `<div class="rt-cab"><b>🧭 Roteiro guiado</b><span class="rt-passo">passo ${ROTEIRO.i + 1} de ${PASSOS_ROTEIRO.length}</span>
         <div class="rt-barra"><div style="width:${(ROTEIRO.i + 1) / PASSOS_ROTEIRO.length * 100}%"></div></div>
         <label class="rt-voz"><input type="checkbox" id="rtVoz" ${S.perfil.voz ? 'checked' : ''}> Lumi fala</label>
-        ${telaBaixa() ? `<button class="rt-ic" id="rtOlhe" aria-label="Mostrar ou ocultar o que olhar" aria-pressed="${!!ROTEIRO.olhe}">👀</button>` : ''}
+        <button class="rt-ic" id="rtOlhe" title="O que olhar neste passo" aria-label="Mostrar ou ocultar o que olhar" aria-pressed="${!!ROTEIRO.olhe}">👀</button>
         <button class="rt-ic" id="rtMin" aria-label="Minimizar">–</button><button class="rt-ic" id="rtFechar" aria-label="Fechar o roteiro">✕</button></div>
       <div class="rt-corpo"><div class="rt-info"><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p>${mostrarOlhe ? `<p class="rt-olhe">👀 <b>O que olhar:</b> ${esc(p.olhe)}</p>` : ''}</div>
         <div class="rt-acoes">
@@ -240,6 +254,7 @@ function fecharRoteiro() {
   if (ROTEIRO.salvo) { Object.assign(S.perfil, ROTEIRO.salvo); salvar(); ROTEIRO.salvo = null; }
   ROTEIRO.ativo = false; painel.hidden = true; document.body.classList.remove('com-roteiro');
   ajustarAltura();
+  if (typeof focarAparelho === 'function') focarAparelho('todos');
 }
 
 document.getElementById('abrirRoteiro').onclick = () => (ROTEIRO.ativo ? fecharRoteiro() : abrirRoteiro());

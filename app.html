@@ -9,14 +9,21 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@700;800;900&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=45">
+  <link rel="stylesheet" href="css/app.css?v=47">
 </head>
 <body>
   <div class="fundo" aria-hidden="true"></div>
 
   <header class="barra-topo">
     <a class="logo" href="index.html" title="Voltar ao site"><i>👣</i><span>Passo a Passo</span></a>
-    <span class="info">O que acontece em um aparelho aparece nos outros.</span>
+    <div class="foco-seletor" role="group" aria-label="O que mostrar na tela">
+      <span class="rot">Mostrar:</span>
+      <button data-foco="todos" aria-pressed="true">Todos</button>
+      <button data-foco="paciente" aria-pressed="false">🧒 Lucas</button>
+      <button data-foco="relogio" aria-pressed="false">⌚ Relógio</button>
+      <button data-foco="direita" aria-pressed="false" id="focoDireita">👩 Família</button>
+      <button data-foco="dupla" aria-pressed="false" id="focoDupla">Lucas + família</button>
+    </div>
     <span class="espaco"></span>
     <div class="alternar" role="group" aria-label="Escolher conta">
       <button data-conta="paciente" aria-pressed="true">🧒 Lucas</button>
@@ -25,15 +32,20 @@
       <button data-conta="relogio" aria-pressed="false" aria-label="Relógio do Carlos">⌚</button>
     </div>
     <button class="btn primario" id="abrirRoteiro" title="Demonstração guiada de 3 minutos" style="min-height:38px;padding:7px 12px;font-size:13px"><span class="ic">🧭</span><span class="tx"> Roteiro guiado</span></button>
+    <div class="menu-mais">
+    <button class="btn" id="menuMais" aria-haspopup="true" aria-expanded="false" title="Mais opções" aria-label="Mais opções">⋯</button>
+    <div class="menu-lista" id="menuLista" hidden>
     <button class="btn" id="abrirEstudio" title="Gravar a voz humana do Lumi" style="min-height:38px;padding:7px 12px;font-size:13px"><span class="ic">🎙️</span><span class="tx"> Voz do Lumi</span></button>
     <button class="btn tema-botao" id="tema" aria-pressed="true" title="Alternar entre tela escura e clara nos aparelhos" style="min-height:38px;padding:7px 12px;font-size:13px"><span class="ic">🌙</span><span class="tx"> Tela escura</span></button>
     <button class="btn" id="comparar" title="Ver o que cada conta pode ver e fazer" style="min-height:38px;padding:7px 12px;font-size:13px"><span class="ic">👁️</span><span class="tx"> Comparar contas</span></button>
     <button class="btn" id="reiniciar" title="Recomeçar a demonstração do zero" style="min-height:38px;padding:7px 12px;font-size:13px"><span class="ic">↺</span><span class="tx"> Reiniciar</span></button>
+    </div>
+    </div>
   </header>
 
   <main class="palco">
     <section class="dispositivo" id="dispPaciente" aria-label="Celular do paciente">
-      <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b><br>conta do paciente</div><span class="selo ia">Lumi ativo</span></div>
+      <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b> <span class="sub">paciente</span></div></div>
       <div class="aparelho"><div class="moldura"><div class="tela" id="telaPaciente"></div></div></div>
     </section>
 
@@ -44,7 +56,7 @@
         <div>contas conectadas</div>
       </div>
       <section class="dispositivo relogio" id="dispRelogio" aria-label="Relógio do pai">
-        <div class="legenda"><span class="avatar peq">👨</span><div><b>Relógio do Carlos</b><br>pai · telas e atalhos</div></div>
+        <div class="legenda"><span class="avatar peq">👨</span><div><b>Relógio do Carlos</b> <span class="sub">pai</span></div></div>
         <div class="aparelho"><div class="relogio-moldura"><i class="pulseira cima"></i><div class="caixa-relogio"><div id="telaRelogio"></div></div><i class="pulseira baixo"></i><button class="botao-lado cima" id="rlVoltar" title="Tela anterior" aria-label="Tela anterior">‹</button><button class="botao-lado baixo" id="rlCoroa" title="Próxima tela" aria-label="Próxima tela">›</button></div>
         <div class="rl-nav"><button class="btn" id="rlAnt" aria-label="Tela anterior">‹</button><span>passe as telas</span><button class="btn" id="rlProx" aria-label="Próxima tela">›</button></div></div>
       </section>
@@ -57,28 +69,28 @@
         <button data-direita="profissional" aria-pressed="false">🧑‍⚕️ Profissional</button>
       </div>
       <section class="dispositivo" id="dispResp" aria-label="Celular da responsável">
-        <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b><br>conta da família</div><span class="selo ok"><i class="vivo"></i>online</span></div>
+        <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b> <span class="sub">família</span></div></div>
         <div class="aparelho"><div class="moldura"><div class="tela" id="telaResp"></div></div></div>
       </section>
       <section class="dispositivo escondido" id="dispPro" aria-label="Tablet do profissional">
-        <div class="legenda"><span class="avatar peq" id="proAvatar">🧑‍⚕️</span><div><b id="proNome">Dra. Júlia</b><br><span id="proPapel">conta profissional</span></div><span class="selo ia"><i class="vivo"></i>consultório</span></div>
+        <div class="legenda"><span class="avatar peq" id="proAvatar">🧑‍⚕️</span><div><b id="proNome">Dra. Júlia</b> <span class="sub" id="proPapel">profissional</span></div></div>
         <div class="aparelho"><div class="moldura pro"><div class="tela" id="telaPro"></div></div></div>
       </section>
     </div>
   </main>
 
-  <script src="js/lumi.js?v=45"></script>
-  <script src="js/dados.js?v=45"></script>
-  <script src="js/nucleo.js?v=45"></script>
-  <script src="js/paciente.js?v=45"></script>
-  <script src="js/responsavel.js?v=45"></script>
-  <script src="js/conhecimento.js?v=45"></script>
-  <script src="js/caa.js?v=45"></script>
-  <script src="js/saude.js?v=45"></script>
-  <script src="js/profissional.js?v=45"></script>
-  <script src="js/voz.js?v=45"></script>
-  <script src="js/relogio.js?v=45"></script>
-  <script src="js/roteiro.js?v=45"></script>
-  <script src="js/iniciar.js?v=45"></script>
+  <script src="js/lumi.js?v=47"></script>
+  <script src="js/dados.js?v=47"></script>
+  <script src="js/nucleo.js?v=47"></script>
+  <script src="js/paciente.js?v=47"></script>
+  <script src="js/responsavel.js?v=47"></script>
+  <script src="js/conhecimento.js?v=47"></script>
+  <script src="js/caa.js?v=47"></script>
+  <script src="js/saude.js?v=47"></script>
+  <script src="js/profissional.js?v=47"></script>
+  <script src="js/voz.js?v=47"></script>
+  <script src="js/relogio.js?v=47"></script>
+  <script src="js/roteiro.js?v=47"></script>
+  <script src="js/iniciar.js?v=47"></script>
 </body>
 </html>

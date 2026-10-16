@@ -32,6 +32,7 @@ APARELHOS = [
 ]
 CENAS = [
     ('app-visao-geral', 'app-visao-geral', 1400),
+    ('app-modo-foco', 'app-modo-foco', 1400),
     ('site-sala-3d', 'sala-abertura', 1200),
     ('site-vitrine-3d', 'vitrine-abertura', 1200),
     ('site-lumi-fisico', 'vitrine-robo', 1200),

@@ -22,7 +22,27 @@ function ladoDireito(qual) {
   document.querySelectorAll('[data-direita]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.direita === qual)));
   document.getElementById('dispResp').classList.toggle('escondido', qual !== 'responsavel');
   document.getElementById('dispPro').classList.toggle('escondido', qual !== 'profissional');
+  const nome = qual === 'profissional' ? 'profissional' : 'família';
+  document.getElementById('focoDireita').textContent = (qual === 'profissional' ? '🧑‍⚕️ ' : '👩 ') + nome[0].toUpperCase() + nome.slice(1);
+  document.getElementById('focoDupla').textContent = 'Lucas + ' + nome;
 }
+
+// ---------- Modo foco: mostra só o aparelho da vez (todos | paciente | relogio | direita | dupla) ----------
+// No computador, deixa a demonstração menos carregada; o roteiro troca o foco sozinho a cada passo.
+function focarAparelho(qual) {
+  document.body.dataset.foco = qual;
+  document.querySelectorAll('[data-foco]').forEach((b) => { if (b.tagName === 'BUTTON') b.setAttribute('aria-pressed', String(b.dataset.foco === qual)); });
+  encaixarAparelhos();
+}
+document.querySelectorAll('button[data-foco]').forEach((b) => b.onclick = () => focarAparelho(b.dataset.foco));
+
+// Menu "⋯" do topo (estúdio de voz, comparar contas, reiniciar)
+const menuMais = document.getElementById('menuMais'), menuLista = document.getElementById('menuLista');
+function menu(abrir) { menuLista.hidden = !abrir; menuMais.setAttribute('aria-expanded', String(abrir)); }
+menuMais.onclick = (e) => { e.stopPropagation(); menu(menuLista.hidden); };
+menuLista.addEventListener('click', () => menu(false));
+document.addEventListener('click', (e) => { if (!menuLista.hidden && !e.target.closest('.menu-mais')) menu(false); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') menu(false); });
 document.querySelectorAll('[data-direita]').forEach((b) => b.onclick = () => ladoDireito(b.dataset.direita));
 document.querySelectorAll('[data-conta]').forEach((b) => b.onclick = () => mostrarConta(b.dataset.conta));
 
@@ -35,9 +55,14 @@ function encaixarAparelhos() {
   const lateral = document.body.classList.contains('rt-lateral');
   const topo = document.querySelector('.barra-topo').offsetHeight;
   const embaixo = ROTEIRO.ativo && !lateral ? document.getElementById('roteiro').offsetHeight + 16 : 0;
-  const porAltura = (window.innerHeight - topo - 150 - embaixo) / 784;
-  const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / 1120;
-  const k = Math.max(0.45, Math.min(1, porAltura, porLargura));
+  // Com um aparelho só, ele pode ficar maior que o tamanho real; com todos, nunca passa de 1
+  const foco = document.body.dataset.foco || 'todos';
+  const larguraNecessaria = { todos: 1120, dupla: 930, paciente: 470, direita: 470, relogio: 420 }[foco];
+  const alturaNecessaria = foco === 'relogio' ? 620 : 784;
+  const escalaMaxima = { todos: 1, dupla: 1.1, paciente: 1.25, direita: 1.25, relogio: 1.6 }[foco];
+  const porAltura = (window.innerHeight - topo - 150 - embaixo) / alturaNecessaria;
+  const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / larguraNecessaria;
+  const k = Math.max(0.45, Math.min(escalaMaxima, porAltura, porLargura));
   raiz.style.setProperty('--escala', k.toFixed(3));
 }
 window.addEventListener('resize', encaixarAparelhos);
@@ -104,6 +129,7 @@ function aplicarTema() {
 document.getElementById('tema').onclick = () => { S.perfil.telaEscura = S.perfil.telaEscura === false; salvar(); aplicarTema(); const m = document.getElementById('mjEscura'); if (m) m.checked = S.perfil.telaEscura !== false; };
 garantirModulos();
 aplicarTema();
+focarAparelho('todos');
 const params = new URLSearchParams(location.search);
 const contaInicial = params.get('conta');
 mostrarConta(['responsavel', 'profissional'].includes(contaInicial) ? contaInicial : 'paciente');

@@ -61,6 +61,10 @@ As variáveis do app (`S`, `P`, `R`, `Q`…) são `const`/`let` globais de scrip
 
 Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; relógio com tela 186 × 226) e é escalado **inteiro** pela variável CSS `--escala` (`zoom`), calculada em `encaixarAparelhos()` (`iniciar.js`) a partir do espaço livre. Assim a tela nunca fica achatada. A partir de 1200 px de largura o roteiro guiado vira uma coluna à direita; abaixo disso fica embaixo e a escala desconta a altura dele. Em telas de até 960 px o app mostra uma conta por vez, em tela cheia (o botão ⌚ mostra o relógio).
 
+## Modo foco
+
+`focarAparelho(qual)` (`iniciar.js`) grava `document.body.dataset.foco` (`todos`, `paciente`, `relogio`, `direita` ou `dupla`) e o CSS (`app.css`, só em telas > 960 px) esconde os aparelhos que não estão em foco. `encaixarAparelhos()` conta com isso: um aparelho só pode passar do tamanho real (até 1,25×; relógio até 1,6×), e com todos nunca passa de 1×. O seletor **Mostrar** fica no topo; o roteiro chama `ver(qual)`, que troca o foco sozinho (`paciente`, `relogio` ou `direita`), e o painel do roteiro mantém "o que olhar" recolhido atrás do botão 👀. O menu **⋯** agrupa estúdio de voz, comparar contas e reiniciar (no celular eles continuam soltos na barra).
+
 ## Tema escuro dos aparelhos
 
 `body.escuro .tela` redefine as variáveis de cor das telas (`--tela`, `--cartao`, `--texto`…) e `--veu` (fundo translúcido dos botões e selos). É o padrão; `S.perfil.telaEscura === false` volta ao claro (botão no topo de `app.html` ou "Meu jeito"). Os gráficos em SVG usam `currentColor` para acompanhar o tema. Cuidado de acessibilidade: cinza-esverdeado e bege em vez de preto e branco puros, para reduzir ofuscamento.
@@ -171,7 +175,7 @@ Lista `PASSOS_ROTEIRO`; cada passo tem `acao()` que executa ações **reais** (a
 - O SOS usa `navigator.geolocation` só quando acionado e com permissão do navegador.
 
 ## Testes
-`tests/fumaca.html` abre o app num iframe e executa **55 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas e o roteiro guiado completo em modo acelerado). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
+`tests/fumaca.html` abre o app num iframe e executa **56 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas e o roteiro guiado completo em modo acelerado). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
 
 ## Do protótipo ao produto
 

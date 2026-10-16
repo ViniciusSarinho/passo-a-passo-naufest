@@ -570,3 +570,38 @@ body.escuro .tela .aviso-lumi { background: var(--cartao-2); }
   .alternar button { padding: 6px 6px; font-size: 12px; }
 }
 html, body { overflow-x: hidden; }
+
+/* ---------- Modo foco: um aparelho por vez (a demonstração fica menos carregada) ---------- */
+@media (min-width: 961px) {
+  .barra-topo .info { display: none; }
+  .foco-seletor { display: flex; align-items: center; gap: 4px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 4px; margin-left: 14px; }
+  .foco-seletor .rot { font-size: 12.5px; color: var(--suave); padding: 0 6px 0 12px; }
+  .foco-seletor button { border: 0; background: none; border-radius: 999px; padding: 7px 13px; font-weight: 700; font-size: 13px; color: var(--suave); cursor: pointer; white-space: nowrap; }
+  .foco-seletor button:hover { color: var(--texto); }
+  .foco-seletor button[aria-pressed="true"] { background: var(--grad); color: #fff; }
+  .menu-mais { position: relative; }
+  #menuMais { min-width: 44px; font-size: 20px !important; line-height: 1; }
+  .menu-lista { position: absolute; right: 0; top: calc(100% + 8px); z-index: 60; display: grid; gap: 6px; min-width: 220px; padding: 8px; background: var(--cartao); border: 1px solid var(--linha-forte); border-radius: 18px; box-shadow: 0 24px 50px -22px rgba(29, 79, 82, .5); }
+  .menu-lista[hidden] { display: none; }
+  .menu-lista .btn { width: 100%; justify-content: flex-start; text-align: left; }
+  .dispositivo .legenda .selo { display: none; }
+  .dispositivo .legenda .sub { color: var(--suave); font-size: 13px; }
+  .dispositivo .legenda .sub::before { content: "· "; }
+
+  body[data-foco="paciente"] .meio, body[data-foco="paciente"] .lado-direito { display: none; }
+  body[data-foco="relogio"] #dispPaciente, body[data-foco="relogio"] .lado-direito, body[data-foco="relogio"] .conexao { display: none; }
+  body[data-foco="relogio"] .meio { padding-top: 24px; }
+  body[data-foco="direita"] #dispPaciente, body[data-foco="direita"] .meio { display: none; }
+  body[data-foco="dupla"] .meio { display: none; }
+  body[data-foco]:not([data-foco="todos"]) .dispositivo { animation: entraFoco .35s ease; }
+  @keyframes entraFoco { from { opacity: 0; transform: translateY(10px); } }
+}
+@media (max-width: 960px) {
+  .foco-seletor { display: none; }
+  .menu-mais, .menu-lista, .menu-lista[hidden] { display: contents; }
+  #menuMais { display: none; }
+}
+@media (min-width: 961px) {
+  .dispositivo.relogio { min-width: max-content; }
+  .dispositivo.relogio .legenda { justify-content: center; white-space: nowrap; }
+}

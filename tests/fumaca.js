@@ -81,6 +81,15 @@ iframe.addEventListener('load', async () => {
     verdade(ev('S.eventos.length') > ev0, 'aviso rápido enviado');
     await pagina(0);
   });
+  await teste('Modo foco: botões e roteiro trocam o aparelho em foco', async () => {
+    doc.querySelector('button[data-foco="relogio"]').click(); await esperar(60);
+    igual(ev('document.body.dataset.foco'), 'relogio', 'foco no relógio');
+    verdade(doc.querySelector('button[data-foco="relogio"]').getAttribute('aria-pressed') === 'true', 'botão marcado');
+    ev("ROTEIRO.ativo = true; ver('responsavel')");
+    igual(ev('document.body.dataset.foco'), ev('celular()') ? 'relogio' : 'direita', 'o roteiro foca a conta da família');
+    ev("ROTEIRO.ativo = false; focarAparelho('todos')");
+    igual(ev('document.body.dataset.foco'), 'todos', 'volta a mostrar todos');
+  });
   await teste('Voz: vozes do Google ficam de fora quando há outra', () => {
     const r = ev(`(() => { const v = [{ name: 'Google português do Brasil', lang: 'pt-BR' }, { name: 'Microsoft Francisca Online (Natural) - Portuguese (Brazil)', lang: 'pt-BR' }, { name: 'Microsoft Maria', lang: 'pt-BR' }];
       return v.sort((a, b) => notaVoz(b) - notaVoz(a)).map((x) => x.name.split(' ')[1]).join(); })()`);
@@ -143,7 +152,7 @@ iframe.addEventListener('load', async () => {
   await teste('Roteiro guiado completo, no modo automático acelerado', async () => {
     ev('ROTEIRO.ritmo = 0.12; abrirRoteiro()');
     await win.iniciarAutomatico();
-    igual(ev('ROTEIRO.i'), 11, 'chegou ao último passo');
+    igual(ev('ROTEIRO.i'), ev('PASSOS_ROTEIRO.length - 1'), 'chegou ao último passo');
     verdade(ev('!!S.conhecimento.laudo'), 'laudo recebido no roteiro');
     verdade(ev("S.eventos.some((e) => e.tipo === 'sos')"), 'SOS no roteiro');
     ev('fecharRoteiro()');

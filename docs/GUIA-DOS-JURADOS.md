@@ -6,19 +6,20 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 1. Abra o site e clique em **▶ Ver a demo em 3 minutos** (ou abra `app.html?roteiro=1`). Antes, vale rolar a página inicial: a sala 3D mostra o Lucas com a Lumi, a Ana no celular e o Carlos no relógio. Em **Saiba mais** há a vitrine 3D dos equipamentos e, em abas, dados, ética e fontes.
 2. No painel inferior, toque em **▶▶ Automático** para ver tudo sozinho (cerca de 3 minutos), ou use **Mostrar** e **Próximo** passo a passo.
-3. Observe os aparelhos lado a lado: celular do Lucas, **relógio do Carlos** e celular da Ana (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
+3. O roteiro mostra **um aparelho de cada vez** (modo foco): celular do Lucas, **relógio do Carlos** e celular da Ana. Para ver tudo junto, use **Mostrar → Todos** no topo (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
 
 | Passo | O que acontece | O que olhar |
 |---|---|---|
 | 2 e 3 | O Lumi **pergunta** em vez de mandar; se o Lucas trava, **a ajuda sobe**; ao concluir, ele ganha estrela | O desvanecimento de dicas, a ideia central |
 | 4 | Decisão com **duas opções** (banana ou maçã) | Treino de decisão sem sobrecarga |
 | 5 | **Câmera** (opcional): mostre uma mochila, livro, garrafa, banana, maçã ou celular | A caixa verde e a direção ("à sua esquerda") |
-| 6 | **SOS**: o Lumi acalma; a Ana recebe alerta com mapa e responde "estou a caminho" | Comunicação entre as contas e segurança |
-| 7 e 8 | **Comunicação por figuras**, combinados e pedido para marcar | Figuras → frase falada; agenda |
-| 9 | **Remédio** com lembrete em figuras | Adesão e estoque na conta da Ana |
-| 10 | A IA **lê o laudo** (PDF ou TXT) e sugere ajustes que só entram com aprovação | IA com humano no controle |
-| 11 | **Três profissionais**, três permissões; tabela "Comparar contas" | Cada um só vê e faz o que deve |
-| 12 | **14 meses de evolução**, com recuos | Autonomia leva meses, não semanas |
+| 6 | **SOS**: o Lumi acalma; a Ana recebe alerta com mapa; o relógio do Carlos também; a resposta volta ao Lucas | Comunicação entre as contas e segurança |
+| 7 | **Relógio do Carlos**: hoje, remédios, conversa, avisos, resumo e ajustes | O essencial no pulso |
+| 8 e 9 | **Comunicação por figuras**, combinados e pedido para marcar | Figuras → frase falada; agenda |
+| 10 | **Remédio** com lembrete em figuras | Adesão e estoque na conta da Ana |
+| 11 | A IA **lê o laudo** (PDF ou TXT) e sugere ajustes que só entram com aprovação | IA com humano no controle |
+| 12 | **Três profissionais**, três permissões; tabela "Comparar contas" | Cada um só vê e faz o que deve |
+| 13 | **14 meses de evolução**, com recuos | Autonomia leva meses, não semanas |
 
 ## Para explorar sozinho
 
@@ -28,7 +29,7 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 - **Relógio do Carlos:** passe as telas (pontinhos, botões ‹ › ao lado do relógio ou arrastando): hoje, remédios (botão "Dei"), conversa, avisos para o Lucas, resumo e ajustes. Peça um SOS no celular do Lucas e responda "Estou indo" no relógio.
 - **Tela escura ou clara:** botão **🌙** no topo (e em "Meu jeito"). A tela escura é o padrão, mais calma para a vista; sensibilidade à luz varia de pessoa para pessoa.
 - **Meu jeito:** no celular do Lucas, atalho **Meu jeito** (volume, velocidade, voz, tela calma, letra maior).
-- **Voz humana:** botão **🎙️ Voz do Lumi** (no celular, aba **Mais**) abre o estúdio de gravação. As 218 falas fixas já vêm em voz neural.
+- **Voz humana:** menu **⋯ → Voz do Lumi** (no celular, aba **Mais**) abre o estúdio de gravação. As 218 falas fixas já vêm em voz neural.
 - **Reiniciar:** o botão **↺** volta tudo ao início.
 
 ## O que é real e o que é simulado
@@ -55,7 +56,7 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 **Onde está o código?** Neste repositório. Comece por `docs/ARQUITETURA.md`.
 
-**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (55 verificações).
+**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (56 verificações).
 
 **Tem vídeo?** Sim, de 2:55, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
 
