@@ -1,9 +1,9 @@
 {
   "voz": "pt-BR-ThalitaMultilingualNeural",
-  "ritmo": "+5%",
-  "pausa_entre_frases": 0.2,
-  "pausa_entre_cenas": 0.4,
-  "cauda_final": 1.8,
+  "ritmo": "+0%",
+  "pausa_entre_frases": 0.3,
+  "pausa_entre_cenas": 0.45,
+  "cauda_final": 1.4,
   "cenas": [
     {
       "id": "abertura",
@@ -30,8 +30,8 @@
           "fala": "Mas mais da metade recebe, no máximo, duas horas de terapia por semana."
         },
         {
-          "texto": "A semana tem 168 horas. A dificuldade, o risco e a sobrecarga acontecem nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.",
-          "fala": "A semana tem cento e sessenta e oito horas. A dificuldade, o risco e a sobrecarga acontecem nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio."
+          "texto": "A semana tem 168 horas. A dificuldade e o risco estão nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.",
+          "fala": "A semana tem cento e sessenta e oito horas. A dificuldade e o risco estão nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio."
         }
       ]
     },
@@ -39,8 +39,8 @@
       "id": "solucao",
       "frases": [
         {
-          "texto": "O Passo a Passo leva a ajuda para onde ela falta: a sala de casa, a padaria, a escola.",
-          "fala": "O Passo a Passo leva a ajuda para onde ela falta: a sala de casa, a padaria, a escola."
+          "texto": "O Passo a Passo leva a ajuda para onde ela falta: em casa, na padaria, na escola.",
+          "fala": "O Passo a Passo leva a ajuda para onde ela falta: em casa, na padaria, na escola."
         },
         {
           "texto": "O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio.",
@@ -90,12 +90,12 @@
           "fala": "Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio."
         },
         {
-          "texto": "Se o Lucas trava, a ajuda volta. Se acerta várias vezes, a ajuda diminui.",
-          "fala": "Se o Lucas trava, a ajuda volta. Se acerta várias vezes, a ajuda diminui."
+          "texto": "Se o Lucas trava, a ajuda volta. Se acerta, ela diminui.",
+          "fala": "Se o Lucas trava, a ajuda volta. Se acerta, ela diminui."
         },
         {
-          "texto": "É o desvanecimento de dicas, uma técnica de terapia, aplicada todos os dias, no mundo real.",
-          "fala": "É o desvanecimento de dicas, uma técnica de terapia, aplicada todos os dias, no mundo real."
+          "texto": "É o desvanecimento de dicas, uma técnica de terapia, aplicada no dia a dia.",
+          "fala": "É o desvanecimento de dicas, uma técnica de terapia, aplicada no dia a dia."
         }
       ]
     },
@@ -124,8 +124,8 @@
       "id": "cotidiano",
       "frases": [
         {
-          "texto": "A comunicação por figuras vira frase falada, e a família conversa de volta.",
-          "fala": "A comunicação por figuras vira frase falada, e a família conversa de volta."
+          "texto": "A comunicação por figuras vira frase falada, e a família responde.",
+          "fala": "A comunicação por figuras vira frase falada, e a família responde."
         },
         {
           "texto": "O remédio chega com lembrete em figuras, e só a médica altera doses.",
@@ -150,12 +150,12 @@
       "id": "cuidados",
       "frases": [
         {
-          "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem placar e sem punição.",
-          "fala": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem placar e sem punição."
+          "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.",
+          "fala": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição."
         },
         {
-          "texto": "Com base nos estudos do TCC que originou o projeto.",
-          "fala": "Com base nos estudos do T C C que originou o projeto."
+          "texto": "Com base nos estudos do TCC do projeto.",
+          "fala": "Com base nos estudos do T C C do projeto."
         }
       ]
     },
@@ -163,8 +163,8 @@
       "id": "roadmap",
       "frases": [
         {
-          "texto": "O plano vai do celular ao relógio, ao colar com câmera, ao fone de condução óssea e, por fim, a mim: um robô de mesa macio e silencioso.",
-          "fala": "O plano vai do celular ao relógio, ao colar com câmera, ao fone de condução óssea e, por fim, a mim: um robô de mesa macio e silencioso."
+          "texto": "O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso.",
+          "fala": "O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso."
         },
         {
           "texto": "Antes, piloto com famílias e estudo clínico.",

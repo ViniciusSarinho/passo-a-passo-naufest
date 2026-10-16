@@ -1,6 +1,6 @@
 # Vídeo do pitch (HyperFrames)
 
-Vídeo comercial de **2:54** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, música suave e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
+Vídeo comercial de **2:57** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, música suave e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
 
 > O MP4 final fica em `video/saida/passo-a-passo-pitch.mp4` (não vai para o Git: a pasta `saida/` está no `.gitignore`).
 
@@ -25,7 +25,7 @@ As imagens são **capturas reais** do app e da sala 3D do site (não são mockup
 
 ## Regras do NAUFest atendidas
 
-- Duração: **≤ 3 minutos** (2:54). Formato **16:9, 1920×1080, MP4**, com áudio.
+- Duração: **≤ 3 minutos** (2:57). Formato **16:9, 1920×1080, MP4**, com áudio.
 - Estrutura pedida: **o problema** e **a solução com IA**, com ênfase na IA (três cenas e uma faixa "Inteligência artificial" em cada).
 - Avisa que os dados do protótipo são fictícios.
 - Legendas embutidas (acessibilidade e para quem assiste sem som).
@@ -52,7 +52,7 @@ Para mudar o texto, edite `roteiro.json` e rode do passo 2 em diante (a duraçã
 - `roteiro.json`: a fala da Lumi, frase por frase (texto da legenda e texto falado, que às vezes difere para a pronúncia).
 - `ferramentas/video.css`: o visual (mesma paleta do site).
 - `ferramentas/montar_video.py`: as cenas e as animações, sincronizadas com o início de cada frase.
-- `assets/voz/`: um MP3 por frase (voz neural **Thalita**, edge-tts). `assets/musica.wav`: trilha gerada por síntese (acordes D maj7 · Bm7 · Gmaj7 · A, a 66 bpm), sem direitos autorais.
+- `assets/voz/`: um MP3 por frase (voz neural feminina **Thalita**, edge-tts, em ritmo natural, sem aceleração; para trocar de voz, mude `voz` em `roteiro.json`, por exemplo `pt-BR-FranciscaNeural`). `assets/musica.wav`: trilha gerada por síntese (acordes D maj7 · Bm7 · Gmaj7 · A, a 66 bpm), sem direitos autorais.
 
 ## Antes de enviar
 

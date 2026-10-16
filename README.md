@@ -11,7 +11,7 @@
 | 📝 **Proposta (etapas do NAUFest)** | [`docs/PROPOSTA.md`](docs/PROPOSTA.md) |
 | 🏗️ **Arquitetura** | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
 | 🛠️ **Como foi construído** | [`docs/PROCESSO.md`](docs/PROCESSO.md) |
-| 🎬 **Vídeo do pitch (2:54)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
+| 🎬 **Vídeo do pitch (2:57)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
 
 ## O problema
 
