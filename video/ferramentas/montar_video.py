@@ -414,7 +414,7 @@ html = f'''<!doctype html>
     {''.join(scenes_html)}
     <div class="lumi-canto-caixa"><i id="anel-voz"></i><img id="lumi-canto" src="assets/img/lumi-falando.png" alt="" /></div>
     {''.join(caps)}
-    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="{TOTAL:.3f}" data-track-index="2" data-volume="0.26" data-fade-in="2.5" data-fade-out="3.5"></audio>
+    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="{TOTAL:.3f}" data-track-index="2" data-volume="0.2" data-fade-in="2"  data-fade-out="3.5"></audio>
     {''.join(audios)}
   </div>
   <script>

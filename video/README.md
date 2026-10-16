@@ -39,7 +39,7 @@ python -m http.server 8765                       # na raiz do projeto, em outro 
 cd video && npm install                          # instala o puppeteer-core
 node ferramentas/capturar.mjs                    # 1. captura as telas do app e da sala 3D (assets/img)
 python ferramentas/gerar_locucao.py              # 2. voz da Lumi + linha do tempo (roteiro.json)
-python ferramentas/gerar_musica.py               # 3. trilha suave original (assets/musica.wav)
+python ferramentas/gerar_musica.py               # 3. trilha animada original (assets/musica.wav)
 python ferramentas/montar_video.py               # 4. gera o index.html (cenas, legendas, áudio)
 npx hyperframes check                            # 5. confere a composição
 npx hyperframes render --fps 30 --quality high -o saida/passo-a-passo-pitch.mp4   # 6. MP4
