@@ -11,7 +11,7 @@ const celular = () => window.matchMedia('(max-width: 960px)').matches;
 // Mostra a conta certa. No computador as duas contas já aparecem lado a lado; no celular, troca a tela.
 function ver(qual) {
   // No computador, o roteiro mostra um aparelho de cada vez (modo foco)
-  if (ROTEIRO.ativo && !celular() && typeof focarAparelho === 'function') focarAparelho(qual === 'paciente' ? 'paciente' : qual === 'relogio' ? 'relogio' : 'direita');
+  if (ROTEIRO.ativo && !celular() && typeof focarAparelho === 'function') focarAparelho(qual === 'responsavel' ? 'familia' : qual);
   if (qual === 'paciente') { if (celular()) mostrarConta('paciente'); return; }
   mostrarConta(qual);
 }
@@ -181,6 +181,7 @@ const telaBaixa = () => window.innerHeight < 800 && !celular() && !roteiroLatera
 function desenharRoteiro() {
   const p = PASSOS_ROTEIRO[ROTEIRO.i], ultimo = ROTEIRO.i === PASSOS_ROTEIRO.length - 1;
   const mostrarOlhe = !!ROTEIRO.olhe; // recolhido por padrão: menos texto na tela
+  const feito = !!(ROTEIRO.feito && ROTEIRO.feito[ROTEIRO.i]) && !ROTEIRO.ocupado; // passo já mostrado: o botão principal vira "Próximo passo"
   painel.classList.toggle('minimizado', ROTEIRO.minimizado);
   painel.innerHTML = ROTEIRO.minimizado
     ? `<button class="rt-pilula" id="rtAbrir">🧭 Roteiro · passo ${ROTEIRO.i + 1}/${PASSOS_ROTEIRO.length}</button>`
@@ -189,11 +190,13 @@ function desenharRoteiro() {
         <label class="rt-voz"><input type="checkbox" id="rtVoz" ${S.perfil.voz ? 'checked' : ''}> Lumi fala</label>
         <button class="rt-ic" id="rtOlhe" title="O que olhar neste passo" aria-label="Mostrar ou ocultar o que olhar" aria-pressed="${!!ROTEIRO.olhe}">👀</button>
         <button class="rt-ic" id="rtMin" aria-label="Minimizar">–</button><button class="rt-ic" id="rtFechar" aria-label="Fechar o roteiro">✕</button></div>
-      <div class="rt-corpo"><div class="rt-info"><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p>${mostrarOlhe ? `<p class="rt-olhe">👀 <b>O que olhar:</b> ${esc(p.olhe)}</p>` : ''}</div>
+      <div class="rt-corpo"><div class="rt-info"><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p><p class="rt-onde" id="rtOnde"></p>${mostrarOlhe ? `<p class="rt-olhe">👀 <b>O que olhar:</b> ${esc(p.olhe)}</p>` : ''}</div>
         <div class="rt-acoes">
-          <button class="btn primario" id="rtMostrar" ${ROTEIRO.ocupado ? 'disabled' : ''}>${ROTEIRO.ocupado ? '⏳ Executando…' : (p.botao || '▶ Mostrar')}</button>
+          ${feito && !ultimo ? '<button class="btn primario" id="rtProx">Próximo passo →</button>'
+            : feito ? '<button class="btn primario" id="rtReiniciar">↺ Recomeçar o roteiro</button>'
+            : `<button class="btn primario" id="rtMostrar" ${ROTEIRO.ocupado ? 'disabled' : ''}>${ROTEIRO.ocupado ? '⏳ Mostrando…' : (p.botao || '▶ Mostrar este passo')}</button>`}
           <div class="rt-nav"><button class="btn" id="rtAnt" ${ROTEIRO.i === 0 ? 'disabled' : ''} aria-label="Passo anterior">←</button>
-            ${ultimo ? '<button class="btn" id="rtReiniciar">↺ Recomeçar</button>' : '<button class="btn" id="rtProx">Próximo →</button>'}</div>
+            ${feito ? '<button class="btn" id="rtMostrar">↻ Ver de novo</button>' : (ultimo ? '<span></span>' : '<button class="btn" id="rtProx">Pular →</button>')}</div>
           <button class="btn rt-auto ${ROTEIRO.automatico ? 'ativo' : ''}" id="rtAuto">${ROTEIRO.automatico ? '⏸ Pausar' : '▶▶ Automático'}</button>
         </div></div>`;
   const q = (s) => painel.querySelector(s);
@@ -207,7 +210,15 @@ function desenharRoteiro() {
   q('#rtAnt') && (q('#rtAnt').onclick = () => irPasso(ROTEIRO.i - 1));
   q('#rtReiniciar') && (q('#rtReiniciar').onclick = () => { pararAutomatico(); irPasso(0); });
   q('#rtAuto') && (q('#rtAuto').onclick = () => (ROTEIRO.automatico ? pararAutomatico() : iniciarAutomatico()));
+  atualizarOnde();
   ajustarAltura();
+}
+
+// Diz para onde olhar: o aparelho que está em foco agora (no celular só há uma tela, então não precisa)
+function atualizarOnde() {
+  const el = document.getElementById('rtOnde'); if (!el) return;
+  const nomes = { paciente: '🧒 Celular do Lucas', relogio: '⌚ Relógio do Carlos', familia: '👩 Celular da Ana', profissional: '🧑‍⚕️ Tablet do profissional', todos: 'os aparelhos juntos' };
+  el.innerHTML = celular() ? '' : `👀 Olhe para: <b>${nomes[document.body.dataset.foco] || ''}</b>`;
 }
 // Reserva espaço para o painel, para ele não cobrir os celulares
 function ajustarAltura() {
@@ -223,6 +234,7 @@ async function executarPasso() {
   const p = PASSOS_ROTEIRO[ROTEIRO.i];
   ROTEIRO.ocupado = true; desenharRoteiro();
   try { await p.acao(); } catch (e) { toast('O roteiro encontrou um problema neste passo. Pode seguir para o próximo.'); }
+  (ROTEIRO.feito = ROTEIRO.feito || {})[ROTEIRO.i] = true;
   ROTEIRO.ocupado = false; desenharRoteiro();
 }
 function irPasso(i) {
@@ -244,7 +256,7 @@ async function iniciarAutomatico() {
 function pararAutomatico() { ROTEIRO.automatico = false; desenharRoteiro(); }
 
 function abrirRoteiro() {
-  ROTEIRO.ativo = true; ROTEIRO.minimizado = false; ROTEIRO.i = 0;
+  ROTEIRO.ativo = true; ROTEIRO.minimizado = false; ROTEIRO.i = 0; ROTEIRO.feito = {};
   ROTEIRO.salvo = ROTEIRO.salvo || { camera: S.perfil.camera, ruido: S.perfil.ruido, ouvir: S.perfil.ouvir };
   painel.hidden = false; document.body.classList.add('com-roteiro');
   desenharRoteiro();
@@ -254,7 +266,7 @@ function fecharRoteiro() {
   if (ROTEIRO.salvo) { Object.assign(S.perfil, ROTEIRO.salvo); salvar(); ROTEIRO.salvo = null; }
   ROTEIRO.ativo = false; painel.hidden = true; document.body.classList.remove('com-roteiro');
   ajustarAltura();
-  if (typeof focarAparelho === 'function') focarAparelho('todos');
+  if (typeof focarAparelho === 'function') focarAparelho('paciente');
 }
 
 document.getElementById('abrirRoteiro').onclick = () => (ROTEIRO.ativo ? fecharRoteiro() : abrirRoteiro());

@@ -63,7 +63,7 @@ Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; 
 
 ## Modo foco
 
-`focarAparelho(qual)` (`iniciar.js`) grava `document.body.dataset.foco` (`todos`, `paciente`, `relogio`, `direita` ou `dupla`) e o CSS (`app.css`, só em telas > 960 px) esconde os aparelhos que não estão em foco. `encaixarAparelhos()` conta com isso: um aparelho só pode passar do tamanho real (até 1,25×; relógio até 1,6×), e com todos nunca passa de 1×. O seletor **Mostrar** fica no topo; o roteiro chama `ver(qual)`, que troca o foco sozinho (`paciente`, `relogio` ou `direita`), e o painel do roteiro mantém "o que olhar" recolhido atrás do botão 👀. O menu **⋯** agrupa estúdio de voz, comparar contas e reiniciar (no celular eles continuam soltos na barra).
+`focarAparelho(qual)` (`iniciar.js`) grava `document.body.dataset.foco` (`paciente`, `relogio`, `familia`, `profissional` ou `todos`) e o CSS (`app.css`, só em telas > 960 px) esconde os aparelhos que não estão em foco. O app abre em `paciente`; `virarPagina(±1)` percorre `ORDEM_FOCO` (as setas laterais, o teclado e o seletor numerado do topo usam isso), e a animação de entrada vem de `--dx`. `encaixarAparelhos()` conta com isso: um aparelho só pode passar do tamanho real (até 1,25×; relógio até 1,6×), e com todos nunca passa de 1×. O roteiro chama `ver(qual)`, que vira a página sozinho. O painel do roteiro conduz um passo por vez (`ROTEIRO.feito`: depois de "Mostrar este passo", o botão principal vira "Próximo passo"), diz "Olhe para: …" (`atualizarOnde()`) e mantém "o que olhar" recolhido atrás do botão 👀. O menu **⋯** agrupa estúdio de voz, comparar contas e reiniciar (no celular eles continuam soltos na barra).
 
 ## Tema escuro dos aparelhos
 

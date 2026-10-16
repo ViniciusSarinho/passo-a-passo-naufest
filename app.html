@@ -9,21 +9,20 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito:wght@700;800;900&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=47">
+  <link rel="stylesheet" href="css/app.css?v=49">
 </head>
 <body>
   <div class="fundo" aria-hidden="true"></div>
 
   <header class="barra-topo">
     <a class="logo" href="index.html" title="Voltar ao site"><i>👣</i><span>Passo a Passo</span></a>
-    <div class="foco-seletor" role="group" aria-label="O que mostrar na tela">
-      <span class="rot">Mostrar:</span>
-      <button data-foco="todos" aria-pressed="true">Todos</button>
-      <button data-foco="paciente" aria-pressed="false">🧒 Lucas</button>
-      <button data-foco="relogio" aria-pressed="false">⌚ Relógio</button>
-      <button data-foco="direita" aria-pressed="false" id="focoDireita">👩 Família</button>
-      <button data-foco="dupla" aria-pressed="false" id="focoDupla">Lucas + família</button>
-    </div>
+    <nav class="foco-seletor" aria-label="Escolher o aparelho em foco">
+      <button data-foco="paciente" aria-pressed="true"><i>1</i> 🧒 Lucas</button>
+      <button data-foco="relogio" aria-pressed="false"><i>2</i> ⌚ Relógio</button>
+      <button data-foco="familia" aria-pressed="false"><i>3</i> 👩 Família</button>
+      <button data-foco="profissional" aria-pressed="false"><i>4</i> 🧑‍⚕️ Profissional</button>
+      <button data-foco="todos" aria-pressed="false">▦ Todos juntos</button>
+    </nav>
     <span class="espaco"></span>
     <div class="alternar" role="group" aria-label="Escolher conta">
       <button data-conta="paciente" aria-pressed="true">🧒 Lucas</button>
@@ -43,9 +42,12 @@
     </div>
   </header>
 
+  <button class="virar ant" id="virarAnt" title="Aparelho anterior (seta ←)" aria-label="Aparelho anterior"><span class="seta">‹</span><small id="virarAntNome">Profissional</small></button>
+  <button class="virar prox" id="virarProx" title="Próximo aparelho (seta →)" aria-label="Próximo aparelho"><span class="seta">›</span><small id="virarProxNome">Relógio</small></button>
+
   <main class="palco">
     <section class="dispositivo" id="dispPaciente" aria-label="Celular do paciente">
-      <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b> <span class="sub">paciente</span></div></div>
+      <div class="legenda"><span class="avatar peq">🧒</span><div><b>Celular do Lucas</b> <span class="sub">paciente · usa o Lumi nas rotinas</span></div></div>
       <div class="aparelho"><div class="moldura"><div class="tela" id="telaPaciente"></div></div></div>
     </section>
 
@@ -56,7 +58,7 @@
         <div>contas conectadas</div>
       </div>
       <section class="dispositivo relogio" id="dispRelogio" aria-label="Relógio do pai">
-        <div class="legenda"><span class="avatar peq">👨</span><div><b>Relógio do Carlos</b> <span class="sub">pai</span></div></div>
+        <div class="legenda"><span class="avatar peq">👨</span><div><b>Relógio do Carlos</b> <span class="sub">pai · o essencial no pulso</span></div></div>
         <div class="aparelho"><div class="relogio-moldura"><i class="pulseira cima"></i><div class="caixa-relogio"><div id="telaRelogio"></div></div><i class="pulseira baixo"></i><button class="botao-lado cima" id="rlVoltar" title="Tela anterior" aria-label="Tela anterior">‹</button><button class="botao-lado baixo" id="rlCoroa" title="Próxima tela" aria-label="Próxima tela">›</button></div>
         <div class="rl-nav"><button class="btn" id="rlAnt" aria-label="Tela anterior">‹</button><span>passe as telas</span><button class="btn" id="rlProx" aria-label="Próxima tela">›</button></div></div>
       </section>
@@ -69,7 +71,7 @@
         <button data-direita="profissional" aria-pressed="false">🧑‍⚕️ Profissional</button>
       </div>
       <section class="dispositivo" id="dispResp" aria-label="Celular da responsável">
-        <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b> <span class="sub">família</span></div></div>
+        <div class="legenda"><span class="avatar peq">👩</span><div><b>Celular da Ana</b> <span class="sub">família · acompanha ao vivo</span></div></div>
         <div class="aparelho"><div class="moldura"><div class="tela" id="telaResp"></div></div></div>
       </section>
       <section class="dispositivo escondido" id="dispPro" aria-label="Tablet do profissional">
@@ -79,18 +81,18 @@
     </div>
   </main>
 
-  <script src="js/lumi.js?v=47"></script>
-  <script src="js/dados.js?v=47"></script>
-  <script src="js/nucleo.js?v=47"></script>
-  <script src="js/paciente.js?v=47"></script>
-  <script src="js/responsavel.js?v=47"></script>
-  <script src="js/conhecimento.js?v=47"></script>
-  <script src="js/caa.js?v=47"></script>
-  <script src="js/saude.js?v=47"></script>
-  <script src="js/profissional.js?v=47"></script>
-  <script src="js/voz.js?v=47"></script>
-  <script src="js/relogio.js?v=47"></script>
-  <script src="js/roteiro.js?v=47"></script>
-  <script src="js/iniciar.js?v=47"></script>
+  <script src="js/lumi.js?v=49"></script>
+  <script src="js/dados.js?v=49"></script>
+  <script src="js/nucleo.js?v=49"></script>
+  <script src="js/paciente.js?v=49"></script>
+  <script src="js/responsavel.js?v=49"></script>
+  <script src="js/conhecimento.js?v=49"></script>
+  <script src="js/caa.js?v=49"></script>
+  <script src="js/saude.js?v=49"></script>
+  <script src="js/profissional.js?v=49"></script>
+  <script src="js/voz.js?v=49"></script>
+  <script src="js/relogio.js?v=49"></script>
+  <script src="js/roteiro.js?v=49"></script>
+  <script src="js/iniciar.js?v=49"></script>
 </body>
 </html>

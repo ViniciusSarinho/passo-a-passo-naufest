@@ -6,7 +6,7 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 1. Abra o site e clique em **▶ Ver a demo em 3 minutos** (ou abra `app.html?roteiro=1`). Antes, vale rolar a página inicial: a sala 3D mostra o Lucas com a Lumi, a Ana no celular e o Carlos no relógio. Em **Saiba mais** há a vitrine 3D dos equipamentos e, em abas, dados, ética e fontes.
 2. No painel inferior, toque em **▶▶ Automático** para ver tudo sozinho (cerca de 3 minutos), ou use **Mostrar** e **Próximo** passo a passo.
-3. O roteiro mostra **um aparelho de cada vez** (modo foco): celular do Lucas, **relógio do Carlos** e celular da Ana. Para ver tudo junto, use **Mostrar → Todos** no topo (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
+3. O roteiro mostra **um aparelho de cada vez** e vira a página sozinho (celular do Lucas, **relógio do Carlos**, celular da Ana, tablet do profissional); o painel diz "Olhe para: …". Em cada passo, toque em **Mostrar este passo** e depois em **Próximo passo**. Para ver tudo junto, use **▦ Todos juntos** no topo; para virar a página à mão, use as setas laterais ou ← → do teclado (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
 
 | Passo | O que acontece | O que olhar |
 |---|---|---|

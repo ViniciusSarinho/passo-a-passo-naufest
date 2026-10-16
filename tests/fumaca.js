@@ -86,7 +86,9 @@ iframe.addEventListener('load', async () => {
     igual(ev('document.body.dataset.foco'), 'relogio', 'foco no relógio');
     verdade(doc.querySelector('button[data-foco="relogio"]').getAttribute('aria-pressed') === 'true', 'botão marcado');
     ev("ROTEIRO.ativo = true; ver('responsavel')");
-    igual(ev('document.body.dataset.foco'), ev('celular()') ? 'relogio' : 'direita', 'o roteiro foca a conta da família');
+    igual(ev('document.body.dataset.foco'), ev('celular()') ? 'relogio' : 'familia', 'o roteiro foca a conta da família');
+    ev('virarPagina(1)'); igual(ev('document.body.dataset.foco'), 'profissional', 'virar a página leva ao próximo aparelho');
+    ev('virarPagina(1)'); igual(ev('document.body.dataset.foco'), 'paciente', 'depois do último, volta ao primeiro');
     ev("ROTEIRO.ativo = false; focarAparelho('todos')");
     igual(ev('document.body.dataset.foco'), 'todos', 'volta a mostrar todos');
   });

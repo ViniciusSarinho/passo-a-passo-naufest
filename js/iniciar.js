@@ -22,18 +22,38 @@ function ladoDireito(qual) {
   document.querySelectorAll('[data-direita]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.direita === qual)));
   document.getElementById('dispResp').classList.toggle('escondido', qual !== 'responsavel');
   document.getElementById('dispPro').classList.toggle('escondido', qual !== 'profissional');
-  const nome = qual === 'profissional' ? 'profissional' : 'família';
-  document.getElementById('focoDireita').textContent = (qual === 'profissional' ? '🧑‍⚕️ ' : '👩 ') + nome[0].toUpperCase() + nome.slice(1);
-  document.getElementById('focoDupla').textContent = 'Lucas + ' + nome;
 }
 
-// ---------- Modo foco: mostra só o aparelho da vez (todos | paciente | relogio | direita | dupla) ----------
-// No computador, deixa a demonstração menos carregada; o roteiro troca o foco sozinho a cada passo.
+// ---------- Páginas: um aparelho por vez (paciente → relógio → família → profissional; ou todos juntos) ----------
+// Começa no celular do Lucas e a pessoa "vira a página" pelas setas, pelo teclado ou pelo seletor do topo.
+// O roteiro guiado também troca de página sozinho a cada passo.
+const ORDEM_FOCO = ['paciente', 'relogio', 'familia', 'profissional'];
+const NOME_FOCO = { paciente: 'Lucas', relogio: 'Relógio', familia: 'Família', profissional: 'Profissional' };
 function focarAparelho(qual) {
+  if (qual === 'direita') qual = contaDireita === 'profissional' ? 'profissional' : 'familia'; // compatibilidade
+  const antes = ORDEM_FOCO.indexOf(document.body.dataset.foco), depois = ORDEM_FOCO.indexOf(qual);
+  document.documentElement.style.setProperty('--dx', depois >= antes ? '56px' : '-56px');
   document.body.dataset.foco = qual;
-  document.querySelectorAll('[data-foco]').forEach((b) => { if (b.tagName === 'BUTTON') b.setAttribute('aria-pressed', String(b.dataset.foco === qual)); });
+  if (qual === 'familia') ladoDireito('responsavel');
+  if (qual === 'profissional') ladoDireito('profissional');
+  document.querySelectorAll('button[data-foco]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.foco === qual)));
+  const i = ORDEM_FOCO.indexOf(qual);
+  document.getElementById('virarAntNome').textContent = NOME_FOCO[ORDEM_FOCO[((i < 0 ? 0 : i) + 3) % 4]];
+  document.getElementById('virarProxNome').textContent = NOME_FOCO[ORDEM_FOCO[((i < 0 ? -1 : i) + 1 + 4) % 4]];
+  if (typeof atualizarOnde === 'function') atualizarOnde();
   encaixarAparelhos();
 }
+function virarPagina(d) {
+  const i = ORDEM_FOCO.indexOf(document.body.dataset.foco);
+  focarAparelho(ORDEM_FOCO[(((i < 0 ? (d > 0 ? -1 : 0) : i) + d) % 4 + 4) % 4]);
+}
+document.getElementById('virarAnt').onclick = () => virarPagina(-1);
+document.getElementById('virarProx').onclick = () => virarPagina(1);
+document.addEventListener('keydown', (e) => {
+  if (window.innerWidth <= 960 || e.altKey || e.ctrlKey || e.metaKey || e.target.closest('input, textarea, select, [contenteditable]')) return;
+  if (document.querySelector('.modal-comparar')) return;
+  if (e.key === 'ArrowRight') virarPagina(1); else if (e.key === 'ArrowLeft') virarPagina(-1);
+});
 document.querySelectorAll('button[data-foco]').forEach((b) => b.onclick = () => focarAparelho(b.dataset.foco));
 
 // Menu "⋯" do topo (estúdio de voz, comparar contas, reiniciar)
@@ -57,9 +77,9 @@ function encaixarAparelhos() {
   const embaixo = ROTEIRO.ativo && !lateral ? document.getElementById('roteiro').offsetHeight + 16 : 0;
   // Com um aparelho só, ele pode ficar maior que o tamanho real; com todos, nunca passa de 1
   const foco = document.body.dataset.foco || 'todos';
-  const larguraNecessaria = { todos: 1120, dupla: 930, paciente: 470, direita: 470, relogio: 420 }[foco];
+  const larguraNecessaria = { todos: 1120, paciente: 470, familia: 470, profissional: 470, relogio: 420 }[foco] || 1120;
   const alturaNecessaria = foco === 'relogio' ? 620 : 784;
-  const escalaMaxima = { todos: 1, dupla: 1.1, paciente: 1.25, direita: 1.25, relogio: 1.6 }[foco];
+  const escalaMaxima = { todos: 1, paciente: 1.25, familia: 1.25, profissional: 1.25, relogio: 1.6 }[foco] || 1;
   const porAltura = (window.innerHeight - topo - 150 - embaixo) / alturaNecessaria;
   const porLargura = (window.innerWidth - 96 - (lateral ? 372 : 0)) / larguraNecessaria;
   const k = Math.max(0.45, Math.min(escalaMaxima, porAltura, porLargura));
@@ -129,11 +149,14 @@ function aplicarTema() {
 document.getElementById('tema').onclick = () => { S.perfil.telaEscura = S.perfil.telaEscura === false; salvar(); aplicarTema(); const m = document.getElementById('mjEscura'); if (m) m.checked = S.perfil.telaEscura !== false; };
 garantirModulos();
 aplicarTema();
-focarAparelho('todos');
+focarAparelho('paciente');
 const params = new URLSearchParams(location.search);
 const contaInicial = params.get('conta');
 mostrarConta(['responsavel', 'profissional'].includes(contaInicial) ? contaInicial : 'paciente');
 if (contaInicial === 'profissional') ladoDireito('profissional');
+if (contaInicial === 'responsavel') focarAparelho('familia');
+if (contaInicial === 'profissional') focarAparelho('profissional');
+if (contaInicial === 'relogio') focarAparelho('relogio');
 P.ir('inicio');
 R.render();
 Q.render();

@@ -41,7 +41,7 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 
 No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas (paciente), o **relógio do Carlos** (pai) e o celular da Ana (família) ou o tablet do profissional. O que acontece em um aparelho aparece nos outros.
 
-**Modo foco (menos informação na tela):** o seletor **Mostrar** no topo escolhe o que ver: *Todos*, só o *Lucas*, só o *Relógio*, só a *Família* (ou o profissional) ou *Lucas + família*. O **roteiro guiado** troca o foco sozinho a cada passo, mostrando um aparelho por vez, maior, e fica numa coluna à direita com texto curto (o botão 👀 abre "o que olhar"). Os botões menos usados (voz, comparar contas, reiniciar) ficam no menu **⋯**.
+**Um aparelho por vez, virando a página:** o app abre só no **celular do Lucas**, grande, e você "vira a página" para o **relógio do Carlos**, o **celular da Ana** e o **tablet do profissional**: pelas setas laterais (que dizem para onde vão), pelas setas ← → do teclado ou pelo seletor numerado do topo. *Todos juntos* mostra os quatro lado a lado. O **roteiro guiado** conduz um passo por vez: toque em **Mostrar este passo** e depois em **Próximo passo**; ele vira a página sozinho e diz "Olhe para: …". O botão 👀 abre "o que olhar"; os botões menos usados (voz, tela escura, comparar contas, reiniciar) ficam no menu **⋯**.
 
 | Paciente: início | Modo guia (fase 2) | Conversa por figuras (CAA) | Lembrete de remédio |
 |---|---|---|---|

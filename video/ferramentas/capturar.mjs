@@ -26,6 +26,7 @@ const navegador = await puppeteer.launch({
   await p.evaluate(() => {
     document.documentElement.style.setProperty('--escala', '1');
     window.encaixarAparelhos = () => document.documentElement.style.setProperty('--escala', '1');
+    focarAparelho('todos'); // o padrão agora mostra um aparelho só; para as capturas, todos ficam visíveis
     reiniciarDemonstracao();
     Object.assign(S.perfil, { camera: false, ruido: false, ouvir: false, voz: false }); salvar();
     falar = () => {}; // sem áudio durante as capturas
@@ -148,7 +149,7 @@ const navegador = await puppeteer.launch({
   await p.goto(`${BASE}/app.html`, { waitUntil: 'networkidle2' });
   await p.addStyleTag({ content: '.toast{display:none!important}' });
   await p.evaluate(() => { reiniciarDemonstracao(); Object.assign(S.perfil, { camera: false, ruido: false, ouvir: false, voz: false }); salvar(); falar = () => {}; });
-  await p.evaluate(() => { P.ir('guia', 'mochila'); });
+  await p.evaluate(() => { focarAparelho('todos'); P.ir('guia', 'mochila'); });
   await espera(900);
   await p.evaluate(() => { P.concluir?.call(P, 'toque'); });
   await espera(300);
@@ -158,7 +159,7 @@ const navegador = await puppeteer.launch({
   console.log('ok app-visao-geral');
   // Modo foco com o roteiro guiado: um aparelho por vez, painel curto
   await p.setViewport({ width: 1600, height: 900, deviceScaleFactor: 1 });
-  await p.evaluate(() => { ROTEIRO.ritmo = 0.25; abrirRoteiro(); ROTEIRO.i = 1; desenharRoteiro(); });
+  await p.evaluate(() => { focarAparelho('paciente'); ROTEIRO.ritmo = 0.25; abrirRoteiro(); ROTEIRO.i = 1; desenharRoteiro(); });
   await espera(500);
   await p.click('#rtMostrar'); await espera(2800);
   await p.screenshot({ path: `${saida}/app-modo-foco.png` });

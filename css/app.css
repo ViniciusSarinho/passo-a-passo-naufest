@@ -605,3 +605,24 @@ html, body { overflow-x: hidden; }
   .dispositivo.relogio { min-width: max-content; }
   .dispositivo.relogio .legenda { justify-content: center; white-space: nowrap; }
 }
+
+/* ---------- Páginas: um aparelho por vez, com setas para "virar a página" ---------- */
+@media (min-width: 961px) {
+  .foco-seletor { margin-left: 18px; }
+  .foco-seletor button i { font-style: normal; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(29,79,82,.12); font-size: 12px; margin-right: 4px; }
+  .foco-seletor button[aria-pressed="true"] i { background: rgba(255,255,255,.3); }
+  body[data-foco="familia"] #dispPaciente, body[data-foco="familia"] .meio,
+  body[data-foco="profissional"] #dispPaciente, body[data-foco="profissional"] .meio { display: none; }
+  body[data-foco]:not([data-foco="todos"]) .ver-como { display: none; }
+  body[data-foco]:not([data-foco="todos"]) .palco { padding-top: 22px; }
+  @keyframes entraFoco { from { opacity: 0; transform: translateX(var(--dx, 40px)); } }
+  .virar { position: fixed; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 2px; width: 88px; padding: 12px 6px; border: 1px solid var(--linha-forte); border-radius: 26px; background: var(--cartao); color: var(--texto); cursor: pointer; box-shadow: 0 16px 36px -20px rgba(29, 79, 82, .55); transition: transform .2s; font-family: inherit; }
+  .virar:hover { transform: translateY(-50%) scale(1.06); }
+  .virar .seta { font: 900 40px/1 'Nunito', sans-serif; color: var(--teal); }
+  .virar small { font-size: 12.5px; font-weight: 800; color: var(--suave); text-align: center; line-height: 1.15; }
+  .virar.ant { left: 18px; } .virar.prox { right: 18px; }
+  body.rt-lateral .virar.prox { right: 372px; }
+  body[data-foco="todos"] .virar { display: none; }
+}
+@media (max-width: 960px) { .virar { display: none; } }
+.rt-onde { font-weight: 800; color: var(--teal); font-size: 13.5px; margin: 6px 0 0 !important; }
