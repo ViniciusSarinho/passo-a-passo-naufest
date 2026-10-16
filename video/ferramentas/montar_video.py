@@ -393,6 +393,18 @@ for c in TL['cenas']:
         to('#anel-voz', {'opacity': 0.9, 'scale': 1.0}, f['inicio'], 0.2)
         to('#anel-voz', {'opacity': 0, 'scale': 1.25}, f['inicio'] + f['duracao'], 0.35)
 
+# Efeitos sonoros: um sopro em cada troca de cena (começa um pouco antes, para cobrir a transição visual),
+# um "ding" de destaque nas cenas de IA e um acorde brilhante no fecho
+for c in TL['cenas'][1:]:
+    audios.append(f'<audio id="au{n_audio}" src="assets/sfx/transicao.wav" data-start="{max(0, c["inicio"] - 0.45):.3f}" data-duration="0.75" data-track-index="{n_audio}" data-volume="0.45"></audio>')
+    n_audio += 1
+    if c['id'] in ('ia-ve', 'ia-decide', 'ia-adapta'):
+        audios.append(f'<audio id="au{n_audio}" src="assets/sfx/brilho.wav" data-start="{c["inicio"] + 0.25:.3f}" data-duration="1.4" data-track-index="{n_audio}" data-volume="0.3"></audio>')
+        n_audio += 1
+fecho = next(c for c in TL['cenas'] if c['id'] == 'fecho')
+audios.append(f'<audio id="au{n_audio}" src="assets/sfx/final.wav" data-start="{fecho["inicio"] + 0.3:.3f}" data-duration="2.4" data-track-index="{n_audio}" data-volume="0.3"></audio>')
+n_audio += 1
+
 CSS = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'video.css'), encoding='utf-8').read()
 
 html = f'''<!doctype html>
@@ -414,7 +426,7 @@ html = f'''<!doctype html>
     {''.join(scenes_html)}
     <div class="lumi-canto-caixa"><i id="anel-voz"></i><img id="lumi-canto" src="assets/img/lumi-falando.png" alt="" /></div>
     {''.join(caps)}
-    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="{TOTAL:.3f}" data-track-index="2" data-volume="0.2" data-fade-in="2"  data-fade-out="3.5"></audio>
+    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="{TOTAL:.3f}" data-track-index="2" data-volume="0.1" data-fade-in="2"  data-fade-out="3.5"></audio>
     {''.join(audios)}
   </div>
   <script>
