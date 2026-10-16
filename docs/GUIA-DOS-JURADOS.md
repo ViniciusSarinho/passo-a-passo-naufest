@@ -4,9 +4,9 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 ## Em 3 minutos
 
-1. Abra o site e clique em **🧭 Roteiro guiado de 3 minutos**, ou abra `app.html?roteiro=1`.
+1. Abra o site e clique em **▶ Ver a demo em 3 minutos** (ou abra `app.html?roteiro=1`). Antes, vale rolar a página inicial: a sala 3D mostra o Lucas com a Lumi, a Ana no celular e o Carlos no relógio. Em **Saiba mais** há a vitrine 3D dos equipamentos e, em abas, dados, ética e fontes.
 2. No painel inferior, toque em **▶▶ Automático** para ver tudo sozinho (cerca de 3 minutos), ou use **Mostrar** e **Próximo** passo a passo.
-3. Observe, nos dois celulares lado a lado (no celular, alterne por **Lucas / Ana / Pro**):
+3. Observe os aparelhos lado a lado: celular do Lucas, **relógio do Carlos** e celular da Ana (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
 
 | Passo | O que acontece | O que olhar |
 |---|---|---|
@@ -25,8 +25,10 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 - **Laudo em PDF:** na conta da Ana, aba **IA**, baixe o [laudo fictício de exemplo](../exemplos/exemplo-laudo-ficticio.pdf) e envie. Funciona com qualquer PDF com texto ou TXT.
 - **Conversa com a IA:** na conta da Ana, aba **Saúde**, role até "Converse com a IA" e pergunte "Devo aumentar a dose?" (ela recusa) ou "Como foi a semana?".
 - **Ver como profissional:** no computador, alterne "Ver como: Profissional"; no celular, toque em **Pro**. Troque entre Dra. Júlia, Dr. Rafael e Dra. Helena.
+- **Relógio do Carlos:** passe as telas (pontinhos, botões ‹ › ao lado do relógio ou arrastando): hoje, remédios (botão "Dei"), conversa, avisos para o Lucas, resumo e ajustes. Peça um SOS no celular do Lucas e responda "Estou indo" no relógio.
+- **Tela escura ou clara:** botão **🌙** no topo (e em "Meu jeito"). A tela escura é o padrão, mais calma para a vista; sensibilidade à luz varia de pessoa para pessoa.
 - **Meu jeito:** no celular do Lucas, atalho **Meu jeito** (volume, velocidade, voz, tela calma, letra maior).
-- **Voz humana:** botão **🎙️ Voz do Lumi** abre o estúdio de gravação.
+- **Voz humana:** botão **🎙️ Voz do Lumi** (no celular, aba **Mais**) abre o estúdio de gravação. As 218 falas fixas já vêm em voz neural.
 - **Reiniciar:** o botão **↺** volta tudo ao início.
 
 ## O que é real e o que é simulado
@@ -37,7 +39,7 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 | Desvanecimento de dicas, sugestão de fase com aprovação humana | Conversa entre **aparelhos diferentes** (aqui, as contas se falam no mesmo navegador) |
 | Leitura de laudos em PDF/TXT, perguntas da IA, ajustes aprovados | Linguagem e respostas da IA por **regras** (no produto, um modelo de linguagem) |
 | CAA, combinados, agenda, SOS, lembrete de remédio | Respostas da terapeuta e do neuropsicólogo nas demonstrações |
-| Contas com permissões diferentes, estúdio de voz | PDF escaneado (sem OCR); relógio, colar e robô físico (conceito) |
+| Contas com permissões diferentes, estúdio de voz, tela do relógio no app | PDF escaneado (sem OCR); relógio, colar, fone e robô **físicos** (conceito) |
 
 ## Perguntas frequentes
 
@@ -53,7 +55,11 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 **Onde está o código?** Neste repositório. Comece por `docs/ARQUITETURA.md`.
 
-**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html`.
+**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (55 verificações).
+
+**Tem vídeo?** Sim, de 2:54, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
+
+**Funciona no celular?** Sim: o app mostra uma conta por vez, em tela cheia, e o site reorganiza cena 3D e texto. Câmera e microfone pedem `https` ou `localhost`.
 
 ## Honestidade
 

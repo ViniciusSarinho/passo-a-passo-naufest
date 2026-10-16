@@ -73,6 +73,12 @@ Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; 
 
 Regras tiradas dos estudos do TCC (lista em [`FONTES.md`](FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, figura + texto curto + voz, cores pastel sem nada piscando, navegação sempre no mesmo lugar e progresso por **trilha de estrelas** (`P.trilha` em `paciente.js`): cada passo feito vira ⭐, o atual mostra a figura, o fim é 🏁. Não há placar, tempo-limite nem perda de estrelas.
 
+## Celular (responsivo)
+
+- **App** (`css/app.css`): até 960 px o palco deixa de mostrar vários aparelhos; mostra **uma conta por vez** em tela cheia (`.dispositivo.oculto`), sem moldura. O seletor Lucas / Ana / Pro / ⌚ fica na barra do topo, e os botões do topo viram só ícones (`.tx` escondido); estúdio de voz e "Comparar contas" ficam na aba **Mais**. O roteiro guiado reserva a própria altura (`--rt-h`).
+- **Site** (`css/inicio.css`, `css/saibamais.css`): até 860 px o painel de cada capítulo vai para baixo e a câmera 3D enquadra só a parte livre acima dele (`alvoY`); em telas baixas (≤ 700 px) há um modo compacto. Painéis só rolam por dentro quando o conteúdo não cabe. As abas viram uma faixa de rolagem lateral.
+- Verificado por medição em 390 × 844, 360 × 740 e na horizontal (844 × 390): `scrollWidth` igual à largura, painéis dentro da tela.
+
 ## Estado e eventos
 
 - **Estado `S`**: um único objeto (perfil, rotinas, contas, sessões, pet, eventos, alerta, aoVivo + um pedaço por módulo: `S.conhecimento`, `S.caa`, `S.saude`). É salvo em `localStorage` na chave `pap4:estado` (`VERSAO_ESTADO` em `nucleo.js`; mudar a versão descarta estados antigos).
@@ -165,7 +171,7 @@ Lista `PASSOS_ROTEIRO`; cada passo tem `acao()` que executa ações **reais** (a
 - O SOS usa `navigator.geolocation` só quando acionado e com permissão do navegador.
 
 ## Testes
-`tests/fumaca.html` abre o app num iframe e executa **51 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas e o roteiro guiado completo em modo acelerado). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
+`tests/fumaca.html` abre o app num iframe e executa **55 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas e o roteiro guiado completo em modo acelerado). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
 
 ## Do protótipo ao produto
 

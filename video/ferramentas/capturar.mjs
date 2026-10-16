@@ -141,6 +141,24 @@ const navegador = await puppeteer.launch({
   await p.close();
 }
 
+// ---------------------------------------------------------------- Visão geral do app (para o README)
+{
+  const p = await navegador.newPage();
+  await p.setViewport({ width: 1700, height: 960, deviceScaleFactor: 1 });
+  await p.goto(`${BASE}/app.html`, { waitUntil: 'networkidle2' });
+  await p.addStyleTag({ content: '.toast{display:none!important}' });
+  await p.evaluate(() => { reiniciarDemonstracao(); Object.assign(S.perfil, { camera: false, ruido: false, ouvir: false, voz: false }); salvar(); falar = () => {}; });
+  await p.evaluate(() => { P.ir('guia', 'mochila'); });
+  await espera(900);
+  await p.evaluate(() => { P.concluir?.call(P, 'toque'); });
+  await espera(300);
+  await p.evaluate(() => { P.pararGuia(); P.ir('guia', 'mochila'); });
+  await espera(1200);
+  await p.screenshot({ path: `${saida}/app-visao-geral.png` });
+  console.log('ok app-visao-geral');
+  await p.close();
+}
+
 // ---------------------------------------------------------------- Sala 3D e vitrine
 async function cena3d(url, nomes, prefixo) {
   const p = await navegador.newPage();

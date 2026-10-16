@@ -97,7 +97,8 @@ function aplicarTema() {
   document.body.classList.toggle('escuro', escuro);
   const b = document.getElementById('tema');
   b.setAttribute('aria-pressed', String(escuro));
-  b.textContent = escuro ? '🌙 Tela escura' : '☀️ Tela clara';
+  b.innerHTML = escuro ? '<span class="ic">🌙</span><span class="tx"> Tela escura</span>' : '<span class="ic">☀️</span><span class="tx"> Tela clara</span>';
+  b.setAttribute('aria-label', escuro ? 'Tela escura (tocar para clara)' : 'Tela clara (tocar para escura)');
   document.querySelector('meta[name=theme-color]')?.setAttribute('content', escuro ? '#fff8ee' : '#fff8ee');
 }
 document.getElementById('tema').onclick = () => { S.perfil.telaEscura = S.perfil.telaEscura === false; salvar(); aplicarTema(); const m = document.getElementById('mjEscura'); if (m) m.checked = S.perfil.telaEscura !== false; };

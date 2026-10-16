@@ -30,7 +30,7 @@ Cada fase só avança com **validação de pessoas autistas, famílias e profiss
 
 | Formato | Ideia | Observação |
 |---|---|---|
-| ⌚ **Relógio** | Dicas por vibração, sem som; SOS físico; GPS; leitura de batimentos | Vibração opcional e com intensidade ajustável (nem todos toleram); validar a leitura de estresse clinicamente |
+| ⌚ **Relógio** | Dicas por vibração, sem som; SOS físico; GPS; leitura de batimentos (a **tela** do relógio já existe no app: SOS com "Estou indo", rotina ao vivo, remédio, conversa, avisos e ajustes) | Vibração opcional e com intensidade ajustável (nem todos toleram); validar a leitura de estresse clinicamente |
 | 📿 **Colar ou pingente** | Câmera pequena na altura do peito, com LED que mostra quando está ligada | Libera as mãos; o celular fica no bolso |
 | 🎧 **Fone de condução óssea** | A voz do Lumi chega sem tapar os ouvidos | A pessoa continua ouvindo o trânsito e o ambiente |
 | 🕶️ **Óculos** (pesquisa) | Setas e pictogramas no campo de visão | Fase exploratória: conforto e custo |

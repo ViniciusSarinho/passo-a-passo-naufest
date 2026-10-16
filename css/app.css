@@ -554,3 +554,19 @@ body.escuro .tela .btn-sos, body.escuro .tela .badge, body.escuro .tela .btn.per
 body.escuro .tela .sobreposicao { background: rgba(23, 34, 38, .94); }
 body.escuro .tela .sobreposicao.sos { background: radial-gradient(circle at 50% 30%, rgba(210, 67, 73, .42), rgba(23, 34, 38, .97) 70%); }
 body.escuro .tela .aviso-lumi { background: var(--cartao-2); }
+
+/* ---------- Celular: barra do topo só com ícones, sem rolagem horizontal ---------- */
+@media (max-width: 960px) {
+  .barra-topo { gap: 6px; padding: 8px 10px; }
+  .barra-topo .btn .tx { display: none; }
+  .barra-topo .btn { min-width: 40px; min-height: 40px !important; padding: 6px 8px !important; font-size: 18px !important; line-height: 1; display: grid; place-items: center; }
+  .barra-topo .btn .ic { font-size: 18px; }
+  #abrirEstudio, #comparar { display: none; } /* no celular, ficam na aba "Mais" */
+  .alternar { flex: 1 1 auto; min-width: 0; justify-content: space-between; }
+  .alternar button { padding: 7px 8px; font-size: 13px; }
+}
+@media (max-width: 400px) {
+  .barra-topo .logo { display: none; }
+  .alternar button { padding: 6px 6px; font-size: 12px; }
+}
+html, body { overflow-x: hidden; }

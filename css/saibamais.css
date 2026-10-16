@@ -165,3 +165,8 @@ a.ref:hover { text-decoration: underline; }
 }
 body.em-abas::before { opacity: 0; transition: opacity .2s; }
 body::before { transition: opacity .2s; }
+
+/* Sem bolinha solta quando o texto opcional (.opc) é escondido em telas pequenas */
+@media (max-width: 560px), (max-height: 700px) and (min-width: 861px) {
+  .pontos li:has(> .opc:only-child) { display: none; }
+}

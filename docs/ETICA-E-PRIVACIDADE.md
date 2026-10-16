@@ -22,7 +22,7 @@ Um app que acompanha pessoas autistas, muitas vezes crianças, trabalha com dado
 | **SOS por engano ou falso alarme** | Precisa **segurar 1,5 s**; é possível encerrar ("estou bem") | Medir falsos alarmes no piloto; ajustar o tempo e a confirmação |
 | **IA erra** (objeto não reconhecido, frase estranha) | Sempre há "Fiz" e voz como alternativa; o erro custa pouco nas rotinas escolhidas | Revisão profissional dos textos; testes com pessoas autistas; limites claros da IA |
 | **Dependência do aparelho** | Desenho para a ajuda **diminuir**; a fase 3 é o objetivo | Medir autonomia por passo ao longo de meses |
-| **Sobrecarga sensorial** | Volume, velocidade e voz ajustáveis; "tela calma"; sem sons bruscos; pausa em barulho | Opções de vibração; modo "silêncio total"; revisão com terapeutas ocupacionais |
+| **Sobrecarga sensorial** | Volume, velocidade e voz ajustáveis; "tela calma"; **tela escura (padrão) ou clara**, em cinza-esverdeado sem preto nem branco puros; sem sons bruscos; pausa em barulho | Opções de vibração; modo "silêncio total"; revisão com terapeutas ocupacionais |
 | **Aviso de remédio e instruções de saúde** | Lembrete e registro; a IA **recusa** mudar dose ou dar diagnóstico | Fluxo com a médica; alertas de interação só com fonte clínica validada |
 | **Viés de idioma, sotaque e cultura** | Português do Brasil; voz humana gravável | Mais vozes e sotaques; Libras; revisão cultural |
 | **Acesso desigual** | Funciona em celular comum, sem hardware extra | Funcionar sem internet; custo baixo; parcerias com SUS e escolas |

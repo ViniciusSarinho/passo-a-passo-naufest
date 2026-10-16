@@ -368,6 +368,7 @@ function montar(THREE, RoundedBoxGeometry, CSS2DRenderer, CSS2DObject) {
     const porLargura = (geral ? 11 : 3.6) * a / (2 * tg * livreL), porAltura = (geral ? 7.5 : 3.6) * a / (2 * tg * livreA);
     const d = Math.min(36, Math.max(d0, porLargura, porAltura));
     destinoPos.copy(dir.normalize().multiplyScalar(d)).add(destinoAlvo);
+    cena.fog.near = d + 6; cena.fog.far = d + 30; // a névoa não apaga a sala quando a câmera está longe (celular)
     if (fixo) { camPos.copy(destinoPos); camAlvo.copy(destinoAlvo); reservaX = alvoX; reservaY = alvoY; enquadrar(); }
     permitidos = mostrarRotulos[nome] || [];
     telaRel.redesenhar(nome === 'carlos' ? 'sos' : 'passo');

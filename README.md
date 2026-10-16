@@ -33,6 +33,10 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 
 ## Telas
 
+<img src="docs/img/app-visao-geral.jpg" alt="O app: celular do Lucas, relógio do Carlos e celular da Ana, lado a lado" width="900">
+
+No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas (paciente), o **relógio do Carlos** (pai) e o celular da Ana (família) ou o tablet do profissional, com o **roteiro guiado** numa coluna à direita. O que acontece em um aparelho aparece nos outros.
+
 | Paciente: início | Modo guia (fase 2) | Conversa por figuras (CAA) | Lembrete de remédio |
 |---|---|---|---|
 | <img src="docs/img/paciente-inicio.jpg" width="190"> | <img src="docs/img/paciente-guia.jpg" width="190"> | <img src="docs/img/paciente-caa.jpg" width="190"> | <img src="docs/img/paciente-remedio.jpg" width="190"> |
@@ -41,9 +45,16 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 |---|---|---|---|---|
 | <img src="docs/img/familia-sos.jpg" width="150"> | <img src="docs/img/familia-evolucao.jpg" width="150"> | <img src="docs/img/familia-laudo.jpg" width="150"> | <img src="docs/img/profissional-plano.jpg" width="150"> | <img src="docs/img/profissional-saude.jpg" width="150"> |
 
-No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas, o **relógio do Carlos** (pai) e o celular da Ana (ou o tablet do profissional). Em telas largas o **roteiro guiado** fica numa coluna à direita. (Captura abaixo da versão anterior, com o tema escuro.)
+| Relógio: hoje | Relógio: SOS | Site: sala 3D | Site: vitrine 3D |
+|---|---|---|---|
+| <img src="docs/img/relogio-hoje.jpg" width="110"> | <img src="docs/img/relogio-sos.jpg" width="110"> | <img src="docs/img/site-sala-3d.jpg" width="300"> | <img src="docs/img/site-vitrine-3d.jpg" width="300"> |
 
-<img src="docs/img/app-roteiro-sos.jpg" width="640">
+## No celular
+
+O site e o app se adaptam a telas pequenas (verificados em 390 × 844, 360 × 740 e na horizontal, sem rolagem lateral):
+
+- **Site:** a cena 3D fica no topo e o texto de cada capítulo sobe de baixo; a câmera enquadra só a parte livre da tela. As abas de "Saiba mais" rolam para o lado.
+- **App:** em telas de até 960 px aparece **uma conta por vez**, em tela cheia, com o seletor **Lucas / Ana / Pro / ⌚** no topo e botões só com ícone (roteiro, tela escura, reiniciar). O estúdio de voz e a tabela "Comparar contas" ficam na aba **Mais**.
 
 ## O que tem hoje
 
@@ -52,7 +63,8 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 - Agenda visual, check-in de humor, **história social** antes da tarefa.
 - **Modo guia** com desvanecimento de dicas; câmera com **reconhecimento de objetos e direção** ("a mochila está à sua esquerda"); **decisão com duas opções**; sensor de ruído; botão de calma.
 - **CAA**: monta frases com figuras (a IA as transforma em frase natural e sugere a próxima figura), mensagens com a família, **combinados** "primeiro → depois" e pedidos para **marcar** compromissos.
-- **SOS** (segurar 1,5 s), cartão de ajuda, **lembrete de remédio** em figuras e "Meu jeito" (volume, voz, tela calma, letra maior).
+- **SOS** (segurar 1,5 s), cartão de ajuda, **lembrete de remédio** em figuras e "Meu jeito" (volume, voz, tela escura ou clara, tela calma, letra maior).
+- **Trilha de estrelas** em cada rotina: passo feito vira ⭐, sem placar e sem perder pontos.
 
 **Família (Ana)**
 - **Ao vivo** (passo atual e nível de ajuda do Lumi), alerta de emergência com mapa, avisos antecipados.
@@ -65,7 +77,7 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 **Relógio (Carlos, pai)**
 - O essencial primeiro (**SOS** com "Estou indo", rotina **ao vivo**, avisos de conquista, remédio e mensagem) e, passando as telas (pontinhos, os dois botões laterais ‹ › do relógio, os botões abaixo ou arrastando): **Hoje**, **Remédios** (com botão "Dei"), **Conversa** (respostas rápidas), **Avisos** para o Lucas, **Resumo** do dia e **Ajustes** (vibração, "só SOS").
 
-**Página inicial:** curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
+**Site:** a página inicial é curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
 
 **Tela escura (padrão) nos aparelhos:** as telas dos celulares e do tablet usam um tema escuro calmo (cinza-esverdeado, sem preto nem branco puros), com botão no topo e opção em "Meu jeito" para voltar ao fundo claro, pois sensibilidade à luz varia de pessoa para pessoa.
 
@@ -80,7 +92,7 @@ No computador, o app mostra os aparelhos **em tamanho real, escalados por inteir
 | Visão computacional no aparelho (TensorFlow.js), voz, comandos de voz, medidor de ruído | Pessoas, remédios, histórico de 14 meses e laudo de exemplo (**fictícios**) |
 | Desvanecimento de dicas e sugestão de fase com aprovação humana | Conversa entre **aparelhos diferentes** (aqui, as contas se falam no mesmo navegador) |
 | Leitura de laudos em PDF e TXT, perguntas da IA e ajustes aprovados | Linguagem e respostas da IA por **regras** (no produto, um modelo de linguagem) |
-| CAA, combinados, agenda, SOS, lembrete de remédio, permissões por conta | Respostas dos profissionais; PDF escaneado (sem OCR); relógio, colar e robô físico |
+| CAA, combinados, agenda, SOS, lembrete de remédio, permissões por conta, tela do relógio no app | Respostas dos profissionais; PDF escaneado (sem OCR); relógio, colar, fone e robô **físicos** (conceito; só a tela do relógio existe) |
 
 ## Como rodar e publicar
 
@@ -115,11 +127,11 @@ css/                         inicio.css, saibamais.css, app.css
 js/                          lumi, dados, nucleo, paciente, responsavel, conhecimento,
                              caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d, vitrine3d, saibamais (site)
 audio/lumi/                  as 218 falas em voz neural (mp3) + falas.json
-ferramentas/                 gerador da voz neural (edge-tts)
+ferramentas/                 gerar_voz_lumi.py (voz neural, edge-tts) e atualizar_imagens_docs.py (capturas do README)
 video/                       vídeo do pitch feito com HyperFrames (roteiro, cenas, locução, música)
 exemplos/                    laudo FICTÍCIO em PDF
 tests/                       teste de fumaça
-docs/                        proposta, arquitetura, processo, fontes, ética, roadmap, guias
+docs/                        proposta, arquitetura, processo, fontes, ética, roadmap, guias e img/ (capturas atuais)
 ```
 
 ## Documentação
@@ -144,7 +156,7 @@ Idealizado e dirigido por uma pessoa, com apoio de uma IA de programação (Clau
 ## Limitações e próximos passos
 
 - **Não foi testado com pessoas autistas, famílias ou profissionais.** Esse é o primeiro passo do roadmap, junto com um piloto responsável (comitê de ética, consentimento, acompanhamento clínico).
-- Câmera, microfone e localização reais precisam ser conferidos em celulares (Android e iPhone); o ambiente de desenvolvimento os bloqueia.
+- Câmera, microfone e localização reais precisam ser conferidos em celulares (Android e iPhone); o ambiente de desenvolvimento os bloqueia. O layout para celular foi verificado em tamanhos emulados, não em aparelhos físicos.
 - A troca entre aparelhos diferentes exige um servidor seguro; modelos de linguagem entram no piloto, com dados mínimos.
 - Software que apoia decisões de saúde pode exigir avaliação regulatória: veja [`docs/ETICA-E-PRIVACIDADE.md`](docs/ETICA-E-PRIVACIDADE.md).
 
