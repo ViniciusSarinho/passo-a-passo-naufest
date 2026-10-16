@@ -142,7 +142,7 @@
     {
       "id": "ia-adapta",
       "inicio": 93.26,
-      "duracao": 21.43,
+      "duracao": 21.17,
       "frases": [
         {
           "texto": "Ela adapta a linguagem ao nível e ao interesse de cada pessoa.",
@@ -157,108 +157,108 @@
           "duracao": 7.87
         },
         {
-          "texto": "A inteligência artificial sugere. Um humano sempre aprova.",
+          "texto": "A inteligência artificial indica os ajustes, e um humano sempre decide.",
           "arquivo": "ia-adapta-3.mp3",
           "inicio": 105.76,
-          "duracao": 5.06
+          "duracao": 4.8
         },
         {
           "texto": "Sem ela, seria só um app de lembretes.",
           "arquivo": "ia-adapta-4.mp3",
-          "inicio": 111.12,
+          "inicio": 110.86,
           "duracao": 3.12
         }
       ]
     },
     {
       "id": "cotidiano",
-      "inicio": 114.69,
+      "inicio": 114.43,
       "duracao": 16.27,
       "frases": [
         {
           "texto": "A comunicação por figuras vira frase falada, e a família responde.",
           "arquivo": "cotidiano-1.mp3",
-          "inicio": 114.69,
+          "inicio": 114.43,
           "duracao": 4.61
         },
         {
           "texto": "O remédio chega com lembrete em figuras, e só a médica altera doses.",
           "arquivo": "cotidiano-2.mp3",
-          "inicio": 119.6,
+          "inicio": 119.34,
           "duracao": 4.68
         },
         {
           "texto": "E se algo dá errado, o SOS avisa todos, no celular e no relógio, com a localização.",
           "arquivo": "cotidiano-3.mp3",
-          "inicio": 124.58,
+          "inicio": 124.32,
           "duracao": 5.93
         }
       ]
     },
     {
       "id": "evolucao",
-      "inicio": 130.96,
+      "inicio": 130.7,
       "duracao": 9.33,
       "frases": [
         {
           "texto": "A autonomia leva meses. O gráfico mostra 14 meses, com avanços e recuos, para a família e a terapia decidirem juntas.",
           "arquivo": "evolucao-1.mp3",
-          "inicio": 130.96,
+          "inicio": 130.7,
           "duracao": 8.88
         }
       ]
     },
     {
       "id": "cuidados",
-      "inicio": 140.29,
+      "inicio": 140.03,
       "duracao": 9.67,
       "frases": [
         {
           "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.",
           "arquivo": "cuidados-1.mp3",
-          "inicio": 140.29,
+          "inicio": 140.03,
           "duracao": 9.22
         }
       ]
     },
     {
       "id": "roadmap",
-      "inicio": 149.96,
+      "inicio": 149.7,
       "duracao": 11.98,
       "frases": [
         {
           "texto": "O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso.",
           "arquivo": "roadmap-1.mp3",
-          "inicio": 149.96,
+          "inicio": 149.7,
           "duracao": 7.82
         },
         {
           "texto": "Antes, piloto com famílias e estudo clínico.",
           "arquivo": "roadmap-2.mp3",
-          "inicio": 158.08,
+          "inicio": 157.82,
           "duracao": 3.41
         }
       ]
     },
     {
       "id": "fecho",
-      "inicio": 161.94,
+      "inicio": 161.68,
       "duracao": 12.66,
       "frases": [
         {
           "texto": "O protótipo já funciona no navegador, com dados fictícios e código aberto.",
           "arquivo": "fecho-1.mp3",
-          "inicio": 161.94,
+          "inicio": 161.68,
           "duracao": 5.06
         },
         {
           "texto": "Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas.",
           "arquivo": "fecho-2.mp3",
-          "inicio": 167.3,
+          "inicio": 167.04,
           "duracao": 5.9
         }
       ]
     }
   ],
-  "duracao_total": 174.6
+  "duracao_total": 174.34
 }
