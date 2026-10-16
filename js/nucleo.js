@@ -23,13 +23,18 @@
 const MODULOS = [];
 const VERSAO_ESTADO = 'pap4';
 const CHAVE = VERSAO_ESTADO + ':estado';
+// Lê o estado salvo no navegador (localStorage). Devolve null se não houver ou se estiver ilegível.
 function carregar() {
   try { const v = localStorage.getItem(CHAVE); if (v) return JSON.parse(v); } catch (e) {}
   return null;
 }
+// S é o estado do app inteiro (perfil, contas, rotinas, sessões, eventos e o estado de cada módulo).
+// Sem estado salvo, começa com os dados fictícios de demonstração.
 let S = carregar() || dadosDemonstracao();
+// Grava o estado no navegador. Ignora erros (ex.: janela privada sem armazenamento).
 function salvar() { try { localStorage.setItem(CHAVE, JSON.stringify(S)); } catch (e) {} }
 
+// Para cada módulo registrado: cria o estado inicial se faltar e roda a migração (ajustar).
 function garantirModulos() {
   MODULOS.forEach((m) => {
     if (m.dados && !S[m.nome]) S[m.nome] = m.dados();
@@ -38,14 +43,24 @@ function garantirModulos() {
   salvar();
 }
 
+// Canal entre abas do navegador: um evento numa aba chega às outras (ex.: Lucas numa aba, Ana em outra).
 const canal = 'BroadcastChannel' in window ? new BroadcastChannel(VERSAO_ESTADO) : null;
 if (canal) canal.onmessage = (e) => { S = carregar() || S; aoEvento(e.data); };
 
 // Estado do roteiro guiado (roteiro.js). "ativo" também diz ao app para não pedir permissão de localização.
+//   i / m           → passo atual e próximo "momento" dentro dele (cada momento mostra um aparelho)
+//   ocupado         → um momento está sendo executado (os botões ficam desativados)
+//   automatico/auto → modo automático ligado / número do laço vivo (só um laço pode rodar por vez)
+//   token           → muda para cancelar a ação em andamento (pausar, fechar)
+//   ritmo           → multiplicador das pausas (os testes usam um valor pequeno para acelerar)
+//   pularOpcionais  → o automático pula o passo da câmera em vez de pausar (usado nos testes)
+//   olhe / minimizado → painel: "o que olhar" aberto / painel recolhido; salvo = ajustes a restaurar ao fechar
 const ROTEIRO = { ativo: false, i: 0, ocupado: false, automatico: false, minimizado: false, ritmo: 1, salvo: null, m: 0, auto: 0, token: 0, pularOpcionais: false, olhe: false };
 
 // Toda ação relevante vira um evento: muda o estado, é salva e chega às outras contas.
 const EVENTOS_FORA_DA_LINHA_DO_TEMPO = ['progresso', 'fala_caa'];
+// Ponto único de mudança: monta o evento, aplica ao estado, salva, avisa as outras abas e atualiza as telas.
+// "de" é quem fez (lucas, ana, carlos, lumi...). Todo botão importante do app termina aqui.
 function emitir(tipo, dados = {}, de = 'lucas') {
   const ev = { id: Date.now() + Math.random(), tipo, de, data: Date.now(), dados };
   aplicar(ev);
@@ -54,6 +69,7 @@ function emitir(tipo, dados = {}, de = 'lucas') {
   canal?.postMessage(ev);
   aoEvento(ev);
 }
+// Mudanças de estado do núcleo para cada tipo de evento; depois cada módulo aplica as suas.
 function aplicar(ev) {
   const d = ev.dados;
   if (ev.tipo === 'sos') S.alerta = { data: ev.data, local: d.local, contexto: d.contexto, aCaminho: null };
@@ -67,6 +83,7 @@ function aplicar(ev) {
 // Eventos que não merecem o "pacote" animado no fio entre as contas (são internos da IA)
 const EVENTOS_SEM_ANIMACAO = ['pergunta_prof', 'resposta_prof', 'pedido_laudo', 'laudo_enviado', 'ajuste_ia', 'resposta_ia', 'fala_caa'];
 
+// Atualiza as telas depois de um evento: animação no fio, paciente, módulos e família.
 function aoEvento(ev) {
   animarPacote(ev);
   P.receber(ev);
@@ -80,10 +97,12 @@ const $ = (raiz, sel) => raiz.querySelector(sel);
 const rotinaPorId = (id) => S.rotinas.find((r) => r.id === id) || S.rotinas[0];
 const faseDe = (id) => S.perfil.fase[id] || 1;
 const conta = (id) => S.contas.find((c) => c.id === id);
+// Nível de ajuda em que cada passo começa: fase 1 = instrução (2), fase 2 = pergunta (1), fase 3 = silêncio (0).
 const nivelInicial = (fase) => (fase === 1 ? 2 : fase === 2 ? 1 : 0);
 const NOME_FASE = { 1: 'Instrução total', 2: 'Pergunta', 3: 'Silêncio atento' };
 const NOME_AJUDA = ['Sozinho', 'Com pergunta', 'Com instrução'];
 
+// Aviso rápido no pé da tela.
 function toast(texto) {
   const el = document.createElement('div');
   el.className = 'toast'; el.textContent = texto;
@@ -101,6 +120,7 @@ function haQuanto(t) {
 function hora() { return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); }
 
 let fioOcupado = 0;
+// Pacotinho que "viaja" no fio entre os aparelhos, só para mostrar visualmente a troca de eventos.
 function animarPacote(ev) {
   const fio = document.getElementById('fio');
   if (!fio || ev.tipo === 'progresso' && fioOcupado > 2 || EVENTOS_SEM_ANIMACAO.includes(ev.tipo)) return;
@@ -139,7 +159,9 @@ if ('speechSynthesis' in window) { escolherVoz(); speechSynthesis.onvoiceschange
 // Motor de voz atual. voz.js troca VOZ.motor por um que toca as falas gravadas e, quando não há
 // gravação, volta para falarSintetico. VOZ.aoParar guarda funções que interrompem áudios em andamento.
 const VOZ = { motor: null, aoParar: [] };
+// Fala um texto: usa a voz gravada se existir (VOZ.motor) ou a voz do aparelho. "forcar" fala mesmo com a voz desligada.
 function falar(texto, forcar) { return (VOZ.motor || falarSintetico)(texto, forcar); }
+// Para qualquer fala em andamento.
 function pararFala() { VOZ.aoParar.forEach((f) => f()); window.speechSynthesis?.cancel(); }
 function falarSintetico(texto, forcar) {
   if ((!S.perfil.voz && !forcar) || !('speechSynthesis' in window) || !texto) return;
@@ -152,6 +174,7 @@ function falarSintetico(texto, forcar) {
   if (vozPt) u.voice = vozPt;
   speechSynthesis.speak(u);
 }
+// Bipe curto de alerta (SOS na família, remédio atrasado).
 function bipe() {
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -167,11 +190,13 @@ function bipe() {
 
 // ---------- Linguagem adaptada (no produto final: modelo de linguagem com estas mesmas regras) ----------
 function preencher(txt, escolha) { return (txt || '').replace(/\{escolha\}/g, escolha || 'o que você escolheu'); }
+// Texto da instrução do passo, no tamanho certo para o nível de suporte do perfil.
 function instrucao(p, escolha) {
   const n = S.perfil.nivel;
   const txt = preencher(n >= 3 ? p.curta : n <= 1 ? p.explica : p.normal, escolha);
   return S.perfil.lembreteFoco ? `${S.perfil.nome}, ${txt.charAt(0).toLowerCase()}${txt.slice(1)}` : txt;
 }
+// Pergunta do Lumi no nível 1 de ajuda (em vez de dar a resposta).
 function pergunta(p, escolha) {
   if (S.perfil.nivel >= 3) return preencher(p.curta, escolha).replace(/\.$/, '?');
   return preencher(p.pergunta, escolha);
@@ -185,6 +210,7 @@ const OBJ_MASCULINOS = ['book', 'cell phone', 'cup', 'teddy bear', 'clock', 'rem
 function frasePosicao(objeto, lado) {
   return `${OBJ_MASCULINOS.includes(objeto) ? 'O' : 'A'} ${OBJETOS[objeto] || objeto} está ${lado}`;
 }
+// Elogio depois do passo; muda com a fase e com o hiperfoco do perfil.
 function elogio(sucesso, fase) {
   if (!sucesso || fase === 1) return S.perfil.nivel >= 3 ? 'Isso.' : 'Isso! Próximo passo.';
   const h = S.perfil.hiperfoco || 'aventuras', n = S.perfil.nome;
@@ -198,8 +224,11 @@ function acerto(p, fase) {
   if (fase === 1) return p.tempo <= S.perfil.espera * 3;
   return p.nivel <= nivelInicial(fase);
 }
+// Percentual de passos autônomos de uma sessão.
 function taxa(s) { return s.passos.length ? Math.round(s.passos.filter((p) => acerto(p, s.fase)).length / s.passos.length * 100) : 0; }
+// Média das taxas de uma lista de sessões.
 function media(lista) { return lista.length ? Math.round(lista.reduce((a, s) => a + taxa(s), 0) / lista.length) : 0; }
+// Sugestão de fase por rotina, olhando as últimas sessões (a família é quem aprova a mudança).
 function sugestao(rid) {
   const fase = faseDe(rid);
   const naFase = S.sessoes.filter((s) => s.rotina === rid && s.fase === fase);
@@ -213,6 +242,7 @@ function sugestao(rid) {
 
 // Ícones da linha do tempo. Os módulos acrescentam os dos seus eventos com Object.assign(ICONE_EV, {...}).
 const ICONE_EV = { inicio: '▶️', conclusao: '✅', encerrou: '⏹️', calma: '🫧', sos: '🆘', sos_resolvido: '💚', humor: '💭', barulho: '🔊', aviso: '📩', a_caminho: '🚗', fase_aprovada: '🎚️' };
+// Frase da linha do tempo para um evento (os módulos acrescentam as suas por texto(ev)).
 function textoEvento(ev) {
   const d = ev.dados, quem = conta(ev.de)?.nome || '';
   const base = {

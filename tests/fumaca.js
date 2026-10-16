@@ -6,14 +6,17 @@ const iframe = document.getElementById('app');
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
 let ok = 0, falhou = 0;
 
+// Roda um teste: marca a linha como ok/falhou na lista da página. Um erro dentro de fn é uma falha.
 async function teste(nome, fn) {
   const li = document.createElement('li');
   try { await fn(); li.className = 'ok'; ok++; } catch (e) { li.className = 'falhou'; li.textContent = `${nome} — ${e.message}`; falhou++; lista.appendChild(li); return; }
   li.textContent = nome; lista.appendChild(li);
 }
+// Verificações: igual(a, b) compara valores; verdade(condição) exige que seja verdadeira.
 const igual = (a, b, msg) => { if (a !== b) throw new Error(`${msg || 'esperado'}: ${JSON.stringify(a)} ≠ ${JSON.stringify(b)}`); };
 const verdade = (c, msg) => { if (!c) throw new Error(msg || 'condição falsa'); };
 
+// O app é carregado num iframe (tests/fumaca.html). Os testes só começam quando ele termina de carregar.
 iframe.addEventListener('load', async () => {
   const win = iframe.contentWindow, doc = win.document;
   const ev = (codigo) => win.eval(codigo);
@@ -25,6 +28,7 @@ iframe.addEventListener('load', async () => {
   // Estado de demonstração limpo, sem voz, câmera nem microfone
   ev(`S = dadosDemonstracao(); garantirModulos(); S.perfil.voz = false; S.perfil.camera = false; S.perfil.ruido = false; S.perfil.ouvir = false; salvar(); P.ir('inicio'); R.render(); Q.render();`);
 
+  // Estado e módulos
   await teste('Módulos registrados no núcleo', () => igual(ev('MODULOS.map((m) => m.nome).join()'), 'conhecimento,caa,saude,profissional,relogio'));
   await teste('Estado tem os dados de todos os módulos', () => verdade(['caa', 'saude', 'conhecimento'].every((k) => ev(`!!S.${k}`))));
   await teste('Seis contas conectadas, com um paciente', () => { igual(ev('S.contas.length'), 6); igual(ev("S.contas.filter((c) => c.papel === 'paciente').length"), 1); });

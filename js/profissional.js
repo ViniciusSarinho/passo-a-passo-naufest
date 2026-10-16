@@ -5,15 +5,20 @@
    laudo e quem ajusta remédios. Os demais veem, mas não alteram.
    ============================================================================ */
 
+// Profissionais fictícios e o que cada um pode fazer (a permissão define o que a conta vê e altera).
 const PROFS = {
   julia: { pode: ['plano', 'notas', 'rotinas'], resumo: 'Terapeuta ocupacional: monta o plano, as metas e as rotinas; vê evolução, comunicação e saúde (sem alterar remédios).' },
   rafael: { pode: ['laudo'], resumo: 'Neuropsicólogo: envia laudos e acompanha a evolução; não edita plano nem remédios.' },
   helena: { pode: ['medicacao'], resumo: 'Neuropediatra: prescreve e ajusta remédios; vê adesão, sono, crises e efeitos observados.' },
 };
+// Estado do tablet do profissional: aba aberta e profissional selecionado (julia, rafael ou helena).
 const Q = { raiz: document.getElementById('telaPro'), aba: 'resumo', prof: 'julia' };
+// O profissional selecionado tem esta permissão?
 const podePro = (x) => PROFS[Q.prof].pode.includes(x);
+// Aviso "🔒" mostrado no lugar do que o profissional não tem permissão de ver ou alterar.
 const bloqueado = (msg) => `<div class="cartao bloqueio">🔒 ${esc(msg)}</div>`;
 
+// Cada aba é uma função que devolve o HTML. O que aparece muda conforme as permissões do profissional.
 Q.abas = {};
 Q.abas.pacientes = () => `
   <h2 style="font-size:19px;margin-bottom:8px">Meus pacientes</h2>
@@ -72,6 +77,7 @@ Q.abas.saude = () => `
 
 Q.abas.ia = () => `<h2 style="font-size:19px;margin-bottom:8px">Converse com a IA</h2>${chatIA('pro-' + Q.prof, Q.prof)}`;
 
+// Redesenha o tablet, preservando o campo em que a pessoa estava digitando.
 Q.render = () => {
   const c = conta(Q.prof);
   document.getElementById('proNome').textContent = c.nome;
@@ -88,6 +94,7 @@ Q.render = () => {
   $(Q.raiz, '#qConteudo').scrollTop = rol;
   Q.ligar();
 };
+// Liga os cliques do tablet (troca de profissional e de aba, plano, laudo, remédios, chat).
 Q.ligar = () => {
   const q = (s) => $(Q.raiz, s);
   Q.raiz.querySelectorAll('[data-qaba]').forEach((b) => b.onclick = () => { Q.aba = b.dataset.qaba; Q.render(); $(Q.raiz, '#qConteudo').scrollTop = 0; });
@@ -115,6 +122,7 @@ Q.ligar = () => {
   });
   ligarChat(Q.raiz, () => Q.render());
 };
+// Quando chega um evento, só redesenha se a pessoa não estiver digitando.
 Q.receber = () => { const f = document.activeElement; if (f && Q.raiz.contains(f) && /INPUT|TEXTAREA|SELECT/.test(f.tagName)) return; Q.render(); };
 
 // ---------- Registro no núcleo ----------

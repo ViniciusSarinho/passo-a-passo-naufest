@@ -3,19 +3,24 @@
    Celular dela: ao vivo + SOS, evolução de longo prazo, rotinas, contas e ajustes.
    As abas Conversa, Saúde e IA vêm dos módulos (caa.js, saude.js, conhecimento.js).
    ============================================================================ */
+// Estado da conta da família: aba aberta, rotina do relatório e avisos não lidos.
 const R = {
   raiz: document.getElementById('telaResp'),
   aba: 'inicio',
   rotinaRel: 'mochila',
   naoLidos: 0,
 };
+// Id da conta que este celular representa (a Ana). As permissões vêm de S.contas.
 const EU = 'ana';
+// Atalho: a Ana tem esta permissão? (ex.: "emergencia", "plano", "medicacao").
 const pode = (perm) => conta(EU)?.permissoes.includes(perm);
 
+// Abas da barra inferior: [id, ícone, nome].
 R.nav = [['inicio', '📡', 'Ao vivo'], ['relatorio', '📈', 'Evolução'], ['conversa', '💬', 'Conversa'], ['saude', '💊', 'Saúde'], ['ia', '🧠', 'IA'], ['ajustes', '⚙️', 'Mais']];
 R.selos = { inicio: () => (S.alerta ? '!' : R.naoLidos) }; // número ou aviso no ícone da aba; os módulos acrescentam os seus
 R.ligadores = [];                                          // cada módulo registra aqui como ligar os cliques das suas telas
 
+// Redesenha a conta inteira, preservando a rolagem e o campo em que a pessoa estava digitando.
 R.render = () => {
   const rolagem = $(R.raiz, '#rConteudo')?.scrollTop || 0;
   // Se a pessoa está digitando, o redesenho (que vem de um evento da outra conta) devolve o foco ao mesmo campo
@@ -33,7 +38,9 @@ R.render = () => {
   if (idFoco) { const n = document.getElementById(idFoco); if (n) { n.focus(); try { n.setSelectionRange(...selecao); } catch (e) {} } }
 };
 
+// Cada aba é uma função que devolve o HTML; módulos acrescentam as suas (conversa, saúde, IA).
 R.abas = {};
+// Aba "Ao vivo": alerta de SOS (com mapa), passo atual do Lucas, métricas, avisos antecipados e linha do tempo.
 R.abas.inicio = () => {
   const a = S.alerta, v = S.aoVivo;
   const ult30 = S.sessoes.filter((s) => s.data > Date.now() - 30 * 864e5);
@@ -121,6 +128,7 @@ function graficoLongo(rid) {
   </svg>`;
 }
 
+// Aba "Evolução": gráfico de 14 meses, histórico por rotina e a sugestão de mudar de fase (que a família aprova).
 R.abas.relatorio = () => {
   const r = rotinaPorId(R.rotinaRel);
   const lista = S.sessoes.filter((s) => s.rotina === r.id);
@@ -164,6 +172,7 @@ R.abas.relatorio = () => {
 };
 
 
+// Seção de rotinas e fases (a família escolhe a fase de cada rotina).
 R.abas.rotinas = () => `
   <h2 style="font-size:20px;margin-bottom:10px">Rotinas do Lucas</h2>
   ${S.rotinas.map((r) => `<div class="cartao">
@@ -175,6 +184,7 @@ R.abas.rotinas = () => `
   </div>`).join('')}
   <p class="peq suave">A terapeuta (Dra. Júlia) também pode editar as rotinas pela conta dela.</p>`;
 
+// Seção de contas conectadas e permissões de cada pessoa.
 R.abas.contas = () => {
   const qr = Array.from({ length: 81 }, (_, i) => { const x = i % 9, y = Math.floor(i / 9); const canto = (x < 3 && y < 3) || (x > 5 && y < 3) || (x < 3 && y > 5);
     return `<i class="${canto ? ((x % 6 === 1 && y % 6 === 1) || x % 6 === 0 || x % 6 === 2 || y % 6 === 0 || y % 6 === 2 ? 'p' : '') : ((x * 7 + y * 13) % 5 < 2 ? 'p' : '')}"></i>`; }).join('');
@@ -210,6 +220,7 @@ R.abas.contas = () => {
     </ul></div>`;
 };
 
+// Seção de ajustes do perfil do Lucas (voz, aparência, sensores).
 R.secaoAjustes = () => {
   const p = S.perfil;
   return `
@@ -233,6 +244,7 @@ R.secaoAjustes = () => {
 R.secoesMais = [() => R.secaoAjustes(), () => R.abas.rotinas(), () => R.abas.contas()];
 R.abas.ajustes = () => R.secoesMais.map((f) => f()).join('<div style="height:10px"></div>');
 
+// Liga os cliques da aba atual (navegação, SOS, avisos, ajustes) e os ligadores registrados pelos módulos.
 R.ligar = () => {
   const q = (s) => $(R.raiz, s);
   R.raiz.querySelectorAll('[data-aba]').forEach((b) => b.onclick = () => { R.aba = b.dataset.aba; R.render(); $(R.raiz, '#rConteudo').scrollTop = 0; });
@@ -265,6 +277,7 @@ R.ligar = () => {
   R.raiz.querySelectorAll('[data-op]').forEach((c) => c.onchange = () => { S.perfil[c.dataset.op] = c.checked; salvar(); });
 };
 
+// Reação a eventos das outras contas: redesenha a tela e conta mensagens não lidas.
 R.receber = (ev) => {
   if (ev.tipo === 'sos') { R.aba = 'inicio'; bipe(); if (telaMovel() === 'paciente') document.getElementById('pontoAlerta').hidden = false; }
   if (ev.de === 'lucas' && ev.tipo !== 'progresso' && R.aba !== 'inicio') R.naoLidos++;

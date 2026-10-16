@@ -1,6 +1,6 @@
 # Vídeo do pitch (HyperFrames)
 
-Vídeo comercial de **2:55** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, música suave e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
+Vídeo comercial de **2:54** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, trilha animada, efeitos sonoros suaves e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
 
 > O MP4 final fica em `video/saida/passo-a-passo-pitch.mp4` (não vai para o Git: a pasta `saida/` está no `.gitignore`).
 
@@ -25,7 +25,7 @@ As imagens são **capturas reais** do app e da sala 3D do site (não são mockup
 
 ## Regras do NAUFest atendidas
 
-- Duração: **≤ 3 minutos** (2:55). Formato **16:9, 1920×1080, MP4**, com áudio.
+- Duração: **≤ 3 minutos** (2:54). Formato **16:9, 1920×1080, MP4**, com áudio.
 - Estrutura pedida: **o problema** e **a solução com IA**, com ênfase na IA (três cenas e uma faixa "Inteligência artificial" em cada).
 - Avisa que os dados do protótipo são fictícios.
 - Legendas embutidas (acessibilidade e para quem assiste sem som).
@@ -39,7 +39,8 @@ python -m http.server 8765                       # na raiz do projeto, em outro 
 cd video && npm install                          # instala o puppeteer-core
 node ferramentas/capturar.mjs                    # 1. captura as telas do app e da sala 3D (assets/img)
 python ferramentas/gerar_locucao.py              # 2. voz da Lumi + linha do tempo (roteiro.json)
-python ferramentas/gerar_musica.py               # 3. trilha animada original e efeitos sonoros nas transições (gerar_efeitos.py) (assets/musica.wav)
+python ferramentas/gerar_musica.py               # 3. trilha animada original (assets/musica.wav)
+python ferramentas/gerar_efeitos.py               #    efeitos sonoros suaves das transições (assets/sfx/)
 python ferramentas/montar_video.py               # 4. gera o index.html (cenas, legendas, áudio)
 npx hyperframes check                            # 5. confere a composição
 npx hyperframes render --fps 30 --quality high -o saida/passo-a-passo-pitch.mp4   # 6. MP4
@@ -52,7 +53,7 @@ Para mudar o texto, edite `roteiro.json` e rode do passo 2 em diante (a duraçã
 - `roteiro.json`: a fala da Lumi, frase por frase (texto da legenda e texto falado, que às vezes difere para a pronúncia).
 - `ferramentas/video.css`: o visual (mesma paleta do site).
 - `ferramentas/montar_video.py`: as cenas e as animações, sincronizadas com o início de cada frase.
-- `assets/voz/`: um MP3 por frase (voz neural feminina **Thalita**, edge-tts, em ritmo natural, sem aceleração; para trocar de voz, mude `voz` em `roteiro.json`, por exemplo `pt-BR-FranciscaNeural`). `assets/musica.wav`: trilha gerada por síntese (acordes D maj7 · Bm7 · Gmaj7 · A, a 66 bpm), sem direitos autorais.
+- `assets/voz/`: um MP3 por frase (voz neural feminina **Thalita**, edge-tts, em ritmo natural, sem aceleração; para trocar de voz, mude `voz` em `roteiro.json`, por exemplo `pt-BR-FranciscaNeural`). `assets/musica.wav`: trilha animada gerada por síntese (batida leve, baixo, palmas e melodia em Sol maior: G · D · Em · C, a 112 bpm), sem direitos autorais. `assets/sfx/`: efeitos suaves (respiro de ar nas trocas de cena, sininhos nas cenas de IA, acorde no fecho). A música entra a 10% do volume e os efeitos a 14–16%, sempre abaixo da voz (que fica em 100%); os volumes ficam em `data-volume` no `montar_video.py`.
 
 ## Antes de enviar
 

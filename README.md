@@ -11,7 +11,8 @@
 | 📝 **Proposta (etapas do NAUFest)** | [`docs/PROPOSTA.md`](docs/PROPOSTA.md) |
 | 🏗️ **Arquitetura** | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
 | 🛠️ **Como foi construído** | [`docs/PROCESSO.md`](docs/PROCESSO.md) |
-| 🎬 **Vídeo do pitch (2:55)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
+| 📄 **Material de apoio (PDF de 1 página)** | [`docs/APOIO-NAUFest.pdf`](docs/APOIO-NAUFest.pdf): resumo, QR codes (vídeo, protótipo e GitHub) e telas reais |
+| 🎬 **Vídeo do pitch (2:54)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
 
 ## O problema
 
@@ -133,7 +134,7 @@ css/                         inicio.css, saibamais.css, app.css
 js/                          lumi, dados, nucleo, paciente, responsavel, conhecimento,
                              caa, saude, profissional, voz, relogio, roteiro, iniciar · sala3d, vitrine3d, saibamais (site)
 audio/lumi/                  as 218 falas em voz neural (mp3) + falas.json
-ferramentas/                 gerar_voz_lumi.py (voz neural, edge-tts) e atualizar_imagens_docs.py (capturas do README)
+ferramentas/                 gerar_voz_lumi.py (voz neural, edge-tts) e atualizar_imagens_docs.py (capturas dos documentos) e gerar_pdf_apoio.py (PDF de uma página para a entrega)
 video/                       vídeo do pitch feito com HyperFrames (roteiro, cenas, locução, música)
 exemplos/                    laudo FICTÍCIO em PDF
 tests/                       teste de fumaça

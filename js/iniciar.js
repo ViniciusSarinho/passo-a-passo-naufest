@@ -5,9 +5,11 @@
 
 // ---------- Moldura: três contas ----------
 let contaDireita = 'responsavel';
+// No celular só uma conta aparece por vez: devolve "paciente" ou "outra" (qual está visível).
 function telaMovel() {
   return ['dispPaciente', 'dispResp', 'dispPro', 'dispRelogio'].find((id) => !document.getElementById(id).classList.contains('oculto')) === 'dispPaciente' ? 'paciente' : 'outra';
 }
+// Mostra uma conta (paciente, família, profissional ou relógio). Usado no celular e pelo roteiro.
 function mostrarConta(qual) {
   document.querySelectorAll('[data-conta]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.conta === qual)));
   document.getElementById('dispPaciente').classList.toggle('oculto', qual !== 'paciente');
@@ -17,6 +19,7 @@ function mostrarConta(qual) {
   if (qual === 'responsavel' || qual === 'profissional') ladoDireito(qual);
   if (qual === 'responsavel') document.getElementById('pontoAlerta').hidden = true;
 }
+// Escolhe se a coluna da direita mostra a família ou o profissional.
 function ladoDireito(qual) {
   contaDireita = qual;
   document.querySelectorAll('[data-direita]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.direita === qual)));
@@ -29,8 +32,8 @@ function ladoDireito(qual) {
 // O roteiro guiado também troca de página sozinho a cada passo.
 const ORDEM_FOCO = ['paciente', 'relogio', 'familia', 'profissional'];
 const NOME_FOCO = { paciente: 'Lucas', relogio: 'Relógio', familia: 'Família', profissional: 'Profissional' };
+// Modo foco: mostra um aparelho só (ou "todos") com animação de virar a página; atualiza as setas e o seletor.
 function focarAparelho(qual) {
-  if (qual === 'direita') qual = contaDireita === 'profissional' ? 'profissional' : 'familia'; // compatibilidade
   const antes = ORDEM_FOCO.indexOf(document.body.dataset.foco), depois = ORDEM_FOCO.indexOf(qual);
   document.documentElement.style.setProperty('--dx', depois >= antes ? '56px' : '-56px');
   document.body.dataset.foco = qual;
@@ -43,6 +46,7 @@ function focarAparelho(qual) {
   if (typeof atualizarOnde === 'function') atualizarOnde();
   encaixarAparelhos();
 }
+// Vai para o aparelho anterior (-1) ou seguinte (+1), de forma circular.
 function virarPagina(d) {
   const i = ORDEM_FOCO.indexOf(document.body.dataset.foco);
   focarAparelho(ORDEM_FOCO[(((i < 0 ? (d > 0 ? -1 : 0) : i) + d) % 4 + 4) % 4]);
@@ -131,6 +135,7 @@ document.getElementById('reiniciar').onclick = () => {
   reiniciarDemonstracao();
   toast('Demonstração reiniciada.');
 };
+// Volta tudo aos dados fictícios iniciais e redesenha as telas.
 function reiniciarDemonstracao() {
   P.pararGuia(); S = dadosDemonstracao(); salvar(); aplicarTema(); P.ir('inicio'); R.aba = 'inicio'; R.render(); Q.render(); W.aviso = null; desenharRelogio();
 }
@@ -144,12 +149,13 @@ function aplicarTema() {
   b.setAttribute('aria-pressed', String(escuro));
   b.innerHTML = escuro ? '<span class="ic">🌙</span><span class="tx"> Tela escura</span>' : '<span class="ic">☀️</span><span class="tx"> Tela clara</span>';
   b.setAttribute('aria-label', escuro ? 'Tela escura (tocar para clara)' : 'Tela clara (tocar para escura)');
-  document.querySelector('meta[name=theme-color]')?.setAttribute('content', escuro ? '#fff8ee' : '#fff8ee');
+  document.querySelector('meta[name=theme-color]')?.setAttribute('content', '#fff8ee');
 }
 document.getElementById('tema').onclick = () => { S.perfil.telaEscura = S.perfil.telaEscura === false; salvar(); aplicarTema(); const m = document.getElementById('mjEscura'); if (m) m.checked = S.perfil.telaEscura !== false; };
 garantirModulos();
 aplicarTema();
 focarAparelho('paciente');
+// Parâmetros da URL: ?conta=responsavel|profissional|relogio abre direto nessa conta; ?roteiro=1 abre o roteiro guiado.
 const params = new URLSearchParams(location.search);
 const contaInicial = params.get('conta');
 mostrarConta(['responsavel', 'profissional'].includes(contaInicial) ? contaInicial : 'paciente');

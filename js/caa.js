@@ -7,6 +7,7 @@
    um modelo de linguagem faria o mesmo, com revisão da família.
    ============================================================================ */
 
+// Biblioteca de figuras: id → [emoji, palavra, categoria]. Para acrescentar uma figura, basta uma linha aqui.
 const PICTOS = {
   eu: ['🧒', 'eu', 'pessoas'], mamae: ['👩', 'mamãe', 'pessoas'], papai: ['👨', 'papai', 'pessoas'], voce: ['🫵', 'você', 'pessoas'],
   julia: ['🧑‍⚕️', 'Dra. Júlia', 'pessoas'], amigo: ['🧑‍🤝‍🧑', 'amigo', 'pessoas'], vovo: ['👵', 'vovó', 'pessoas'],
@@ -24,10 +25,14 @@ const PICTOS = {
   sim: ['✅', 'sim', 'resp'], nao: ['❌', 'não', 'resp'], naosei: ['🤷', 'não sei', 'resp'], ajuda: ['🆘', 'ajuda', 'resp'],
   obrigado: ['🙏', 'obrigado', 'resp'], tchau: ['👋', 'tchau', 'resp'], amor: ['❤️', 'te amo', 'resp'], legal: ['👍', 'legal', 'resp'],
 };
+// Abas da prancha de figuras: [id da categoria, nome mostrado].
 const CATEGORIAS = [['sugeridos', '✨ Lumi sugere'], ['pessoas', '👥 Pessoas'], ['acoes', '🏃 Ações'], ['coisas', '🧸 Coisas e lugares'], ['sentir', '💗 Sentir'], ['tempo', '⏰ Quando'], ['resp', '💬 Respostas']];
+// Opções do pedido "Marcar" (o que o Lucas quer fazer e quando); cada id existe em PICTOS.
 const ATIVIDADES_MARCAR = ['parque', 'sorvete', 'vovo', 'piscina', 'cinema', 'jogo', 'amigo', 'livro'];
 const QUANDO_MARCAR = ['hoje', 'amanha', 'sabado', 'domingo'];
+// Como cada lugar entra na frase falada ("quero" + parque → "quero ir ao parque").
 const LUGAR_FRASE = { parque: 'ao parque', escola: 'para a escola', casa: 'para casa', piscina: 'à piscina', cinema: 'ao cinema', vovo: 'na casa da vovó', banheiro: 'ao banheiro' };
+// Atalho para uma figura; se o id não existir, devolve uma figura "?" em vez de quebrar a tela.
 const P_ = (id) => PICTOS[id] || ['❔', id, ''];
 
 // "IA" de linguagem da CAA: transforma a sequência de pictogramas numa frase natural.
@@ -113,6 +118,8 @@ function mesAtual(C) {
   if (!m) { const ult = C.historico[C.historico.length - 1]; m = { ...ult, mes: k, frases: 0 }; C.historico.push(m); }
   return m;
 }
+// Regras que mudam S.caa a cada evento (msg, fala_caa, marcar_*, combinado_*). Roda em todas as abas.
+// Os bigramas (C.bigr) ensinam a prever a próxima figura a partir do que a pessoa mais usa.
 function aplicarCAA(ev) {
   const C = S.caa, d = ev.dados;
   if (!C) return;
@@ -138,6 +145,7 @@ function aplicarCAA(ev) {
   if (ev.tipo === 'combinado_cumprido') { const c = C.combinados.find((x) => x.id === d.id); if (c) { c.cumpridos++; c.ultimo = ev.data; } }
 }
 Object.assign(ICONE_EV, { msg: '💬', marcar_pedido: '📌', marcar_resposta: '📅', combinado_novo: '🤝', combinado_resposta: '🤝', combinado_cumprido: '⭐' });
+// Frase da linha do tempo para os eventos da CAA.
 function textoCAA(ev) {
   const d = ev.dados, quem = conta(ev.de)?.nome || '';
   const nomeP = (id) => P_(id)[1];
@@ -151,10 +159,12 @@ function textoCAA(ev) {
   };
   return textos[ev.tipo]?.();
 }
+// HTML de uma fileira de figuras pequenas (tam = p | m | g).
 const pictoHTML = (ids, tam = 'm') => `<span class="pictos ${tam}">${ids.map((id) => `<span class="picto-mini" title="${esc(P_(id)[1])}"><i>${P_(id)[0]}</i><small>${esc(P_(id)[1])}</small></span>`).join('')}</span>`;
 
 // ---------- Paciente: tela "Conversar" ----------
 P.caa = { frase: [], cat: 'sugeridos', aba: 'falar', marcar: { atividade: null, quando: null } };
+// Até 8 figuras sugeridas: primeiro as mais usadas depois da última figura da frase, depois as básicas.
 function sugestoesPicto() {
   const ult = P.caa.frase[P.caa.frase.length - 1] || '^';
   const o = S.caa.bigr[ult] || {};
@@ -162,6 +172,7 @@ function sugestoesPicto() {
   return [...lista, ...['eu', 'quero', 'sim', 'nao', 'ajuda', 'estou'].filter((x) => !lista.includes(x))].slice(0, 8);
 }
 
+// Tela "Conversar" do Lucas, com 4 abas: falar (montar frase), mensagens, combinados e marcar.
 P.telas.conversar = (aba) => {
   if (aba) P.caa.aba = aba;
   S.caa.naoLidasLucas = 0; salvar();
@@ -172,6 +183,7 @@ P.telas.conversar = (aba) => {
     <div id="caaCorpo">${P.caaAbas[P.caa.aba]()}</div>`);
   P.ligarCAA();
 };
+// Conteúdo de cada aba da tela "Conversar".
 P.caaAbas = {};
 P.caaAbas.falar = () => {
   const f = P.caa.frase;
@@ -236,6 +248,7 @@ P.caaAbas.marcar = () => {
   ${lista.length ? `<div class="titulo-sec">Meus pedidos</div>${lista.map((m) => `<div class="cartao linha"><span style="font-size:26px">${P_(m.atividade)[0]}</span><div style="flex:1"><b>${esc(P_(m.atividade)[1])}</b><br><span class="peq suave">${esc(P_(m.quando)[1])}</span></div><span class="selo ${st[m.status][0]}">${st[m.status][1]}</span></div>`).join('')}` : ''}`;
 };
 
+// Liga os botões da tela "Conversar": adicionar figura, apagar, falar, enviar, marcar e aceitar combinado.
 P.ligarCAA = () => {
   const raiz = P.raiz, q = (s) => $(raiz, s);
   const redesenhar = () => { $(raiz, '#caaCorpo').innerHTML = P.caaAbas[P.caa.aba](); P.ligarCAA(); };
@@ -295,6 +308,7 @@ P.ganchosInicio.push(() => {
   if (pend && ag) ag.insertAdjacentHTML('afterend', `<button class="cartao destaque" data-p="conversar" style="width:100%;text-align:left;margin-top:8px;cursor:pointer">🤝 <b>Novo combinado da mamãe</b><br><span class="peq suave">${esc(pend.primeiroTxt)} → ${esc(pend.depoisTxt)}</span></button>`);
 });
 
+// Reação a eventos que chegam à tela do Lucas (mensagem, resposta ao pedido de marcar, combinado novo).
 function receberCAA(ev) {
   // Redesenha primeiro, para o aviso do Lumi não sumir junto com a tela antiga
   if (P.tela === 'inicio' && ev.de !== 'lucas' && ['msg', 'marcar_resposta', 'combinado_novo'].includes(ev.tipo)) P.ir('inicio');
@@ -329,6 +343,7 @@ function grafSerie(valores, rotulos, { cor = '#2a9d8f', sufixo = '', max } = {})
 }
 const nomeMesCurto = (k) => { const [a, m] = k.split('-'); return ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'][+m - 1] + (m === '01' || k === S.caa.historico[0].mes ? '/' + a.slice(2) : ''); };
 
+// Aba "Conversa" da família: indicadores de comunicação, mensagens, pedidos para marcar e combinados.
 R.abas.conversa = () => {
   const C = S.caa;
   C.naoLidasAna = 0;
@@ -379,6 +394,7 @@ R.abas.conversa = () => {
   <div class="cartao" style="border-left:4px solid var(--ambar)"><div class="peq suave">🧑‍⚕️ Nota da Dra. Júlia · ${haQuanto(C.notaTerapeuta.data)}</div><p style="margin:6px 0 0">${esc(C.notaTerapeuta.texto)}</p></div>`;
 };
 
+// Liga os botões da aba "Conversa" da família (responder, confirmar, propor combinado).
 R.ligarCAA = () => {
   const q = (s) => $(R.raiz, s);
   const enviar = (texto) => {

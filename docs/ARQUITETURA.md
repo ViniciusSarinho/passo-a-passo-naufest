@@ -43,13 +43,14 @@ js/                   ordem de carregamento (app.html)
   profissional.js     conta do profissional (3 perfis com permissões diferentes)
   voz.js              falas gravadas, inventário de falas e estúdio de voz
   relogio.js          relógio do Carlos: sete telas (agora, hoje, remédios, conversa, avisos, resumo, ajustes) e alertas de SOS, remédio e conquista
-  roteiro.js          demonstração guiada de ~3 minutos
+  roteiro.js          demonstração guiada: 13 passos divididos em momentos (um por aparelho); a pessoa decide quando virar a página
   sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
   vitrine3d.js        (só no saiba-mais.html) vitrine com os equipamentos em 3D; arraste para girar; ouve o evento "capitulo"
   saibamais.js        capítulos (avisam a câmera 3D), índice dos equipamentos e abas (links #f5, #roadmap abrem a aba certa)
   iniciar.js          moldura (três contas, comparar contas, reiniciar) e partida
 audio/lumi/           falas publicadas: 218 mp3 em voz neural + falas.json
-ferramentas/          gerar_voz_lumi.py (edge-tts) e a lista de falas usada
+ferramentas/          gerar_voz_lumi.py (edge-tts), atualizar_imagens_docs.py (capturas dos documentos) e gerar_pdf_apoio.py (PDF de uma página com QR codes, para a entrega)
+video/                vídeo do pitch (HyperFrames): roteiro.json, ferramentas/ (capturas, locução, música, efeitos, montagem) e README próprio
 exemplos/             laudo de exemplo FICTÍCIO em PDF
 tests/                teste de fumaça (fumaca.html)
 docs/                 documentação
@@ -63,7 +64,7 @@ Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; 
 
 ## Modo foco
 
-`focarAparelho(qual)` (`iniciar.js`) grava `document.body.dataset.foco` (`paciente`, `relogio`, `familia`, `profissional` ou `todos`) e o CSS (`app.css`, só em telas > 960 px) esconde os aparelhos que não estão em foco. O app abre em `paciente`; `virarPagina(±1)` percorre `ORDEM_FOCO` (as setas laterais, o teclado e o seletor numerado do topo usam isso), e a animação de entrada vem de `--dx`. `encaixarAparelhos()` conta com isso: um aparelho só pode passar do tamanho real (até 1,25×; relógio até 1,6×), e com todos nunca passa de 1×. O roteiro chama `ver(qual)`, que vira a página sozinho. O painel do roteiro conduz um passo por vez (`ROTEIRO.feito`: depois de "Mostrar este passo", o botão principal vira "Próximo passo"), diz "Olhe para: …" (`atualizarOnde()`) e mantém "o que olhar" recolhido atrás do botão 👀. O menu **⋯** agrupa estúdio de voz, comparar contas e reiniciar (no celular eles continuam soltos na barra).
+`focarAparelho(qual)` (`iniciar.js`) grava `document.body.dataset.foco` (`paciente`, `relogio`, `familia`, `profissional` ou `todos`) e o CSS (`app.css`, só em telas > 960 px) esconde os aparelhos que não estão em foco. O app abre em `paciente`; `virarPagina(±1)` percorre `ORDEM_FOCO` (as setas laterais, o teclado e o seletor numerado do topo usam isso), e a animação de entrada vem de `--dx`. `encaixarAparelhos()` conta com isso: um aparelho só pode passar do tamanho real (até 1,25×; relógio até 1,6×), e com todos nunca passa de 1×. O roteiro chama `ver(qual)`, que vira a página sozinho. O painel do roteiro (veja "Roteiro guiado") diz "Olhe para: …" (`atualizarOnde()`) e mantém "o que olhar" recolhido atrás do botão 👀. O menu **⋯** agrupa estúdio de voz, comparar contas e reiniciar (no celular eles continuam soltos na barra).
 
 ## Tema escuro dos aparelhos
 
@@ -141,6 +142,9 @@ Para criar um módulo novo: escreva `js/meumodulo.js`, registre em `MODULOS`, ac
 ### Desvanecimento de dicas (`paciente.js`, `nucleo.js`)
 Três fases por rotina. O nível de ajuda inicial é `nivelInicial(fase)`: fase 1 → instrução (nível 2); fase 2 → pergunta (nível 1); fase 3 → silêncio (nível 0). Se a pessoa não conclui em `S.perfil.espera` segundos, o nível sobe um degrau (silêncio → pergunta → instrução). Um passo conta como "acerto" (`acerto()`) quando a pessoa não precisou de mais ajuda do que a fase oferece e não pediu pausa. A sugestão de mudar de fase (`sugestao()`) exige pelo menos 4 sessões na fase; usa as últimas 6; **≥ 80%** sugere avançar, **< 35%** sugere voltar. Quem muda a fase é sempre um humano.
 
+### Repetição da instrução (`paciente.js`)
+No nível 2 (instrução) o Lumi pode repetir a fala se a pessoa não responde, mas sem pressionar: `P.espera()` mantém o intervalo (`S.perfil.espera`, padrão 8 s) nas 3 primeiras repetições e depois **dobra a cada repetição** (até 8×, no máximo 2 minutos). Depois de `P.REPETICOES_MAX` (6) repetições o Lumi **para de falar** e deixa um recado calmo na tela ("Sem pressa. Quando quiser, toque em Fiz ou em Calma"). O contador (`g.repeticoes`) zera ao mudar de passo e ao voltar da Calma ou do SOS.
+
 ### Visão computacional (`paciente.js`)
 `COCO-SSD` (`lite_mobilenet_v2`, TensorFlow.js) roda no navegador a cada 300 ms. Um passo com objeto é confirmado após **3 leituras seguidas** com confiança > 0,55 (depois de 1,5 s no passo). A **noção espacial** usa o centro da caixa: terços da imagem (< 36% esquerda, > 64% direita, senão "bem na frente"; invertido na câmera frontal) e a área da caixa para "pertinho"/"mais longe".
 
@@ -166,7 +170,14 @@ Lembrete de remédio com figuras (agendador confere o relógio a cada 20 s), ade
 A voz sintética é escolhida por `notaVoz()` (`nucleo.js`): vozes neurais (Microsoft *Online (Natural)* no Edge, Apple *Premium/Aprimorada*) e femininas vêm primeiro; **as vozes do Google ficam de fora** por soarem robóticas e só entram se o aparelho não tiver nenhuma outra em português. Sem voz neural, a tela de voz sugere o Edge ou as falas gravadas.
 
 ## Roteiro guiado (`roteiro.js`)
-Lista `PASSOS_ROTEIRO`; cada passo tem `acao()` que executa ações **reais** (as mesmas dos botões) e mostra o efeito na outra conta. O modo automático percorre os passos com pausas de leitura (`ROTEIRO.ritmo` acelera nos testes). Enquanto o roteiro está ativo, o SOS não pede localização (usa o endereço fictício) e o passo da câmera é opcional.
+A demonstração tem **13 passos** (`PASSOS_ROTEIRO`) e cada passo se divide em **momentos** curtos, um por aparelho (celular do Lucas, relógio, celular da Ana, tablet do profissional). Um momento tem `{ foco, botao, leitura?, acao() }`: `foco` é o aparelho que aparece, `botao` é o texto do botão principal ("Ver na tela da Ana →") e `acao()` executa ações **reais** do app (as mesmas dos botões).
+
+- **Quem decide a hora de virar a página é a pessoa:** o roteiro começa no celular do Lucas e só troca de aparelho quando o botão principal é tocado. Depois do último momento, o botão vira "Próximo passo →". "Pular →" e "↻ Ver de novo" completam os controles.
+- **Modo automático (▶▶):** percorre todos os momentos com pausas de leitura (`leitura`, padrão 4,5 s; `ROTEIRO.ritmo` encurta nos testes). Serve para gravar vídeo.
+- **Nada é pulado:** `ROTEIRO.m` (próximo momento) só avança quando o momento termina de verdade. As esperas são canceláveis (`ROTEIRO.token`): pausar, fechar ou trocar de passo interrompe a ação em andamento, e o momento interrompido pode ser repetido. Só um laço automático pode estar vivo (`ROTEIRO.auto`), então retomar depois de pausar nunca duplica a execução.
+- **Passo opcional (câmera):** o automático **pausa** nele e espera a pessoa ligar a câmera ou pular (`ROTEIRO.pularOpcionais = true` o ignora; é o que os testes usam).
+- **Cuidados:** o roteiro reinicia os dados fictícios, deixa câmera e microfone desligados (para não pedir permissão) e restaura o perfil ao fechar (`ROTEIRO.salvo`). Enquanto está ativo, o SOS não pede localização (usa o endereço fictício).
+- **Painel:** mostra "passo i de N · parte k de n" e "👀 Olhe para: …" (o aparelho em foco). Em telas ≥ 1200 px fica numa coluna à direita; nas menores, embaixo (`ajustarAltura()` reserva o espaço).
 
 ## Privacidade e segurança no código
 - Imagem e áudio são processados no aparelho; nada é gravado nem enviado. A câmera e o microfone só ligam durante uma rotina (ou na gravação de voz).
@@ -175,7 +186,15 @@ Lista `PASSOS_ROTEIRO`; cada passo tem `acao()` que executa ações **reais** (a
 - O SOS usa `navigator.geolocation` só quando acionado e com permissão do navegador.
 
 ## Testes
-`tests/fumaca.html` abre o app num iframe e executa **56 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas e o roteiro guiado completo em modo acelerado). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
+`tests/fumaca.html` abre o app num iframe e executa **58 verificações** (telas das três contas, fluxos de SOS, CAA, remédio, laudo em texto e PDF, permissões, inventário de falas, o roteiro guiado completo em modo acelerado, a pausa no passo opcional e o limite de repetições da voz do Lumi). Veja o `README` para rodar. Não há testes unitários: o foco é garantir que a demonstração nunca quebre.
+
+## Convenções do código (para quem for ler ou editar)
+- **Todo arquivo começa com um bloco que diz o que ele faz** e como se encaixa (veja o topo de cada `js/*.js`). Cada função ou objeto importante tem um comentário curto dizendo o que faz, onde é usado e o que devolve.
+- **Nomes em português** (`emitir`, `aplicar`, `rotinaPorId`, `faseDe`), porque o projeto é para o público brasileiro e para facilitar a leitura por quem não programa em inglês.
+- **Um módulo por assunto.** O estado de cada módulo opcional fica em `S.<nome>` e só ele o altera (em `aplicar`). As telas só leem o estado e chamam `emitir()` para mudá-lo.
+- **Tudo vira evento.** Para um botão novo: `emitir('tipo', { dados }, quemFez)`; a regra que muda o estado vai em `aplicar(ev)` do módulo; a reação na tela vai em `receber(ev)`; a frase da linha do tempo vai em `texto(ev)`.
+- **Textos que o Lumi fala** passam por `falar()`. Se forem fixos, entram no inventário de `voz.js` (`todasAsFalas`) para poderem ser gravados; mudou um texto, rode `ferramentas/gerar_voz_lumi.py --refazer`.
+- **Depois de mexer:** rode o teste de fumaça (`tests/fumaca.html`) e, se mudou um arquivo de `css/` ou `js/`, aumente o `?v=` em `app.html` para o navegador não usar a versão antiga.
 
 ## Do protótipo ao produto
 

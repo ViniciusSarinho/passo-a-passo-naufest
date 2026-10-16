@@ -1,6 +1,7 @@
 // Lumi, o robô companheiro. SVG desenhado em código para mudar de humor e ganhar acessórios.
 // humor: feliz | atento | falando | calmo | observando | comemorando | preocupado
 
+// Níveis do Lumi: ele ganha um acessório novo ao atingir cada quantidade de estrelas.
 const LUMI_NIVEIS = [
   { estrelas: 0, nome: 'Lumi filhote', acessorio: null, texto: 'Começou a jornada' },
   { estrelas: 60, nome: 'Lumi aprendiz', acessorio: 'cachecol', texto: 'Ganhou um cachecol' },
@@ -10,6 +11,7 @@ const LUMI_NIVEIS = [
   { estrelas: 750, nome: 'Lumi mestre', acessorio: 'capa', texto: 'Ganhou uma capa de herói' },
 ];
 
+// Nível atual para uma quantidade de estrelas: nome, acessórios já ganhos, próximo nível e progresso (0 a 1).
 function lumiNivel(estrelas) {
   let n = 0;
   LUMI_NIVEIS.forEach((l, i) => { if (estrelas >= l.estrelas) n = i; });
@@ -22,6 +24,7 @@ function lumiNivel(estrelas) {
   };
 }
 
+// Desenha o Lumi em SVG com o humor, os acessórios e o tamanho pedidos (o hiperfoco muda o visual do nível 5).
 function lumiSVG({ humor = 'feliz', acessorios = [], tamanho = 160, hiperfoco = '' } = {}) {
   const tem = (a) => acessorios.includes(a);
   const olhos = {

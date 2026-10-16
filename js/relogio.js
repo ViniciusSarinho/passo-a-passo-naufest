@@ -5,11 +5,16 @@
    Resumo e Ajustes. Quando chega um SOS ou um aviso, ele toma a tela até ser respondido.
    ============================================================================ */
 
+// Estado do relógio: aviso = notificação em tela cheia (some em 12 s); pagina = tela atual; vibracao/silencio = ajustes do Carlos.
 const W = { raiz: document.getElementById('telaRelogio'), aviso: null, timer: 0, pagina: 0, vibracao: true, silencio: false };
+// Id da conta dona do relógio. Eventos enviados daqui saem com este autor (e não voltam como aviso para o próprio relógio).
 const QUEM_RELOGIO = 'carlos';
 const NIVEL_LUMI = { 2: 'Lumi explicando', 1: 'Lumi perguntando', 0: 'Lumi só observando' };
+// Ordem das telas que se passam com ‹ ›, pontinhos ou arrastando: [id, nome mostrado no topo].
 const PAGINAS_RELOGIO = [['agora', 'Agora'], ['hoje', 'Hoje'], ['remedios', 'Remédios'], ['conversa', 'Conversa'], ['avisos', 'Avisos'], ['resumo', 'Resumo'], ['ajustes', 'Ajustes']];
+// Mensagens prontas para o Carlos avisar o Lucas pelo relógio (sem teclado).
 const AVISOS_CURTOS = ['Aula mais tarde', 'Busca atrasada', 'Papai busca', 'Padaria fechada'];
+// Respostas prontas à conversa; são enviadas como mensagem do Carlos (com figuras).
 const RESPOSTAS_RELOGIO = ['Estou indo', 'Muito bem!', 'Te amo ❤️'];
 const mesmoDia = (t) => new Date(t).toDateString() === new Date().toDateString();
 
@@ -79,6 +84,8 @@ const TELAS_RELOGIO = {
   },
 };
 
+// Redesenha o relógio com esta prioridade: 1) SOS (toma a tela até ser respondido), 2) aviso curto,
+// 3) a tela escolhida em W.pagina. É chamado a cada evento e a cada 30 s (para a hora).
 function desenharRelogio() {
   const r = W.raiz; if (!r) return;
   const a = S.alerta, n = W.aviso;
@@ -106,6 +113,7 @@ function irPaginaRelogio(i) {
   W.pagina = (i + PAGINAS_RELOGIO.length) % PAGINAS_RELOGIO.length;
   W.aviso = null; desenharRelogio();
 }
+// Um único ouvinte de cliques para o relógio inteiro: cada botão usa um atributo data-rl-... que diz o que fazer.
 W.raiz?.addEventListener('click', (e) => {
   const b = e.target.closest('button'); if (!b) return;
   const d = b.dataset;
@@ -140,6 +148,7 @@ function vibrarRelogio() {
   m.classList.remove('vibra'); void m.offsetWidth; m.classList.add('vibra');
 }
 
+// Chamado para todo evento do app. SOS e avisos viram notificação no pulso, respeitando "Só SOS" e a vibração.
 function receberRelogio(ev) {
   if (ev.tipo === 'sos') { W.aviso = null; vibrarRelogio(); }
   const criar = AVISOS_RELOGIO[ev.tipo];
@@ -152,5 +161,6 @@ function receberRelogio(ev) {
   desenharRelogio();
 }
 
+// Registra o relógio como módulo: o núcleo (nucleo.js) chama receber() a cada evento novo.
 MODULOS.push({ nome: 'relogio', receber: receberRelogio });
 setInterval(desenharRelogio, 30000);

@@ -4,6 +4,8 @@
    microfone, desvanecimento de dicas), SOS, calma e conquistas.
    Telas de outros módulos (conversar, meu jeito) são acrescentadas a P.telas.
    ============================================================================ */
+// Objeto do módulo. Estado: tela atual, humor escolhido hoje e P.g (a "sessão de guia" em andamento,
+// que só existe enquanto uma rotina está sendo feita; vira null ao sair).
 const P = {
   raiz: document.getElementById('telaPaciente'),
   tela: 'inicio',
@@ -12,10 +14,13 @@ const P = {
   ganchosInicio: [], // funções que os módulos registram para acrescentar itens à tela inicial
 };
 
+// Desenha a "moldura" do celular: barra de status + área rolável (#pConteudo). Todas as telas passam por aqui.
 P.moldura = (conteudo, extra = '') => {
   P.raiz.innerHTML = `<div class="status"><span>${hora()}</span><span>🤖 Lumi · 📶 🔋</span></div>
     <div class="conteudo" id="pConteudo">${conteudo}</div>${extra}`;
 };
+// Navega para outra tela: P.ir('rotina', id). Ao sair do guia, encerra a sessão e desliga câmera/microfone.
+// Telas de outros módulos (conversar, meu jeito...) entram em P.telas e funcionam do mesmo jeito.
 P.ir = (tela, ...args) => {
   if (P.tela === 'guia' && tela !== 'guia') {
     if (P.g) emitir('encerrou', { rotina: P.g.rotina.nome });
@@ -27,6 +32,7 @@ P.ir = (tela, ...args) => {
   const c = document.getElementById('pConteudo'); if (c) c.scrollTop = 0;
 };
 
+// Topo das telas: saudação (início) ou botão ← com título, mais o botão SOS (precisa segurar 1,5 s).
 P.cabecalho = (titulo) => `
   <div class="topo-paciente">
     ${titulo ? `<button class="btn" data-p="inicio" style="min-height:40px;padding:6px 12px">←</button><b style="font-size:17px">${titulo}</b>` : `<span class="ola">Oi, ${esc(S.perfil.nome)}! 👋</span>`}
@@ -34,14 +40,19 @@ P.cabecalho = (titulo) => `
     <button class="btn-sos" data-sos><span class="carga"></span><span style="position:relative">🆘 SOS</span></button>
   </div>`;
 
+// Desenha a Lumi com um balão de fala. humor: feliz | atento | falando | calmo | comemorando | observando.
+// fala = null mostra só o robô; sub = linha pequena abaixo da fala.
 P.lumi = (humor, fala, sub = '', tamanho = 118) => {
   const nv = lumiNivel(S.pet.estrelas);
   return `<div class="lumi-palco">${lumiSVG({ humor, acessorios: nv.acessorios, tamanho, hiperfoco: S.perfil.hiperfoco })}
     ${fala !== null ? `<div class="balao" id="pBalao">${esc(fala)}${sub ? `<small>${esc(sub)}</small>` : ''}</div>` : ''}</div>`;
 };
 
+// Cada tela é uma função que monta o HTML com P.moldura. Os "data-..." dos botões são tratados
+// no ouvinte de cliques no fim deste arquivo.
 P.telas = {};
 
+// Tela inicial: Lumi, nível/estrelas, agenda do dia, humor e atalhos.
 P.telas.inicio = () => {
   const nv = lumiNivel(S.pet.estrelas);
   const agenda = [...S.rotinas].sort((a, b) => a.hora.localeCompare(b.hora));
@@ -83,6 +94,8 @@ P.telas.inicio = () => {
 // Só se ganha: não há tempo-limite, placar nem perda de estrelas.
 P.trilha = (r, atual) => r.passos.map((p, i) => `<span class="${i < atual ? 'feito' : i === atual ? 'agora' : ''}" title="${esc(p.curta)}">${i < atual ? '⭐' : p.emoji}</span>`).join('') + '<span class="fim">🏁</span>';
 
+// Prévia de uma rotina: trilha de passos e botão para começar (com ou sem história social antes,
+// conforme S.perfil.historiaAntes, que a IA liga quando percebe que a história ajuda).
 P.telas.rotina = (rid) => {
   const r = rotinaPorId(rid);
   P.moldura(`
@@ -97,6 +110,7 @@ P.telas.rotina = (rid) => {
   `);
 };
 
+// História social: quadros com figura + frase curta, narrados em voz. Com nível de suporte >= 3 o texto é mais curto.
 P.telas.historia = (rid) => {
   const r = rotinaPorId(rid);
   const curto = S.perfil.nivel >= 3;
@@ -127,6 +141,7 @@ P.telas.historia = (rid) => {
   desenhar();
 };
 
+// Exercício de respiração: o círculo (.respira) cresce e diminui por animação CSS.
 P.telas.respirar = () => {
   P.moldura(`${P.cabecalho('Respirar')}
     <div style="display:grid;place-items:center;gap:14px;padding-top:10px">
@@ -137,6 +152,7 @@ P.telas.respirar = () => {
   falar('Vamos respirar juntos. Puxa o ar devagar... e solta.');
 };
 
+// Cartão de ajuda: texto pronto para mostrar a um desconhecido (telefone fictício na demonstração).
 P.telas.cartao = () => {
   const mae = conta('ana');
   P.moldura(`${P.cabecalho('Cartão de ajuda')}
@@ -151,6 +167,7 @@ P.telas.cartao = () => {
     <p class="peq suave" style="text-align:center">Telefone fictício da demonstração.</p>`);
 };
 
+// Lista de quem acompanha o Lucas (as contas conectadas em S.contas).
 P.telas.acompanham = () => {
   P.moldura(`${P.cabecalho('Quem me acompanha')}
     ${P.lumi('feliz', 'Estas pessoas recebem seus avisos e torcem por você.', 'Você sempre pode ver quem está conectado.', 90)}
@@ -189,12 +206,15 @@ P.telas.guia = (rid) => {
   P.iniciarPasso();
 };
 
+// Passo atual da rotina. Quando o objeto depende da escolha feita (ex.: banana ou maçã), troca "$escolha" pelo escolhido.
 P.passo = () => {
   const p = P.g.rotina.passos[P.g.idx];
   if (p.objeto === '$escolha') return { ...p, objeto: P.g.escolha?.objeto || null };
   return p;
 };
 
+// Começa um passo: zera contadores, define o nível de ajuda inicial pela fase, avisa a família ("progresso")
+// e mostra a primeira dica.
 P.iniciarPasso = () => {
   const g = P.g;
   g.inicio = Date.now(); g.concluindo = false; g.vistos = 0; g.repeticoes = 0; g.silencio = false; g.ultimaPos = null; g.ajudaNoPasso = false;
@@ -207,6 +227,8 @@ P.iniciarPasso = () => {
   P.agendar();
 };
 
+// Mostra a ajuda do nível atual: 0 = só observa (silêncio), 1 = pergunta, 2 = instrução completa.
+// Também desenha o cartão do passo e os botões ("Fiz", "Calma", escolhas, "Falar por mim").
 P.mostrarDica = (falarAgora) => {
   const g = P.g, p = P.passo();
   const esc2 = g.escolha?.frase;
@@ -247,6 +269,8 @@ P.espera = (g) => {
   const r = g.repeticoes || 0, fator = r < 3 ? 1 : Math.min(2 ** (r - 2), 8);
   return Math.min(S.perfil.espera * fator * 1000, 120000);
 };
+// Agenda a próxima ajuda. A cada espera sem resposta o nível sobe (0 → 1 → 2); no nível 2 a instrução é
+// repetida (no máximo P.REPETICOES_MAX vezes, com espera cada vez maior); depois o Lumi silencia.
 P.agendar = () => {
   const g = P.g;
   clearTimeout(g.timer);
@@ -266,6 +290,8 @@ P.agendar = () => {
   }, P.espera(g));
 };
 
+// Conclui o passo (por toque, voz, câmera ou escolha): registra nível de ajuda e tempo, dá estrela se foi
+// autônomo para a fase (acerto) e passa para o próximo passo depois do elogio.
 P.concluir = (metodo) => {
   const g = P.g;
   if (!g || g.concluindo || g.pausado) return;
@@ -289,6 +315,7 @@ P.concluir = (metodo) => {
   }, ok && g.fase > 1 ? 2800 : 1700);
 };
 
+// Botão "Calma": pausa o guia, avisa a família e abre a tela de respiração. Ao voltar, retoma com a instrução completa.
 P.calma = () => {
   const g = P.g;
   if (g) { g.pausado = true; g.ajudaNoPasso = true; clearTimeout(g.timer); }
@@ -307,6 +334,8 @@ P.calma = () => {
   $(ov, '#cParar').onclick = () => { ov.remove(); if (P.g) { P.g.pausado = false; P.finalizar(true); } else P.ir('inicio'); };
 };
 
+// Fim da rotina (ou "Encerrar"): salva a sessão em S.sessoes, soma estrelas (+2 de bônus se concluiu), avisa a
+// família e mostra a tela de conquista, com a evolução do Lumi.
 P.finalizar = (interrompido) => {
   const g = P.g;
   if (!g) return P.ir('inicio');
@@ -338,6 +367,7 @@ P.finalizar = (interrompido) => {
   falar(subiu ? `Uau! O Lumi evoluiu e ${depois.texto.toLowerCase()}!` : interrompido ? 'Você tentou, e isso conta. Amanhã a gente tenta de novo.' : `Muito bem, ${S.perfil.nome}! Tarefa concluída.`);
 };
 
+// Desliga tudo o que o guia usa: timers, câmera, microfone, reconhecimento de voz e fala.
 P.pararGuia = () => {
   const g = P.g;
   if (!g) return;
@@ -356,6 +386,7 @@ function carregarScript(src) {
     const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = erro; document.head.appendChild(s);
   });
 }
+// Modelo de visão (COCO-SSD "lite"): carregado sob demanda e reaproveitado. Roda 100% no aparelho.
 let promessaModelo = null, modelo = null;
 function carregarModelo() {
   if (!promessaModelo) promessaModelo = (async () => {
@@ -366,6 +397,7 @@ function carregarModelo() {
   return promessaModelo;
 }
 
+// Liga a câmera traseira (ou frontal no computador) e inicia a detecção. Se falhar, o passo continua por "Fiz" ou voz.
 P.ligarCamera = async () => {
   const g = P.g, rot = $(P.raiz, '#gRotulo'), video = $(P.raiz, '#gVideo');
   try {
@@ -380,6 +412,8 @@ P.ligarCamera = async () => {
   P.detectar();
 };
 
+// Laço de detecção (~3x por segundo): desenha as caixas, diz o lado do objeto-alvo ("à sua esquerda") e conclui o
+// passo quando o alvo é visto com confiança em 3 leituras seguidas. Nenhuma imagem sai do aparelho.
 P.detectar = async () => {
   const g = P.g;
   const video = $(P.raiz, '#gVideo'), tela = $(P.raiz, '#gTela');
@@ -453,6 +487,7 @@ P.ligarRuido = async () => {
   } catch (e) { box.insertAdjacentHTML('beforeend', '<span class="selo">🔇 Microfone indisponível</span>'); }
 };
 
+// Reconhecimento de voz do navegador (pt-BR): "calma/pausa" abre a calma; "pronto/fiz/terminei" conclui o passo.
 P.ligarEscuta = () => {
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) return;
@@ -483,6 +518,7 @@ P.sos = async () => {
   emitir('sos', { local, contexto });
   P.telaSos();
 };
+// Tela de SOS sobre o celular: diz quem foi avisado e mostra "a caminho" quando a família responde.
 P.telaSos = () => {
   $(P.raiz, '#pSos')?.remove();
   const a = S.alerta;
@@ -519,6 +555,8 @@ P.raiz.addEventListener('keydown', (e) => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('[data-sos]')) { e.preventDefault(); if (confirm('Pedir ajuda urgente aos responsáveis?')) P.sos(); }
 });
 
+// Cliques por delegação: cada botão usa um atributo data-... (data-p = ir para tela, data-rotina, data-guia,
+// data-historia, data-falar = ler em voz alta, data-humor).
 P.raiz.addEventListener('click', (e) => {
   const t = e.target.closest('[data-p],[data-rotina],[data-historia],[data-guia],[data-falar],[data-humor]');
   if (!t) return;
@@ -537,6 +575,7 @@ P.raiz.addEventListener('click', (e) => {
   }
 });
 
+// Aviso curto do Lumi no pé do celular (some em 9 s e também é falado).
 P.banner = (icone, texto, vermelho) => {
   $(P.raiz, '.aviso-lumi')?.remove();
   const el = document.createElement('div');
@@ -548,6 +587,7 @@ P.banner = (icone, texto, vermelho) => {
   falar(texto);
 };
 
+// Recebe eventos das outras contas (aviso, a_caminho, sos_resolvido, fase_aprovada) e reage na tela do Lucas.
 P.receber = (ev) => {
   if (ev.de === 'lucas') return;
   const quem = conta(ev.de)?.nome || 'Sua família';

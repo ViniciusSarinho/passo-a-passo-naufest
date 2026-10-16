@@ -9,6 +9,7 @@
 // ---------- Dados iniciais de saúde ----------
 // Data no fuso do aparelho (o dia do remédio é o dia local, não o UTC)
 const dataISO = (t) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+// Estado inicial de S.saude: remédios (fictícios), registros de dose, sono, crises, efeitos e metas do plano.
 function saudePadrao() {
   let semente = 7;
   const rand = () => ((semente = (semente * 16807) % 2147483647) / 2147483647);
@@ -43,15 +44,21 @@ function saudePadrao() {
   };
 }
 
+// Busca um remédio pelo id.
 const remedio = (id) => S.saude.meds.find((m) => m.id === id);
+// Registro de dose de hoje para um remédio (ou undefined, se ainda não foi tomado).
 const registroHoje = (id) => S.saude.registros.find((r) => r.med === id && r.dia === dataISO(Date.now()));
+// Percentual de doses tomadas nos últimos N dias (todas ou de um remédio).
 function adesao(dias = 30, med = null) {
   const desde = dataISO(Date.now() - dias * 864e5);
   const regs = S.saude.registros.filter((r) => r.dia >= desde && (!med || r.med === med));
   return regs.length ? Math.round(regs.filter((r) => r.status !== 'perdido').length / regs.length * 100) : 0;
 }
+// Média de horas de sono nas últimas N noites.
 const mediaSono = (n = 7) => { const s = S.saude.sono.slice(-n); return s.length ? +(s.reduce((a, x) => a + x.horas, 0) / s.length).toFixed(1) : 0; };
 
+// Padrões que a "IA" percebe nos dados (gatilhos das crises, sono curto, doses esquecidas).
+// São observações para a consulta: a IA não diagnostica nem muda tratamento.
 function padroesIA() {
   const H = S.saude, out = [];
   const cont = {};
@@ -87,6 +94,7 @@ function aplicarSaude(ev) {
   if (ev.tipo === 'med_lembrete') H.lembrados[d.med + dataISO(ev.data)] = true;
 }
 Object.assign(ICONE_EV, { med_lembrete: '⏰', med_tomado: '💊', med_dado: '💊', med_atrasado: '⚠️', med_ajustada: '🩺', crise_registrada: '📓', sono_registrado: '😴', efeito: '📝', nota_sessao: '🗒️', meta_nova: '🎯' });
+// Frase da linha do tempo para os eventos de saúde.
 function textoSaude(ev) {
   const d = ev.dados, quem = conta(ev.de)?.nome || 'O Lumi', m = remedio(d.med);
   const t = {
@@ -143,6 +151,7 @@ setInterval(() => {
   });
 }, 20000);
 
+// Reação a eventos de saúde: bipe no atraso, lembrete na tela do Lucas e aviso de mudança de horário.
 function receberSaude(ev) {
   if (ev.tipo === 'med_atrasado') bipe();
   if (ev.tipo === 'med_lembrete') P.lembrarRemedio(ev.dados.med);
@@ -168,6 +177,7 @@ function aplicarAparencia() {
   P.raiz.classList.toggle('tela-calma', !!S.perfil.telaCalma);
   P.raiz.classList.toggle('letra-grande', !!S.perfil.letraGrande);
 }
+// Opções do seletor de voz (as vozes em português do aparelho; ✨ marca as neurais).
 function opcoesVoz() {
   if (!vozesPt.length) return '<option value="">Voz padrão do aparelho</option>';
   return vozesPt.map((v, i) => `<option value="${esc(v.name)}" ${vozPt && v.name === vozPt.name ? 'selected' : ''}>${VOZ_NATURAL.test(v.name) ? '✨ ' : ''}${esc(v.name.replace(/Microsoft |Google |Online |\(Natural\)/g, '').replace(/\s+-.*$/, ''))}${i === 0 ? ' · recomendada' : ''}</option>`).join('');
@@ -177,6 +187,7 @@ function dicaVoz() {
   return temVozNatural() ? '<p class="peq suave" style="margin:4px 0 0">✨ = voz neural, mais natural.</p>'
     : '<p class="peq suave" style="margin:4px 0 0">Para uma voz mais humana, abra no <b>Microsoft Edge</b> (vozes Francisca e Thalita) ou use as <b>falas gravadas</b> no Estúdio de voz.</p>';
 }
+// Tela "Meu jeito": a própria pessoa ajusta volume, voz, tela calma, letra grande e estímulos.
 P.telas.meujeito = () => {
   const p = S.perfil;
   P.moldura(`${P.cabecalho('Meu jeito')}
@@ -231,8 +242,11 @@ function responderIA(pergunta, papel) {
   if (/meta|plano|objetivo/.test(t)) return S.saude.metas.map((g) => `<b>${esc(g.texto)}</b>: ${valorMeta(g)}${g.unidade} de ${g.alvo}${g.unidade} (prazo ${g.prazo})`).join('<br>');
   return 'Posso responder sobre a semana, os remédios, crises e pausas, sono, comunicação, laudo, fases e metas. Experimente uma das perguntas abaixo.';
 }
+// Perguntas prontas que aparecem como botões no chat.
 const SUGESTOES_IA = ['Como foi a semana?', 'Ele está tomando os remédios?', 'O que tem causado as crises?', 'Como está o sono?', 'Como está a comunicação?', 'O que posso fazer para ajudar?', 'Devo aumentar a dose?'];
+// Histórico de cada chat, por chave (família ou profissional).
 const chats = {};
+// HTML do chat com a IA (família e profissionais usam o mesmo componente).
 function chatIA(chave, papel) {
   const h = chats[chave] || (chats[chave] = [{ de: 'ia', html: `Olá! Sou a IA do Passo a Passo. Respondo com os dados do ${S.perfil.nome}: rotinas, comunicação, remédios, sono e crises. Não dou diagnóstico nem mudo tratamento.` }]);
   return `<div class="cartao chat-ia">
@@ -241,6 +255,7 @@ function chatIA(chave, papel) {
     <div class="linha" style="flex-wrap:nowrap"><input class="campo-in" data-ia-in="${chave}" placeholder="Pergunte sobre o tratamento do ${esc(S.perfil.nome)}…"><button class="btn primario" data-ia-env="${chave}|${papel}">Enviar</button></div>
     <p class="peq suave" style="margin:6px 0 0">No MVP, as respostas vêm dos dados do app. No produto, um modelo de linguagem faz a conversa com estes mesmos limites.</p></div>`;
 }
+// Liga o campo de pergunta e os botões de sugestão do chat.
 function ligarChat(raiz, redesenhar) {
   const perguntar = (chave, papel, texto) => {
     if (!texto.trim()) return;
@@ -274,10 +289,12 @@ function cartaoRemedios(modo) {
     </div>`;
   }).join('') + (modo !== 'medica' ? '<p class="peq suave">🔒 Só a médica altera dose e horário. Remédios e doses desta demonstração são fictícios.</p>' : '<p class="peq suave">A família recebe o ajuste na hora, e o Lumi passa a lembrar no novo horário.</p>');
 }
+// Gráfico do sono das últimas noites.
 function graficoSono() {
   const s = S.saude.sono.slice(-14);
   return `<div class="barras-sono">${s.map((x) => `<div title="${x.dia}: ${x.horas} h"><i style="height:${Math.round(x.horas / 10 * 100)}%" class="${x.horas < 7.5 ? 'curta' : ''}"></i><small>${x.dia.slice(8)}</small></div>`).join('')}</div>`;
 }
+// Diário de sono, crises e efeitos observados.
 function diarioHTML(podeRegistrar) {
   const H = S.saude;
   return `<div class="cartao"><div class="linha"><b>😴 Sono · 14 noites</b><span class="espaco"></span><span class="selo">média ${mediaSono(14)} h</span></div>${graficoSono()}
@@ -296,6 +313,7 @@ function diarioHTML(podeRegistrar) {
       <ul class="eventos">${H.efeitos.slice(0, 4).map((e) => `<li><span class="ic">•</span><div>${esc(e.texto)}<time>${esc(conta(e.por)?.nome || '')} · ${haQuanto(e.data)}</time></div></li>`).join('')}</ul>
       ${podeRegistrar ? `<div class="linha" style="gap:5px">${['Dormiu bem', 'Demorou a dormir', 'Mais agitado', 'Mais sonolento de dia', 'Apetite menor'].map((t) => `<button class="btn" data-efeito="${t}" style="font-size:12px;min-height:32px;padding:3px 9px">${t}</button>`).join('')}</div>` : ''}</div>`;
 }
+// Liga os botões compartilhados entre a aba Saúde da família e a do profissional.
 function ligarSaudeComum(raiz, de) {
   const q = (s) => $(raiz, s);
   raiz.querySelectorAll('[data-sim-lembrete]').forEach((b) => b.onclick = () => { emitir('med_lembrete', { med: b.dataset.simLembrete }, 'lumi'); toast('Lembrete disparado no celular do Lucas.'); });
@@ -343,6 +361,7 @@ R.secoesMais.unshift(() => `<div class="cartao"><b>🗣️ Voz e volume do Lumi<
     <button class="btn bloco" id="rTestarVoz" style="margin-top:6px">▶ Ouvir</button>
     <p class="peq suave" style="margin:6px 0 0">O Lucas também ajusta volume, voz e tela calma em "Meu jeito".</p></div>`);
 
+// Liga os botões da aba "Saúde" da família.
 R.ligarSaude = () => {
   ligarSaudeComum(R.raiz, EU);
   ligarChat(R.raiz, () => R.render());

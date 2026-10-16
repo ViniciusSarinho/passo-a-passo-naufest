@@ -591,8 +591,6 @@ html, body { overflow-x: hidden; }
   body[data-foco="paciente"] .meio, body[data-foco="paciente"] .lado-direito { display: none; }
   body[data-foco="relogio"] #dispPaciente, body[data-foco="relogio"] .lado-direito, body[data-foco="relogio"] .conexao { display: none; }
   body[data-foco="relogio"] .meio { padding-top: 24px; }
-  body[data-foco="direita"] #dispPaciente, body[data-foco="direita"] .meio { display: none; }
-  body[data-foco="dupla"] .meio { display: none; }
   body[data-foco]:not([data-foco="todos"]) .dispositivo { animation: entraFoco .35s ease; }
   @keyframes entraFoco { from { opacity: 0; transform: translateY(10px); } }
 }

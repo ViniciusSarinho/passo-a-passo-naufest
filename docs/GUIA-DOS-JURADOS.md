@@ -5,8 +5,8 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 ## Em 3 minutos
 
 1. Abra o site e clique em **▶ Ver a demo em 3 minutos** (ou abra `app.html?roteiro=1`). Antes, vale rolar a página inicial: a sala 3D mostra o Lucas com a Lumi, a Ana no celular e o Carlos no relógio. Em **Saiba mais** há a vitrine 3D dos equipamentos e, em abas, dados, ética e fontes.
-2. No painel inferior, toque em **▶▶ Automático** para ver tudo sozinho (cerca de 3 minutos), ou use **Mostrar** e **Próximo** passo a passo.
-3. O roteiro mostra **um aparelho de cada vez** e vira a página sozinho (celular do Lucas, **relógio do Carlos**, celular da Ana, tablet do profissional); o painel diz "Olhe para: …". Em cada passo, toque em **Mostrar este passo** e depois em **Próximo passo**. Para ver tudo junto, use **▦ Todos juntos** no topo; para virar a página à mão, use as setas laterais ou ← → do teclado (no celular, alterne por **Lucas / Ana / Pro / ⌚**):
+2. O roteiro **começa no celular do Lucas** e quem decide a hora de virar a página é você: o botão principal diz o que vem a seguir (por exemplo, "👩 Ver o que a Ana vê ao vivo →") e, no fim de cada passo, vira "Próximo passo →". Se preferir ver tudo sozinho (cerca de 3 minutos), toque em **▶▶ Automático**; ele pausa no passo opcional da câmera.
+3. Cada passo mostra **um aparelho de cada vez** (celular do Lucas, **relógio do Carlos**, celular da Ana, tablet do profissional) e o painel diz "👀 Olhe para: …". O botão 👀 abre "o que olhar" em cada passo. Pelo teclado, as setas ← → também viram a página.
 
 | Passo | O que acontece | O que olhar |
 |---|---|---|
@@ -52,13 +52,13 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 **Quais dados saem do aparelho?** Nenhum dado do paciente. Imagem e áudio são analisados no aparelho; o estado fica no `localStorage`; só as bibliotecas e os modelos são baixados da internet.
 
-**A câmera não abre.** Use `https` (GitHub Pages) ou `localhost`, permita a câmera, ou toque em **Fiz**. O roteiro automático pula esse passo.
+**A câmera não abre.** Use `https` (GitHub Pages) ou `localhost`, permita a câmera, ou toque em **Fiz**. O roteiro automático **pausa** nesse passo e espera você ligar a câmera ou tocar em "Pular".
 
 **Onde está o código?** Neste repositório. Comece por `docs/ARQUITETURA.md`.
 
-**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (56 verificações).
+**Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (58 verificações).
 
-**Tem vídeo?** Sim, de 2:55, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
+**Tem vídeo?** Sim, de 2:54, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
 
 **Funciona no celular?** Sim: o app mostra uma conta por vez, em tela cheia, e o site reorganiza cena 3D e texto. Câmera e microfone pedem `https` ou `localhost`.
 
