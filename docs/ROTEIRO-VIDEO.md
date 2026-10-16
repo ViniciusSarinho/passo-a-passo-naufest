@@ -1,6 +1,6 @@
 # Roteiro do vídeo (3 minutos)
 
-> **O vídeo já está produzido** (2:57, voz da Lumi, música suave, legendas), com o HyperFrames, na pasta [`video/`](../video/README.md). Este documento é o roteiro-guia original, útil se quiser gravar outra versão com a sua voz e cenas reais da sua observação do problema.
+> **O vídeo já está produzido** (2:55, voz da Lumi, música suave, legendas), com o HyperFrames, na pasta [`video/`](../video/README.md). Este documento é o roteiro-guia original, útil se quiser gravar outra versão com a sua voz e cenas reais da sua observação do problema.
 
 Formato do NAUFest: vídeo de até 3 minutos, com áudio, horizontal 16:9 (mínimo 1280×720; recomendado 1920×1080), MP4 de até 500 MB. A estrutura segue o que o desafio pede: **o problema** e **a solução com IA**.
 
@@ -10,13 +10,13 @@ Formato do NAUFest: vídeo de até 3 minutos, com áudio, horizontal 16:9 (míni
 |---|---|---|
 | 0:00 – 0:20 | Rosto da autora/autor ou fundo escuro com o título; depois uma cena real do dia a dia (padaria, mochila) **[A PREENCHER com sua observação]** | "O Lucas sabe o que quer. Mas, na fila da padaria, as palavras somem e alguém pede por ele. Isso acontece todos os dias com milhões de famílias." |
 | 0:20 – 0:45 | Números na tela: **2,4 milhões** [1]; **56,5% com até 2 horas de terapia por semana** [5]; **92,4% de quem cuida são mulheres** [5] | "No Brasil, 2,4 milhões de pessoas têm diagnóstico de autismo. A terapia chega a poucas horas por semana; a dificuldade está nas outras. E quem cobre essa lacuna, quase sempre, é uma mãe sem apoio." |
-| 0:45 – 1:05 | Site: título "Uma IA que ensina a não precisar dela" + Lumi | "Conheça o Passo a Passo: um apoio com IA que enxerga a situação, fala no jeito de cada pessoa e, a cada conquista, ajuda um pouco menos." |
+| 0:45 – 1:05 | Site: título "Um passo de cada vez, com a Lumi do lado" | "Conheça o Passo a Passo: um apoio com IA que enxerga a situação, fala no jeito de cada pessoa e, a cada conquista, ajuda um pouco menos." |
 | 1:05 – 1:35 | App: Lumi pergunta → ajuda sobe → estrela; escolha banana ou maçã; câmera reconhecendo a mochila (opcional) | "Na fase 2, o Lumi só pergunta. Se a pessoa trava, ele ajuda mais. Quando conclui, comemora. A câmera reconhece os objetos no próprio celular, sem gravar nada." |
 | 1:35 – 1:55 | SOS: alerta com mapa na conta da Ana e resposta "estou a caminho" | "Se algo dá errado, um botão avisa os responsáveis na hora, com localização, e o Lumi acalma a pessoa até a ajuda chegar." |
 | 1:55 – 2:15 | CAA: figuras viram frase; combinado; remédio com figuras | "A pessoa conversa por figuras, combina rotinas e recebe lembretes de remédio em passos simples." |
 | 2:15 – 2:35 | IA lendo o laudo do neuropsicólogo; sugestões; "Comparar contas" | "A IA pergunta à família e aos profissionais e lê o laudo para ajustar o app ao jeito de cada pessoa. Mas quem decide é sempre um humano. A médica é a única que mexe em remédios." |
 | 2:35 – 2:50 | Gráfico de 14 meses com recuos | "Autonomia leva meses e anos, com idas e vindas. O app acompanha a jornada inteira e mostra a evolução para a família e a terapia." |
-| 2:50 – 3:00 | Fecho: logo, link e "dados fictícios" | "Passo a Passo: a IA que ensina a não precisar dela. O protótipo é aberto e os dados são fictícios." |
+| 2:50 – 3:00 | Fecho: logo, link e "dados fictícios" | "Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas. O protótipo é aberto e os dados são fictícios." |
 
 ## Checklist
 

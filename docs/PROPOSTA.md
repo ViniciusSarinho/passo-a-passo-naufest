@@ -92,7 +92,7 @@ Roteiro de vídeo de 3 minutos em [`ROTEIRO-VIDEO.md`](ROTEIRO-VIDEO.md). Estrut
 | Pertinência da solução | 20% | Etapas 3 e 5; ética e segurança ([`ETICA-E-PRIVACIDADE.md`](ETICA-E-PRIVACIDADE.md)) |
 | Pertinência e aplicação da IA | 20% | Etapa 4; site: "Por que a IA é indispensável" |
 | Viabilidade e impacto potencial | 15% | Roteiro de testes, [`ROADMAP.md`](ROADMAP.md) e métricas de impacto |
-| Originalidade e criatividade | 15% | Lumi, IA que se retira, contas conectadas, CAA, laudo e voz humana |
+| Originalidade e criatividade | 15% | Lumi, IA que ajusta o apoio a cada conquista, contas conectadas, CAA, laudo e voz humana |
 | Clareza e força da proposta | 10% | Site, roteiro guiado de 3 minutos, documentação e honestidade técnica |
 
 ## Entrega

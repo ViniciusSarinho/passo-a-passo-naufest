@@ -1,6 +1,6 @@
 # 👣 Passo a Passo · Lumi
 
-**Uma IA que ensina a _não precisar dela_.** Apoio à autonomia de pessoas autistas, com um robô companheiro (o **Lumi**) que enxerga a situação pelo celular, fala no jeito de cada pessoa e, a cada conquista, ajuda um pouco menos. A família e os profissionais acompanham por contas conectadas.
+**Inteligência artificial para a _autonomia e o desenvolvimento_ de pessoas autistas.** Um robô companheiro (a **Lumi**) que enxerga a situação pelo celular, fala no jeito de cada pessoa e ajusta o apoio a cada conquista, para que a pessoa ganhe independência com segurança. A família e os profissionais acompanham por contas conectadas, no celular e no relógio.
 
 > Projeto do **NAUFest #AIforImpact2026**. É um **protótipo funcional com dados fictícios**, não um produto clínico. Aberto no navegador, sem instalar nada e sem servidor.
 
@@ -11,7 +11,7 @@
 | 📝 **Proposta (etapas do NAUFest)** | [`docs/PROPOSTA.md`](docs/PROPOSTA.md) |
 | 🏗️ **Arquitetura** | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
 | 🛠️ **Como foi construído** | [`docs/PROCESSO.md`](docs/PROCESSO.md) |
-| 🎬 **Vídeo do pitch (2:57)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
+| 🎬 **Vídeo do pitch (2:55)** | [`video/README.md`](video/README.md): roteiro, como gerar e checklist de entrega |
 
 ## O problema
 
@@ -77,11 +77,11 @@ O site e o app se adaptam a telas pequenas (verificados em 390 × 844, 360 × 74
 **Relógio (Carlos, pai)**
 - O essencial primeiro (**SOS** com "Estou indo", rotina **ao vivo**, avisos de conquista, remédio e mensagem) e, passando as telas (pontinhos, os dois botões laterais ‹ › do relógio, os botões abaixo ou arrastando): **Hoje**, **Remédios** (com botão "Dei"), **Conversa** (respostas rápidas), **Avisos** para o Lucas, **Resumo** do dia e **Ajustes** (vibração, "só SOS").
 
-**Site:** a página inicial é curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap, estudos do TCC e fontes.
+**Site:** a página inicial é curta e infantil, com uma **sala de estar em 3D** (three.js) cheia de brinquedos: a Ana no sofá com o celular, o Carlos olhando o relógio e o Lucas brincando com o Lumi. Cada capítulo leva a câmera a uma parte da sala. A página `saiba-mais.html` segue o mesmo estilo e traz uma **vitrine 3D dos equipamentos** (celular, relógio, colar, fone, painel e o Lumi físico, que dá para girar com o mouse), os **oito jeitos de o Lumi ajudar** e, em abas, os dados com fonte, por que IA, como funciona, cuidados, ética e honestidade, roadmap e fontes.
 
 **Tela escura (padrão) nos aparelhos:** as telas dos celulares e do tablet usam um tema escuro calmo (cinza-esverdeado, sem preto nem branco puros), com botão no topo e opção em "Meu jeito" para voltar ao fundo claro, pois sensibilidade à luz varia de pessoa para pessoa.
 
-**Design calmo e gamificado:** baseado nos estudos do TCC ([`docs/FONTES.md`](docs/FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
+**Design calmo e gamificado:** baseado em estudos de acessibilidade para pessoas autistas (veja [`docs/FONTES.md`](docs/FONTES.md)): uma coisa por tela, cores pastel, nada piscando e uma **trilha de estrelas** em cada rotina, sem placar e sem perder pontos.
 
 **Voz do Lumi:** as 218 falas fixas já vêm em áudio com uma **voz neural feminina** (Thalita, gerada por [`ferramentas/gerar_voz_lumi.py`](ferramentas/gerar_voz_lumi.py)); gravações humanas feitas no estúdio têm prioridade. Só frases montadas na hora (como a conversa com a IA) usam a voz do navegador, preferindo vozes neurais e **sem usar as vozes do Google**, que soam robóticas. O **estúdio** grava, importa e exporta as 218 falas ([`docs/FALAS-LUMI.md`](docs/FALAS-LUMI.md)).
 

@@ -1,6 +1,6 @@
 # Vídeo do pitch (HyperFrames)
 
-Vídeo comercial de **2:57** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, música suave e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
+Vídeo comercial de **2:55** (limite do NAUFest: 3 minutos), em **1920×1080, 30 fps, MP4**, com a voz da Lumi, música suave e legendas. Feito com o [HyperFrames](https://github.com/heygen-com/hyperframes) (HTML + GSAP renderizados com Chrome e FFmpeg).
 
 > O MP4 final fica em `video/saida/passo-a-passo-pitch.mp4` (não vai para o Git: a pasta `saida/` está no `.gitignore`).
 
@@ -17,15 +17,15 @@ Vídeo comercial de **2:57** (limite do NAUFest: 3 minutos), em **1920×1080, 30
 | 7 | **IA nº 3 · adapta, pergunta e lê o laudo** | Linguagem por nível e interesse, perguntas à família, laudo em PDF/TXT, "a IA sugere, um humano aprova", "sem IA seria só lembretes" |
 | 8 | No dia a dia | CAA por figuras, remédio com lembrete, SOS no celular e no relógio |
 | 9 | Evolução | 14 meses de jornada, com recuos (dados fictícios) |
-| 10 | Calmo por design | Tela escura/clara, uma coisa por vez, trilha de estrelas sem punição, base do TCC |
+| 10 | Calmo por design | Tela escura/clara, uma coisa por vez, trilha de estrelas sem punição, ajustes para todas as idades |
 | 11 | O plano | Celular → relógio → colar → fone → Lumi físico; piloto e estudo clínico antes de qualquer promessa |
-| 12 | Fecho | "A IA que ensina a não precisar dela", protótipo funcional, dados fictícios, código aberto, link |
+| 12 | Fecho | "Inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas", protótipo funcional, dados fictícios, código aberto, link |
 
 As imagens são **capturas reais** do app e da sala 3D do site (não são mockups). A única cena ilustrada é a da câmera (cena 5), e isso aparece escrito na tela.
 
 ## Regras do NAUFest atendidas
 
-- Duração: **≤ 3 minutos** (2:57). Formato **16:9, 1920×1080, MP4**, com áudio.
+- Duração: **≤ 3 minutos** (2:55). Formato **16:9, 1920×1080, MP4**, com áudio.
 - Estrutura pedida: **o problema** e **a solução com IA**, com ênfase na IA (três cenas e uma faixa "Inteligência artificial" em cada).
 - Avisa que os dados do protótipo são fictícios.
 - Legendas embutidas (acessibilidade e para quem assiste sem som).

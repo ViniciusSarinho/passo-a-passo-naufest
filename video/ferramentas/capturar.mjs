@@ -112,7 +112,7 @@ const navegador = await puppeteer.launch({
 
   // Meu jeito (cuidados)
   await rodar(() => { P.ir('meujeito'); }); await espera(600); await tirar(paciente, 'lucas-meujeito');
-  await rodar(() => { S.perfil.telaEscura = false; salvar(); aplicarTema(); }); await espera(400);
+  await rodar(() => { P.ir('inicio'); S.perfil.telaEscura = false; salvar(); aplicarTema(); }); await espera(500);
   await tirar(paciente, 'lucas-claro');
   await rodar(() => { S.perfil.telaEscura = true; salvar(); aplicarTema(); P.ir('inicio'); }); await espera(400);
 

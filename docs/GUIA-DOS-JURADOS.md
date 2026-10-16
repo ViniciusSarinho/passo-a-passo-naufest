@@ -57,7 +57,7 @@ Tudo que o projeto afirma pode ser conferido em poucos minutos. Este guia diz **
 
 **Como rodar os testes?** `python -m http.server` na raiz e abra `/tests/fumaca.html` (55 verificações).
 
-**Tem vídeo?** Sim, de 2:57, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
+**Tem vídeo?** Sim, de 2:55, feito com o HyperFrames. As fontes e o passo a passo para gerar de novo estão em [`video/README.md`](../video/README.md).
 
 **Funciona no celular?** Sim: o app mostra uma conta por vez, em tela cheia, e o site reorganiza cena 3D e texto. Câmera e microfone pedem `https` ou `localhost`.
 

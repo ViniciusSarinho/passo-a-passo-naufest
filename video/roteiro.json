@@ -152,10 +152,6 @@
         {
           "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.",
           "fala": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição."
-        },
-        {
-          "texto": "Com base nos estudos do TCC do projeto.",
-          "fala": "Com base nos estudos do T C C do projeto."
         }
       ]
     },
@@ -180,8 +176,8 @@
           "fala": "O protótipo já funciona no navegador, com dados fictícios e código aberto."
         },
         {
-          "texto": "Passo a Passo: a inteligência artificial que ensina a não precisar dela.",
-          "fala": "Passo a Passo: a inteligência artificial que ensina a não precisar dela."
+          "texto": "Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas.",
+          "fala": "Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas."
         }
       ]
     }

@@ -24,7 +24,7 @@ Nada sai do aparelho. As "contas" conversam por **eventos** dentro da página e 
 
 ```
 index.html            página inicial curta, com a sala 3D (capítulos que movem a câmera)
-saiba-mais.html       vitrine 3D dos equipamentos (capítulos) + abas: critérios, dados, IA, como funciona, cuidados, ética, roadmap, TCC e fontes
+saiba-mais.html       vitrine 3D dos equipamentos (capítulos) + abas: critérios, dados, IA, como funciona, cuidados, ética, roadmap e fontes
 app.html              o app: celular do Lucas, relógio do Carlos e celular da Ana (ou tablet do profissional)
 firebase.json         configuração do Firebase Hosting (veja docs/FIREBASE.md)
 css/
@@ -46,7 +46,7 @@ js/                   ordem de carregamento (app.html)
   roteiro.js          demonstração guiada de ~3 minutos
   sala3d.js           (só no index.html) sala de estar em three.js; ?fixo tira a transição da câmera
   vitrine3d.js        (só no saiba-mais.html) vitrine com os equipamentos em 3D; arraste para girar; ouve o evento "capitulo"
-  saibamais.js        capítulos (avisam a câmera 3D), índice dos equipamentos e abas (links #f5, #tcc, #roadmap abrem a aba certa)
+  saibamais.js        capítulos (avisam a câmera 3D), índice dos equipamentos e abas (links #f5, #roadmap abrem a aba certa)
   iniciar.js          moldura (três contas, comparar contas, reiniciar) e partida
 audio/lumi/           falas publicadas: 218 mp3 em voz neural + falas.json
 ferramentas/          gerar_voz_lumi.py (edge-tts) e a lista de falas usada
@@ -71,7 +71,7 @@ Cada aparelho tem tamanho fixo de verdade (celular 390 × 784, tela 366 × 760; 
 
 ## Design calmo e gamificado
 
-Regras tiradas dos estudos do TCC (lista em [`FONTES.md`](FONTES.md#estudos-do-tcc-base-do-design)): uma coisa por tela, figura + texto curto + voz, cores pastel sem nada piscando, navegação sempre no mesmo lugar e progresso por **trilha de estrelas** (`P.trilha` em `paciente.js`): cada passo feito vira ⭐, o atual mostra a figura, o fim é 🏁. Não há placar, tempo-limite nem perda de estrelas.
+Regras tiradas de estudos de acessibilidade para autismo (lista em [`FONTES.md`](FONTES.md)): uma coisa por tela, figura + texto curto + voz, cores pastel sem nada piscando, navegação sempre no mesmo lugar e progresso por **trilha de estrelas** (`P.trilha` em `paciente.js`): cada passo feito vira ⭐, o atual mostra a figura, o fim é 🏁. Não há placar, tempo-limite nem perda de estrelas.
 
 ## Celular (responsivo)
 

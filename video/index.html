@@ -176,8 +176,8 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 .tile { background: #fff; border-radius: 30px; padding: 26px 18px; text-align: center; height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 18px 36px -24px rgba(29,79,82,.5); }
 .tile i { font-style: normal; font-size: 58px; line-height: 1; }
 .tile b { font-size: 31px; font-weight: 900; line-height: 1.12; }
-.base-tcc { margin-top: 28px; background: #fff4d6; border-left: 10px solid #f0c94a; border-radius: 22px; padding: 18px 26px; font: 700 27px/1.3 Nunito; }
-.base-tcc b { display: block; color: var(--ocre); font-size: 28px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+.base-nota { margin-top: 28px; background: #fff4d6; border-left: 10px solid #f0c94a; border-radius: 22px; padding: 18px 26px; font: 700 27px/1.3 Nunito; }
+.base-nota b { display: block; color: var(--ocre); font-size: 28px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
 
 /* 11 · roadmap */
 .linha-etapas { position: absolute; left: 90px; top: 270px; width: 1740px; display: flex; justify-content: space-between; gap: 22px; }
@@ -193,13 +193,13 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 /* 12 · fecho */
 .fundo-foto.desfoque img { filter: blur(14px); transform: scale(1.1); }
 .veu-total { position: absolute; inset: 0; background: rgba(255,248,238,.84); }
-.fecho-centro { position: absolute; left: 0; top: 0; width: 1920px; height: 1000px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; }
-.lumi-medio { width: 330px; filter: drop-shadow(0 24px 34px rgba(29,79,82,.3)); }
-.fecho-centro h1 { font-size: 168px; line-height: 1; font-weight: 900; letter-spacing: -.035em; }
-.fecho-centro .sub { margin-top: 6px; font-size: 62px; }
-.fecho-centro .chips { margin-top: 26px; justify-content: center; }
-.link { font: 900 42px Nunito; color: var(--teal); margin-top: 28px; }
-.fecho-centro .selo-hack { margin: 18px 0 0; }
+.fecho-centro { position: absolute; left: 0; top: 0; width: 1920px; height: 890px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; }
+.lumi-medio { width: 250px; filter: drop-shadow(0 24px 34px rgba(29,79,82,.3)); }
+.fecho-centro h1 { font-size: 150px; line-height: 1; font-weight: 900; letter-spacing: -.035em; }
+.fecho-centro .sub { margin-top: 4px; font-size: 50px; max-width: 1560px; line-height: 1.18; }
+.fecho-centro .chips { margin-top: 20px; justify-content: center; }
+.link { font: 900 38px Nunito; color: var(--teal); margin-top: 18px; }
+.fecho-centro .selo-hack { margin: 12px 0 0; font-size: 30px; padding: 8px 28px; }
 
 /* legendas e Lumi do canto */
 .cap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
@@ -212,13 +212,13 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 .beat .titulo-cena { width: 820px; font-size: 76px; }
 .beat#co-c .titulo-cena { width: 620px; font-size: 70px; }
 .beat#co-c .leg-cena { width: 560px; top: 470px; }
-.selo-sem-ia { position: absolute; left: 90px; top: 790px; width: 880px; text-align: center; white-space: nowrap; font: 800 38px Nunito; background: #fff; border: 4px solid var(--pessego); border-radius: 34px; padding: 18px 20px; }
+.selo-sem-ia { position: absolute; left: 90px; top: 770px; width: 880px; text-align: center; white-space: normal; font: 800 36px/1.3 Nunito; background: #fff; border: 4px solid var(--pessego); border-radius: 34px; padding: 18px 20px; }
 .selo-sem-ia s { color: #9a6b55; text-decoration: line-through; text-decoration-thickness: 4px; } .selo-sem-ia b { color: var(--teal); }
 
   </style>
 </head>
 <body>
-  <div id="root" data-composition-id="main" data-start="0" data-duration="176.800" data-width="1920" data-height="1080">
+  <div id="root" data-composition-id="main" data-start="0" data-duration="174.600" data-width="1920" data-height="1080">
     <div class="fundo-geral" id="fundo"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
     
     <section id="abertura" class="clip scene" data-start="0.600" data-duration="10.110" data-track-index="1">
@@ -298,7 +298,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
   <div class="resultado" id="iv-res">
     <div class="dir"><span>←</span> à sua <b>esquerda</b></div>
     <p class="frase-lumi" id="iv-frase">“A mochila está à sua esquerda.”</p>
-    <div class="tec">TensorFlow.js · COCO-SSD · roda no navegador</div>
+    <div class="tec">Visão computacional · roda no navegador</div>
   </div>
   <div class="selo-priv" id="iv-priv"><i>🔒</i><div><b>100% no aparelho</b><span>nenhuma imagem é gravada ou enviada</span></div></div>
 
@@ -317,7 +317,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
     <div class="barras"><div class="serie ajuda"><i style="height:210px" id="ib0"></i><i style="height:178px" id="ib1"></i><i style="height:140px" id="ib2"></i><i style="height:100px" id="ib3"></i><i style="height:62px" id="ib4"></i><i style="height:30px" id="ib5"></i></div><div class="serie auto"><i style="height:40px" id="ia0"></i><i style="height:78px" id="ia1"></i><i style="height:112px" id="ia2"></i><i style="height:152px" id="ia3"></i><i style="height:188px" id="ia4"></i><i style="height:214px" id="ia5"></i></div></div>
     <div class="leg"><span class="dot pessego"></span>ajuda da IA<span class="dot teal"></span>autonomia da pessoa</div>
     <div class="trava" id="id-trava">↻ Travou? <b>A ajuda volta.</b></div>
-    <div class="tecnica" id="id-tec">Desvanecimento de dicas<small>prompt fading · técnica de terapia comportamental</small></div>
+    <div class="tecnica" id="id-tec">Desvanecimento de dicas<small>técnica de terapia comportamental</small></div>
   </div>
 
     </section>
@@ -339,7 +339,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
     <span id="ad-k1">📄 Laudo<small>PDF ou TXT</small></span><b>→</b><span id="ad-k2">🧠 IA lê<small>no navegador</small></span><b>→</b><span id="ad-k3">💡 Sugere<small>com o trecho original</small></span><b>→</b><span id="ad-k4" class="humano">✅ Humano aprova<small>sempre</small></span>
   </div>
   <div class="selo-humano" id="ad-hum">A IA sugere. <b>Um humano sempre aprova.</b></div>
-  <div class="selo-sem-ia" id="ad-sem"><s>Sem IA: só lembretes</s> → <b>Com IA: apoio que aprende junto</b></div>
+  <div class="selo-sem-ia" id="ad-sem"><s>Sem IA: só lembretes</s><br>→ <b>Com IA: apoio que aprende junto</b></div>
 
     </section>
     <section id="cotidiano" class="clip scene" data-start="114.690" data-duration="16.720" data-track-index="1">
@@ -377,18 +377,18 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
   </div>
 
     </section>
-    <section id="cuidados" class="clip scene" data-start="140.290" data-duration="13.680" data-track-index="1">
+    <section id="cuidados" class="clip scene" data-start="140.290" data-duration="10.120" data-track-index="1">
       <div class="capitulo">06 · Calmo por design</div>
       
   <div class="cu-tels" id="cu-tels"><img class="tel" src="assets/img/lucas-inicio.png" alt="" ><img class="tel" src="assets/img/lucas-claro.png" alt="" ><div class="troca">escura ⇄ clara</div></div>
   <div class="cu-dir">
     <h2 class="titulo-cena">Feito <em>para os sentidos</em></h2>
     <div class="tiles"><div class="tile" id="cu-t0"><i>☝️</i><b>Uma coisa por vez</b></div><div class="tile" id="cu-t1"><i>🎨</i><b>Cores calmas</b></div><div class="tile" id="cu-t2"><i>🌙</i><b>Tela escura opcional</b></div><div class="tile" id="cu-t3"><i>🔊</i><b>Volume e voz ajustáveis</b></div><div class="tile" id="cu-t4"><i>⭐</i><b>Trilha de estrelas, sem punição</b></div><div class="tile" id="cu-t5"><i>🧭</i><b>Sempre previsível</b></div></div>
-    <div class="base-tcc" id="cu-tcc"><b>Base científica (TCC)</b>APA DSM-5 · Dattolo e Luccio · Raymaker et al. · Yaneva et al. · Lucian e Stumpf · Lamberty · Ferreira et al. · Silva et al.</div>
+    <div class="base-nota" id="cu-base"><b>Para todas as idades</b>Crianças, adolescentes, adultos e pessoas mais velhas, com ajustes de som, luz e velocidade para cada um.</div>
   </div>
 
     </section>
-    <section id="roadmap" class="clip scene" data-start="153.520" data-duration="12.430" data-track-index="1">
+    <section id="roadmap" class="clip scene" data-start="149.960" data-duration="12.430" data-track-index="1">
       <div class="capitulo">07 · O plano</div>
       
   <h2 class="titulo-cena">Do celular ao <em>robô de mesa</em></h2>
@@ -396,7 +396,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
   <div class="pilotos" id="ro-pil"><b>Antes de tudo:</b> piloto com famílias · estudo clínico · sem promessa terapêutica antes da evidência</div>
 
     </section>
-    <section id="fecho" class="clip scene" data-start="165.500" data-duration="11.750" data-track-index="1">
+    <section id="fecho" class="clip scene" data-start="161.940" data-duration="12.660" data-track-index="1">
       
       
   <div class="fundo-foto desfoque"><img class="" src="assets/img/sala-abertura.png" alt="" ></div>
@@ -404,7 +404,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
   <div class="fecho-centro">
     <img class="lumi-medio" src="assets/img/lumi-comemorando.png" alt="" id="fe-lumi">
     <h1 id="fe-t">Passo a Passo</h1>
-    <p class="sub" id="fe-s">A inteligência artificial que <em>ensina a não precisar dela.</em></p>
+    <p class="sub" id="fe-s">Inteligência artificial para a <em>autonomia e o desenvolvimento</em> de pessoas autistas.</p>
     <div class="chips" id="fe-c"><span>Protótipo funcional</span><span>Dados fictícios</span><span>Código aberto</span></div>
     <div class="link" id="fe-l">viniciussarinho.github.io/passo-a-passo-naufest</div>
     <div class="selo-hack grande" id="fe-h">NAUFest #AIforImpact2026</div>
@@ -412,16 +412,16 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 
     </section>
     <div class="lumi-canto-caixa"><i id="anel-voz"></i><img id="lumi-canto" src="assets/img/lumi-falando.png" alt="" /></div>
-    <div id="cap-abertura-0" class="clip cap" data-start="0.600" data-duration="2.170" data-track-index="9"><div class="pilula"><p>Oi! Eu sou a Lumi.</p></div></div><div id="cap-abertura-1" class="clip cap" data-start="2.920" data-duration="7.040" data-track-index="9"><div class="pilula"><p>Vou mostrar como a inteligência artificial pode ajudar pessoas autistas a ganharem autonomia, um passo de cada vez.</p></div></div><div id="cap-problema-0" class="clip cap" data-start="10.260" data-duration="5.240" data-track-index="9"><div class="pilula"><p>No Brasil, 2,4 milhões de pessoas têm diagnóstico de autismo.</p></div></div><div id="cap-problema-1" class="clip cap" data-start="15.650" data-duration="4.930" data-track-index="9"><div class="pilula"><p>Mas mais da metade recebe, no máximo, duas horas de terapia por semana.</p></div></div><div id="cap-problema-2" class="clip cap" data-start="20.730" data-duration="9.490" data-track-index="9"><div class="pilula"><p>A semana tem 168 horas. A dificuldade e o risco estão nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.</p></div></div><div id="cap-solucao-0" class="clip cap" data-start="30.520" data-duration="5.980" data-track-index="9"><div class="pilula"><p>O Passo a Passo leva a ajuda para onde ela falta: em casa, na padaria, na escola.</p></div></div><div id="cap-solucao-1" class="clip cap" data-start="36.650" data-duration="7.640" data-track-index="9"><div class="pilula"><p>O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio.</p></div></div><div id="cap-ciclo-0" class="clip cap" data-start="44.590" data-duration="4.730" data-track-index="9"><div class="pilula"><p>Antes da tarefa, eu conto uma história social, com figuras e voz.</p></div></div><div id="cap-ciclo-1" class="clip cap" data-start="49.470" data-duration="2.570" data-track-index="9"><div class="pilula"><p>Durante, eu guio cada passo.</p></div></div><div id="cap-ciclo-2" class="clip cap" data-start="52.190" data-duration="3.890" data-track-index="9"><div class="pilula"><p>Depois, mostro tudo para a família e para a terapia.</p></div></div><div id="cap-ia-ve-0" class="clip cap" data-start="56.380" data-duration="4.210" data-track-index="9"><div class="pilula"><p>E aqui está o coração do projeto: a inteligência artificial.</p></div></div><div id="cap-ia-ve-1" class="clip cap" data-start="60.740" data-duration="7.110" data-track-index="9"><div class="pilula"><p>Ela enxerga. A câmera do celular reconhece os objetos e diz onde eles estão: "a mochila está à sua esquerda".</p></div></div><div id="cap-ia-ve-2" class="clip cap" data-start="68.000" data-duration="4.490" data-track-index="9"><div class="pilula"><p>Tudo no próprio aparelho: nenhuma imagem é gravada ou enviada.</p></div></div><div id="cap-ia-decide-0" class="clip cap" data-start="72.790" data-duration="9.130" data-track-index="9"><div class="pilula"><p>Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio.</p></div></div><div id="cap-ia-decide-1" class="clip cap" data-start="82.070" data-duration="5.360" data-track-index="9"><div class="pilula"><p>Se o Lucas trava, a ajuda volta. Se acerta, ela diminui.</p></div></div><div id="cap-ia-decide-2" class="clip cap" data-start="87.580" data-duration="5.380" data-track-index="9"><div class="pilula"><p>É o desvanecimento de dicas, uma técnica de terapia, aplicada no dia a dia.</p></div></div><div id="cap-ia-adapta-0" class="clip cap" data-start="93.260" data-duration="4.180" data-track-index="9"><div class="pilula"><p>Ela adapta a linguagem ao nível e ao interesse de cada pessoa.</p></div></div><div id="cap-ia-adapta-1" class="clip cap" data-start="97.590" data-duration="8.020" data-track-index="9"><div class="pilula"><p>Pergunta à família e aos profissionais. E lê o laudo do neuropsicólogo, em PDF ou texto, para ajustar o app.</p></div></div><div id="cap-ia-adapta-2" class="clip cap" data-start="105.760" data-duration="5.210" data-track-index="9"><div class="pilula"><p>A inteligência artificial sugere. Um humano sempre aprova.</p></div></div><div id="cap-ia-adapta-3" class="clip cap" data-start="111.120" data-duration="3.270" data-track-index="9"><div class="pilula"><p>Sem ela, seria só um app de lembretes.</p></div></div><div id="cap-cotidiano-0" class="clip cap" data-start="114.690" data-duration="4.760" data-track-index="9"><div class="pilula"><p>A comunicação por figuras vira frase falada, e a família responde.</p></div></div><div id="cap-cotidiano-1" class="clip cap" data-start="119.600" data-duration="4.830" data-track-index="9"><div class="pilula"><p>O remédio chega com lembrete em figuras, e só a médica altera doses.</p></div></div><div id="cap-cotidiano-2" class="clip cap" data-start="124.580" data-duration="6.080" data-track-index="9"><div class="pilula"><p>E se algo dá errado, o SOS avisa todos, no celular e no relógio, com a localização.</p></div></div><div id="cap-evolucao-0" class="clip cap" data-start="130.960" data-duration="9.030" data-track-index="9"><div class="pilula"><p>A autonomia leva meses. O gráfico mostra 14 meses, com avanços e recuos, para a família e a terapia decidirem juntas.</p></div></div><div id="cap-cuidados-0" class="clip cap" data-start="140.290" data-duration="9.370" data-track-index="9"><div class="pilula"><p>Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.</p></div></div><div id="cap-cuidados-1" class="clip cap" data-start="149.810" data-duration="3.410" data-track-index="9"><div class="pilula"><p>Com base nos estudos do TCC do projeto.</p></div></div><div id="cap-roadmap-0" class="clip cap" data-start="153.520" data-duration="7.970" data-track-index="9"><div class="pilula"><p>O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso.</p></div></div><div id="cap-roadmap-1" class="clip cap" data-start="161.640" data-duration="3.560" data-track-index="9"><div class="pilula"><p>Antes, piloto com famílias e estudo clínico.</p></div></div><div id="cap-fecho-0" class="clip cap" data-start="165.500" data-duration="5.210" data-track-index="9"><div class="pilula"><p>O protótipo já funciona no navegador, com dados fictícios e código aberto.</p></div></div><div id="cap-fecho-1" class="clip cap" data-start="170.860" data-duration="4.690" data-track-index="9"><div class="pilula"><p>Passo a Passo: a inteligência artificial que ensina a não precisar dela.</p></div></div>
-    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="176.800" data-track-index="2" data-volume="0.26" data-fade-in="2.5" data-fade-out="3.5"></audio>
-    <audio id="au3" src="assets/voz/abertura-1.mp3" data-start="0.600" data-duration="2.020" data-track-index="3" data-volume="1"></audio><audio id="au4" src="assets/voz/abertura-2.mp3" data-start="2.920" data-duration="6.890" data-track-index="4" data-volume="1"></audio><audio id="au5" src="assets/voz/problema-1.mp3" data-start="10.260" data-duration="5.090" data-track-index="5" data-volume="1"></audio><audio id="au6" src="assets/voz/problema-2.mp3" data-start="15.650" data-duration="4.780" data-track-index="6" data-volume="1"></audio><audio id="au7" src="assets/voz/problema-3.mp3" data-start="20.730" data-duration="9.340" data-track-index="7" data-volume="1"></audio><audio id="au8" src="assets/voz/solucao-1.mp3" data-start="30.520" data-duration="5.830" data-track-index="8" data-volume="1"></audio><audio id="au9" src="assets/voz/solucao-2.mp3" data-start="36.650" data-duration="7.490" data-track-index="9" data-volume="1"></audio><audio id="au10" src="assets/voz/ciclo-1.mp3" data-start="44.590" data-duration="4.580" data-track-index="10" data-volume="1"></audio><audio id="au11" src="assets/voz/ciclo-2.mp3" data-start="49.470" data-duration="2.420" data-track-index="11" data-volume="1"></audio><audio id="au12" src="assets/voz/ciclo-3.mp3" data-start="52.190" data-duration="3.740" data-track-index="12" data-volume="1"></audio><audio id="au13" src="assets/voz/ia-ve-1.mp3" data-start="56.380" data-duration="4.060" data-track-index="13" data-volume="1"></audio><audio id="au14" src="assets/voz/ia-ve-2.mp3" data-start="60.740" data-duration="6.960" data-track-index="14" data-volume="1"></audio><audio id="au15" src="assets/voz/ia-ve-3.mp3" data-start="68.000" data-duration="4.340" data-track-index="15" data-volume="1"></audio><audio id="au16" src="assets/voz/ia-decide-1.mp3" data-start="72.790" data-duration="8.980" data-track-index="16" data-volume="1"></audio><audio id="au17" src="assets/voz/ia-decide-2.mp3" data-start="82.070" data-duration="5.210" data-track-index="17" data-volume="1"></audio><audio id="au18" src="assets/voz/ia-decide-3.mp3" data-start="87.580" data-duration="5.230" data-track-index="18" data-volume="1"></audio><audio id="au19" src="assets/voz/ia-adapta-1.mp3" data-start="93.260" data-duration="4.030" data-track-index="19" data-volume="1"></audio><audio id="au20" src="assets/voz/ia-adapta-2.mp3" data-start="97.590" data-duration="7.870" data-track-index="20" data-volume="1"></audio><audio id="au21" src="assets/voz/ia-adapta-3.mp3" data-start="105.760" data-duration="5.060" data-track-index="21" data-volume="1"></audio><audio id="au22" src="assets/voz/ia-adapta-4.mp3" data-start="111.120" data-duration="3.120" data-track-index="22" data-volume="1"></audio><audio id="au23" src="assets/voz/cotidiano-1.mp3" data-start="114.690" data-duration="4.610" data-track-index="23" data-volume="1"></audio><audio id="au24" src="assets/voz/cotidiano-2.mp3" data-start="119.600" data-duration="4.680" data-track-index="24" data-volume="1"></audio><audio id="au25" src="assets/voz/cotidiano-3.mp3" data-start="124.580" data-duration="5.930" data-track-index="25" data-volume="1"></audio><audio id="au26" src="assets/voz/evolucao-1.mp3" data-start="130.960" data-duration="8.880" data-track-index="26" data-volume="1"></audio><audio id="au27" src="assets/voz/cuidados-1.mp3" data-start="140.290" data-duration="9.220" data-track-index="27" data-volume="1"></audio><audio id="au28" src="assets/voz/cuidados-2.mp3" data-start="149.810" data-duration="3.260" data-track-index="28" data-volume="1"></audio><audio id="au29" src="assets/voz/roadmap-1.mp3" data-start="153.520" data-duration="7.820" data-track-index="29" data-volume="1"></audio><audio id="au30" src="assets/voz/roadmap-2.mp3" data-start="161.640" data-duration="3.410" data-track-index="30" data-volume="1"></audio><audio id="au31" src="assets/voz/fecho-1.mp3" data-start="165.500" data-duration="5.060" data-track-index="31" data-volume="1"></audio><audio id="au32" src="assets/voz/fecho-2.mp3" data-start="170.860" data-duration="4.540" data-track-index="32" data-volume="1"></audio>
+    <div id="cap-abertura-0" class="clip cap" data-start="0.600" data-duration="2.170" data-track-index="9"><div class="pilula"><p>Oi! Eu sou a Lumi.</p></div></div><div id="cap-abertura-1" class="clip cap" data-start="2.920" data-duration="7.040" data-track-index="9"><div class="pilula"><p>Vou mostrar como a inteligência artificial pode ajudar pessoas autistas a ganharem autonomia, um passo de cada vez.</p></div></div><div id="cap-problema-0" class="clip cap" data-start="10.260" data-duration="5.240" data-track-index="9"><div class="pilula"><p>No Brasil, 2,4 milhões de pessoas têm diagnóstico de autismo.</p></div></div><div id="cap-problema-1" class="clip cap" data-start="15.650" data-duration="4.930" data-track-index="9"><div class="pilula"><p>Mas mais da metade recebe, no máximo, duas horas de terapia por semana.</p></div></div><div id="cap-problema-2" class="clip cap" data-start="20.730" data-duration="9.490" data-track-index="9"><div class="pilula"><p>A semana tem 168 horas. A dificuldade e o risco estão nas outras, e quem cobre essa lacuna, quase sempre, é uma mãe sem apoio.</p></div></div><div id="cap-solucao-0" class="clip cap" data-start="30.520" data-duration="5.980" data-track-index="9"><div class="pilula"><p>O Passo a Passo leva a ajuda para onde ela falta: em casa, na padaria, na escola.</p></div></div><div id="cap-solucao-1" class="clip cap" data-start="36.650" data-duration="7.640" data-track-index="9"><div class="pilula"><p>O Lucas usa o celular comigo. A Ana acompanha pelo celular dela. E o Carlos recebe o essencial no relógio.</p></div></div><div id="cap-ciclo-0" class="clip cap" data-start="44.590" data-duration="4.730" data-track-index="9"><div class="pilula"><p>Antes da tarefa, eu conto uma história social, com figuras e voz.</p></div></div><div id="cap-ciclo-1" class="clip cap" data-start="49.470" data-duration="2.570" data-track-index="9"><div class="pilula"><p>Durante, eu guio cada passo.</p></div></div><div id="cap-ciclo-2" class="clip cap" data-start="52.190" data-duration="3.890" data-track-index="9"><div class="pilula"><p>Depois, mostro tudo para a família e para a terapia.</p></div></div><div id="cap-ia-ve-0" class="clip cap" data-start="56.380" data-duration="4.210" data-track-index="9"><div class="pilula"><p>E aqui está o coração do projeto: a inteligência artificial.</p></div></div><div id="cap-ia-ve-1" class="clip cap" data-start="60.740" data-duration="7.110" data-track-index="9"><div class="pilula"><p>Ela enxerga. A câmera do celular reconhece os objetos e diz onde eles estão: "a mochila está à sua esquerda".</p></div></div><div id="cap-ia-ve-2" class="clip cap" data-start="68.000" data-duration="4.490" data-track-index="9"><div class="pilula"><p>Tudo no próprio aparelho: nenhuma imagem é gravada ou enviada.</p></div></div><div id="cap-ia-decide-0" class="clip cap" data-start="72.790" data-duration="9.130" data-track-index="9"><div class="pilula"><p>Ela decide quanto ajudar. Primeiro, eu explico. Depois, só pergunto. Por fim, apenas observo, em silêncio.</p></div></div><div id="cap-ia-decide-1" class="clip cap" data-start="82.070" data-duration="5.360" data-track-index="9"><div class="pilula"><p>Se o Lucas trava, a ajuda volta. Se acerta, ela diminui.</p></div></div><div id="cap-ia-decide-2" class="clip cap" data-start="87.580" data-duration="5.380" data-track-index="9"><div class="pilula"><p>É o desvanecimento de dicas, uma técnica de terapia, aplicada no dia a dia.</p></div></div><div id="cap-ia-adapta-0" class="clip cap" data-start="93.260" data-duration="4.180" data-track-index="9"><div class="pilula"><p>Ela adapta a linguagem ao nível e ao interesse de cada pessoa.</p></div></div><div id="cap-ia-adapta-1" class="clip cap" data-start="97.590" data-duration="8.020" data-track-index="9"><div class="pilula"><p>Pergunta à família e aos profissionais. E lê o laudo do neuropsicólogo, em PDF ou texto, para ajustar o app.</p></div></div><div id="cap-ia-adapta-2" class="clip cap" data-start="105.760" data-duration="5.210" data-track-index="9"><div class="pilula"><p>A inteligência artificial sugere. Um humano sempre aprova.</p></div></div><div id="cap-ia-adapta-3" class="clip cap" data-start="111.120" data-duration="3.270" data-track-index="9"><div class="pilula"><p>Sem ela, seria só um app de lembretes.</p></div></div><div id="cap-cotidiano-0" class="clip cap" data-start="114.690" data-duration="4.760" data-track-index="9"><div class="pilula"><p>A comunicação por figuras vira frase falada, e a família responde.</p></div></div><div id="cap-cotidiano-1" class="clip cap" data-start="119.600" data-duration="4.830" data-track-index="9"><div class="pilula"><p>O remédio chega com lembrete em figuras, e só a médica altera doses.</p></div></div><div id="cap-cotidiano-2" class="clip cap" data-start="124.580" data-duration="6.080" data-track-index="9"><div class="pilula"><p>E se algo dá errado, o SOS avisa todos, no celular e no relógio, com a localização.</p></div></div><div id="cap-evolucao-0" class="clip cap" data-start="130.960" data-duration="9.030" data-track-index="9"><div class="pilula"><p>A autonomia leva meses. O gráfico mostra 14 meses, com avanços e recuos, para a família e a terapia decidirem juntas.</p></div></div><div id="cap-cuidados-0" class="clip cap" data-start="140.290" data-duration="9.370" data-track-index="9"><div class="pilula"><p>Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.</p></div></div><div id="cap-roadmap-0" class="clip cap" data-start="149.960" data-duration="7.970" data-track-index="9"><div class="pilula"><p>O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso.</p></div></div><div id="cap-roadmap-1" class="clip cap" data-start="158.080" data-duration="3.560" data-track-index="9"><div class="pilula"><p>Antes, piloto com famílias e estudo clínico.</p></div></div><div id="cap-fecho-0" class="clip cap" data-start="161.940" data-duration="5.210" data-track-index="9"><div class="pilula"><p>O protótipo já funciona no navegador, com dados fictícios e código aberto.</p></div></div><div id="cap-fecho-1" class="clip cap" data-start="167.300" data-duration="6.050" data-track-index="9"><div class="pilula"><p>Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas.</p></div></div>
+    <audio id="au1" src="assets/musica.wav" data-start="0" data-duration="174.600" data-track-index="2" data-volume="0.26" data-fade-in="2.5" data-fade-out="3.5"></audio>
+    <audio id="au3" src="assets/voz/abertura-1.mp3" data-start="0.600" data-duration="2.020" data-track-index="3" data-volume="1"></audio><audio id="au4" src="assets/voz/abertura-2.mp3" data-start="2.920" data-duration="6.890" data-track-index="4" data-volume="1"></audio><audio id="au5" src="assets/voz/problema-1.mp3" data-start="10.260" data-duration="5.090" data-track-index="5" data-volume="1"></audio><audio id="au6" src="assets/voz/problema-2.mp3" data-start="15.650" data-duration="4.780" data-track-index="6" data-volume="1"></audio><audio id="au7" src="assets/voz/problema-3.mp3" data-start="20.730" data-duration="9.340" data-track-index="7" data-volume="1"></audio><audio id="au8" src="assets/voz/solucao-1.mp3" data-start="30.520" data-duration="5.830" data-track-index="8" data-volume="1"></audio><audio id="au9" src="assets/voz/solucao-2.mp3" data-start="36.650" data-duration="7.490" data-track-index="9" data-volume="1"></audio><audio id="au10" src="assets/voz/ciclo-1.mp3" data-start="44.590" data-duration="4.580" data-track-index="10" data-volume="1"></audio><audio id="au11" src="assets/voz/ciclo-2.mp3" data-start="49.470" data-duration="2.420" data-track-index="11" data-volume="1"></audio><audio id="au12" src="assets/voz/ciclo-3.mp3" data-start="52.190" data-duration="3.740" data-track-index="12" data-volume="1"></audio><audio id="au13" src="assets/voz/ia-ve-1.mp3" data-start="56.380" data-duration="4.060" data-track-index="13" data-volume="1"></audio><audio id="au14" src="assets/voz/ia-ve-2.mp3" data-start="60.740" data-duration="6.960" data-track-index="14" data-volume="1"></audio><audio id="au15" src="assets/voz/ia-ve-3.mp3" data-start="68.000" data-duration="4.340" data-track-index="15" data-volume="1"></audio><audio id="au16" src="assets/voz/ia-decide-1.mp3" data-start="72.790" data-duration="8.980" data-track-index="16" data-volume="1"></audio><audio id="au17" src="assets/voz/ia-decide-2.mp3" data-start="82.070" data-duration="5.210" data-track-index="17" data-volume="1"></audio><audio id="au18" src="assets/voz/ia-decide-3.mp3" data-start="87.580" data-duration="5.230" data-track-index="18" data-volume="1"></audio><audio id="au19" src="assets/voz/ia-adapta-1.mp3" data-start="93.260" data-duration="4.030" data-track-index="19" data-volume="1"></audio><audio id="au20" src="assets/voz/ia-adapta-2.mp3" data-start="97.590" data-duration="7.870" data-track-index="20" data-volume="1"></audio><audio id="au21" src="assets/voz/ia-adapta-3.mp3" data-start="105.760" data-duration="5.060" data-track-index="21" data-volume="1"></audio><audio id="au22" src="assets/voz/ia-adapta-4.mp3" data-start="111.120" data-duration="3.120" data-track-index="22" data-volume="1"></audio><audio id="au23" src="assets/voz/cotidiano-1.mp3" data-start="114.690" data-duration="4.610" data-track-index="23" data-volume="1"></audio><audio id="au24" src="assets/voz/cotidiano-2.mp3" data-start="119.600" data-duration="4.680" data-track-index="24" data-volume="1"></audio><audio id="au25" src="assets/voz/cotidiano-3.mp3" data-start="124.580" data-duration="5.930" data-track-index="25" data-volume="1"></audio><audio id="au26" src="assets/voz/evolucao-1.mp3" data-start="130.960" data-duration="8.880" data-track-index="26" data-volume="1"></audio><audio id="au27" src="assets/voz/cuidados-1.mp3" data-start="140.290" data-duration="9.220" data-track-index="27" data-volume="1"></audio><audio id="au28" src="assets/voz/roadmap-1.mp3" data-start="149.960" data-duration="7.820" data-track-index="28" data-volume="1"></audio><audio id="au29" src="assets/voz/roadmap-2.mp3" data-start="158.080" data-duration="3.410" data-track-index="29" data-volume="1"></audio><audio id="au30" src="assets/voz/fecho-1.mp3" data-start="161.940" data-duration="5.060" data-track-index="30" data-volume="1"></audio><audio id="au31" src="assets/voz/fecho-2.mp3" data-start="167.300" data-duration="5.900" data-track-index="31" data-volume="1"></audio>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     // fundo vivo: três manchas suaves se movem devagar
-    tl.to('#fundo .b1', { x: 160, y: 90, duration: 176.80, ease: 'none' }, 0);
-    tl.to('#fundo .b2', { x: -140, y: -70, duration: 176.80, ease: 'none' }, 0);
-    tl.to('#fundo .b3', { x: 90, y: -120, duration: 176.80, ease: 'none' }, 0);
+    tl.to('#fundo .b1', { x: 160, y: 90, duration: 174.60, ease: 'none' }, 0);
+    tl.to('#fundo .b2', { x: -140, y: -70, duration: 174.60, ease: 'none' }, 0);
+    tl.to('#fundo .b3', { x: 90, y: -120, duration: 174.60, ease: 'none' }, 0);
         tl.set("#abertura", {"opacity": 1}, 0.000);
     tl.to("#abertura", {"opacity": 0, "duration": 0.45, "ease": "power1.in"}, 10.260);
     tl.fromTo("#abertura .fundo-foto img", {"scale": 1.0}, {"scale": 1.12, "duration": 10.06, "ease": "none"}, 0.000);
@@ -716,7 +716,7 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
     tl.fromTo("#evo-l2", {"opacity": 0, "y": 0, "x": 40, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 136.760);
     tl.fromTo("#evo-tel img", {"scale": 1.0}, {"scale": 1.02, "duration": 9.88, "ease": "none"}, 130.960);
     tl.fromTo("#cuidados", {"opacity": 0}, {"opacity": 1, "duration": 0.45, "ease": "power1.out"}, 140.290);
-    tl.to("#cuidados", {"opacity": 0, "duration": 0.45, "ease": "power1.in"}, 153.520);
+    tl.to("#cuidados", {"opacity": 0, "duration": 0.45, "ease": "power1.in"}, 149.960);
     tl.fromTo("#cuidados .capitulo", {"opacity": 0, "y": -20, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.5, "ease": "power3.out"}, 140.390);
     tl.fromTo("#cu-tels", {"opacity": 0, "y": 0, "x": -80, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.9, "ease": "power3.out"}, 140.390);
     tl.fromTo("#cu-t0", {"opacity": 0, "y": 30, "x": 0, "scale": 0.92}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.6, "ease": "power3.out"}, 140.890);
@@ -725,28 +725,28 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
     tl.fromTo("#cu-t3", {"opacity": 0, "y": 30, "x": 0, "scale": 0.92}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.6, "ease": "power3.out"}, 144.958);
     tl.fromTo("#cu-t4", {"opacity": 0, "y": 30, "x": 0, "scale": 0.92}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.6, "ease": "power3.out"}, 146.314);
     tl.fromTo("#cu-t5", {"opacity": 0, "y": 30, "x": 0, "scale": 0.92}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.6, "ease": "power3.out"}, 147.669);
-    tl.fromTo("#cu-tcc", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 149.910);
-    tl.fromTo("#roadmap", {"opacity": 0}, {"opacity": 1, "duration": 0.45, "ease": "power1.out"}, 153.520);
-    tl.to("#roadmap", {"opacity": 0, "duration": 0.45, "ease": "power1.in"}, 165.500);
-    tl.fromTo("#roadmap .capitulo", {"opacity": 0, "y": -20, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.5, "ease": "power3.out"}, 153.620);
-    tl.fromTo("#ro-trilho", {"scaleX": 0, "transformOrigin": "0% 50%"}, {"scaleX": 1, "duration": 7.038, "ease": "none"}, 153.820);
-    tl.fromTo("#ro-e0", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 153.920);
-    tl.fromTo("#ro-e1", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 155.171);
-    tl.fromTo("#ro-e2", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 156.422);
-    tl.fromTo("#ro-e3", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 157.674);
-    tl.fromTo("#ro-e4", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 158.925);
-    tl.fromTo("#ro-pil", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 161.740);
-    tl.fromTo("#fecho", {"opacity": 0}, {"opacity": 1, "duration": 0.45, "ease": "power1.out"}, 165.500);
-    tl.fromTo("#fe-lumi", {"opacity": 0, "scale": 0.3, "rotation": 12}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.8, "ease": "back.out(2)"}, 165.600);
-    tl.fromTo("#fe-c", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 167.100);
-    tl.fromTo("#fe-t", {"opacity": 0, "y": 50, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.9, "ease": "power3.out"}, 170.960);
-    tl.fromTo("#fe-s", {"opacity": 0, "y": 40, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.9, "ease": "power3.out"}, 171.660);
-    tl.fromTo("#fe-l", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 173.060);
-    tl.fromTo("#fe-h", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 173.460);
-    tl.to("#fe-lumi", {"y": -18, "duration": 0.9, "ease": "sine.inOut"}, 171.860);
-    tl.to("#fe-lumi", {"y": 0, "duration": 0.9, "ease": "sine.inOut"}, 172.760);
-    tl.to("#fe-lumi", {"y": -18, "duration": 0.9, "ease": "sine.inOut"}, 173.760);
-    tl.to("#fe-lumi", {"y": 0, "duration": 0.9, "ease": "sine.inOut"}, 174.660);
+    tl.fromTo("#cu-base", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 146.928);
+    tl.fromTo("#roadmap", {"opacity": 0}, {"opacity": 1, "duration": 0.45, "ease": "power1.out"}, 149.960);
+    tl.to("#roadmap", {"opacity": 0, "duration": 0.45, "ease": "power1.in"}, 161.940);
+    tl.fromTo("#roadmap .capitulo", {"opacity": 0, "y": -20, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.5, "ease": "power3.out"}, 150.060);
+    tl.fromTo("#ro-trilho", {"scaleX": 0, "transformOrigin": "0% 50%"}, {"scaleX": 1, "duration": 7.038, "ease": "none"}, 150.260);
+    tl.fromTo("#ro-e0", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 150.360);
+    tl.fromTo("#ro-e1", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 151.611);
+    tl.fromTo("#ro-e2", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 152.862);
+    tl.fromTo("#ro-e3", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 154.114);
+    tl.fromTo("#ro-e4", {"opacity": 0, "y": 50, "x": 0, "scale": 0.94}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.7, "ease": "power3.out"}, 155.365);
+    tl.fromTo("#ro-pil", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 158.180);
+    tl.fromTo("#fecho", {"opacity": 0}, {"opacity": 1, "duration": 0.45, "ease": "power1.out"}, 161.940);
+    tl.fromTo("#fe-lumi", {"opacity": 0, "scale": 0.3, "rotation": 12}, {"opacity": 1, "scale": 1, "rotation": 0, "duration": 0.8, "ease": "back.out(2)"}, 162.040);
+    tl.fromTo("#fe-c", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 163.540);
+    tl.fromTo("#fe-t", {"opacity": 0, "y": 50, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.9, "ease": "power3.out"}, 167.400);
+    tl.fromTo("#fe-s", {"opacity": 0, "y": 40, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.9, "ease": "power3.out"}, 168.100);
+    tl.fromTo("#fe-l", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 169.500);
+    tl.fromTo("#fe-h", {"opacity": 0, "y": 30, "x": 0, "scale": 0.96}, {"opacity": 1, "y": 0, "x": 0, "scale": 1, "duration": 0.8, "ease": "power3.out"}, 169.900);
+    tl.to("#fe-lumi", {"y": -18, "duration": 0.9, "ease": "sine.inOut"}, 168.300);
+    tl.to("#fe-lumi", {"y": 0, "duration": 0.9, "ease": "sine.inOut"}, 169.200);
+    tl.to("#fe-lumi", {"y": -18, "duration": 0.9, "ease": "sine.inOut"}, 170.200);
+    tl.to("#fe-lumi", {"y": 0, "duration": 0.9, "ease": "sine.inOut"}, 171.100);
     tl.fromTo("#cap-abertura-0 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 0.600);
     tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 0.600);
     tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 1.100);
@@ -1090,67 +1090,60 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
     tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 148.790);
     tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 140.290);
     tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 149.510);
-    tl.fromTo("#cap-cuidados-1 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 149.810);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 149.810);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 150.310);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 150.810);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 151.310);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 151.810);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 152.310);
-    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 149.810);
-    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 153.070);
-    tl.fromTo("#cap-roadmap-0 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 153.520);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 153.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 154.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 154.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 155.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 155.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 156.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 156.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 157.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 157.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 158.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 158.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 159.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 159.520);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 160.020);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 160.520);
-    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 153.520);
-    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 161.340);
-    tl.fromTo("#cap-roadmap-1 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 161.640);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 161.640);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 162.140);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 162.640);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 163.140);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 163.640);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 164.140);
-    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 161.640);
-    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 165.050);
-    tl.fromTo("#cap-fecho-0 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 165.500);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 165.500);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 166.000);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 166.500);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 167.000);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 167.500);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 168.000);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 168.500);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 169.000);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 169.500);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 170.000);
-    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 165.500);
-    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 170.560);
-    tl.fromTo("#cap-fecho-1 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 170.860);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 170.860);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 171.360);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 171.860);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 172.360);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 172.860);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 173.360);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 173.860);
-    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 174.360);
-    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 174.860);
-    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 170.860);
-    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 175.400);
+    tl.fromTo("#cap-roadmap-0 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 149.960);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 149.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 150.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 150.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 151.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 151.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 152.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 152.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 153.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 153.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 154.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 154.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 155.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 155.960);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 156.460);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 156.960);
+    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 149.960);
+    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 157.780);
+    tl.fromTo("#cap-roadmap-1 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 158.080);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 158.080);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 158.580);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 159.080);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 159.580);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 160.080);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 160.580);
+    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 158.080);
+    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 161.490);
+    tl.fromTo("#cap-fecho-0 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 161.940);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 161.940);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 162.440);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 162.940);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 163.440);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 163.940);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 164.440);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 164.940);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 165.440);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 165.940);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 166.440);
+    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 161.940);
+    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 167.000);
+    tl.fromTo("#cap-fecho-1 .pilula", {"opacity": 0, "y": 16}, {"opacity": 1, "y": 0, "duration": 0.3, "ease": "power3.out"}, 167.300);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 167.300);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 167.800);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 168.300);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 168.800);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 169.300);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 169.800);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 170.300);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 170.800);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 171.300);
+    tl.to("#lumi-canto", {"scale": 1.0, "duration": 0.25, "ease": "sine.inOut"}, 171.800);
+    tl.to("#lumi-canto", {"scale": 1.1, "duration": 0.25, "ease": "sine.inOut"}, 172.300);
+    tl.to("#anel-voz", {"opacity": 0.9, "scale": 1.0, "duration": 0.2, "ease": "power2.inOut"}, 167.300);
+    tl.to("#anel-voz", {"opacity": 0, "scale": 1.25, "duration": 0.35, "ease": "power2.inOut"}, 173.200);
     window.__timelines["main"] = tl;
     tl.seek(0);
   </script>

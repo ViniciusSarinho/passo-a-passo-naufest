@@ -32,7 +32,7 @@ abas.forEach((a, i) => {
     e.preventDefault(); abrirAba(abas[(i + d + abas.length) % abas.length].dataset.aba, { foco: true });
   });
 });
-// Links de uma aba para outra (data-aba-ir) e para uma âncora dentro de uma aba (#f5, #fontes, #tcc)
+// Links de uma aba para outra (data-aba-ir) e para uma âncora dentro de uma aba (#f5, #fontes)
 document.querySelectorAll('[data-aba-ir]').forEach((b) => b.addEventListener('click', (e) => {
   e.preventDefault(); abrirAba(b.dataset.abaIr); document.getElementById('aprofunde').scrollIntoView();
 }));

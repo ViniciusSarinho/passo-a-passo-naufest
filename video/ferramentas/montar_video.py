@@ -65,7 +65,7 @@ scenes_html = []
 def cena(id_, titulo_cap, corpo):
     c = CENAS[id_]
     ini, dur = c['inicio'], c['duracao']
-    dur_vis = dur + FADE
+    dur_vis = dur + (FADE if id_ != 'fecho' else 0)  # a última cena termina junto com o vídeo
     scenes_html.append(f'''
     <section id="{id_}" class="clip scene" data-start="{ini:.3f}" data-duration="{dur_vis:.3f}" data-track-index="1">
       {f'<div class="capitulo">{titulo_cap}</div>' if titulo_cap else ''}
@@ -196,7 +196,7 @@ cena('ia-ve', '', f'''
   <div class="resultado" id="iv-res">
     <div class="dir"><span>←</span> à sua <b>esquerda</b></div>
     <p class="frase-lumi" id="iv-frase">“A mochila está à sua esquerda.”</p>
-    <div class="tec">TensorFlow.js · COCO-SSD · roda no navegador</div>
+    <div class="tec">Visão computacional · roda no navegador</div>
   </div>
   <div class="selo-priv" id="iv-priv"><i>🔒</i><div><b>100% no aparelho</b><span>nenhuma imagem é gravada ou enviada</span></div></div>
 ''')
@@ -227,7 +227,7 @@ cena('ia-decide', '', f'''
     <div class="barras"><div class="serie ajuda">{barras_ajuda}</div><div class="serie auto">{barras_auto}</div></div>
     <div class="leg"><span class="dot pessego"></span>ajuda da IA<span class="dot teal"></span>autonomia da pessoa</div>
     <div class="trava" id="id-trava">↻ Travou? <b>A ajuda volta.</b></div>
-    <div class="tecnica" id="id-tec">Desvanecimento de dicas<small>prompt fading · técnica de terapia comportamental</small></div>
+    <div class="tecnica" id="id-tec">Desvanecimento de dicas<small>técnica de terapia comportamental</small></div>
   </div>
 ''')
 pop('#id-faixa', d0_ + 0.05, 0.7, y=-20)
@@ -258,7 +258,7 @@ cena('ia-adapta', '', f'''
     <span id="ad-k1">📄 Laudo<small>PDF ou TXT</small></span><b>→</b><span id="ad-k2">🧠 IA lê<small>no navegador</small></span><b>→</b><span id="ad-k3">💡 Sugere<small>com o trecho original</small></span><b>→</b><span id="ad-k4" class="humano">✅ Humano aprova<small>sempre</small></span>
   </div>
   <div class="selo-humano" id="ad-hum">A IA sugere. <b>Um humano sempre aprova.</b></div>
-  <div class="selo-sem-ia" id="ad-sem"><s>Sem IA: só lembretes</s> → <b>Com IA: apoio que aprende junto</b></div>
+  <div class="selo-sem-ia" id="ad-sem"><s>Sem IA: só lembretes</s><br>→ <b>Com IA: apoio que aprende junto</b></div>
 ''')
 pop('#ad-faixa', e0 + 0.05, 0.7, y=-20)
 pop('#ad-ling', e0 + 0.3, 0.7, y=40)
@@ -323,7 +323,7 @@ pop('#evo-l2', ev0 + 5.8, 0.7, x=40, y=0)
 fromto('#evo-tel img', {'scale': 1.0}, {'scale': 1.02}, ev0, evd + 1, 'none')
 
 # ======================================================================== 10 · CUIDADOS
-cu0, cud0 = ph('cuidados', 0); cu1, cud1 = ph('cuidados', 1)
+cu0, cud0 = ph('cuidados', 0)
 tiles = [('☝️', 'Uma coisa por vez'), ('🎨', 'Cores calmas'), ('🌙', 'Tela escura opcional'), ('🔊', 'Volume e voz ajustáveis'), ('⭐', 'Trilha de estrelas, sem punição'), ('🧭', 'Sempre previsível')]
 tiles_html = ''.join(f'<div class="tile" id="cu-t{n}"><i>{e}</i><b>{t}</b></div>' for n, (e, t) in enumerate(tiles))
 cena('cuidados', '06 · Calmo por design', f'''
@@ -331,13 +331,13 @@ cena('cuidados', '06 · Calmo por design', f'''
   <div class="cu-dir">
     <h2 class="titulo-cena">Feito <em>para os sentidos</em></h2>
     <div class="tiles">{tiles_html}</div>
-    <div class="base-tcc" id="cu-tcc"><b>Base científica (TCC)</b>APA DSM-5 · Dattolo e Luccio · Raymaker et al. · Yaneva et al. · Lucian e Stumpf · Lamberty · Ferreira et al. · Silva et al.</div>
+    <div class="base-nota" id="cu-base"><b>Para todas as idades</b>Crianças, adolescentes, adultos e pessoas mais velhas, com ajustes de som, luz e velocidade para cada um.</div>
   </div>
 ''')
 pop('#cu-tels', cu0 + 0.1, 0.9, x=-80, y=0)
 for n in range(6):
     pop(f'#cu-t{n}', cu0 + 0.6 + n * (cud0 / 6.8), 0.6, y=30, scale=0.92)
-pop('#cu-tcc', cu1 + 0.1, 0.8, y=30)
+pop('#cu-base', cu0 + cud0 * 0.72, 0.8, y=30)
 
 # ======================================================================== 11 · ROADMAP
 r0, rd0 = ph('roadmap', 0); r1, rd1 = ph('roadmap', 1)
@@ -361,7 +361,7 @@ cena('fecho', '', f'''
   <div class="fecho-centro">
     {img('lumi-comemorando', 'lumi-medio', 'id="fe-lumi"')}
     <h1 id="fe-t">Passo a Passo</h1>
-    <p class="sub" id="fe-s">A inteligência artificial que <em>ensina a não precisar dela.</em></p>
+    <p class="sub" id="fe-s">Inteligência artificial para a <em>autonomia e o desenvolvimento</em> de pessoas autistas.</p>
     <div class="chips" id="fe-c"><span>Protótipo funcional</span><span>Dados fictícios</span><span>Código aberto</span></div>
     <div class="link" id="fe-l">viniciussarinho.github.io/passo-a-passo-naufest</div>
     <div class="selo-hack grande" id="fe-h">NAUFest #AIforImpact2026</div>

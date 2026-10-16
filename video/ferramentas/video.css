@@ -166,8 +166,8 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 .tile { background: #fff; border-radius: 30px; padding: 26px 18px; text-align: center; height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 18px 36px -24px rgba(29,79,82,.5); }
 .tile i { font-style: normal; font-size: 58px; line-height: 1; }
 .tile b { font-size: 31px; font-weight: 900; line-height: 1.12; }
-.base-tcc { margin-top: 28px; background: #fff4d6; border-left: 10px solid #f0c94a; border-radius: 22px; padding: 18px 26px; font: 700 27px/1.3 Nunito; }
-.base-tcc b { display: block; color: var(--ocre); font-size: 28px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+.base-nota { margin-top: 28px; background: #fff4d6; border-left: 10px solid #f0c94a; border-radius: 22px; padding: 18px 26px; font: 700 27px/1.3 Nunito; }
+.base-nota b { display: block; color: var(--ocre); font-size: 28px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
 
 /* 11 · roadmap */
 .linha-etapas { position: absolute; left: 90px; top: 270px; width: 1740px; display: flex; justify-content: space-between; gap: 22px; }
@@ -183,13 +183,13 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 /* 12 · fecho */
 .fundo-foto.desfoque img { filter: blur(14px); transform: scale(1.1); }
 .veu-total { position: absolute; inset: 0; background: rgba(255,248,238,.84); }
-.fecho-centro { position: absolute; left: 0; top: 0; width: 1920px; height: 1000px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; }
-.lumi-medio { width: 330px; filter: drop-shadow(0 24px 34px rgba(29,79,82,.3)); }
-.fecho-centro h1 { font-size: 168px; line-height: 1; font-weight: 900; letter-spacing: -.035em; }
-.fecho-centro .sub { margin-top: 6px; font-size: 62px; }
-.fecho-centro .chips { margin-top: 26px; justify-content: center; }
-.link { font: 900 42px Nunito; color: var(--teal); margin-top: 28px; }
-.fecho-centro .selo-hack { margin: 18px 0 0; }
+.fecho-centro { position: absolute; left: 0; top: 0; width: 1920px; height: 890px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 6px; }
+.lumi-medio { width: 250px; filter: drop-shadow(0 24px 34px rgba(29,79,82,.3)); }
+.fecho-centro h1 { font-size: 150px; line-height: 1; font-weight: 900; letter-spacing: -.035em; }
+.fecho-centro .sub { margin-top: 4px; font-size: 50px; max-width: 1560px; line-height: 1.18; }
+.fecho-centro .chips { margin-top: 20px; justify-content: center; }
+.link { font: 900 38px Nunito; color: var(--teal); margin-top: 18px; }
+.fecho-centro .selo-hack { margin: 12px 0 0; font-size: 30px; padding: 8px 28px; }
 
 /* legendas e Lumi do canto */
 .cap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; }
@@ -202,5 +202,5 @@ em { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 6
 .beat .titulo-cena { width: 820px; font-size: 76px; }
 .beat#co-c .titulo-cena { width: 620px; font-size: 70px; }
 .beat#co-c .leg-cena { width: 560px; top: 470px; }
-.selo-sem-ia { position: absolute; left: 90px; top: 790px; width: 880px; text-align: center; white-space: nowrap; font: 800 38px Nunito; background: #fff; border: 4px solid var(--pessego); border-radius: 34px; padding: 18px 20px; }
+.selo-sem-ia { position: absolute; left: 90px; top: 770px; width: 880px; text-align: center; white-space: normal; font: 800 36px/1.3 Nunito; background: #fff; border: 4px solid var(--pessego); border-radius: 34px; padding: 18px 20px; }
 .selo-sem-ia s { color: #9a6b55; text-decoration: line-through; text-decoration-thickness: 4px; } .selo-sem-ia b { color: var(--teal); }

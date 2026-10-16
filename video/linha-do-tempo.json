@@ -211,60 +211,54 @@
     {
       "id": "cuidados",
       "inicio": 140.29,
-      "duracao": 13.23,
+      "duracao": 9.67,
       "frases": [
         {
           "texto": "Tudo foi pensado para o autismo: uma coisa por vez, cores calmas, tela escura opcional, volume ajustável e uma trilha de estrelas, sem punição.",
           "arquivo": "cuidados-1.mp3",
           "inicio": 140.29,
           "duracao": 9.22
-        },
-        {
-          "texto": "Com base nos estudos do TCC do projeto.",
-          "arquivo": "cuidados-2.mp3",
-          "inicio": 149.81,
-          "duracao": 3.26
         }
       ]
     },
     {
       "id": "roadmap",
-      "inicio": 153.52,
+      "inicio": 149.96,
       "duracao": 11.98,
       "frases": [
         {
           "texto": "O plano vai do celular ao relógio, ao colar, ao fone e, por fim, a mim: um robô de mesa macio e silencioso.",
           "arquivo": "roadmap-1.mp3",
-          "inicio": 153.52,
+          "inicio": 149.96,
           "duracao": 7.82
         },
         {
           "texto": "Antes, piloto com famílias e estudo clínico.",
           "arquivo": "roadmap-2.mp3",
-          "inicio": 161.64,
+          "inicio": 158.08,
           "duracao": 3.41
         }
       ]
     },
     {
       "id": "fecho",
-      "inicio": 165.5,
-      "duracao": 11.3,
+      "inicio": 161.94,
+      "duracao": 12.66,
       "frases": [
         {
           "texto": "O protótipo já funciona no navegador, com dados fictícios e código aberto.",
           "arquivo": "fecho-1.mp3",
-          "inicio": 165.5,
+          "inicio": 161.94,
           "duracao": 5.06
         },
         {
-          "texto": "Passo a Passo: a inteligência artificial que ensina a não precisar dela.",
+          "texto": "Passo a Passo: inteligência artificial para a autonomia e o desenvolvimento de pessoas autistas.",
           "arquivo": "fecho-2.mp3",
-          "inicio": 170.86,
-          "duracao": 4.54
+          "inicio": 167.3,
+          "duracao": 5.9
         }
       ]
     }
   ],
-  "duracao_total": 176.8
+  "duracao_total": 174.6
 }
