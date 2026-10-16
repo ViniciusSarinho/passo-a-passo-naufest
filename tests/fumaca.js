@@ -152,12 +152,33 @@ iframe.addEventListener('load', async () => {
     verdade(win.analisarLaudo(texto).length >= 7, 'áreas encontradas no PDF');
   });
   await teste('Roteiro guiado completo, no modo automático acelerado', async () => {
-    ev('ROTEIRO.ritmo = 0.12; abrirRoteiro()');
+    ev('ROTEIRO.ritmo = 0.12; ROTEIRO.pularOpcionais = true; abrirRoteiro()');
+    igual(ev('document.body.dataset.foco'), ev('celular()') ? ev('document.body.dataset.foco') : 'paciente', 'o roteiro começa no celular do Lucas');
     await win.iniciarAutomatico();
     igual(ev('ROTEIRO.i'), ev('PASSOS_ROTEIRO.length - 1'), 'chegou ao último passo');
     verdade(ev('!!S.conhecimento.laudo'), 'laudo recebido no roteiro');
     verdade(ev("S.eventos.some((e) => e.tipo === 'sos')"), 'SOS no roteiro');
     ev('fecharRoteiro()');
+  });
+  await teste('Roteiro: passo opcional pausa o automático e nenhum momento é pulado', async () => {
+    ev('ROTEIRO.ritmo = 0.12; ROTEIRO.pularOpcionais = false; abrirRoteiro()');
+    await win.iniciarAutomatico();
+    verdade(!ev('ROTEIRO.automatico'), 'automático parou no passo opcional');
+    igual(ev("PASSOS_ROTEIRO[ROTEIRO.i].opcional"), true, 'parou na câmera');
+    igual(ev('ROTEIRO.m'), 0, 'o passo da câmera não foi executado');
+    ev('fecharRoteiro()');
+  });
+  await teste('Lumi: repete a instrução no máximo 6 vezes e espera cada vez mais', async () => {
+    ev("P.ir('guia', 'mochila')"); await esperar(500);
+    const g = ev('P.g');
+    g.repeticoes = 0;
+    const antes = ev('P.espera(P.g)');
+    g.repeticoes = 3; const depois = ev('P.espera(P.g)');
+    g.repeticoes = 5; const mais = ev('P.espera(P.g)');
+    verdade(depois > antes && mais > depois, 'a espera cresce depois de 3 repetições');
+    verdade(mais <= 120000, 'a espera tem teto de 2 minutos');
+    igual(ev('P.REPETICOES_MAX'), 6, 'limite de repetições');
+    ev("P.ir('inicio')");
   });
   await teste('Nenhum erro de JavaScript durante o teste', () => igual(erros.join(' | '), ''));
 

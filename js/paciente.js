@@ -197,7 +197,7 @@ P.passo = () => {
 
 P.iniciarPasso = () => {
   const g = P.g;
-  g.inicio = Date.now(); g.concluindo = false; g.vistos = 0; g.ultimaPos = null; g.ajudaNoPasso = false;
+  g.inicio = Date.now(); g.concluindo = false; g.vistos = 0; g.repeticoes = 0; g.silencio = false; g.ultimaPos = null; g.ajudaNoPasso = false;
   g.nivel = nivelInicial(g.fase);
   $(P.raiz, '#gBarra').style.width = (g.idx / g.rotina.passos.length) * 100 + '%';
   $(P.raiz, '#gTrilha').innerHTML = P.trilha(g.rotina, g.idx);
@@ -239,15 +239,31 @@ P.mostrarDica = (falarAgora) => {
   if (falarAgora && fala) falar(fala);
 };
 
+// Quanto mais o Lumi repete a instrução, mais ele espera: depois de 3 repetições o intervalo dobra a cada
+// vez (até 8x, no máximo 2 min). Após 6 repetições ele fica em silêncio, sem pressionar, e só volta a
+// falar quando mudar de passo ou voltar da calma/SOS.
+P.REPETICOES_MAX = 6;
+P.espera = (g) => {
+  const r = g.repeticoes || 0, fator = r < 3 ? 1 : Math.min(2 ** (r - 2), 8);
+  return Math.min(S.perfil.espera * fator * 1000, 120000);
+};
 P.agendar = () => {
   const g = P.g;
   clearTimeout(g.timer);
   g.timer = setTimeout(() => {
     if (!P.g || g.pausado) return;
     if (g.nivel < 2) { g.nivel++; P.mostrarDica(true); emitir('progresso', { ...S.aoVivo, nivel: g.nivel }); }
-    else falar(instrucao(P.passo(), g.escolha?.frase) + (g.ultimaPos ? ` ${g.ultimaPos}.` : ''));
+    else if ((g.repeticoes || 0) < P.REPETICOES_MAX) {
+      g.repeticoes = (g.repeticoes || 0) + 1;
+      falar(instrucao(P.passo(), g.escolha?.frase) + (g.ultimaPos ? ` ${g.ultimaPos}.` : ''));
+    } else {
+      // já repetiu bastante: para de falar e deixa um recado calmo na tela
+      g.silencio = true;
+      $(P.raiz, '#gLumi').innerHTML = P.lumi('calmo', 'Sem pressa. Quando quiser, toque em "Fiz" ou em "Calma". Estou aqui.', 'O Lumi parou de repetir.', 96);
+      return;
+    }
     P.agendar();
-  }, S.perfil.espera * 1000);
+  }, P.espera(g));
 };
 
 P.concluir = (metodo) => {
@@ -287,7 +303,7 @@ P.calma = () => {
   P.raiz.appendChild(ov);
   if (S.perfil.calmaHiperfoco) falar(`Tudo bem. Sabia que alguns ${S.perfil.hiperfoco || 'dinossauros'} eram calmos e lentos? Vamos respirar devagar, como eles.`);
   else if (!S.perfil.calmaSilenciosa) falar('Tudo bem. Vamos respirar juntos. Puxa o ar devagar... e solta.');
-  $(ov, '#cVoltar').onclick = () => { ov.remove(); if (P.g) { P.g.pausado = false; P.g.nivel = 2; P.mostrarDica(true); P.agendar(); } };
+  $(ov, '#cVoltar').onclick = () => { ov.remove(); if (P.g) { P.g.pausado = false; P.g.nivel = 2; P.g.repeticoes = 0; P.g.silencio = false; P.mostrarDica(true); P.agendar(); } };
   $(ov, '#cParar').onclick = () => { ov.remove(); if (P.g) { P.g.pausado = false; P.finalizar(true); } else P.ir('inicio'); };
 };
 
@@ -483,7 +499,7 @@ P.telaSos = () => {
     <button class="btn bloco" id="sBem">✅ Estou bem agora</button>`;
   P.raiz.appendChild(ov);
   falar(a.aCaminho ? `${a.aCaminho} está a caminho. Fique onde está. Você está seguro.` : `Pedi ajuda. Avisei ${avisados.join(' e ')}. Fique onde está. Você está seguro comigo.`, true);
-  $(ov, '#sBem').onclick = () => { emitir('sos_resolvido', { quem: S.perfil.nome }); ov.remove(); if (P.g) { P.g.pausado = false; P.mostrarDica(true); P.agendar(); } };
+  $(ov, '#sBem').onclick = () => { emitir('sos_resolvido', { quem: S.perfil.nome }); ov.remove(); if (P.g) { P.g.pausado = false; P.g.repeticoes = 0; P.g.silencio = false; P.mostrarDica(true); P.agendar(); } };
   ov.querySelectorAll('[data-p-ov]').forEach((b) => b.onclick = () => { ov.remove(); P.ir(b.dataset.pOv); });
 };
 

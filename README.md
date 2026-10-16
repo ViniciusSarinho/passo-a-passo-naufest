@@ -41,7 +41,7 @@ Por que IA e não um app de lembretes: ela **enxerga** a cena e confirma os pass
 
 No computador, o app mostra os aparelhos **em tamanho real, escalados por inteiro**: o celular do Lucas (paciente), o **relógio do Carlos** (pai) e o celular da Ana (família) ou o tablet do profissional. O que acontece em um aparelho aparece nos outros.
 
-**Um aparelho por vez, virando a página:** o app abre só no **celular do Lucas**, grande, e você "vira a página" para o **relógio do Carlos**, o **celular da Ana** e o **tablet do profissional**: pelas setas laterais (que dizem para onde vão), pelas setas ← → do teclado ou pelo seletor numerado do topo. *Todos juntos* mostra os quatro lado a lado. O **roteiro guiado** conduz um passo por vez: toque em **Mostrar este passo** e depois em **Próximo passo**; ele vira a página sozinho e diz "Olhe para: …". O botão 👀 abre "o que olhar"; os botões menos usados (voz, tela escura, comparar contas, reiniciar) ficam no menu **⋯**.
+**Um aparelho por vez, virando a página:** o app abre só no **celular do Lucas**, grande, e você "vira a página" para o **relógio do Carlos**, o **celular da Ana** e o **tablet do profissional**: pelas setas laterais (que dizem para onde vão), pelas setas ← → do teclado ou pelo seletor numerado do topo. *Todos juntos* mostra os quatro lado a lado. O **roteiro guiado** conduz um passo por vez: cada passo tem partes curtas: o botão principal diz o que vem a seguir (por exemplo, "Ver na tela da Ana →") e **quem decide a hora de virar a página é você**; o modo automático pausa sozinho no passo opcional da câmera. O botão 👀 abre "o que olhar"; os botões menos usados (voz, tela escura, comparar contas, reiniciar) ficam no menu **⋯**.
 
 | Paciente: início | Modo guia (fase 2) | Conversa por figuras (CAA) | Lembrete de remédio |
 |---|---|---|---|
@@ -120,7 +120,7 @@ python -m http.server 8765
 # abra http://localhost:8765/tests/fumaca.html
 ```
 
-O **teste de fumaça** abre o app num iframe e executa 56 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado. Não usa câmera nem microfone.
+O **teste de fumaça** abre o app num iframe e executa 58 verificações: telas das três contas, SOS, relógio, CAA, remédio, laudo (texto e PDF, este precisa de internet para o `pdf.js`), permissões, inventário de falas e o roteiro guiado completo em modo acelerado (inclusive a pausa no passo opcional) e o limite de repetições da voz do Lumi. Não usa câmera nem microfone.
 
 ## Estrutura
 

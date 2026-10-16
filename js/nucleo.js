@@ -42,7 +42,7 @@ const canal = 'BroadcastChannel' in window ? new BroadcastChannel(VERSAO_ESTADO)
 if (canal) canal.onmessage = (e) => { S = carregar() || S; aoEvento(e.data); };
 
 // Estado do roteiro guiado (roteiro.js). "ativo" também diz ao app para não pedir permissão de localização.
-const ROTEIRO = { ativo: false, i: 0, ocupado: false, automatico: false, minimizado: false, ritmo: 1, salvo: null };
+const ROTEIRO = { ativo: false, i: 0, ocupado: false, automatico: false, minimizado: false, ritmo: 1, salvo: null, m: 0, auto: 0, token: 0, pularOpcionais: false, olhe: false };
 
 // Toda ação relevante vira um evento: muda o estado, é salva e chega às outras contas.
 const EVENTOS_FORA_DA_LINHA_DO_TEMPO = ['progresso', 'fala_caa'];
